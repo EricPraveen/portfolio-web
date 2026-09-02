@@ -1,6 +1,5 @@
 import { MetadataRoute } from 'next';
 import { getAllProjects } from '@/lib/content/projects.service';
-import { getAllNotes } from '@/lib/content/notes.service';
 
 const SITE_URL = 'https://signal-ledger.dev';
 
@@ -16,25 +15,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1.0,
     },
     {
-      url: `${SITE_URL}/work`,
+      url: `${SITE_URL}/about`,
       lastModified,
-      changeFrequency: 'weekly',
+      changeFrequency: 'monthly',
       priority: 0.9,
     },
     {
-      url: `${SITE_URL}/notes`,
-      lastModified,
-      changeFrequency: 'weekly',
-      priority: 0.8,
-    },
-    {
-      url: `${SITE_URL}/profile`,
+      url: `${SITE_URL}/skills`,
       lastModified,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
-      url: `${SITE_URL}/credentials`,
+      url: `${SITE_URL}/projects`,
+      lastModified,
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
+      url: `${SITE_URL}/education`,
       lastModified,
       changeFrequency: 'monthly',
       priority: 0.7,
@@ -45,31 +44,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.7,
     },
-    {
-      url: `${SITE_URL}/feed.xml`,
-      lastModified,
-      changeFrequency: 'weekly',
-      priority: 0.5,
-    },
   ];
 
   // 2. Case Studies (Dynamic project routes)
   const projects = getAllProjects();
   const projectRoutes: MetadataRoute.Sitemap = projects.map((project) => ({
-    url: `${SITE_URL}/work/${project.slug}`,
+    url: `${SITE_URL}/projects/${project.slug}`,
     lastModified,
     changeFrequency: 'monthly',
     priority: project.featured ? 0.9 : 0.7,
   }));
 
-  // 3. Technical Notes & Deep Dives
-  const notes = getAllNotes();
-  const noteRoutes: MetadataRoute.Sitemap = notes.map((note) => ({
-    url: `${SITE_URL}/notes/${note.slug}`,
-    lastModified: new Date(note.publishedAt || lastModified),
-    changeFrequency: 'monthly',
-    priority: 0.7,
-  }));
-
-  return [...staticRoutes, ...projectRoutes, ...noteRoutes];
+  return [...staticRoutes, ...projectRoutes];
 }

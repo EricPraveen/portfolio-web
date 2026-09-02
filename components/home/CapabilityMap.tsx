@@ -11,13 +11,13 @@ export function CapabilityMap({ categories }: CapabilityMapProps) {
     <section className="capability-map-section" aria-labelledby="capability-map-heading">
       <div className="section-header-strip">
         <div>
-          <span className="section-eyebrow text-mono-label font-mono">03 / CAPABILITY ARCHITECTURE</span>
+          <span className="section-eyebrow text-mono-label font-mono">Skills</span>
           <h2 id="capability-map-heading" className="section-title font-heading-2xl">
-            Verified Engineering Capabilities
+            Technical Skills
           </h2>
         </div>
         <p className="section-lead text-body">
-          Concrete technical capabilities backed by source repositories, verified builds, and architectural case studies — zero arbitrary percentage bars or self-assigned ratings.
+          Technologies and tools I work with across the stack.
         </p>
       </div>
 
@@ -64,7 +64,7 @@ export function CapabilityMap({ categories }: CapabilityMapProps) {
                         {item.appliedInProjectSlugs.map((slug) => (
                           <Link
                             key={slug}
-                            href={`/work/${slug}`}
+                            href={`/projects/${slug}`}
                             className="capability-project-link font-mono"
                           >
                             {slug} &rarr;

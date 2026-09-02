@@ -23,7 +23,7 @@ export function SelectedCredentials({
           </h2>
         </div>
 
-        <Link href="/credentials" className="section-link-more font-mono">
+        <Link href="/education" className="section-link-more font-mono">
           Complete Credentials Archive &rarr;
         </Link>
       </div>

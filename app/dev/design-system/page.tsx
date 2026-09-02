@@ -342,7 +342,7 @@ setInterval(async () => {
               <Cluster gap="md">
                 <EvidenceLink href="https://github.com" label="GitHub Repository" isPrimary evidenceType="github" />
                 <EvidenceLink href="https://example.com" label="Interactive Demo" evidenceType="demo" />
-                <EvidenceLink href="/work" label="Architecture Note" isExternal={false} note="Internal Ref" />
+                <EvidenceLink href="/projects" label="Architecture Note" isExternal={false} note="Internal Ref" />
               </Cluster>
             </div>
 

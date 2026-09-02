@@ -13,7 +13,7 @@ export function ProjectHero({ project }: ProjectHeroProps) {
     <header className="cs-hero">
       {/* Top Breadcrumb & Return Link */}
       <nav className="cs-hero-breadcrumb" aria-label="Breadcrumb navigation">
-        <Link href="/work" className="cs-hero-back-link">
+        <Link href="/projects" className="cs-hero-back-link">
           <span aria-hidden="true">&larr;</span> Return to Work Catalog
         </Link>
         <span className="cs-hero-crumb-divider" aria-hidden="true">/</span>

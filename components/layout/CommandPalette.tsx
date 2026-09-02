@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 export interface CommandItem {
   id: string;
-  category: 'Pages' | 'Case Studies' | 'Notes' | 'Credentials' | 'Actions';
+  category: 'Pages' | 'Case Studies' | 'Education' | 'Actions';
   title: string;
   subtitle?: string;
   badge?: string;
@@ -37,56 +37,56 @@ export function CommandPalette({ isOpen, onClose }: CommandPaletteProps) {
     {
       id: 'page-home',
       category: 'Pages',
-      title: '00 / Overview Ledger',
-      subtitle: 'Executive engineering summary, capability map, selected work',
+      title: 'Home / Overview',
+      subtitle: 'Engineering summary, capability map, and selected projects',
       badge: 'PAGE',
       url: '/',
-      keywords: ['home', 'index', 'overview', 'summary', 'about'],
+      keywords: ['home', 'index', 'overview', 'summary'],
     },
     {
-      id: 'page-work',
+      id: 'page-about',
       category: 'Pages',
-      title: '01 / Production Systems & Case Studies',
-      subtitle: 'Complete catalog of distributed systems and software architectures',
+      title: '01 / About',
+      subtitle: 'Career progression, experience timeline, and profile',
       badge: 'PAGE',
-      url: '/work',
-      keywords: ['work', 'projects', 'systems', 'catalog', 'archive'],
+      url: '/about',
+      keywords: ['about', 'profile', 'resume', 'cv', 'experience', 'career'],
     },
     {
-      id: 'page-notes',
+      id: 'page-skills',
       category: 'Pages',
-      title: '02 / Technical Notes & Postmortems',
-      subtitle: 'Deep dives, architectural decisions, and production incident notes',
+      title: '02 / Skills',
+      subtitle: 'Technical skills — languages, frameworks, and tools',
       badge: 'PAGE',
-      url: '/notes',
-      keywords: ['notes', 'writing', 'blog', 'postmortems', 'articles'],
+      url: '/skills',
+      keywords: ['skills', 'technologies', 'languages', 'frameworks', 'tools'],
     },
     {
-      id: 'page-profile',
+      id: 'page-projects',
       category: 'Pages',
-      title: '03 / Engineering Profile & History',
-      subtitle: 'Career progression, systems leadership philosophy, and verified impact',
+      title: '03 / Projects',
+      subtitle: 'Complete catalog of engineering projects and case studies',
       badge: 'PAGE',
-      url: '/profile',
-      keywords: ['profile', 'resume', 'cv', 'experience', 'career'],
+      url: '/projects',
+      keywords: ['projects', 'work', 'systems', 'catalog', 'archive'],
     },
     {
-      id: 'page-credentials',
+      id: 'page-education',
       category: 'Pages',
-      title: '04 / Credentials & Verifications',
-      subtitle: 'Verified certifications, patents, technical licenses, and audits',
+      title: '04 / Education',
+      subtitle: 'Degree, certifications, awards, and academic distinctions',
       badge: 'PAGE',
-      url: '/credentials',
-      keywords: ['credentials', 'certifications', 'patents', 'awards', 'degrees'],
+      url: '/education',
+      keywords: ['education', 'credentials', 'certifications', 'degree', 'awards'],
     },
     {
       id: 'page-contact',
       category: 'Pages',
-      title: '05 / Direct Communication & Ledger Inquiries',
-      subtitle: 'PGP fingerprint, contact form, and engineering channels',
+      title: '05 / Contact',
+      subtitle: 'Get in touch — email, social links, and inquiry form',
       badge: 'PAGE',
       url: '/contact',
-      keywords: ['contact', 'email', 'pgp', 'message', 'hire'],
+      keywords: ['contact', 'email', 'message', 'hire'],
     },
 
     // 2. Case Studies (Direct deep links)
@@ -96,7 +96,7 @@ export function CommandPalette({ isOpen, onClose }: CommandPaletteProps) {
       title: 'Distributed Task Orchestrator',
       subtitle: 'Fault-tolerant job scheduler with Lua-backed Redis leases & dead-letter queues',
       badge: '99.999% SLA',
-      url: '/work/distributed-task-orchestrator',
+      url: '/projects/distributed-task-orchestrator',
       keywords: ['redis', 'distributed', 'orchestrator', 'queue', 'concurrency', 'lua', 'golang'],
     },
     {
@@ -105,7 +105,7 @@ export function CommandPalette({ isOpen, onClose }: CommandPaletteProps) {
       title: 'TravelHub Multi-GDS Aggregator',
       subtitle: 'High-throughput flight & hotel inventory engine with optimistic concurrency',
       badge: '42K RPS',
-      url: '/work/travel-hub-platform',
+      url: '/projects/travel-hub-platform',
       keywords: ['travel', 'booking', 'inventory', 'concurrency', 'aggregator', 'postgresql'],
     },
     {
@@ -114,7 +114,7 @@ export function CommandPalette({ isOpen, onClose }: CommandPaletteProps) {
       title: 'Deterministic Memory Allocator',
       subtitle: 'Zero-fragmentation slab allocator for low-latency financial telemetry',
       badge: 'C++20',
-      url: '/work/deterministic-memory-allocator',
+      url: '/projects/deterministic-memory-allocator',
       keywords: ['memory', 'allocator', 'cpp', 'low-latency', 'slab', 'telemetry', 'realtime'],
     },
     {
@@ -123,40 +123,11 @@ export function CommandPalette({ isOpen, onClose }: CommandPaletteProps) {
       title: 'Embedded Vector Search Engine',
       subtitle: 'SIMD-accelerated HNSW index with quantized cosine similarity',
       badge: 'AVX-512',
-      url: '/work/embedded-vector-index',
+      url: '/projects/embedded-vector-index',
       keywords: ['vector', 'hnsw', 'search', 'simd', 'embeddings', 'ai', 'rust'],
     },
 
-    // 3. Technical Notes & Deep Dives
-    {
-      id: 'note-redis-lua',
-      category: 'Notes',
-      title: 'Deterministic State Machine Invariants in Redis Lua',
-      subtitle: 'Eliminating race conditions and split-brain in distributed lease heartbeats',
-      badge: 'NOTE',
-      url: '/notes/deterministic-state-machines-redis-lua',
-      keywords: ['redis', 'lua', 'invariants', 'distributed', 'leases'],
-    },
-    {
-      id: 'note-optimistic-locking',
-      category: 'Notes',
-      title: 'Optimistic Concurrency at Scale: Mitigating Abort Storms',
-      subtitle: 'Techniques for high-contention row-level updates in ACID datastores',
-      badge: 'NOTE',
-      url: '/notes/optimistic-concurrency-high-throughput',
-      keywords: ['concurrency', 'locking', 'database', 'acid', 'contention'],
-    },
-    {
-      id: 'note-memory-fragmentation',
-      category: 'Notes',
-      title: 'Zero-Fragmentation SMR Strategies for Long-Running Daemons',
-      subtitle: 'Safe Memory Reclamation and arena allocation patterns in systems software',
-      badge: 'NOTE',
-      url: '/notes/safe-memory-reclamation-patterns',
-      keywords: ['memory', 'smr', 'fragmentation', 'systems', 'cpp'],
-    },
-
-    // 4. Quick Actions
+    // 3. Quick Actions
     {
       id: 'action-copy-email',
       category: 'Actions',

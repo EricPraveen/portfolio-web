@@ -7,7 +7,6 @@ export interface ThesisPanelProps {
 }
 
 export function ThesisPanel({ profile }: ThesisPanelProps) {
-  // Clean placeholders for display
   const title = profile.title.replace(/\[|\]/g, '');
   const thesisStatement = profile.thesisStatement.replace(/\[|\]/g, '');
   const availabilityStatus = profile.availability.status;
@@ -16,16 +15,12 @@ export function ThesisPanel({ profile }: ThesisPanelProps) {
   const targetRoles = profile.availability.targetRoles.map((r) => r.replace(/\[|\]/g, '')).join(' • ');
 
   return (
-    <header className="thesis-panel" aria-label="Professional Thesis & Engineering Ledger">
-      {/* Top Ledger Strip */}
+    <header className="thesis-panel" aria-label="Hero section">
+      {/* Top Strip */}
       <div className="thesis-ledger-strip">
         <div className="thesis-strip-left">
           <span className="thesis-section-index text-mono-label font-mono">
-            01 / THESIS &bull; EVIDENCE SYSTEM
-          </span>
-          <span className="thesis-strip-divider text-mono-label" aria-hidden="true">&bull;</span>
-          <span className="thesis-location text-mono-label font-mono">
-            {location} ({profile.location.timezone.replace(/\[|\]/g, '')})
+            Portfolio &bull; {location}
           </span>
         </div>
 
@@ -34,12 +29,12 @@ export function ThesisPanel({ profile }: ThesisPanelProps) {
             <span className="thesis-status-dot" />
           </span>
           <span className="thesis-status-text text-mono-label font-mono">
-            STATUS: {availabilityStatus.toUpperCase()} ({stage})
+            {availabilityStatus.toUpperCase()} &bull; {stage}
           </span>
         </div>
       </div>
 
-      {/* Main Thesis Content */}
+      {/* Main Content */}
       <div className="thesis-body-grid">
         <div className="thesis-main-content">
           <p className="thesis-title-tag text-mono-label">
@@ -47,42 +42,36 @@ export function ThesisPanel({ profile }: ThesisPanelProps) {
           </p>
 
           <h1 className="thesis-headline font-display">
-            Designing resilient distributed systems, transactional backends, and evidence-first web architectures.
+            Building full-stack web apps with clean code and solid backends.
           </h1>
 
           <p className="thesis-statement font-sans">
             {thesisStatement}
           </p>
 
-          {/* Target Focus Metadata */}
+          {/* Target Roles */}
           <div className="thesis-focus-card">
             <div className="thesis-focus-item">
-              <span className="thesis-focus-label text-mono-label font-mono">Target Engineering Scope:</span>
+              <span className="thesis-focus-label text-mono-label font-mono">Looking for:</span>
               <span className="thesis-focus-value text-sm font-sans">{targetRoles}</span>
             </div>
             <div className="thesis-focus-item">
-              <span className="thesis-focus-label text-mono-label font-mono">Engineering Modality:</span>
+              <span className="thesis-focus-label text-mono-label font-mono">Work mode:</span>
               <span className="thesis-focus-value text-sm font-sans">
-                {profile.location.remotePreference} &bull; Measurable Benchmarks &bull; Zero Fluff
+                {profile.location.remotePreference}
               </span>
             </div>
           </div>
 
-          {/* Primary Action Button Group */}
+          {/* Action Buttons */}
           <div className="thesis-actions">
-            <a
-              href="#selected-work"
-              className="thesis-btn thesis-btn-primary"
-            >
-              <span>View Selected Work</span>
+            <a href="#selected-work" className="thesis-btn thesis-btn-primary">
+              <span>View Projects</span>
               <span className="thesis-btn-arrow" aria-hidden="true">&darr;</span>
             </a>
 
-            <Link
-              href="/profile"
-              className="thesis-btn thesis-btn-secondary"
-            >
-              <span>Read Profile & Experience</span>
+            <Link href="/about" className="thesis-btn thesis-btn-secondary">
+              <span>About Me</span>
               <span className="thesis-btn-arrow" aria-hidden="true">&rarr;</span>
             </Link>
 
@@ -92,53 +81,43 @@ export function ThesisPanel({ profile }: ThesisPanelProps) {
               rel="noopener noreferrer"
               className="thesis-btn thesis-btn-ghost font-mono"
             >
-              <span>Download Resume</span>
+              <span>Resume</span>
               <span className="thesis-btn-arrow" aria-hidden="true"> ↗</span>
             </a>
 
-            <Link
-              href="/contact"
-              className="thesis-btn thesis-btn-ghost font-mono"
-            >
-              <span>Contact / Inquiry</span>
+            <Link href="/contact" className="thesis-btn thesis-btn-ghost font-mono">
+              <span>Contact</span>
               <span className="thesis-btn-arrow" aria-hidden="true">&rarr;</span>
             </Link>
           </div>
         </div>
 
-        {/* Aside: Ledger Metadata Block */}
-        <aside className="thesis-sidebar-card" aria-label="System Metadata Ledger">
+        {/* Sidebar Info Card */}
+        <aside className="thesis-sidebar-card" aria-label="Quick info">
           <div className="thesis-sidebar-header">
-            <span className="text-mono-label font-mono">LEDGER RECORD ID</span>
-            <span className="thesis-badge-code font-mono">SL-2026-v3</span>
+            <span className="text-mono-label font-mono">Quick Info</span>
           </div>
 
           <ul className="thesis-sidebar-list" role="list">
             <li className="thesis-sidebar-item">
-              <span className="thesis-meta-key text-mono-label">Academic Baseline:</span>
-              <span className="thesis-meta-val font-sans">Bachelor of Science, Information Technology</span>
+              <span className="thesis-meta-key text-mono-label">Degree:</span>
+              <span className="thesis-meta-val font-sans">BSc (Hons.) Information Technology</span>
             </li>
             <li className="thesis-sidebar-item">
-              <span className="thesis-meta-key text-mono-label">Core Specialization:</span>
-              <span className="thesis-meta-val font-sans">Distributed Task Scheduling & Concurrency</span>
+              <span className="thesis-meta-key text-mono-label">Focus:</span>
+              <span className="thesis-meta-val font-sans">Full-Stack Web Development</span>
             </li>
             <li className="thesis-sidebar-item">
-              <span className="thesis-meta-key text-mono-label">Operating Rigor:</span>
-              <span className="thesis-meta-val font-sans">Strict WCAG 2.2 AA &bull; Zero Inferred Metrics</span>
+              <span className="thesis-meta-key text-mono-label">GPA:</span>
+              <span className="thesis-meta-val font-sans">3.7 / 4.0</span>
             </li>
             <li className="thesis-sidebar-item">
-              <span className="thesis-meta-key text-mono-label">Current Availability:</span>
+              <span className="thesis-meta-key text-mono-label">Available:</span>
               <span className="thesis-meta-val font-sans" style={{ color: 'var(--color-signal-cobalt)', fontWeight: 600 }}>
-                {profile.availability.notes ? profile.availability.notes.replace(/\[|\]/g, '') : 'Available for 2026/2027'}
+                {profile.availability.notes ? profile.availability.notes.replace(/\[|\]/g, '') : 'Open to opportunities'}
               </span>
             </li>
           </ul>
-
-          <div className="thesis-sidebar-footer">
-            <span className="text-mono-label font-mono" style={{ fontSize: '0.6875rem', color: 'var(--color-ink-faint)' }}>
-              Verified Artifact Ledger &bull; Immutable Content Model
-            </span>
-          </div>
         </aside>
       </div>
     </header>

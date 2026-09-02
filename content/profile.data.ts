@@ -3,7 +3,7 @@ import { OperatingPrinciple, Profile } from './types';
 export const profileData: Profile = {
   fullName: 'Eric Praveen Alric Prashanth',
   preferredName: 'Eric Praveen',
-  title: 'Software Engineering Intern | Full-Stack Developer',
+  title: 'Full-Stack Developer | Software Engineering Intern',
   location: {
     city: 'Colombo',
     country: 'Sri Lanka',
@@ -19,21 +19,20 @@ export const profileData: Profile = {
       'Backend Developer (Java / Node.js)',
       'Frontend Developer (React.js)',
     ],
-    notes: 'Actively seeking a 6-month software engineering internship starting 2026.',
+    notes: 'Looking for a 6-month software engineering internship starting 2026.',
   },
   thesisStatement:
-    'Third-year Information Technology undergraduate at the University of Moratuwa specializing in full-stack web engineering, resilient REST API design, and structured database modeling across React, Spring Boot, Node.js, and PostgreSQL.',
+    'Third-year IT student at University of Moratuwa, building full-stack web apps with React, Spring Boot, Node.js, and PostgreSQL.',
   shortBio:
-    'Third-year IT undergraduate with hands-on experience designing end-to-end full-stack architectures, integrating JWT-authenticated Spring Boot & Node.js backends, and building clean, responsive React interfaces with PostgreSQL and MongoDB.',
+    'I enjoy building clean, end-to-end web applications — from designing REST APIs and database schemas to crafting responsive UIs in React.',
   longBio: [
-    'Currently pursuing a BSc (Hons.) in Information Technology at the University of Moratuwa with a 3.7 / 4.0 GPA. My engineering approach centers on building practical, dependable systems that unite structured relational databases, clean RESTful microservices, and responsive user interfaces.',
-    'Across academic team capstones and solo engineering projects, I have implemented end-to-end user workflows: role-based JWT authentication, transactional tourist package booking pipelines, Cloudinary media upload integration, and automated inventory reconciliation.',
-    'Beyond development, I serve as 3rd Year Batch Representative, coordinating communication between faculty leadership and students, and actively contribute to campus community initiatives through the Rotaract Club and Tamil Literary Association.',
+    'Currently in my third year of a BSc (Hons.) in Information Technology at the University of Moratuwa, with a 3.7 / 4.0 GPA. I like writing code that is easy to understand, well-structured, and actually works.',
+    'Outside of coding, I serve as 3rd Year Batch Representative, help coordinate the Rotaract Career Fair, and contribute to the Tamil Literary Association on campus.',
   ],
   resume: {
     path: '/documents/eric-praveen-resume.pdf',
     fileName: 'eric-praveen-resume.pdf',
-    displayName: 'Eric Praveen — Curriculum Vitae',
+    displayName: 'Eric Praveen — Resume',
     lastUpdated: '2026-09',
     lastUpdatedLabel: 'September 2026',
   },
@@ -63,30 +62,30 @@ export const profileData: Profile = {
 export const operatingPrinciples: OperatingPrinciple[] = [
   {
     number: '01',
-    title: 'Evidence Before Assumption',
-    summary: 'Validate API contracts, database schema integrity, and system edge cases through explicit tests rather than intuition.',
+    title: 'Test Before Assuming',
+    summary: 'Validate API contracts, database logic, and edge cases through proper tests — not guesswork.',
     detail:
-      'Every feature—whether a Spring Boot REST endpoint or a React state transition—should have clear data contracts, deterministic error handling, and repeatable validation.',
+      'Every feature should have clear contracts, consistent error handling, and repeatable tests.',
   },
   {
     number: '02',
-    title: 'Architectural Legibility',
-    summary: 'Favor explicit schemas, clean separation of concerns, and modular component boundaries over clever abstractions.',
+    title: 'Keep It Readable',
+    summary: 'Clear code structure and clean separation of concerns beats clever shortcuts.',
     detail:
-      'Code is read far more often than it is written. Structured PostgreSQL relations, typed DTOs, and clean component hierarchies prevent regression bugs.',
+      'Code is read far more often than it is written. Typed DTOs, clean schemas, and modular components make maintenance easier.',
   },
   {
     number: '03',
-    title: 'User Craft & Accessibility',
-    summary: 'A web application is incomplete if it fails keyboard navigation, ignores screen readers, or breaks on mobile viewports.',
+    title: 'Build for Everyone',
+    summary: 'A UI that breaks on mobile or ignores keyboard navigation is not finished.',
     detail:
-      'Semantic HTML, responsive layouts with Tailwind CSS/Bootstrap, and clear visual feedback states are foundational requirements across all user flows.',
+      'Semantic HTML, responsive layouts, and accessible color contrast are baseline requirements — not extras.',
   },
   {
     number: '04',
-    title: 'Collaborative Discipline',
-    summary: 'Clear communication, Figma prototyping, and structured Git workflows turn complex requirements into dependable deliverables.',
+    title: 'Communicate Clearly',
+    summary: 'Good documentation, Figma designs, and clean Git history make team work easier.',
     detail:
-      'From UML sequence modeling to team milestone coordination, transparent documentation and proactive communication ensure cohesive team execution.',
+      'From UML diagrams to README files, clear communication and proactive updates keep projects on track.',
   },
 ];

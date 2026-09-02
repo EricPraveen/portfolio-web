@@ -88,14 +88,14 @@ export default function HomePage() {
       <section id="selected-work" className="selected-work-section" aria-labelledby="selected-work-heading">
         <div className="section-header-strip">
           <div>
-            <span className="section-eyebrow text-mono-label font-mono">02 / FLAGSHIP ARCHITECTURES</span>
+            <span className="section-eyebrow text-mono-label font-mono">Selected Projects</span>
             <h2 id="selected-work-heading" className="section-title font-heading-2xl">
-              Selected Engineering Proof
+              Projects I&apos;ve Built
             </h2>
           </div>
 
-          <Link href="/work" className="section-link-more font-mono">
-            View All Work & Case Studies ({featuredProjects.length}+) &rarr;
+          <Link href="/projects" className="section-link-more font-mono">
+            View All Projects ({featuredProjects.length}+) &rarr;
           </Link>
         </div>
 

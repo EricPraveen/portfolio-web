@@ -18,7 +18,7 @@ export function ProfileSnapshot({ education, experience }: ProfileSnapshotProps)
           </h2>
         </div>
 
-        <Link href="/profile" className="section-link-more font-mono">
+        <Link href="/about" className="section-link-more font-mono">
           Full Profile & Operating Principles &rarr;
         </Link>
       </div>
@@ -103,7 +103,7 @@ export function ProfileSnapshot({ education, experience }: ProfileSnapshotProps)
                 {edu.capstone && (
                   <div className="profile-capstone-note text-xs font-sans">
                     <strong>Capstone Focus:</strong>{' '}
-                    <Link href={`/work/${edu.capstone.slug}`} className="profile-capstone-link">
+                    <Link href={`/projects/${edu.capstone.slug}`} className="profile-capstone-link">
                       {edu.capstone.title} &rarr;
                     </Link>
                   </div>

@@ -86,22 +86,27 @@ export default function NotFound() {
           >
             <li>
               <Link href="/" className="font-mono" style={{ color: 'var(--color-signal-cobalt)' }}>
-                &rarr; 00 / Overview Ledger & System Summary
+                &rarr; Home &amp; Overview
               </Link>
             </li>
             <li>
-              <Link href="/work" className="font-mono" style={{ color: 'var(--color-signal-cobalt)' }}>
-                &rarr; 01 / Production Systems & Case Studies Catalog
+              <Link href="/about" className="font-mono" style={{ color: 'var(--color-signal-cobalt)' }}>
+                &rarr; 01 / About
               </Link>
             </li>
             <li>
-              <Link href="/notes" className="font-mono" style={{ color: 'var(--color-signal-cobalt)' }}>
-                &rarr; 02 / Technical Notes & Postmortems
+              <Link href="/projects" className="font-mono" style={{ color: 'var(--color-signal-cobalt)' }}>
+                &rarr; 03 / Projects Catalog
+              </Link>
+            </li>
+            <li>
+              <Link href="/education" className="font-mono" style={{ color: 'var(--color-signal-cobalt)' }}>
+                &rarr; 04 / Education &amp; Credentials
               </Link>
             </li>
             <li>
               <Link href="/contact" className="font-mono" style={{ color: 'var(--color-signal-cobalt)' }}>
-                &rarr; 05 / Direct Communication & Inquiry
+                &rarr; 05 / Contact
               </Link>
             </li>
           </ul>

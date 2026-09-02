@@ -45,6 +45,6 @@ export interface SocialLink {
 
 export interface DateRange {
   start: string;
-  end: string | 'Present';
+  end?: string | 'Present';
   isCurrent?: boolean;
 }

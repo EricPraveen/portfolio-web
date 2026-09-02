@@ -7,26 +7,26 @@ export const experienceData: ExperienceItem[] = [
     role: 'Batch Representative (3rd Year)',
     type: 'Student Technical Role',
     dates: {
-      start: 'Jan 2025',
+      start: 'Sep 2026',
       end: 'Present',
       isCurrent: true,
     },
     location: 'Moratuwa, Sri Lanka',
     context:
-      'Elected representative serving as the primary liaison between 3rd-year Information Technology undergraduates, academic department heads, and faculty lecturers.',
+      'Elected representative serving as the main point of contact between 3rd-year IT students and the faculty.',
     responsibilities: [
-      'Coordinate academic scheduling, coursework milestone timelines, and semester evaluations with faculty leadership.',
-      'Facilitate student feedback channels to resolve technical laboratory resource constraints and exam schedules.',
-      'Organize batch-wide technical study groups and project milestone reviews for collaborative software engineering modules.',
+      'Coordinate exam schedules, coursework deadlines, and semester plans with lecturers.',
+      'Relay student feedback to resolve lab resource issues and timetable conflicts.',
+      'Organize study groups and project milestone check-ins for team modules.',
     ],
-    technologies: ['Communication', 'Academic Coordination', 'Leadership', 'Agile Planning'],
+    technologies: ['Communication', 'Coordination', 'Leadership'],
     verifiedOutcomes: [
-      'Successfully coordinated academic workflows and milestone reviews for the entire 3rd-year IT undergraduate cohort.',
+      'Helped coordinate academic workflows for the entire 3rd-year IT batch.',
     ],
     linkedProjectSlugs: ['travel-hub-platform', 'edutrack-campus-portal'],
     evidence: [
       {
-        label: 'Academic Reference: Ms. Adshayani Pirapaharan',
+        label: 'Reference: Ms. Adshayani Pirapaharan',
         url: 'mailto:padshayani@uom.lk',
         type: 'documentation',
         isExternal: true,
@@ -37,24 +37,23 @@ export const experienceData: ExperienceItem[] = [
   {
     id: 'exp-rotaract-career',
     organization: 'Rotaract Club of University of Moratuwa',
-    role: 'Career Fair Coordinator & Volunteer Lead',
+    role: 'Career Fair Coordinator & Volunteer',
     type: 'Student Technical Role',
     dates: {
-      start: '2024',
-      end: 'Present',
+      start: 'Mar 2025',
       isCurrent: true,
     },
     location: 'Moratuwa, Sri Lanka',
     context:
-      'Coordinating campus career fair operations, enterprise sponsor communications, and university-wide professional development events.',
+      'Helping organise the campus career fair and professional development events for students.',
     responsibilities: [
-      'Collaborated with tech industry recruiters and alumni to coordinate company interview booths and presentation schedules.',
-      'Managed event logistics, student registration workflows, and information dissemination across faculty channels.',
-      'Supported Tamil Literary Association activities as Batch Coordinator, facilitating cultural programs and student participation.',
+      'Worked with recruiters and alumni to plan company booths and interview schedules.',
+      'Managed event logistics, student registration, and communications.',
+      'Supported Tamil Literary Association events as Batch Coordinator.',
     ],
-    technologies: ['Event Logistics', 'Team Leadership', 'Stakeholder Communication', 'Public Relations'],
+    technologies: ['Event Planning', 'Team Leadership', 'Communication'],
     verifiedOutcomes: [
-      'Facilitated career networking sessions connecting undergraduate students directly with software engineering employers.',
+      'Connected students with software engineering employers through career networking sessions.',
     ],
     linkedProjectSlugs: ['edutrack-campus-portal'],
   },

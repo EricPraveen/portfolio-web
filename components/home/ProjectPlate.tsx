@@ -47,7 +47,7 @@ export function ProjectPlate({
         {/* Narrative Column */}
         <div className="project-plate-narrative">
           <h3 id={`project-title-${project.slug}`} className="project-plate-title font-sans">
-            <Link href={`/work/${project.slug}`} className="project-plate-title-link">
+            <Link href={`/projects/${project.slug}`} className="project-plate-title-link">
               {project.title}
             </Link>
           </h3>
@@ -117,7 +117,7 @@ export function ProjectPlate({
           {/* Actions */}
           <div className="project-plate-actions">
             <Link
-              href={`/work/${project.slug}`}
+              href={`/projects/${project.slug}`}
               className="project-plate-btn-primary"
             >
               <span>Read Full Architectural Case Study</span>

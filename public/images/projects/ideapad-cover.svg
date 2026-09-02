@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" style="background:#171A1D">
+  <rect width="1200" height="675" fill="#171A1D"/>
+  <rect x="40" y="40" width="1120" height="595" fill="none" stroke="#2F5BFF" stroke-width="2"/>
+  <text x="80" y="100" font-family="monospace" font-size="20" fill="#2F5BFF" font-weight="bold">SPECIMEN // PRJ-02 &bull; IDEAPAD</text>
+  <text x="80" y="240" font-family="sans-serif" font-size="52" fill="#F2EFE8" font-weight="bold">IdeaPad — Full-Stack Publishing Platform</text>
+  <text x="80" y="300" font-family="monospace" font-size="24" fill="#8C949C">React.js &bull; Spring Boot &bull; PostgreSQL &bull; Cloudinary &bull; JWT</text>
+  <line x1="80" y1="340" x2="1120" y2="340" stroke="#4A525A" stroke-width="1"/>
+  <text x="80" y="400" font-family="monospace" font-size="18" fill="#F2EFE8">&rarr; JWT Stateless Authentication &bull; Role-Based Access Control</text>
+  <text x="80" y="440" font-family="monospace" font-size="18" fill="#F2EFE8">&rarr; Article CRUD &bull; Genre Filtering &bull; Likes &amp; Bookmarks</text>
+  <text x="80" y="480" font-family="monospace" font-size="18" fill="#F2EFE8">&rarr; Cloudinary Media Upload Integration &bull; Admin Moderation</text>
+  <rect x="80" y="540" width="220" height="44" fill="#2F5BFF"/>
+  <text x="190" y="568" font-family="monospace" font-size="16" fill="#FFFFFF" text-anchor="middle" font-weight="bold">GITHUB REPO VERIFIED</text>
+</svg>

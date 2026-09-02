@@ -1,0 +1,34 @@
+{
+  "name": "portfolio-web",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit",
+    "validate": "npx tsx scripts/validate-content.ts",
+    "audit:a11y": "npx tsx scripts/audit-accessibility.ts",
+    "audit:links": "npx tsx scripts/audit-links.ts",
+    "test:smoke": "npx tsx scripts/smoke-test.ts",
+    "test": "npm run validate && npm run typecheck && npm run lint && npm run build && npm run audit:a11y && npm run audit:links && npm run test:smoke"
+  },
+  "dependencies": {
+    "@types/nodemailer": "^8.0.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "^1.16.0",
+    "next": "^14.2.24",
+    "nodemailer": "^9.1.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.17.19",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "eslint": "^8.57.1",
+    "eslint-config-next": "^14.2.24",
+    "typescript": "^5.7.3"
+  }
+}

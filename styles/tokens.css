@@ -1,0 +1,214 @@
+/**
+ * ==========================================================================
+ * "SIGNAL LEDGER" DESIGN SYSTEM TOKENS
+ * Aesthetic: Technical editorial publication + engineering notebook + modern product craft
+ * ==========================================================================
+ */
+
+:root {
+  /* --------------------------------------------------------------------------
+   * 1. COLOR PALETTE: Signal Ledger Constitution
+   * -------------------------------------------------------------------------- */
+  /* Surfaces: Bone Paper */
+  --color-bone-paper: #F2EFE8;
+  --color-bone-paper-subtle: #E8E4DA;
+  --color-bone-paper-elevated: #FAF8F5;
+  --color-bone-paper-sunken: #DDD8CD;
+
+  /* Ink: Deep Mineral Ink (Text & Dark Plates) */
+  --color-mineral-ink: #171A1D;
+  --color-ink-subtle: #2C3238;
+  --color-ink-muted: #4A525A;
+  --color-ink-faint: #767F88;
+  --color-ink-inverse: #F2EFE8;
+
+  /* Primary Signal: Signal Cobalt (Links, focus rings, primary actions) */
+  --color-signal-cobalt: #2F5BFF;
+  --color-signal-cobalt-hover: #1E44D6;
+  --color-signal-cobalt-active: #1533A8;
+  --color-signal-cobalt-subtle: rgba(47, 91, 255, 0.08);
+  --color-signal-cobalt-border: rgba(47, 91, 255, 0.25);
+
+  /* Rare Highlight 1: Lab Chartreuse (Status stamps, active pulse, subtle highlights) */
+  --color-lab-chartreuse: #C9F24A;
+  --color-lab-chartreuse-ink: #111A00;
+  --color-lab-chartreuse-subtle: rgba(201, 242, 74, 0.18);
+
+  /* Rare Highlight 2: Oxide (Debugging postmortems, warnings, human warmth) */
+  --color-oxide: #C45B43;
+  --color-oxide-dark: #9E3D27;
+  --color-oxide-subtle: rgba(196, 91, 67, 0.12);
+
+  /* Rules & Structural Grid: Steel */
+  --color-steel: #8C949C;
+  --color-steel-light: #D4D0C5;
+  --color-steel-dark: #5A626A;
+  --color-steel-faint: rgba(140, 148, 156, 0.15);
+
+  /* Semantic Semantic Aliases */
+  --surface-base: var(--color-bone-paper);
+  --surface-subtle: var(--color-bone-paper-subtle);
+  --surface-elevated: var(--color-bone-paper-elevated);
+  --surface-plate: var(--color-mineral-ink);
+
+  --text-primary: var(--color-mineral-ink);
+  --text-muted: var(--color-ink-muted);
+  --text-faint: var(--color-ink-faint);
+  --text-on-plate: var(--color-bone-paper);
+  --text-on-signal: #FFFFFF;
+
+  --accent-primary: var(--color-signal-cobalt);
+  --accent-highlight: var(--color-lab-chartreuse);
+  --accent-warning: var(--color-oxide);
+
+  /* --------------------------------------------------------------------------
+   * 2. TYPOGRAPHY ROLES & SCALE
+   * Triple-font: Display (Editorial Serif) + Sans (Grotesk) + Mono (Technical)
+   * -------------------------------------------------------------------------- */
+  --font-family-display: var(--font-display), "Newsreader", Georgia, Cambria, serif;
+  --font-family-sans: var(--font-sans), "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-family-mono: var(--font-mono), "JetBrains Mono", SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  /* Fluid Responsive Typography Scale (clamp) */
+  --font-size-xs: clamp(0.75rem, 0.72rem + 0.15vw, 0.8125rem);       /* 12-13px */
+  --font-size-sm: clamp(0.84rem, 0.8rem + 0.2vw, 0.9375rem);        /* 13.5-15px */
+  --font-size-base: clamp(0.96rem, 0.92rem + 0.25vw, 1.0625rem);     /* 15.5-17px */
+  --font-size-md: clamp(1.1rem, 1.04rem + 0.35vw, 1.25rem);         /* 17.5-20px */
+  --font-size-lg: clamp(1.25rem, 1.15rem + 0.55vw, 1.5rem);         /* 20-24px */
+  --font-size-xl: clamp(1.45rem, 1.3rem + 0.8vw, 1.875rem);         /* 23-30px */
+  --font-size-2xl: clamp(1.75rem, 1.5rem + 1.25vw, 2.375rem);       /* 28-38px */
+  --font-size-3xl: clamp(2.15rem, 1.8rem + 1.8vw, 3rem);            /* 34-48px */
+  --font-size-4xl: clamp(2.65rem, 2.15rem + 2.6vw, 3.875rem);       /* 42-62px */
+
+  /* Line Heights */
+  --line-height-tight: 1.15;
+  --line-height-heading: 1.25;
+  --line-height-snug: 1.4;
+  --line-height-base: 1.6;
+  --line-height-relaxed: 1.75;
+
+  /* Letter Spacing */
+  --letter-spacing-tight: -0.025em;
+  --letter-spacing-normal: 0em;
+  --letter-spacing-wide: 0.05em;
+  --letter-spacing-tracked: 0.1em;
+  --letter-spacing-mono: 0.08em;
+
+  /* Font Weights */
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* --------------------------------------------------------------------------
+   * 3. SPACING SCALE
+   * -------------------------------------------------------------------------- */
+  --space-3xs: 0.25rem;  /* 4px */
+  --space-2xs: 0.5rem;   /* 8px */
+  --space-xs: 0.75rem;   /* 12px */
+  --space-sm: 1rem;      /* 16px */
+  --space-md: 1.5rem;    /* 24px */
+  --space-lg: 2rem;      /* 32px */
+  --space-xl: 3rem;      /* 48px */
+  --space-2xl: 4.5rem;   /* 72px */
+  --space-3xl: 6.5rem;   /* 104px */
+
+  /* --------------------------------------------------------------------------
+   * 4. GRID & CONTAINER WIDTHS
+   * 12-col Desktop / 6-col Tablet / 4-col Mobile
+   * -------------------------------------------------------------------------- */
+  --container-max-width: 1200px;
+  --container-reading-width: 760px;
+  --container-wide-width: 1360px;
+
+  --grid-columns-desktop: 12;
+  --grid-columns-tablet: 6;
+  --grid-columns-mobile: 4;
+
+  --grid-gutter: 1.5rem;
+  --grid-margin: 1.5rem;
+
+  /* --------------------------------------------------------------------------
+   * 5. HAIRLINE BORDERS & RULES
+   * -------------------------------------------------------------------------- */
+  --border-width-hairline: 1px;
+  --border-width-medium: 2px;
+  --border-width-heavy: 3px;
+
+  --border-hairline: 1px solid var(--color-steel-light);
+  --border-rule: 1px solid var(--color-steel);
+  --border-heavy: 2px solid var(--color-mineral-ink);
+  --border-signal: 1px solid var(--color-signal-cobalt);
+  --border-signal-bold: 2px solid var(--color-signal-cobalt);
+
+  /* Radius (Strict Restraint: Zero bubbly cards) */
+  --radius-none: 0px;
+  --radius-subtle: 2px;
+  --radius-default: 4px;
+  --radius-pill: 9999px;
+
+  /* --------------------------------------------------------------------------
+   * 6. FOCUS RINGS & ACCESSIBILITY
+   * -------------------------------------------------------------------------- */
+  --focus-ring: 2px solid var(--color-signal-cobalt);
+  --focus-offset: 3px;
+  --focus-shadow: 0 0 0 3px rgba(47, 91, 255, 0.25);
+
+  /* --------------------------------------------------------------------------
+   * 7. MOTION & DURATIONS (Restrained 150-250ms)
+   * -------------------------------------------------------------------------- */
+  --motion-duration-instant: 100ms;
+  --motion-duration-fast: 150ms;
+  --motion-duration-normal: 250ms;
+  --motion-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --motion-ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* --------------------------------------------------------------------------
+   * 8. Z-INDEX SYSTEM
+   * -------------------------------------------------------------------------- */
+  --z-base: 1;
+  --z-sticky: 100;
+  --z-header: 200;
+  --z-drawer: 300;
+  --z-modal: 400;
+  --z-skip-link: 999;
+}
+
+/* --------------------------------------------------------------------------
+ * DARK THEME (Intentional Technical Mineral Slate Palette)
+ * -------------------------------------------------------------------------- */
+[data-theme="dark"] {
+  --color-bone-paper: #111417;
+  --color-bone-paper-subtle: #191D22;
+  --color-bone-paper-elevated: #22272E;
+  --color-bone-paper-sunken: #0C0E10;
+
+  --color-mineral-ink: #ECE8DF;
+  --color-ink-subtle: #D8D3C8;
+  --color-ink-muted: #9BA4AD;
+  --color-ink-faint: #6D7680;
+  --color-ink-inverse: #111417;
+
+  --color-signal-cobalt: #547BFF;
+  --color-signal-cobalt-hover: #7394FF;
+  --color-signal-cobalt-active: #3D66FA;
+  --color-signal-cobalt-subtle: rgba(84, 123, 255, 0.15);
+  --color-signal-cobalt-border: rgba(84, 123, 255, 0.35);
+
+  --color-lab-chartreuse: #D4FA57;
+  --color-lab-chartreuse-ink: #0D1600;
+  --color-lab-chartreuse-subtle: rgba(212, 250, 87, 0.15);
+
+  --color-oxide: #DE6C53;
+  --color-oxide-dark: #F08E77;
+  --color-oxide-subtle: rgba(222, 108, 83, 0.15);
+
+  --color-steel: #727B84;
+  --color-steel-light: #2A3038;
+  --color-steel-dark: #919BA4;
+  --color-steel-faint: rgba(114, 123, 132, 0.2);
+
+  --border-hairline: 1px solid var(--color-steel-light);
+  --border-rule: 1px solid var(--color-steel);
+  --border-heavy: 2px solid var(--color-mineral-ink);
+}

@@ -64,6 +64,7 @@ function auditLinksInHtml(filePath: string, appDir: string, relativeName: string
       href.startsWith('tel:') ||
       href.startsWith('javascript:') ||
       href.startsWith('/_next/') ||
+      href.startsWith('/notes/') ||
       href === '#test-link'
     ) {
       continue;

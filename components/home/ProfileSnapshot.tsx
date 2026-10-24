@@ -9,10 +9,13 @@ export interface ProfileSnapshotProps {
 
 export function ProfileSnapshot({ education, experience }: ProfileSnapshotProps) {
   return (
-    <section className="profile-snapshot-section" aria-labelledby="profile-snapshot-heading">
+    <section id="education" className="profile-snapshot-section" aria-labelledby="profile-snapshot-heading">
+      <span id="log" className="section-anchor" aria-hidden="true" />
+      <span id="experience" className="section-anchor" aria-hidden="true" />
+      <span id="profile-snapshot" className="section-anchor" aria-hidden="true" />
       <div className="section-header-strip">
         <div>
-          <span className="section-eyebrow text-mono-label font-mono">05 / PROFILE SNAPSHOT</span>
+          <span className="section-eyebrow text-mono-label font-mono">05 / EXPERIENCE & EDUCATION LOG</span>
           <h2 id="profile-snapshot-heading" className="section-title font-heading-2xl">
             Education & Industry Experience
           </h2>

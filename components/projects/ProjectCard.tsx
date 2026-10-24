@@ -23,14 +23,31 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
 
   return (
     <article
-      className="work-project-card"
+      className="work-project-card cartridge-card arcade-box"
       aria-labelledby={`work-project-title-${project.slug}`}
     >
-      {/* Plate Header Strip */}
-      <div className="work-card-strip">
+      {/* 16-Bit Cartridge Top Ribbed Grip */}
+      <div className="cartridge-grip" aria-hidden="true">
+        <div className="cartridge-grip-ridge" />
+        <div className="cartridge-grip-ridge" />
+        <div className="cartridge-grip-ridge" />
+      </div>
+
+      {/* Simulated Hardware Corner Rivets */}
+      <span className="corner-screw corner-screw--tl" aria-hidden="true" />
+      <span className="corner-screw corner-screw--tr" aria-hidden="true" />
+      <span className="corner-screw corner-screw--bl" aria-hidden="true" />
+      <span className="corner-screw corner-screw--br" aria-hidden="true" />
+
+      {/* Plate Header Strip / Cartridge Sticker */}
+      <div className="work-card-strip cartridge-sticker">
         <div className="work-card-strip-left">
+          <span className="work-card-cartridge-badge font-mono text-mono-label">
+            16-BIT ROM // PLATE 0{index + 1}
+          </span>
+          <span className="work-card-divider" aria-hidden="true">&bull;</span>
           <span className="work-card-index font-mono text-mono-label">
-            PLATE 0{index + 1} &bull; {project.category.toUpperCase()}
+            {project.category.toUpperCase()}
           </span>
           <span className="work-card-divider" aria-hidden="true">&bull;</span>
           <span className="work-card-period font-mono text-mono-label">
@@ -126,10 +143,9 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
           <div className="work-card-actions">
             <Link
               href={`/projects/${project.slug}`}
-              className="work-card-btn-primary font-mono"
+              className="work-card-btn-primary arcade-btn font-mono"
             >
-              <span>Read Full Case Study</span>
-              <span aria-hidden="true">&rarr;</span>
+              <span>PRESS START ▷ Read Case Study</span>
             </Link>
 
             {primaryEvidence && primaryEvidence.url && primaryEvidence.url !== '#' && (
@@ -137,7 +153,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                 href={primaryEvidence.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="work-card-btn-secondary font-mono"
+                className="work-card-btn-secondary arcade-btn font-mono"
               >
                 <span>{primaryEvidence.label}</span>
                 <span aria-hidden="true"> ↗</span>
@@ -149,10 +165,9 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                 href={demoEvidence.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="work-card-btn-ghost font-mono"
+                className="work-card-btn-ghost arcade-btn font-mono"
               >
-                <span>Live Demonstration</span>
-                <span aria-hidden="true"> ↗</span>
+                <span>Live Demo ↗</span>
               </a>
             )}
 
@@ -165,8 +180,13 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
           </div>
         </div>
 
-        {/* Visual Architectural Diagram Column */}
-        <div className="work-card-visual-col">
+        {/* Visual Architectural Diagram Column with Camera Viewfinder Frame */}
+        <div className="work-card-visual-col camera-frame">
+          <span className="camera-viewfinder-rec font-mono">[● REC]</span>
+          <span className="camera-corner camera-corner--tl" aria-hidden="true" />
+          <span className="camera-corner camera-corner--tr" aria-hidden="true" />
+          <span className="camera-corner camera-corner--bl" aria-hidden="true" />
+          <span className="camera-corner camera-corner--br" aria-hidden="true" />
           <ProjectVisualDiagram slug={project.slug} />
         </div>
       </div>

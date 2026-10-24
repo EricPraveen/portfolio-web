@@ -9,6 +9,7 @@ import { MobileNav } from './MobileNav';
 import { CommandPalette } from './CommandPalette';
 import { getCurrentSection } from '@/lib/navigation';
 import { Profile } from '@/content/types';
+import { useActiveSection } from './ActiveSectionContext';
 
 export interface HeaderProps {
   profile: Profile;
@@ -16,7 +17,8 @@ export interface HeaderProps {
 
 export function Header({ profile }: HeaderProps) {
   const pathname = usePathname() || '/';
-  const currentSection = getCurrentSection(pathname);
+  const { activeSection, scrollToSection } = useActiveSection();
+  const currentSection = getCurrentSection(pathname, activeSection);
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
   const [isCommandOpen, setIsCommandOpen] = useState(false);
   const mobileTriggerRef = useRef<HTMLButtonElement>(null);
@@ -66,9 +68,15 @@ export function Header({ profile }: HeaderProps) {
           {/* 1. Identity Mark & Name Area */}
           <div className="app-header-brand">
             <Link
-              href="/"
+              href="/#home"
               className="app-header-brand-link"
               aria-label={`${profile.fullName} - Home`}
+              onClick={(e) => {
+                if (pathname === '/') {
+                  e.preventDefault();
+                  scrollToSection('home');
+                }
+              }}
             >
               <span className="app-header-monogram font-mono" aria-hidden="true">
                 {initials}

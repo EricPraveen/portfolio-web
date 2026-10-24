@@ -3,8 +3,8 @@ import Link from 'next/link';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: '404 / Ledger Entry Not Found',
-  description: 'The requested route does not exist in the Signal Ledger index.',
+  title: '404 / Page Not Found',
+  description: 'The requested route does not exist.',
 };
 
 export default function NotFound() {

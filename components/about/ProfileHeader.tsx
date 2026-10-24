@@ -4,21 +4,37 @@ import { Profile } from '@/content/types';
 
 export interface ProfileHeaderProps {
   profile: Profile;
+  headingLevel?: 'h1' | 'h2';
+  indexLabel?: string;
+  showJumpLinks?: boolean;
 }
 
-export function ProfileHeader({ profile }: ProfileHeaderProps) {
+export function ProfileHeader({
+  profile,
+  headingLevel = 'h1',
+  indexLabel = '01 / ABOUT',
+  showJumpLinks = true,
+}: ProfileHeaderProps) {
   const cleanTitle = profile.title.replace(/\[|\]/g, '');
   const cleanThesis = profile.thesisStatement.replace(/\[|\]/g, '');
   const cleanLocation = `${profile.location.city.replace(/\[|\]/g, '')}, ${profile.location.country.replace(/\[|\]/g, '')}`;
   const targetRoles = profile.availability.targetRoles.map((r) => r.replace(/\[|\]/g, '')).join(' • ');
 
+  const HeadingTag = headingLevel;
+
   return (
-    <header className="profile-hero-header" aria-label="About Me">
+    <header className="profile-hero-header arcade-box" aria-label="About Me">
+      {/* Hardware Corner Screws */}
+      <span className="corner-screw corner-screw--tl" aria-hidden="true" />
+      <span className="corner-screw corner-screw--tr" aria-hidden="true" />
+      <span className="corner-screw corner-screw--bl" aria-hidden="true" />
+      <span className="corner-screw corner-screw--br" aria-hidden="true" />
+
       {/* Top Strip */}
       <div className="profile-hero-strip">
         <div className="profile-hero-strip-left">
           <span className="profile-hero-index font-mono text-mono-label">
-            01 / ABOUT
+            {indexLabel}
           </span>
           <span className="profile-hero-divider" aria-hidden="true">&bull;</span>
           <span className="profile-hero-loc font-mono text-mono-label">
@@ -43,9 +59,9 @@ export function ProfileHeader({ profile }: ProfileHeaderProps) {
             {cleanTitle}
           </p>
 
-          <h1 className="profile-hero-name font-display">
+          <HeadingTag className="profile-hero-name font-display">
             {profile.fullName.replace(/\[|\]/g, '')}
-          </h1>
+          </HeadingTag>
 
           <p className="profile-hero-thesis font-sans text-body">
             {cleanThesis}
@@ -83,63 +99,63 @@ export function ProfileHeader({ profile }: ProfileHeaderProps) {
               href={profile.resume.path}
               target="_blank"
               rel="noopener noreferrer"
-              className="profile-btn profile-btn-primary font-mono"
+              className="profile-btn profile-btn-primary arcade-btn font-mono"
             >
-              <span>Download Resume</span>
-              <span aria-hidden="true"> ↗</span>
+              <span>Download Resume ↗</span>
             </a>
 
-            <Link href="/contact" className="profile-btn profile-btn-secondary font-mono">
-              <span>Contact Me</span>
-              <span aria-hidden="true">&rarr;</span>
+            <Link href="/contact" className="profile-btn profile-btn-secondary arcade-btn font-mono">
+              <span>Contact Me →</span>
             </Link>
           </div>
         </div>
 
         {/* On-page nav */}
-        <nav className="profile-jump-card" aria-label="On this page">
-          <div className="profile-jump-header">
-            <span className="font-mono text-mono-label">On this page</span>
-          </div>
-          <ul className="profile-jump-list" role="list">
-            <li>
-              <a href="#experience" className="profile-jump-link font-mono text-xs">
-                <span>Experience</span>
-                <span aria-hidden="true">&darr;</span>
-              </a>
-            </li>
-            <li>
-              <a href="#education" className="profile-jump-link font-mono text-xs">
-                <span>Education</span>
-                <span aria-hidden="true">&darr;</span>
-              </a>
-            </li>
-            <li>
-              <a href="#capabilities" className="profile-jump-link font-mono text-xs">
-                <span>Skills</span>
-                <span aria-hidden="true">&darr;</span>
-              </a>
-            </li>
-            <li>
-              <a href="#principles" className="profile-jump-link font-mono text-xs">
-                <span>How I Work</span>
-                <span aria-hidden="true">&darr;</span>
-              </a>
-            </li>
-            <li>
-              <a href="#collaboration" className="profile-jump-link font-mono text-xs">
-                <span>Teamwork</span>
-                <span aria-hidden="true">&darr;</span>
-              </a>
-            </li>
-            <li>
-              <a href="#resume-ledger" className="profile-jump-link font-mono text-xs">
-                <span>Resume</span>
-                <span aria-hidden="true">&darr;</span>
-              </a>
-            </li>
-          </ul>
-        </nav>
+        {showJumpLinks && (
+          <nav className="profile-jump-card arcade-box" aria-label="On this page">
+            <div className="profile-jump-header">
+              <span className="font-mono text-mono-label">[MENU // SELECT]</span>
+            </div>
+            <ul className="profile-jump-list" role="list">
+              <li>
+                <a href="#experience" className="profile-jump-link font-mono text-xs">
+                  <span>Experience</span>
+                  <span aria-hidden="true">&darr;</span>
+                </a>
+              </li>
+              <li>
+                <a href="#education" className="profile-jump-link font-mono text-xs">
+                  <span>Education</span>
+                  <span aria-hidden="true">&darr;</span>
+                </a>
+              </li>
+              <li>
+                <a href="#capabilities" className="profile-jump-link font-mono text-xs">
+                  <span>Skills</span>
+                  <span aria-hidden="true">&darr;</span>
+                </a>
+              </li>
+              <li>
+                <a href="#principles" className="profile-jump-link font-mono text-xs">
+                  <span>How I Work</span>
+                  <span aria-hidden="true">&darr;</span>
+                </a>
+              </li>
+              <li>
+                <a href="#collaboration" className="profile-jump-link font-mono text-xs">
+                  <span>Teamwork</span>
+                  <span aria-hidden="true">&darr;</span>
+                </a>
+              </li>
+              <li>
+                <a href="#resume-ledger" className="profile-jump-link font-mono text-xs">
+                  <span>Resume</span>
+                  <span aria-hidden="true">&darr;</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        )}
       </div>
     </header>
   );

@@ -1,64 +1,48 @@
 import type { Metadata } from 'next';
 import React from 'react';
-import { Newsreader, Plus_Jakarta_Sans, JetBrains_Mono } from 'next/font/google';
+import { Inter } from 'next/font/google';
 import '@/styles/globals.css';
 import { getProfile } from '@/lib/content';
 import {
   SkipLink,
   Header,
+  LeftRailNav,
   Footer,
   PageTransition,
+  ActiveSectionProvider,
 } from '@/components/layout';
+import CursorRingField from '@/components/ui/CursorRingField';
 
-// 1. Editorial Display Serif
-const newsreader = Newsreader({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-display',
-  style: ['normal', 'italic'],
-  adjustFontFallback: false,
-});
-
-// 2. Grotesk UI & Body Sans
-const plusJakartaSans = Plus_Jakarta_Sans({
+// Modern Universal Sans Typography: Inter
+const inter = Inter({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-sans',
-  weight: ['400', '500', '600', '700'],
-});
-
-// 3. Technical Monospace
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-mono',
-  weight: ['400', '500', '600'],
+  weight: ['300', '400', '500', '600', '700', '800', '900'],
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://signal-ledger.dev'),
+  metadataBase: new URL('https://ericpraveen.dev'),
   title: {
-    default: 'Signal Ledger — Personal Engineering Portfolio & Technical Systems',
-    template: '%s | Signal Ledger',
+    default: 'Eric Praveen | Portfolio',
+    template: '%s | Eric Praveen',
   },
   description:
-    'Evidence-first engineering portfolio, distributed systems architecture case studies, verifiable technical benchmarks, and technical ledger.',
+    'Full-stack developer and software engineer based in Sri Lanka. Building web applications, distributed systems, and robust backends.',
   keywords: [
+    'Eric Praveen',
     'Software Engineer',
-    'Systems Engineering',
-    'Distributed Systems',
-    'High Throughput',
-    'Concurrency',
+    'Full-Stack Developer',
     'TypeScript',
-    'Rust',
-    'Golang',
-    'Evidence-First Portfolio',
-    'Signal Ledger',
-    'WCAG 2.2 AA',
+    'React',
+    'Next.js',
+    'Portfolio',
+    'Sri Lanka',
+    'University of Moratuwa',
   ],
-  authors: [{ name: 'Signal Ledger Engineer', url: 'https://signal-ledger.dev' }],
-  creator: 'Signal Ledger',
-  publisher: 'Signal Ledger Publication',
+  authors: [{ name: 'Eric Praveen', url: 'https://ericpraveen.dev' }],
+  creator: 'Eric Praveen',
+  publisher: 'Eric Praveen',
   formatDetection: {
     email: false,
     address: false,
@@ -66,34 +50,31 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: '/',
-    types: {
-      'application/rss+xml': [{ url: 'https://signal-ledger.dev/feed.xml', title: 'Signal Ledger RSS Feed' }],
-    },
   },
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://signal-ledger.dev',
-    siteName: 'Signal Ledger',
-    title: 'Signal Ledger — Personal Engineering Portfolio & Technical Systems',
+    url: 'https://ericpraveen.dev',
+    siteName: 'Eric Praveen | Portfolio',
+    title: 'Eric Praveen | Portfolio',
     description:
-      'Evidence-first engineering portfolio, distributed systems architecture case studies, verifiable technical benchmarks, and technical ledger.',
+      'Full-stack developer and software engineer based in Sri Lanka. Building web applications, distributed systems, and robust backends.',
     images: [
       {
         url: '/opengraph-image',
         width: 1200,
         height: 630,
-        alt: 'Signal Ledger — Personal Engineering Portfolio & Technical Systems',
+        alt: 'Eric Praveen | Portfolio',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Signal Ledger — Personal Engineering Portfolio & Technical Systems',
+    title: 'Eric Praveen | Portfolio',
     description:
-      'Evidence-first engineering portfolio, distributed systems architecture case studies, verifiable technical benchmarks, and technical ledger.',
+      'Full-stack developer and software engineer based in Sri Lanka. Building web applications, distributed systems, and robust backends.',
     images: ['/opengraph-image'],
-    creator: '@signalledger',
+    creator: '@ericpraveen',
   },
   robots: {
     index: true,
@@ -118,17 +99,34 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${newsreader.variable} ${plusJakartaSans.variable} ${jetbrainsMono.variable}`}
+      className={inter.variable}
     >
       <body>
-        <div className="app-shell">
-          <SkipLink />
-          <Header profile={profile} />
-          <main id="main-content" className="app-main" tabIndex={-1}>
-            <PageTransition>{children}</PageTransition>
-          </main>
-          <Footer profile={profile} />
+        {/* Full-Screen Interactive WebGL Background — Jet Black, Hot Pink & Chartreuse */}
+        <div className="global-cursor-field-bg" aria-hidden="true">
+          <CursorRingField
+            background="transparent"
+            colors={["#FF2A85", "#D4FF00", "#FF5CA2", "#CCFF00", "#FF1493"]}
+            density={300}
+            dotSize={100}
+            speed={5}
+            cameraDistance={160}
+            ring={{ push: 40, width: 10, radius: 22, turbulence: 85 }}
+          />
         </div>
+        <SkipLink />
+        <ActiveSectionProvider>
+          <div className="layout-frame">
+            <LeftRailNav />
+            <div className="app-shell">
+              <Header profile={profile} />
+              <main id="main-content" className="app-main" tabIndex={-1}>
+                <PageTransition>{children}</PageTransition>
+              </main>
+              <Footer profile={profile} />
+            </div>
+          </div>
+        </ActiveSectionProvider>
       </body>
     </html>
   );

@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { clsx } from 'clsx';
 import { NAV_ITEMS } from '@/lib/navigation';
+import { useActiveSection } from './ActiveSectionContext';
 
 export interface NavigationProps {
   className?: string;
@@ -13,6 +14,15 @@ export interface NavigationProps {
 
 export function Navigation({ className, onItemClick }: NavigationProps) {
   const pathname = usePathname() || '/';
+  const { activeSection, scrollToSection } = useActiveSection();
+
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
+    onItemClick?.();
+    if (pathname === '/') {
+      e.preventDefault();
+      scrollToSection(targetId);
+    }
+  };
 
   return (
     <nav
@@ -21,9 +31,12 @@ export function Navigation({ className, onItemClick }: NavigationProps) {
     >
       <ul className="editorial-nav-list" role="list">
         {NAV_ITEMS.map((item) => {
-          const isActive = item.matchPattern
-            ? item.matchPattern(pathname)
-            : pathname === item.href;
+          const isActive =
+            pathname === '/'
+              ? activeSection === item.targetId
+              : item.matchPattern
+              ? item.matchPattern(pathname)
+              : pathname === item.href;
 
           return (
             <li key={item.href} className="editorial-nav-item">
@@ -32,8 +45,8 @@ export function Navigation({ className, onItemClick }: NavigationProps) {
                 className={clsx('editorial-nav-link', {
                   'is-active': isActive,
                 })}
-                aria-current={isActive ? 'page' : undefined}
-                onClick={onItemClick}
+                aria-current={isActive ? 'location' : undefined}
+                onClick={(e) => handleLinkClick(e, item.targetId)}
               >
                 <span className="editorial-nav-index" aria-hidden="true">
                   {item.index}

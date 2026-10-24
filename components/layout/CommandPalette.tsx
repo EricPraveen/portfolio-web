@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { useActiveSection } from './ActiveSectionContext';
 
 export interface CommandItem {
   id: string;
@@ -22,6 +23,7 @@ export interface CommandPaletteProps {
 
 export function CommandPalette({ isOpen, onClose }: CommandPaletteProps) {
   const router = useRouter();
+  const { scrollToSection } = useActiveSection();
   const [query, setQuery] = useState('');
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
@@ -40,8 +42,8 @@ export function CommandPalette({ isOpen, onClose }: CommandPaletteProps) {
       title: 'Home / Overview',
       subtitle: 'Engineering summary, capability map, and selected projects',
       badge: 'PAGE',
-      url: '/',
-      keywords: ['home', 'index', 'overview', 'summary'],
+      url: '/#home',
+      keywords: ['home', 'index', 'overview', 'summary', 'reveal'],
     },
     {
       id: 'page-about',
@@ -49,7 +51,7 @@ export function CommandPalette({ isOpen, onClose }: CommandPaletteProps) {
       title: '01 / About',
       subtitle: 'Career progression, experience timeline, and profile',
       badge: 'PAGE',
-      url: '/about',
+      url: '/#about',
       keywords: ['about', 'profile', 'resume', 'cv', 'experience', 'career'],
     },
     {
@@ -58,7 +60,7 @@ export function CommandPalette({ isOpen, onClose }: CommandPaletteProps) {
       title: '02 / Skills',
       subtitle: 'Technical skills — languages, frameworks, and tools',
       badge: 'PAGE',
-      url: '/skills',
+      url: '/#skills',
       keywords: ['skills', 'technologies', 'languages', 'frameworks', 'tools'],
     },
     {
@@ -67,7 +69,7 @@ export function CommandPalette({ isOpen, onClose }: CommandPaletteProps) {
       title: '03 / Projects',
       subtitle: 'Complete catalog of engineering projects and case studies',
       badge: 'PAGE',
-      url: '/projects',
+      url: '/#projects',
       keywords: ['projects', 'work', 'systems', 'catalog', 'archive'],
     },
     {
@@ -76,7 +78,7 @@ export function CommandPalette({ isOpen, onClose }: CommandPaletteProps) {
       title: '04 / Education',
       subtitle: 'Degree, certifications, awards, and academic distinctions',
       badge: 'PAGE',
-      url: '/education',
+      url: '/#education',
       keywords: ['education', 'credentials', 'certifications', 'degree', 'awards'],
     },
     {
@@ -85,7 +87,7 @@ export function CommandPalette({ isOpen, onClose }: CommandPaletteProps) {
       title: '05 / Contact',
       subtitle: 'Get in touch — email, social links, and inquiry form',
       badge: 'PAGE',
-      url: '/contact',
+      url: '/#contact',
       keywords: ['contact', 'email', 'message', 'hire'],
     },
 
@@ -208,9 +210,16 @@ export function CommandPalette({ isOpen, onClose }: CommandPaletteProps) {
       }
     } else if (item.url) {
       onClose();
+      if (item.url.startsWith('/#') || item.url.startsWith('#')) {
+        const targetId = item.url.replace(/^\/?#/, '');
+        if (typeof window !== 'undefined' && window.location.pathname === '/') {
+          scrollToSection(targetId);
+          return;
+        }
+      }
       router.push(item.url);
     }
-  }, [onClose, router]);
+  }, [onClose, router, scrollToSection]);
 
   // Key navigation handling
   const handleKeyDown = (e: React.KeyboardEvent) => {

@@ -24,7 +24,7 @@ export const profileData: Profile = {
   thesisStatement:
     'Third-year IT student at University of Moratuwa, building full-stack web apps with React, Spring Boot, Node.js, and PostgreSQL.',
   shortBio:
-    'I enjoy building clean, end-to-end web applications — from designing REST APIs and database schemas to crafting responsive UIs in React.',
+    'I craft digital products that feel sharp, useful, and human. My work blends strong engineering with editorial design thinking.',
   longBio: [
     'Currently in my third year of a BSc (Hons.) in Information Technology at the University of Moratuwa, with a 3.7 / 4.0 GPA. I like writing code that is easy to understand, well-structured, and actually works.',
     'Outside of coding, I serve as 3rd Year Batch Representative, help coordinate the Rotaract Career Fair, and contribute to the Tamil Literary Association on campus.',
@@ -49,6 +49,12 @@ export const profileData: Profile = {
       label: 'LinkedIn',
       url: 'https://www.linkedin.com/in/ericpraveen-alricprashanth/',
       handle: 'ericpraveen-alricprashanth',
+    },
+    {
+      platform: 'medium',
+      label: 'Medium',
+      url: 'https://medium.com/@ericpraveen123',
+      handle: '@ericpraveen123',
     },
     {
       platform: 'email',

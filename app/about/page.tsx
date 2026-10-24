@@ -10,6 +10,7 @@ import {
 } from '@/lib/content';
 import {
   ProfileHeader,
+  AboutOverview,
   ExperienceTimeline,
   EducationTimeline,
   CapabilityMatrix,
@@ -45,8 +46,8 @@ export default function ProfilePage() {
 
   return (
     <div className="profile-page-container">
-      {/* 01 / PROFILE IDENTITY & THESIS */}
-      <ProfileHeader profile={profile} />
+      {/* 01 / PROFILE IDENTITY, JOURNEY & CURRENT FOCUS */}
+      <AboutOverview profile={profile} headingLevel="h1" indexLabel="01 / ABOUT" />
 
       {/* 02 / PRACTICAL EXPERIENCE TIMELINE */}
       <ExperienceTimeline experience={experience} />

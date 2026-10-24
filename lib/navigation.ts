@@ -2,6 +2,7 @@ export interface NavItem {
   index: string;
   label: string;
   href: string;
+  targetId: string;
   matchPattern?: (pathname: string) => boolean;
 }
 
@@ -9,32 +10,37 @@ export const NAV_ITEMS: NavItem[] = [
   {
     index: '01',
     label: 'About',
-    href: '/about',
-    matchPattern: (pathname: string) => pathname === '/about',
+    href: '/#about',
+    targetId: 'about',
+    matchPattern: (pathname: string) => pathname === '/about' || pathname === '/#about',
   },
   {
     index: '02',
     label: 'Skills',
-    href: '/skills',
-    matchPattern: (pathname: string) => pathname.startsWith('/skills'),
+    href: '/#skills',
+    targetId: 'skills',
+    matchPattern: (pathname: string) => pathname.startsWith('/skills') || pathname === '/#skills',
   },
   {
     index: '03',
     label: 'Projects',
-    href: '/projects',
-    matchPattern: (pathname: string) => pathname.startsWith('/projects'),
+    href: '/#projects',
+    targetId: 'projects',
+    matchPattern: (pathname: string) => pathname.startsWith('/projects') || pathname === '/#projects',
   },
   {
     index: '04',
     label: 'Education',
-    href: '/education',
-    matchPattern: (pathname: string) => pathname.startsWith('/education'),
+    href: '/#education',
+    targetId: 'education',
+    matchPattern: (pathname: string) => pathname.startsWith('/education') || pathname === '/#education',
   },
   {
     index: '05',
     label: 'Contact',
-    href: '/contact',
-    matchPattern: (pathname: string) => pathname.startsWith('/contact'),
+    href: '/#contact',
+    targetId: 'contact',
+    matchPattern: (pathname: string) => pathname.startsWith('/contact') || pathname === '/#contact',
   },
 ];
 
@@ -45,7 +51,28 @@ export interface CurrentSectionInfo {
   isKnown: boolean;
 }
 
-export function getCurrentSection(pathname: string): CurrentSectionInfo {
+const SECTION_BADGE_MAP: Record<string, { index: string; label: string; href: string }> = {
+  home: { index: '01', label: 'Home', href: '/#home' },
+  about: { index: '02', label: 'About', href: '/#about' },
+  projects: { index: '03', label: 'Work', href: '/#projects' },
+  skills: { index: '04', label: 'Stack', href: '/#skills' },
+  education: { index: '05', label: 'Log', href: '/#education' },
+  certificates: { index: '06', label: 'Field', href: '/#certificates' },
+  contact: { index: '07', label: 'Contact', href: '/#contact' },
+};
+
+export function getCurrentSection(pathname: string, activeSectionId?: string): CurrentSectionInfo {
+  // If on homepage and activeSectionId is known, return live scrolled section
+  if ((pathname === '/' || pathname === '') && activeSectionId && SECTION_BADGE_MAP[activeSectionId]) {
+    const s = SECTION_BADGE_MAP[activeSectionId];
+    return {
+      index: s.index,
+      label: s.label,
+      href: s.href,
+      isKnown: true,
+    };
+  }
+
   // Normalize pathname (strip trailing slash if length > 1)
   const normalized = pathname.length > 1 && pathname.endsWith('/') ? pathname.slice(0, -1) : pathname;
 
@@ -71,9 +98,9 @@ export function getCurrentSection(pathname: string): CurrentSectionInfo {
   }
 
   return {
-    index: '--',
-    label: 'System',
-    href: '/',
-    isKnown: false,
+    index: '01',
+    label: 'Overview',
+    href: '/#home',
+    isKnown: true,
   };
 }

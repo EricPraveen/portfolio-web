@@ -8,10 +8,11 @@ export interface CapabilityMapProps {
 
 export function CapabilityMap({ categories }: CapabilityMapProps) {
   return (
-    <section className="capability-map-section" aria-labelledby="capability-map-heading">
+    <section id="skills" className="capability-map-section" aria-labelledby="capability-map-heading">
+      <span id="stack" className="section-anchor" aria-hidden="true" />
       <div className="section-header-strip">
         <div>
-          <span className="section-eyebrow text-mono-label font-mono">Skills</span>
+          <span className="section-eyebrow text-mono-label font-mono">04 / TECHNICAL SKILLS & STACK</span>
           <h2 id="capability-map-heading" className="section-title font-heading-2xl">
             Technical Skills
           </h2>

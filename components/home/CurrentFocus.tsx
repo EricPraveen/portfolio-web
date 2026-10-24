@@ -1,4 +1,5 @@
 import React from 'react';
+import { WalkmanCassette } from '../ui/WalkmanCassette';
 
 export function CurrentFocus() {
   const focusItems = [
@@ -29,7 +30,8 @@ export function CurrentFocus() {
   ];
 
   return (
-    <section className="current-focus-section" aria-labelledby="current-focus-heading">
+    <section id="process" className="current-focus-section" aria-labelledby="current-focus-heading">
+      <span id="current-focus" className="section-anchor" aria-hidden="true" />
       <div className="current-focus-header">
         <div className="current-focus-header-left">
           <span className="current-focus-beacon" aria-hidden="true">
@@ -73,6 +75,11 @@ export function CurrentFocus() {
             </div>
           </div>
         ))}
+      </div>
+
+      {/* 1980s Retro Cassette Player Deck */}
+      <div className="current-focus-audio-deck">
+        <WalkmanCassette />
       </div>
     </section>
   );

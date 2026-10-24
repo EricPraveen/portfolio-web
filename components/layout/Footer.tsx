@@ -1,7 +1,11 @@
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { NAV_ITEMS } from '@/lib/navigation';
 import { Profile } from '@/content/types';
+import { useActiveSection } from './ActiveSectionContext';
 
 export interface FooterProps {
   profile: Profile;
@@ -9,6 +13,8 @@ export interface FooterProps {
 
 export function Footer({ profile }: FooterProps) {
   const currentYear = new Date().getFullYear();
+  const pathname = usePathname() || '/';
+  const { scrollToSection } = useActiveSection();
 
   return (
     <footer className="app-footer" role="contentinfo">
@@ -61,7 +67,16 @@ export function Footer({ profile }: FooterProps) {
             <ul className="app-footer-nav-list" role="list">
               {NAV_ITEMS.map((item) => (
                 <li key={item.href} className="app-footer-nav-item">
-                  <Link href={item.href} className="app-footer-nav-link">
+                  <Link
+                    href={item.href}
+                    className="app-footer-nav-link"
+                    onClick={(e) => {
+                      if (pathname === '/') {
+                        e.preventDefault();
+                        scrollToSection(item.targetId);
+                      }
+                    }}
+                  >
                     <span className="app-footer-nav-index font-mono" aria-hidden="true">
                       {item.index}
                     </span>
@@ -122,7 +137,7 @@ export function Footer({ profile }: FooterProps) {
             <h3 className="app-footer-heading text-mono-label">Technical Colophon</h3>
             <div className="app-footer-colophon-body text-xs">
               <p>
-                <strong>Typography:</strong> Newsreader (Editorial Display), Plus Jakarta Sans (Grotesk UI), JetBrains Mono (Technical).
+                <strong>Typography:</strong> Inter (Modern Universal Sans UI & Technical Typography).
               </p>
               <p>
                 <strong>Architecture:</strong> Next.js 14 App Router, TypeScript strict, CSS Custom Properties Design System.

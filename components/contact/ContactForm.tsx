@@ -185,14 +185,31 @@ export function ContactForm({ contactEmail }: { contactEmail: string }) {
       )}
 
       {formState.status !== 'success' && (
-        <form
-          onSubmit={handleSubmit}
-          noValidate
-          aria-label="Contact form"
-          className="contact-form"
-        >
-          {/* ── Honeypot — hidden from humans, visible to bots ── */}
-          <div aria-hidden="true" className="contact-form__honeypot">
+        <div className="arcade-terminal arcade-box">
+          {/* Simulated Hardware Corner Rivets */}
+          <span className="corner-screw corner-screw--tl" aria-hidden="true" />
+          <span className="corner-screw corner-screw--tr" aria-hidden="true" />
+          <span className="corner-screw corner-screw--bl" aria-hidden="true" />
+          <span className="corner-screw corner-screw--br" aria-hidden="true" />
+
+          {/* Arcade Terminal Chassis Status Bar */}
+          <div className="terminal-chassis-bar">
+            <div className="terminal-led-group font-mono text-xs">
+              <span className="terminal-led terminal-led--pwr" aria-hidden="true" /> PWR: ON
+              <span className="terminal-led terminal-led--rdy" aria-hidden="true" /> CH1: READY
+              <span className="terminal-led terminal-led--coin" aria-hidden="true" /> 1P CREDIT 01
+            </div>
+            <div className="terminal-id font-mono text-xs">TERMINAL // CRT-80s</div>
+          </div>
+
+          <form
+            onSubmit={handleSubmit}
+            noValidate
+            aria-label="Contact form"
+            className="contact-form"
+          >
+            {/* ── Honeypot — hidden from humans, visible to bots ── */}
+            <div aria-hidden="true" className="contact-form__honeypot">
             <label htmlFor={`${uid}-website`}>
               Website (leave blank)
             </label>
@@ -337,28 +354,29 @@ export function ContactForm({ contactEmail }: { contactEmail: string }) {
             )}
           </div>
 
-          {/* ── Submit ── */}
+          {/* ── Submit — Arcade 1P START Button ── */}
           <div className="form-actions">
             <button
               type="submit"
               disabled={isSubmitting}
-              className="form-submit-btn"
+              className="form-submit-btn arcade-btn"
               aria-busy={isSubmitting}
             >
               {isSubmitting ? (
                 <>
                   <span className="btn-spinner" aria-hidden="true" />
-                  Sending…
+                  TRANSMITTING DATA…
                 </>
               ) : (
-                'Send Message →'
+                '1P START ▷ TRANSMIT MESSAGE'
               )}
             </button>
-            <p className="form-privacy-note">
-              Your details are used solely to respond to your inquiry and are never shared.
+            <p className="form-privacy-note font-mono text-xs">
+              [SECURE DISPATCH] All transmissions logged into engineering ledger.
             </p>
           </div>
         </form>
+      </div>
       )}
     </div>
   );

@@ -41,12 +41,12 @@ export function generateMetadata({ params }: Props): Metadata {
   const project = getProjectBySlug(params.slug);
   if (!project) {
     return {
-      title: 'Case Study Not Found | Signal Ledger',
-      description: 'The requested engineering case study could not be located in the ledger.',
+      title: 'Case Study Not Found',
+      description: 'The requested engineering case study could not be located.',
     };
   }
 
-  const title = `${project.title} — Technical Case Study | Signal Ledger`;
+  const title = `${project.title} — Case Study`;
   const description = `${project.headline} Detailed architectural breakdown, decisions, debugging postmortem, and verified outcomes.`;
 
   return {

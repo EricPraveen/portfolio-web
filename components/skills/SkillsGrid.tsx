@@ -98,14 +98,14 @@ export function SkillsGrid({ categories }: SkillsGridProps) {
             aria-labelledby={`cat-heading-${cat.id}`}
           >
             {/* Category header */}
-            <div className="skills-category-header">
+            <div className="skills-category-header arcade-box">
               <div className="skills-category-title-group">
                 <span className="skills-category-icon" aria-hidden="true">
                   {CATEGORY_ICONS[cat.id] || '📦'}
                 </span>
                 <div>
                   <span className="skills-category-index font-mono text-mono-label">
-                    0{catIdx + 1}
+                    LEVEL 0{catIdx + 1} &bull; INVENTORY GRID
                   </span>
                   <h2 id={`cat-heading-${cat.id}`} className="skills-category-title font-sans">
                     {cat.title}
@@ -117,22 +117,38 @@ export function SkillsGrid({ categories }: SkillsGridProps) {
               </p>
             </div>
 
-            {/* Skills card grid */}
+            {/* Skills card grid — Power-Up Inventory Slots */}
             <div className="skills-card-grid">
               {cat.items.map((skill) => {
                 const levelConf = LEVEL_CONFIG[skill.level] ?? { label: skill.level, color: 'var(--color-steel)' };
+                const powerRating =
+                  skill.level === 'Advanced Production Exposure'
+                    ? 'PWR: LVL 99 ★★★'
+                    : skill.level === 'Proficient'
+                    ? 'PWR: LVL 75 ★★☆'
+                    : 'PWR: LVL 50 ★☆☆';
 
                 return (
-                  <div key={skill.name} className="skills-card">
+                  <div key={skill.name} className="skills-card inventory-slot arcade-box">
+                    <span className="corner-screw corner-screw--tl" aria-hidden="true" />
+                    <span className="corner-screw corner-screw--tr" aria-hidden="true" />
+                    <span className="corner-screw corner-screw--bl" aria-hidden="true" />
+                    <span className="corner-screw corner-screw--br" aria-hidden="true" />
+
                     {/* Card header */}
                     <div className="skills-card-top">
                       <span className="skills-card-name font-sans">{skill.name}</span>
-                      <span
-                        className="skills-card-level text-mono-label font-mono"
-                        style={{ color: levelConf.color }}
-                      >
-                        {levelConf.label}
-                      </span>
+                      <div className="skills-card-meta-badges">
+                        <span className="skills-power-badge font-mono text-xs">
+                          {powerRating}
+                        </span>
+                        <span
+                          className="skills-card-level text-mono-label font-mono"
+                          style={{ color: levelConf.color }}
+                        >
+                          {levelConf.label}
+                        </span>
+                      </div>
                     </div>
 
                     {/* Context description */}

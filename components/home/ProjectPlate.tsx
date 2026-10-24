@@ -20,14 +20,31 @@ export function ProjectPlate({
 
   return (
     <article
-      className={clsx('project-plate', `project-plate--${layoutVariant}`)}
+      className={clsx('project-plate', 'cartridge-card', 'arcade-box', `project-plate--${layoutVariant}`)}
       aria-labelledby={`project-title-${project.slug}`}
     >
-      {/* Plate Header Strip */}
-      <div className="project-plate-strip">
+      {/* 16-Bit Cartridge Top Ribbed Grip */}
+      <div className="cartridge-grip" aria-hidden="true">
+        <div className="cartridge-grip-ridge" />
+        <div className="cartridge-grip-ridge" />
+        <div className="cartridge-grip-ridge" />
+      </div>
+
+      {/* Simulated Hardware Corner Rivets */}
+      <span className="corner-screw corner-screw--tl" aria-hidden="true" />
+      <span className="corner-screw corner-screw--tr" aria-hidden="true" />
+      <span className="corner-screw corner-screw--bl" aria-hidden="true" />
+      <span className="corner-screw corner-screw--br" aria-hidden="true" />
+
+      {/* Plate Header Strip / Cartridge Sticker */}
+      <div className="project-plate-strip cartridge-sticker">
         <div className="project-plate-strip-left">
+          <span className="work-card-cartridge-badge font-mono text-mono-label">
+            16-BIT CARTRIDGE // 0{index + 1}
+          </span>
+          <span className="project-plate-divider" aria-hidden="true">&bull;</span>
           <span className="project-plate-index font-mono text-mono-label">
-            PLATE 0{index + 1} &bull; {project.category.toUpperCase()}
+            {project.category.toUpperCase()}
           </span>
           <span className="project-plate-divider" aria-hidden="true">&bull;</span>
           <span className="project-plate-period font-mono text-mono-label">
@@ -36,7 +53,7 @@ export function ProjectPlate({
         </div>
 
         <div className="project-plate-strip-right">
-          <span className="project-plate-status-badge text-mono-label">
+          <span className="project-plate-status-badge font-mono text-mono-label">
             [{project.status.toUpperCase()}]
           </span>
         </div>
@@ -118,10 +135,9 @@ export function ProjectPlate({
           <div className="project-plate-actions">
             <Link
               href={`/projects/${project.slug}`}
-              className="project-plate-btn-primary"
+              className="project-plate-btn-primary arcade-btn font-mono"
             >
-              <span>Read Full Architectural Case Study</span>
-              <span aria-hidden="true">&rarr;</span>
+              <span>PRESS START ▷ Read Case Study</span>
             </Link>
 
             {primaryEvidence && primaryEvidence.url && primaryEvidence.url !== '#' && (
@@ -129,7 +145,7 @@ export function ProjectPlate({
                 href={primaryEvidence.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="project-plate-btn-secondary font-mono"
+                className="project-plate-btn-secondary arcade-btn font-mono"
               >
                 <span>{primaryEvidence.label}</span>
                 <span aria-hidden="true"> ↗</span>
@@ -138,8 +154,13 @@ export function ProjectPlate({
           </div>
         </div>
 
-        {/* Visual / Architectural Diagram Column */}
-        <div className="project-plate-visual">
+        {/* Visual / Architectural Diagram Column with Camera Viewfinder Frame */}
+        <div className="project-plate-visual camera-frame">
+          <span className="camera-viewfinder-rec font-mono">[● REC]</span>
+          <span className="camera-corner camera-corner--tl" aria-hidden="true" />
+          <span className="camera-corner camera-corner--tr" aria-hidden="true" />
+          <span className="camera-corner camera-corner--bl" aria-hidden="true" />
+          <span className="camera-corner camera-corner--br" aria-hidden="true" />
           <ProjectVisualDiagram slug={project.slug} />
         </div>
       </div>

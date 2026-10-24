@@ -14,10 +14,12 @@ export function SelectedCredentials({
   hackathons,
 }: SelectedCredentialsProps) {
   return (
-    <section className="credentials-snapshot-section" aria-labelledby="credentials-snapshot-heading">
+    <section id="certificates" className="credentials-snapshot-section" aria-labelledby="credentials-snapshot-heading">
+      <span id="credentials" className="section-anchor" aria-hidden="true" />
+      <span id="field" className="section-anchor" aria-hidden="true" />
       <div className="section-header-strip">
         <div>
-          <span className="section-eyebrow text-mono-label font-mono">06 / VERIFIED RECOGNITION</span>
+          <span className="section-eyebrow text-mono-label font-mono">06 / FIELD CREDENTIALS & HONORS</span>
           <h2 id="credentials-snapshot-heading" className="section-title font-heading-2xl">
             Selected Credentials & Honors
           </h2>

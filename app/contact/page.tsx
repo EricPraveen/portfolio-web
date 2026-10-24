@@ -5,17 +5,17 @@ import { getProfile } from '@/lib/content';
 import { ContactForm } from '@/components/contact';
 
 export const metadata: Metadata = {
-  title: 'Contact & Engineering Availability — Signal Ledger',
+  title: 'Contact & Availability',
   description:
-    'Direct contact channels, verified social profiles, current engineering availability, resume download, and secure contact form.',
+    'Direct contact channels, verified social profiles, current engineering availability, resume download, and contact form for Eric Praveen.',
   alternates: {
     canonical: '/contact',
   },
   openGraph: {
-    title: 'Contact & Engineering Availability — Signal Ledger',
+    title: 'Contact & Availability — Eric Praveen',
     description:
       'Direct contact channels, verified social profiles, current engineering availability, and resume download.',
-    url: 'https://signal-ledger.dev/contact',
+    url: 'https://ericpraveen.dev/contact',
   },
 };
 

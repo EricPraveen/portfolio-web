@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation';
 import { clsx } from 'clsx';
 import { NAV_ITEMS } from '@/lib/navigation';
 import { Profile } from '@/content/types';
+import { useActiveSection } from './ActiveSectionContext';
 
 export interface MobileNavProps {
   isOpen: boolean;
@@ -23,6 +24,7 @@ export function MobileNav({
   triggerRef,
 }: MobileNavProps) {
   const pathname = usePathname() || '/';
+  const { activeSection, scrollToSection } = useActiveSection();
   const drawerRef = useRef<HTMLDivElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
 
@@ -176,9 +178,12 @@ export function MobileNav({
         <nav className="mobile-nav-body" aria-label="Mobile Navigation">
           <ul className="mobile-nav-list" role="list">
             {NAV_ITEMS.map((item) => {
-              const isActive = item.matchPattern
-                ? item.matchPattern(pathname)
-                : pathname === item.href;
+              const isActive =
+                pathname === '/'
+                  ? activeSection === item.targetId
+                  : item.matchPattern
+                  ? item.matchPattern(pathname)
+                  : pathname === item.href;
 
               return (
                 <li key={item.href} className="mobile-nav-item">
@@ -187,10 +192,14 @@ export function MobileNav({
                     className={clsx('mobile-nav-link', {
                       'is-active': isActive,
                     })}
-                    aria-current={isActive ? 'page' : undefined}
-                    onClick={() => {
+                    aria-current={isActive ? 'location' : undefined}
+                    onClick={(e) => {
                       onClose();
                       triggerRef.current?.focus();
+                      if (pathname === '/') {
+                        e.preventDefault();
+                        scrollToSection(item.targetId);
+                      }
                     }}
                   >
                     <div className="mobile-nav-link-content">

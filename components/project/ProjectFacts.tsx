@@ -63,7 +63,7 @@ export function ProjectFacts({ project }: ProjectFactsProps) {
           {stack.map((tech) => (
             <Link
               key={tech}
-              href={`/work?q=${encodeURIComponent(tech)}`}
+              href={`/projects?q=${encodeURIComponent(tech)}`}
               className="cs-facts-tech-pill text-mono-label"
               role="listitem"
               title={`View all work built with ${tech}`}

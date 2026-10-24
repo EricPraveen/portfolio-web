@@ -192,13 +192,13 @@ export default function DesignSystemSpecimenPage() {
         <Section
           index="02"
           eyebrow="TYPOGRAPHY SYSTEM"
-          title="Editorial Display + Grotesk UI + Technical Monospace"
+          title="Modern Universal Sans UI (Inter)"
           rule="bottom"
         >
           <Stack gap="xl">
             {/* Display Serif */}
             <div style={{ padding: 'var(--space-lg)', background: 'var(--color-bone-paper-subtle)', border: 'var(--border-hairline)', borderRadius: 'var(--radius-default)' }}>
-              <Eyebrow index="FONT-01">EDITORIAL DISPLAY SERIF (NEWSREADER)</Eyebrow>
+              <Eyebrow index="FONT-01">MODERN DISPLAY SANS (INTER)</Eyebrow>
               <div style={{ marginTop: 'var(--space-md)' }}>
                 <div className="text-display-4xl" style={{ marginBottom: 'var(--space-xs)' }}>
                   Evidence-First Technical Ledger
@@ -214,7 +214,7 @@ export default function DesignSystemSpecimenPage() {
 
             {/* Grotesk Sans Body */}
             <div style={{ padding: 'var(--space-lg)', background: 'var(--color-bone-paper-subtle)', border: 'var(--border-hairline)', borderRadius: 'var(--radius-default)' }}>
-              <Eyebrow index="FONT-02">GROTESK UI & BODY SANS (PLUS JAKARTA SANS)</Eyebrow>
+              <Eyebrow index="FONT-02">MODERN UI & BODY SANS (INTER)</Eyebrow>
               <div style={{ marginTop: 'var(--space-md)' }}>
                 <p className="text-body-md" style={{ marginBottom: 'var(--space-sm)' }}>
                   <strong>Body Medium:</strong> Rather than adopting generic AI template aesthetics, this portfolio functions as an Authoritative Professional Evidence System where every claim is anchored in verified technical artifacts.
@@ -231,7 +231,7 @@ export default function DesignSystemSpecimenPage() {
             {/* Monospace Indexing */}
             <div style={{ padding: 'var(--space-lg)', background: 'var(--color-mineral-ink)', color: 'var(--color-bone-paper)', borderRadius: 'var(--radius-default)' }}>
               <span style={{ fontFamily: 'var(--font-family-mono)', fontSize: 'var(--font-size-xs)', color: 'var(--color-lab-chartreuse)', letterSpacing: 'var(--letter-spacing-tracked)', textTransform: 'uppercase' }}>
-                FONT-03 / TECHNICAL MONOSPACE (JETBRAINS MONO)
+                FONT-03 / MODERN TECHNICAL INTER SANS
               </span>
               <div style={{ marginTop: 'var(--space-md)', fontFamily: 'var(--font-family-mono)' }}>
                 <p style={{ fontSize: 'var(--font-size-sm)', margin: '0 0 var(--space-xs)' }}>

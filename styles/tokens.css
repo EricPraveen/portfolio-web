@@ -1,214 +1,285 @@
 /**
  * ==========================================================================
- * "SIGNAL LEDGER" DESIGN SYSTEM TOKENS
- * Aesthetic: Technical editorial publication + engineering notebook + modern product craft
+ * "WARM RETRO ARCADE" DESIGN SYSTEM TOKENS
+ * Aesthetic: Pac-Man Arcade Cabinet — Warm Cream/Vintage Yellow, Bright & Nostalgic
  * ==========================================================================
  */
 
 :root {
   /* --------------------------------------------------------------------------
-   * 1. COLOR PALETTE: Signal Ledger Constitution
+   * 1. COLOR PALETTE: Warm Retro Arcade Cabinet
    * -------------------------------------------------------------------------- */
-  /* Surfaces: Bone Paper */
-  --color-bone-paper: #F2EFE8;
-  --color-bone-paper-subtle: #E8E4DA;
-  --color-bone-paper-elevated: #FAF8F5;
-  --color-bone-paper-sunken: #DDD8CD;
 
-  /* Ink: Deep Mineral Ink (Text & Dark Plates) */
-  --color-mineral-ink: #171A1D;
-  --color-ink-subtle: #2C3238;
-  --color-ink-muted: #4A525A;
-  --color-ink-faint: #767F88;
-  --color-ink-inverse: #F2EFE8;
+  /* ── BACKGROUNDS — Jet Black & Dark Glassmorphism ── */
+  --color-bg-primary:   transparent;
+  --color-bg-surface:   rgba(16, 16, 20, 0.82);
+  --color-bg-elevated:  rgba(22, 22, 28, 0.88);
+  --color-bg-sunken:    rgba(10, 10, 14, 0.75);
+  --color-bg-panel:     rgba(18, 18, 24, 0.92);
+  --color-bg-dark:      #08080A;   /* Sleek Jet Black */
 
-  /* Primary Signal: Signal Cobalt (Links, focus rings, primary actions) */
-  --color-signal-cobalt: #2F5BFF;
-  --color-signal-cobalt-hover: #1E44D6;
-  --color-signal-cobalt-active: #1533A8;
-  --color-signal-cobalt-subtle: rgba(47, 91, 255, 0.08);
-  --color-signal-cobalt-border: rgba(47, 91, 255, 0.25);
+  /* ── NEON ORANGE (Primary Accent for Headings, Buttons, Numbers & Highlights) ── */
+  --color-pac-yellow:         #FF5500;   /* Vibrant electric neon orange */
+  --color-pac-yellow-deep:    #E04A00;   /* Deep neon orange */
+  --color-pac-yellow-bright:  #FF6B1A;   /* Bright electric neon orange */
+  --color-pac-yellow-glow:    rgba(255, 85, 0, 0.4);
+  --color-pac-yellow-subtle:  rgba(255, 85, 0, 0.12);
+  --color-pac-yellow-border:  rgba(255, 85, 0, 0.5);
 
-  /* Rare Highlight 1: Lab Chartreuse (Status stamps, active pulse, subtle highlights) */
-  --color-lab-chartreuse: #C9F24A;
-  --color-lab-chartreuse-ink: #111A00;
-  --color-lab-chartreuse-subtle: rgba(201, 242, 74, 0.18);
+  --color-neon-orange:        #FF5500;
+  --color-neon-orange-deep:   #E04A00;
+  --color-neon-orange-bright: #FF6B1A;
+  --color-neon-orange-glow:   rgba(255, 85, 0, 0.4);
+  --color-neon-orange-subtle: rgba(255, 85, 0, 0.12);
+  --color-neon-orange-border: rgba(255, 85, 0, 0.5);
 
-  /* Rare Highlight 2: Oxide (Debugging postmortems, warnings, human warmth) */
-  --color-oxide: #C45B43;
-  --color-oxide-dark: #9E3D27;
-  --color-oxide-subtle: rgba(196, 91, 67, 0.12);
+  /* ── GHOST PINK (Reserved for Navigation & Cursor Ring Field Background) ── */
+  --color-ghost-pink:         #FF2A85;   /* Electric Ghost Pink */
+  --color-ghost-pink-deep:    #D80064;   /* Deep Ghost Pink */
+  --color-ghost-pink-bright:  #FF5CA2;   /* Bright Ghost Pink */
+  --color-ghost-pink-glow:    rgba(255, 42, 133, 0.4);
+  --color-ghost-pink-subtle:  rgba(255, 42, 133, 0.14);
+  --color-ghost-pink-border:  rgba(255, 42, 133, 0.5);
 
-  /* Rules & Structural Grid: Steel */
-  --color-steel: #8C949C;
-  --color-steel-light: #D4D0C5;
-  --color-steel-dark: #5A626A;
-  --color-steel-faint: rgba(140, 148, 156, 0.15);
+  --color-hot-pink:           #FF2A85;
+  --color-hot-pink-deep:      #D80064;
+  --color-hot-pink-bright:    #FF5CA2;
+  --color-hot-pink-glow:      rgba(255, 42, 133, 0.4);
+  --color-hot-pink-subtle:    rgba(255, 42, 133, 0.12);
+  --color-hot-pink-border:    rgba(255, 42, 133, 0.5);
 
-  /* Semantic Semantic Aliases */
-  --surface-base: var(--color-bone-paper);
-  --surface-subtle: var(--color-bone-paper-subtle);
-  --surface-elevated: var(--color-bone-paper-elevated);
-  --surface-plate: var(--color-mineral-ink);
+  /* ── CHARTRUSE (Secondary Accent / Electric Acid Lime) ── */
+  --color-chartreuse:         #D4FF00;   /* Electric Chartreuse */
+  --color-chartreuse-bright:  #E4FF4D;   /* Bright Chartreuse */
+  --color-chartreuse-deep:    #A6CC00;   /* Deep Chartreuse */
+  --color-chartreuse-glow:    rgba(212, 255, 0, 0.35);
+  --color-chartreuse-subtle:  rgba(212, 255, 0, 0.12);
+  --color-chartreuse-border:  rgba(212, 255, 0, 0.5);
 
-  --text-primary: var(--color-mineral-ink);
-  --text-muted: var(--color-ink-muted);
-  --text-faint: var(--color-ink-faint);
-  --text-on-plate: var(--color-bone-paper);
-  --text-on-signal: #FFFFFF;
+  /* ── RETRO BLUE (Ghost / Accent) ── */
+  --color-retro-blue:         #38BDF8;
+  --color-retro-blue-deep:    #0284C7;
+  --color-retro-blue-glow:    rgba(56, 189, 248, 0.25);
 
-  --accent-primary: var(--color-signal-cobalt);
-  --accent-highlight: var(--color-lab-chartreuse);
-  --accent-warning: var(--color-oxide);
+  /* ── RETRO PINK (Blinky / Warning) ── */
+  --color-retro-pink:         #FF2A85;
+  --color-retro-pink-deep:    #D80064;
+
+  /* ── RETRO ORANGE (Clyde / Tertiary) ── */
+  --color-retro-orange:       #EA580C;
+  --color-retro-orange-glow:  rgba(234, 88, 12, 0.25);
+
+  /* ── TEXT — Crisp light slate on Jet Black background ── */
+  --color-text-primary:   #F8FAFC;    /* Crisp bright white/slate */
+  --color-text-muted:     #94A3B8;    /* Muted cool slate */
+  --color-text-faint:     #64748B;    /* Faint slate */
+  --color-text-inverse:   #08080A;    /* Jet Black ink on light */
+
+  /* ── STRUCTURAL / GRID — Sleek borders ── */
+  --color-border:          rgba(255, 255, 255, 0.12);
+  --color-border-strong:   rgba(255, 255, 255, 0.24);
+  --color-border-pixel:    rgba(255, 255, 255, 0.2);
+  --color-pixel-grid:      rgba(255, 255, 255, 0.03);
+
+  /* ── SEMANTIC ALIASES ── */
+  --surface-base:     var(--color-bg-primary);
+  --surface-subtle:   var(--color-bg-surface);
+  --surface-elevated: var(--color-bg-elevated);
+  --surface-plate:    var(--color-pac-yellow);
+
+  --text-primary:     var(--color-text-primary);
+  --text-muted:       var(--color-text-muted);
+  --text-faint:       var(--color-text-faint);
+  --text-on-plate:    var(--color-text-inverse);
+  --text-on-signal:   var(--color-text-inverse);
+
+  --accent-primary:   var(--color-pac-yellow);
+  --accent-secondary: var(--color-chartreuse);
+  --accent-warning:   var(--color-retro-orange);
+  --accent-orange:    var(--color-pac-yellow);
+  --accent-ghost-pink: var(--color-ghost-pink);
+
+  /* Legacy compatibility aliases — mapped to Jet Black & Neon Orange */
+  --color-bone-paper:          var(--color-bg-primary);
+  --color-bone-paper-subtle:   var(--color-bg-surface);
+  --color-bone-paper-elevated: var(--color-bg-elevated);
+  --color-bone-paper-sunken:   var(--color-bg-sunken);
+  --color-mineral-ink:         var(--color-text-primary);
+  --color-ink-subtle:          #2A2A26;
+  --color-ink-muted:           var(--color-text-muted);
+  --color-ink-faint:           var(--color-text-faint);
+  --color-ink-inverse:         var(--color-bg-primary);
+  --color-signal-cobalt:       var(--color-pac-yellow);
+  --color-signal-cobalt-hover: var(--color-pac-yellow-bright);
+  --color-signal-cobalt-active: var(--color-pac-yellow-deep);
+  --color-signal-cobalt-subtle: var(--color-pac-yellow-subtle);
+  --color-signal-cobalt-border: var(--color-pac-yellow-border);
+  --color-lab-chartreuse:      var(--color-chartreuse);
+  --color-oxide:               var(--color-retro-orange);
+  --color-steel:               #484840;
+  --color-steel-light:         rgba(255, 255, 255, 0.12);
+  --color-steel-dark:          #242420;
+  --color-steel-faint:         rgba(255, 255, 255, 0.05);
 
   /* --------------------------------------------------------------------------
-   * 2. TYPOGRAPHY ROLES & SCALE
-   * Triple-font: Display (Editorial Serif) + Sans (Grotesk) + Mono (Technical)
+   * 2. TYPOGRAPHY — MODERN SANS (INTER) SYSTEM
    * -------------------------------------------------------------------------- */
-  --font-family-display: var(--font-display), "Newsreader", Georgia, Cambria, serif;
-  --font-family-sans: var(--font-sans), "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-family-mono: var(--font-mono), "JetBrains Mono", SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --font-family-sans:      var(--font-sans), 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-family-display:   var(--font-sans), 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-family-arcade:    var(--font-sans), 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-family-pixel:     var(--font-sans), 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-family-brutalist: var(--font-sans), 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-family-mono:      var(--font-sans), 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
-  /* Fluid Responsive Typography Scale (clamp) */
-  --font-size-xs: clamp(0.75rem, 0.72rem + 0.15vw, 0.8125rem);       /* 12-13px */
-  --font-size-sm: clamp(0.84rem, 0.8rem + 0.2vw, 0.9375rem);        /* 13.5-15px */
-  --font-size-base: clamp(0.96rem, 0.92rem + 0.25vw, 1.0625rem);     /* 15.5-17px */
-  --font-size-md: clamp(1.1rem, 1.04rem + 0.35vw, 1.25rem);         /* 17.5-20px */
-  --font-size-lg: clamp(1.25rem, 1.15rem + 0.55vw, 1.5rem);         /* 20-24px */
-  --font-size-xl: clamp(1.45rem, 1.3rem + 0.8vw, 1.875rem);         /* 23-30px */
-  --font-size-2xl: clamp(1.75rem, 1.5rem + 1.25vw, 2.375rem);       /* 28-38px */
-  --font-size-3xl: clamp(2.15rem, 1.8rem + 1.8vw, 3rem);            /* 34-48px */
-  --font-size-4xl: clamp(2.65rem, 2.15rem + 2.6vw, 3.875rem);       /* 42-62px */
+  /* Fluid Responsive Typography Scale — Modern Proportions */
+  --font-size-xs:   clamp(0.65rem, 0.62rem + 0.15vw, 0.72rem);
+  --font-size-sm:   clamp(0.78rem, 0.75rem + 0.12vw, 0.86rem);
+  --font-size-base: clamp(0.92rem, 0.88rem + 0.18vw, 1.02rem);
+  --font-size-md:   clamp(1.05rem, 0.98rem + 0.28vw, 1.2rem);
+  --font-size-lg:   clamp(1.22rem, 1.12rem + 0.5vw, 1.45rem);
+  --font-size-xl:   clamp(1.42rem, 1.28rem + 0.75vw, 1.82rem);
+  --font-size-2xl:  clamp(1.75rem, 1.5rem + 1.25vw, 2.35rem);
+  --font-size-3xl:  clamp(2.15rem, 1.75rem + 1.75vw, 3rem);
+  --font-size-4xl:  clamp(2.75rem, 2.2rem + 2.5vw, 4rem);
 
   /* Line Heights */
-  --line-height-tight: 1.15;
+  --line-height-tight:   1.1;
   --line-height-heading: 1.25;
-  --line-height-snug: 1.4;
-  --line-height-base: 1.6;
+  --line-height-snug:    1.38;
+  --line-height-base:    1.62;
   --line-height-relaxed: 1.75;
 
   /* Letter Spacing */
-  --letter-spacing-tight: -0.025em;
-  --letter-spacing-normal: 0em;
-  --letter-spacing-wide: 0.05em;
-  --letter-spacing-tracked: 0.1em;
-  --letter-spacing-mono: 0.08em;
+  --letter-spacing-tight:   -0.025em;
+  --letter-spacing-normal:  0em;
+  --letter-spacing-wide:    0.04em;
+  --letter-spacing-tracked: 0.08em;
+  --letter-spacing-mono:    0.04em;
+  --letter-spacing-arcade:  0.05em;
 
   /* Font Weights */
-  --font-weight-normal: 400;
-  --font-weight-medium: 500;
+  --font-weight-normal:   400;
+  --font-weight-medium:   500;
   --font-weight-semibold: 600;
-  --font-weight-bold: 700;
+  --font-weight-bold:     700;
 
   /* --------------------------------------------------------------------------
    * 3. SPACING SCALE
    * -------------------------------------------------------------------------- */
-  --space-3xs: 0.25rem;  /* 4px */
-  --space-2xs: 0.5rem;   /* 8px */
-  --space-xs: 0.75rem;   /* 12px */
-  --space-sm: 1rem;      /* 16px */
-  --space-md: 1.5rem;    /* 24px */
-  --space-lg: 2rem;      /* 32px */
-  --space-xl: 3rem;      /* 48px */
-  --space-2xl: 4.5rem;   /* 72px */
-  --space-3xl: 6.5rem;   /* 104px */
+  --space-3xs: 0.25rem;
+  --space-2xs: 0.5rem;
+  --space-xs:  0.75rem;
+  --space-sm:  1rem;
+  --space-md:  1.5rem;
+  --space-lg:  2rem;
+  --space-xl:  3rem;
+  --space-2xl: 4.5rem;
+  --space-3xl: 6.5rem;
 
   /* --------------------------------------------------------------------------
    * 4. GRID & CONTAINER WIDTHS
-   * 12-col Desktop / 6-col Tablet / 4-col Mobile
    * -------------------------------------------------------------------------- */
-  --container-max-width: 1200px;
-  --container-reading-width: 760px;
-  --container-wide-width: 1360px;
+  --container-max-width:     1480px;
+  --container-reading-width: 860px;
+  --container-wide-width:    1640px;
 
   --grid-columns-desktop: 12;
-  --grid-columns-tablet: 6;
-  --grid-columns-mobile: 4;
+  --grid-columns-tablet:  6;
+  --grid-columns-mobile:  4;
 
   --grid-gutter: 1.5rem;
   --grid-margin: 1.5rem;
 
   /* --------------------------------------------------------------------------
-   * 5. HAIRLINE BORDERS & RULES
+   * 5. BORDERS & PIXEL FRAMES — Warm brownish-yellow
    * -------------------------------------------------------------------------- */
   --border-width-hairline: 1px;
-  --border-width-medium: 2px;
-  --border-width-heavy: 3px;
+  --border-width-medium:   2px;
+  --border-width-heavy:    3px;
 
-  --border-hairline: 1px solid var(--color-steel-light);
-  --border-rule: 1px solid var(--color-steel);
-  --border-heavy: 2px solid var(--color-mineral-ink);
-  --border-signal: 1px solid var(--color-signal-cobalt);
-  --border-signal-bold: 2px solid var(--color-signal-cobalt);
+  --border-hairline:     1px solid var(--color-border);
+  --border-rule:         1px solid rgba(100, 30, 0, 0.35);
+  --border-heavy:        2px solid var(--color-text-primary);
+  --border-signal:       1px solid var(--color-text-primary);
+  --border-signal-bold:  2px solid var(--color-text-primary);
+  --border-pixel:        2px solid var(--color-text-primary);
 
-  /* Radius (Strict Restraint: Zero bubbly cards) */
-  --radius-none: 0px;
-  --radius-subtle: 2px;
+  /* Radius — square pixel-perfect */
+  --radius-none:    0px;
+  --radius-subtle:  2px;
   --radius-default: 4px;
-  --radius-pill: 9999px;
+  --radius-pill:    9999px;
 
   /* --------------------------------------------------------------------------
-   * 6. FOCUS RINGS & ACCESSIBILITY
+   * 6. FOCUS RINGS
    * -------------------------------------------------------------------------- */
-  --focus-ring: 2px solid var(--color-signal-cobalt);
+  --focus-ring:   2px solid var(--color-pac-yellow);
   --focus-offset: 3px;
-  --focus-shadow: 0 0 0 3px rgba(47, 91, 255, 0.25);
+  --focus-shadow: 0 0 0 3px var(--color-pac-yellow-glow);
 
   /* --------------------------------------------------------------------------
-   * 7. MOTION & DURATIONS (Restrained 150-250ms)
+   * 7. MOTION & DURATIONS
    * -------------------------------------------------------------------------- */
-  --motion-duration-instant: 100ms;
-  --motion-duration-fast: 150ms;
-  --motion-duration-normal: 250ms;
-  --motion-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-  --motion-ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --motion-duration-instant: 80ms;
+  --motion-duration-fast:    150ms;
+  --motion-duration-normal:  250ms;
+  --motion-ease-out:         cubic-bezier(0.16, 1, 0.3, 1);
+  --motion-ease-in-out:      cubic-bezier(0.4, 0, 0.2, 1);
 
   /* --------------------------------------------------------------------------
    * 8. Z-INDEX SYSTEM
    * -------------------------------------------------------------------------- */
-  --z-base: 1;
-  --z-sticky: 100;
-  --z-header: 200;
-  --z-drawer: 300;
-  --z-modal: 400;
+  --z-base:      1;
+  --z-sticky:    100;
+  --z-header:    200;
+  --z-drawer:    300;
+  --z-modal:     400;
   --z-skip-link: 999;
+  --z-cursor:    9999;
+
+  /* --------------------------------------------------------------------------
+   * 9. WARM GLOW EFFECTS (Retro arcade cabinet)
+   * -------------------------------------------------------------------------- */
+  /* ── NEON ORANGE, GHOST PINK & CHARTRUSE GLOW EFFECTS ── */
+  --glow-yellow:        0 2px 10px rgba(255, 85, 0, 0.45), 0 4px 22px rgba(255, 85, 0, 0.22);
+  --glow-yellow-strong: 0 2px 14px rgba(255, 85, 0, 0.85), 0 4px 34px rgba(255, 85, 0, 0.45);
+  --glow-orange:        0 2px 10px rgba(255, 85, 0, 0.45), 0 4px 22px rgba(255, 85, 0, 0.22);
+  --glow-ghost-pink:    0 2px 10px rgba(255, 42, 133, 0.45), 0 4px 22px rgba(255, 42, 133, 0.22);
+  --glow-hot-pink:      0 2px 10px rgba(255, 42, 133, 0.45), 0 4px 22px rgba(255, 42, 133, 0.22);
+  --glow-chartreuse:    0 2px 10px rgba(212, 255, 0, 0.4), 0 4px 22px rgba(212, 255, 0, 0.2);
+  --glow-blue:          0 2px 8px rgba(56, 189, 248, 0.4), 0 4px 20px rgba(56, 189, 248, 0.2);
+  --glow-pink:          0 2px 8px rgba(255, 42, 133, 0.4), 0 4px 20px rgba(255, 42, 133, 0.2);
+
+  /* --------------------------------------------------------------------------
+   * 10. RETRO GAME CONSOLE HARDWARE TOKENS (Phase 3)
+   * -------------------------------------------------------------------------- */
+  --shadow-pixel-sm:     2px 2px 0px #181816;
+  --shadow-pixel-md:     4px 4px 0px #181816;
+  --shadow-pixel-lg:     6px 6px 0px #181816;
+  --shadow-pixel-active: 1px 1px 0px #181816;
+  --shadow-pixel-glow:   4px 4px 0px #181816, 0 0 16px rgba(255, 85, 0, 0.45);
+  --border-pixel-2:      2px solid #181816;
+  --border-pixel-3:      3px solid #181816;
+  --border-pixel-4:      4px solid #181816;
+  --border-pixel-yellow: 3px solid #D4FF00;
+  --border-pixel-orange: 3px solid #FF5500;
+  --color-crt-green:     #D4FF00;
+  --color-crt-amber:     #FF6B1A;
+  --color-cassette-dark: #121216;
+  --color-hardware-gray: #303038;
 }
 
 /* --------------------------------------------------------------------------
- * DARK THEME (Intentional Technical Mineral Slate Palette)
+ * DARK THEME (Override — Sleek Jet Black)
  * -------------------------------------------------------------------------- */
 [data-theme="dark"] {
-  --color-bone-paper: #111417;
-  --color-bone-paper-subtle: #191D22;
-  --color-bone-paper-elevated: #22272E;
-  --color-bone-paper-sunken: #0C0E10;
-
-  --color-mineral-ink: #ECE8DF;
-  --color-ink-subtle: #D8D3C8;
-  --color-ink-muted: #9BA4AD;
-  --color-ink-faint: #6D7680;
-  --color-ink-inverse: #111417;
-
-  --color-signal-cobalt: #547BFF;
-  --color-signal-cobalt-hover: #7394FF;
-  --color-signal-cobalt-active: #3D66FA;
-  --color-signal-cobalt-subtle: rgba(84, 123, 255, 0.15);
-  --color-signal-cobalt-border: rgba(84, 123, 255, 0.35);
-
-  --color-lab-chartreuse: #D4FA57;
-  --color-lab-chartreuse-ink: #0D1600;
-  --color-lab-chartreuse-subtle: rgba(212, 250, 87, 0.15);
-
-  --color-oxide: #DE6C53;
-  --color-oxide-dark: #F08E77;
-  --color-oxide-subtle: rgba(222, 108, 83, 0.15);
-
-  --color-steel: #727B84;
-  --color-steel-light: #2A3038;
-  --color-steel-dark: #919BA4;
-  --color-steel-faint: rgba(114, 123, 132, 0.2);
-
-  --border-hairline: 1px solid var(--color-steel-light);
-  --border-rule: 1px solid var(--color-steel);
-  --border-heavy: 2px solid var(--color-mineral-ink);
+  --color-bg-primary:   #08080A;
+  --color-bg-surface:   #121216;
+  --color-bg-elevated:  #1A1A22;
+  --color-bg-sunken:    #050507;
+  --color-text-primary: #F8FAFC;
+  --color-text-muted:   #94A3B8;
+  --color-text-faint:   #64748B;
+  --color-border:       rgba(255, 255, 255, 0.15);
+  --color-steel-light:  rgba(255, 255, 255, 0.1);
 }

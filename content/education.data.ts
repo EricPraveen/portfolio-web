@@ -7,7 +7,7 @@ export const educationData: EducationItem[] = [
     degree: 'BSc (Hons.) in Information Technology',
     major: 'Faculty of Information Technology',
     dates: {
-      start: '2023',
+      start: '2024',
       end: 'Present (Expected 2027)',
       isCurrent: true,
     },
@@ -42,16 +42,18 @@ export const educationData: EducationItem[] = [
   {
     id: 'edu-patricks-al',
     institution: "St. Patrick's College, Jaffna",
-    degree: 'GCE Advanced Level (Physical Science Stream)',
-    major: 'Combined Mathematics, Physics, Chemistry',
+    degree: 'Primary, Secondary & Collegiate Education',
+    major: 'Physical Science Stream (Combined Maths, Physics, Chemistry)',
     dates: {
-      start: '2020',
+      start: '2009',
       end: '2023',
       isCurrent: false,
     },
-    status: 'Completed',
-    gpa: 'Z-Score: 1.805',
+    status: 'Completed (Entered 2009 • Completed 2023)',
+    gpa: 'A/L: A 2B • O/L: 8A C',
     honors: [
+      'GCE Advanced Level (2023): A 2B in Physical Science',
+      'GCE Ordinary Level (2019): 8A C',
       'Qualified for State University Admission to University of Moratuwa',
     ],
     relevantCoursework: [

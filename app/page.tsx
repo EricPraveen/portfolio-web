@@ -16,21 +16,30 @@ import {
   ThesisPanel,
   ProjectPlate,
   CapabilityMap,
-  CurrentFocus,
   ProfileSnapshot,
   SelectedCredentials,
   ContactClose,
 } from '@/components/home';
+import { AboutOverview } from '@/components/about';
 
 // Enforce content validity at build time
 assertContentValid();
 
 export const metadata: Metadata = {
-  title: 'Overview & Technical Thesis — Signal Ledger',
+  title: {
+    absolute: 'Eric Praveen | Portfolio',
+  },
   description:
-    'Evidence-first personal engineering portfolio and systems architecture ledger. Verified production systems, deterministic concurrency, and technical whitepapers.',
+    'Full-stack developer and software engineer based in Sri Lanka. Building web applications, distributed systems, and robust backends.',
   alternates: {
     canonical: '/',
+  },
+  openGraph: {
+    title: 'Eric Praveen | Portfolio',
+    description:
+      'Full-stack developer and software engineer based in Sri Lanka. Building web applications, distributed systems, and robust backends.',
+    url: 'https://ericpraveen.dev',
+    siteName: 'Eric Praveen | Portfolio',
   },
 };
 
@@ -49,20 +58,20 @@ export default function HomePage() {
     '@graph': [
       {
         '@type': 'WebSite',
-        '@id': 'https://signal-ledger.dev/#website',
-        url: 'https://signal-ledger.dev',
-        name: 'Signal Ledger',
-        description: 'Evidence-first engineering portfolio and technical ledger.',
+        '@id': 'https://ericpraveen.dev/#website',
+        url: 'https://ericpraveen.dev',
+        name: 'Eric Praveen | Portfolio',
+        description: 'Personal portfolio and engineering work of Eric Praveen.',
         publisher: {
-          '@id': 'https://signal-ledger.dev/#person',
+          '@id': 'https://ericpraveen.dev/#person',
         },
       },
       {
         '@type': 'Person',
-        '@id': 'https://signal-ledger.dev/#person',
+        '@id': 'https://ericpraveen.dev/#person',
         name: profile.fullName.replace(/\[|\]/g, ''),
         jobTitle: profile.title.replace(/\[|\]/g, ''),
-        url: 'https://signal-ledger.dev',
+        url: 'https://ericpraveen.dev',
         sameAs: profile.socialLinks.map((s) => s.url),
         address: {
           '@type': 'PostalAddress',
@@ -81,14 +90,27 @@ export default function HomePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      {/* 01 / THESIS & PROFESSIONAL IDENTITY */}
+      {/* 01 / HOME */}
       <ThesisPanel profile={profile} />
 
-      {/* 02 / SELECTED FLAGSHIP WORK */}
-      <section id="selected-work" className="selected-work-section" aria-labelledby="selected-work-heading">
+      {/* 02 / ABOUT */}
+      <section id="about" className="profile-section" aria-labelledby="about-heading">
+        <span id="profile" className="section-anchor" aria-hidden="true" />
+        <span id="bio" className="section-anchor" aria-hidden="true" />
+        <AboutOverview
+          profile={profile}
+          headingLevel="h2"
+          indexLabel="02 / ABOUT"
+        />
+      </section>
+
+      {/* 03 / SELECTED FLAGSHIP WORK */}
+      <section id="projects" className="selected-work-section" aria-labelledby="selected-work-heading">
+        <span id="selected-work" className="section-anchor" aria-hidden="true" />
+        <span id="work" className="section-anchor" aria-hidden="true" />
         <div className="section-header-strip">
           <div>
-            <span className="section-eyebrow text-mono-label font-mono">Selected Projects</span>
+            <span className="section-eyebrow text-mono-label font-mono">03 / SELECTED WORK</span>
             <h2 id="selected-work-heading" className="section-title font-heading-2xl">
               Projects I&apos;ve Built
             </h2>
@@ -111,11 +133,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 03 / CAPABILITY ARCHITECTURE MAP */}
+      {/* 04 / CAPABILITY ARCHITECTURE MAP */}
       <CapabilityMap categories={skillCategories} />
-
-      {/* 04 / CURRENT FOCUS (NOW / BUILDING / LEARNING) */}
-      <CurrentFocus />
 
       {/* 05 / PROFILE SNAPSHOT */}
       <ProfileSnapshot education={education} experience={experience} />

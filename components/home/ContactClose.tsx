@@ -13,7 +13,8 @@ export function ContactClose({ profile }: ContactCloseProps) {
     : 'Seeking engineering internships and junior roles';
 
   return (
-    <section id="contact-close" className="contact-close-section" aria-labelledby="contact-close-heading">
+    <section id="contact" className="contact-close-section" aria-labelledby="contact-close-heading">
+      <span id="contact-section" className="section-anchor" aria-hidden="true" />
       <div className="contact-close-card">
         <div className="contact-close-header">
           <div className="contact-close-status-tag">

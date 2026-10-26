@@ -11797,3 +11797,435 @@ section[id],
 
 
 
+
+
+/* --------------------------------------------------------------------------
+ * 18. STACK TRAY SELECTOR COMPONENT (INTERACTIVE 8 TRAYS)
+ * Aesthetic: Dark Retro-Arcade Console with Hardware Rivets & Brackets
+ * -------------------------------------------------------------------------- */
+.stack-tray-section {
+  position: relative;
+  margin-top: 4.5rem;
+  margin-bottom: 4.5rem;
+  width: 100%;
+}
+
+.tray-register-banner {
+  background-color: #131319;
+  border: 2px solid rgba(255, 255, 255, 0.14);
+  border-radius: 18px;
+  padding: clamp(1.6rem, 2.4vw, 2.4rem);
+  margin-bottom: 2.5rem;
+  position: relative;
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.55);
+}
+
+.tray-register-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.tray-register-statement {
+  color: #DCDCD4;
+  font-size: clamp(1.02rem, 1.25vw, 1.18rem);
+  line-height: 1.65;
+  margin: 0;
+}
+
+.tray-register-strong {
+  color: #D4FF00;
+  font-weight: 800;
+}
+
+.tray-register-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+}
+
+.tray-register-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 8px 16px;
+  border-radius: 10px;
+  background-color: #1A1A24;
+  border: 1.5px solid rgba(255, 255, 255, 0.12);
+  color: #EDECE8;
+  font-size: 0.92rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.22s ease;
+}
+
+.tray-register-chip:hover {
+  background-color: rgba(212, 255, 0, 0.12);
+  border-color: #D4FF00;
+  color: #D4FF00;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(212, 255, 0, 0.2);
+}
+
+.tray-register-chip .chip-num {
+  color: #D4FF00;
+  font-weight: 800;
+}
+
+.tray-register-chip .chip-name {
+  color: #FFFFFF;
+}
+
+.tray-register-chip:hover .chip-name {
+  color: #D4FF00;
+}
+
+.tray-register-chip .chip-arrow {
+  color: #8C8C82;
+  font-size: 0.85rem;
+  transition: transform 0.2s ease;
+}
+
+.tray-register-chip:hover .chip-arrow {
+  transform: translate(2px, -2px);
+  color: #D4FF00;
+}
+
+.tray-register-chip .chip-tag {
+  font-size: 0.6875rem;
+  padding: 2px 7px;
+  background-color: rgba(255, 42, 133, 0.18);
+  color: #FF2A85;
+  border: 1px solid rgba(255, 42, 133, 0.35);
+  border-radius: 4px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+/* ── TRAY LAYOUT ─────────────────────────────────────────── */
+.stack-tray-layout {
+  display: grid;
+  grid-template-columns: 330px 1fr;
+  gap: 2.25rem;
+  align-items: start;
+}
+
+@media (max-width: 980px) {
+  .stack-tray-layout {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+}
+
+/* ── SIDEBAR MENU ─────────────────────────────────────────── */
+.stack-tray-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+}
+
+.stack-tray-sidebar-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 0.65rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.sidebar-eyebrow {
+  color: #8C8C82;
+  font-size: 0.82rem;
+  letter-spacing: 0.18em;
+  font-weight: 800;
+}
+
+.sidebar-badge {
+  color: #D4FF00;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.stack-tray-tablist {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+@media (max-width: 980px) {
+  .stack-tray-tablist {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+}
+
+@media (max-width: 580px) {
+  .stack-tray-tablist {
+    grid-template-columns: 1fr;
+  }
+}
+
+.stack-tray-tab-btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.05rem 1.35rem;
+  background-color: #131319;
+  border: 2px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  cursor: pointer;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  text-align: left;
+  width: 100%;
+  color: inherit;
+  font-family: inherit;
+  outline: none;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+}
+
+.stack-tray-tab-btn:hover {
+  background-color: #191A24;
+  border-color: #D4FF00;
+  transform: translateX(4px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6), 0 0 16px rgba(212, 255, 0, 0.15);
+}
+
+.stack-tray-tab-btn.is-active {
+  background-color: #1B1D28;
+  border-color: #D4FF00;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7), 0 0 24px rgba(212, 255, 0, 0.25), inset 4px 0 0 #D4FF00;
+}
+
+.tab-btn-left {
+  display: flex;
+  align-items: center;
+  gap: 0.95rem;
+}
+
+.tab-btn-code {
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #D4FF00;
+  background-color: rgba(212, 255, 0, 0.12);
+  padding: 4px 8px;
+  border-radius: 6px;
+  border: 1px solid rgba(212, 255, 0, 0.3);
+}
+
+.stack-tray-tab-btn.is-active .tab-btn-code {
+  background-color: #D4FF00;
+  color: #08080A;
+  border-color: #D4FF00;
+}
+
+.tab-btn-title {
+  font-size: 1.08rem;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.tab-btn-right {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.tab-btn-count {
+  font-size: 0.88rem;
+  color: #8C8C82;
+  font-weight: 600;
+}
+
+.stack-tray-tab-btn.is-active .tab-btn-count {
+  color: #D4FF00;
+  font-weight: 800;
+}
+
+.tab-btn-beacon {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #D4FF00;
+  box-shadow: 0 0 10px #D4FF00;
+  display: inline-block;
+}
+
+/* ── ACTIVE TRAY DISPLAY ─────────────────────────────────── */
+.stack-tray-display {
+  background-color: #131319;
+  border: 2px solid rgba(255, 255, 255, 0.14);
+  border-radius: 20px;
+  padding: clamp(2.2rem, 3.4vw, 3.6rem);
+  position: relative;
+  box-shadow: 0 16px 42px rgba(0, 0, 0, 0.65);
+  display: flex;
+  flex-direction: column;
+  gap: 2.25rem;
+}
+
+/* Hardware Aesthetic Framing Brackets */
+.tray-bracket {
+  position: absolute;
+  font-family: monospace;
+  font-size: 1.75rem;
+  line-height: 1;
+  color: #8C8C82;
+  user-select: none;
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.tray-bracket--tl { top: 16px; left: 18px; }
+.tray-bracket--tr { top: 16px; right: 18px; }
+.tray-bracket--bl { bottom: 16px; left: 18px; }
+.tray-bracket--br { bottom: 16px; right: 18px; }
+
+.tray-display-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.95rem;
+  padding-bottom: 1.75rem;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.tray-display-title-row {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.tray-badge-pill {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background-color: #D4FF00;
+  color: #08080A;
+  font-weight: 800;
+  font-size: 0.82rem;
+  letter-spacing: 0.12em;
+  box-shadow: 0 0 16px rgba(212, 255, 0, 0.35);
+}
+
+.tray-display-title {
+  font-size: clamp(2rem, 2.6vw, 2.65rem);
+  font-weight: 900;
+  color: #FFFFFF;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.tray-display-desc {
+  font-size: clamp(1.04rem, 1.25vw, 1.2rem);
+  color: #DCDCD4;
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* ── CARDS GRID ──────────────────────────────────────────── */
+.tray-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+@media (max-width: 680px) {
+  .tray-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+}
+
+.tray-skill-card {
+  background-color: #181824;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 1.6rem 1.9rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.25rem;
+  transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+}
+
+.tray-skill-card:hover {
+  transform: translateY(-4px);
+  border-color: #D4FF00;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.65), 0 0 26px rgba(212, 255, 0, 0.22);
+}
+
+.tray-skill-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.75rem;
+}
+
+.tray-skill-name {
+  font-size: clamp(1.4rem, 1.85vw, 1.75rem);
+  font-weight: 800;
+  color: #FFFFFF;
+  line-height: 1.25;
+  margin: 0;
+}
+
+.tray-skill-index-code {
+  color: #8C8C82;
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.tray-skill-context-box {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  padding-top: 0.95rem;
+  border-top: 1px dashed rgba(255, 255, 255, 0.14);
+}
+
+.tray-skill-context-label {
+  font-size: 0.6875rem;
+  color: #8C8C82;
+  letter-spacing: 0.16em;
+  font-weight: 700;
+}
+
+.tray-skill-context {
+  font-size: 1rem;
+  color: #D4FF00;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ── TRAY FOOTER STRIP ───────────────────────────────────── */
+.tray-display-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 0.78rem;
+  color: #8C8C82;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tray-footer-meta {
+  color: #8C8C82;
+  letter-spacing: 0.08em;
+}
+
+.tray-footer-signal {
+  color: #10B981;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+
+

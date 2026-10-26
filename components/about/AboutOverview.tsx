@@ -76,8 +76,8 @@ const FOCUS_ITEMS = [
   },
   {
     category: 'Learning',
-    title: 'CCNA & System Design',
-    description: 'Studying CCNA part-time while strengthening backend fundamentals, networks, and system design.',
+    title: 'Docker & Microservices',
+    description: 'Studying Docker containerization, microservices architecture, and scalable full-stack web systems.',
     icon: (
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <line x1="9" y1="18" x2="15" y2="18" />
@@ -104,15 +104,16 @@ const EDUCATION_ITEMS = [
     institution: 'University of Moratuwa',
     subtitle: 'IT Undergraduate • Entered: 2024',
     degree: 'BSc (Hons.) in Information Technology',
-    status: 'In Progress (Expected 2027) • 3.7 / 4.0 GPA',
+    status: 'In Progress (Expected 2027) • 3.7 / 4.0 GPA • Dean\'s List',
     tags: [
-      'Data Structures',
-      'Software Engineering',
-      'Database Systems',
-      'Computer Networks',
-      'CCNA Foundations',
-      'Cloud Computing',
-      'IoT & Embedded Systems',
+      'Data Structures & Algorithms',
+      'Object-Oriented Programming (OOP)',
+      'Computer Networks (A+)',
+      'Operating Systems (A)',
+      'Database Management Systems',
+      'OO Analysis & Design (OOAD)',
+      'Software Development Project (A)',
+      'Enterprise Application Development',
     ],
   },
   {

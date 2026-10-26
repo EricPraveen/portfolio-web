@@ -1,84 +1,203 @@
-import React from 'react';
+'use client';
+
+import React, { useState } from 'react';
 import Link from 'next/link';
 import { CapabilityCategory } from '@/content/types';
+import { stackTrays, projectRegister, StackTray } from '@/content/stack-trays.data';
 
 export interface CapabilityMapProps {
-  categories: CapabilityCategory[];
+  categories?: CapabilityCategory[];
+  initialTrayId?: string;
 }
 
-export function CapabilityMap({ categories }: CapabilityMapProps) {
+export function CapabilityMap({ initialTrayId = 'languages' }: CapabilityMapProps) {
+  const [activeTrayId, setActiveTrayId] = useState<string>(initialTrayId);
+
+  const activeTray: StackTray =
+    stackTrays.find((t) => t.id === activeTrayId) || stackTrays[0];
+
   return (
-    <section id="skills" className="capability-map-section" aria-labelledby="capability-map-heading">
+    <section
+      id="skills"
+      className="stack-tray-section"
+      aria-labelledby="capability-map-heading"
+    >
       <span id="stack" className="section-anchor" aria-hidden="true" />
+
+      {/* ── SECTION HEADER STRIP ──────────────────────────────────── */}
       <div className="section-header-strip">
         <div>
-          <span className="section-eyebrow text-mono-label font-mono">04 / TECHNICAL SKILLS & STACK</span>
+          <span className="section-eyebrow text-mono-label font-mono">
+            04 / TECHNICAL SKILLS & STACK
+          </span>
           <h2 id="capability-map-heading" className="section-title font-heading-2xl">
-            Technical Skills
+            Technical Stack Trays
           </h2>
         </div>
         <p className="section-lead text-body">
-          Technologies and tools I work with across the stack.
+          Technologies, frameworks, and engineering tools verified on real-world builds.
         </p>
       </div>
 
-      <div className="capability-grid">
-        {categories.map((category, catIndex) => (
-          <div key={category.id} className="capability-card">
-            <div className="capability-card-header">
-              <span className="capability-card-index font-mono text-mono-label">
-                0{catIndex + 1}
+      {/* ── PROJECT REGISTER & PHILOSOPHY BANNER ──────────────────── */}
+      <div className="tray-register-banner arcade-box">
+        {/* Hardware Corner Screws */}
+        <span className="corner-screw corner-screw--tl" aria-hidden="true" />
+        <span className="corner-screw corner-screw--tr" aria-hidden="true" />
+        <span className="corner-screw corner-screw--bl" aria-hidden="true" />
+        <span className="corner-screw corner-screw--br" aria-hidden="true" />
+
+        <div className="tray-register-content">
+          <p className="tray-register-statement font-sans">
+            <strong className="tray-register-strong">
+              No percentages and no progress bars.
+            </strong>{' '}
+            Each tag is something used on a real build or hardware milestone. Index numbers correspond to projects in the register below:
+          </p>
+
+          <div className="tray-register-chips" role="list" aria-label="Project Register">
+            {projectRegister.map((proj) => (
+              proj.slug ? (
+                <Link
+                  key={proj.number}
+                  href={`/projects/${proj.slug}`}
+                  className="tray-register-chip font-mono"
+                  title={`${proj.number} ${proj.name} — ${proj.tagline}`}
+                  role="listitem"
+                >
+                  <span className="chip-num">{proj.number}</span>
+                  <span className="chip-name">{proj.name}</span>
+                  <span className="chip-arrow" aria-hidden="true">↗</span>
+                </Link>
+              ) : (
+                <span
+                  key={proj.number}
+                  className="tray-register-chip tray-register-chip--static font-mono"
+                  title={`${proj.number} ${proj.name} — ${proj.tagline}`}
+                  role="listitem"
+                >
+                  <span className="chip-num">{proj.number}</span>
+                  <span className="chip-name">{proj.name}</span>
+                  <span className="chip-tag">HARDWARE</span>
+                </span>
+              )
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* ── MAIN TRAY SELECTOR INTERFACE ──────────────────────────── */}
+      <div className="stack-tray-layout">
+        {/* Left Column: Select a Tray Menu */}
+        <aside className="stack-tray-sidebar" aria-label="Select Technology Tray">
+          <div className="stack-tray-sidebar-head">
+            <span className="sidebar-eyebrow font-mono text-mono-label">
+              SELECT A TRAY
+            </span>
+            <span className="sidebar-badge font-mono text-mono-label">
+              08 TRAYS
+            </span>
+          </div>
+
+          <div
+            className="stack-tray-tablist"
+            role="tablist"
+            aria-label="Technology Skill Trays"
+          >
+            {stackTrays.map((tray) => {
+              const isActive = tray.id === activeTray.id;
+              return (
+                <button
+                  key={tray.id}
+                  id={`tab-${tray.id}`}
+                  type="button"
+                  role="tab"
+                  aria-selected={isActive}
+                  aria-controls={`panel-${tray.id}`}
+                  tabIndex={isActive ? 0 : -1}
+                  className={`stack-tray-tab-btn ${isActive ? 'is-active' : ''}`}
+                  onClick={() => setActiveTrayId(tray.id)}
+                >
+                  <div className="tab-btn-left">
+                    <span className="tab-btn-code font-mono">{tray.code}</span>
+                    <span className="tab-btn-title font-sans">{tray.title}</span>
+                  </div>
+                  <div className="tab-btn-right font-mono">
+                    <span className="tab-btn-count">0{tray.count}</span>
+                    {isActive && (
+                      <span className="tab-btn-beacon" aria-hidden="true" />
+                    )}
+                  </div>
+                </button>
+              );
+            })}
+          </div>
+        </aside>
+
+        {/* Right Column: Active Tray Display Card */}
+        <div
+          id={`panel-${activeTray.id}`}
+          role="tabpanel"
+          aria-labelledby={`tab-${activeTray.id}`}
+          className="stack-tray-display arcade-box"
+        >
+          {/* Hardware Corner Screws */}
+          <span className="corner-screw corner-screw--tl" aria-hidden="true" />
+          <span className="corner-screw corner-screw--tr" aria-hidden="true" />
+          <span className="corner-screw corner-screw--bl" aria-hidden="true" />
+          <span className="corner-screw corner-screw--br" aria-hidden="true" />
+
+          {/* Hardware Aesthetic Framing Brackets */}
+          <span className="tray-bracket tray-bracket--tl" aria-hidden="true">⌜</span>
+          <span className="tray-bracket tray-bracket--tr" aria-hidden="true">⌝</span>
+          <span className="tray-bracket tray-bracket--bl" aria-hidden="true">⌞</span>
+          <span className="tray-bracket tray-bracket--br" aria-hidden="true">⌟</span>
+
+          {/* Tray Title Header */}
+          <div className="tray-display-header">
+            <div className="tray-display-title-row">
+              <span className="tray-badge-pill font-mono">
+                TRAY {activeTray.trayNumber}
               </span>
-              <h3 className="capability-card-title font-sans">
-                {category.title}
+              <h3 className="tray-display-title font-sans">
+                {activeTray.title}
               </h3>
             </div>
-
-            <p className="capability-card-desc text-sm">
-              {category.description}
+            <p className="tray-display-desc font-sans">
+              {activeTray.description}
             </p>
-
-            <ul className="capability-item-list" role="list">
-              {category.items.map((item) => (
-                <li key={item.name} className="capability-item">
-                  <div className="capability-item-head">
-                    <span className="capability-item-name font-sans font-weight-bold">
-                      {item.name}
-                    </span>
-                    <span className="capability-item-badge text-mono-label font-mono">
-                      {item.level}
-                    </span>
-                  </div>
-
-                  {item.context && (
-                    <p className="capability-item-context text-xs">
-                      {item.context}
-                    </p>
-                  )}
-
-                  {item.appliedInProjectSlugs && item.appliedInProjectSlugs.length > 0 && (
-                    <div className="capability-applied-strip">
-                      <span className="capability-applied-label text-mono-label font-mono">
-                        Applied in:
-                      </span>
-                      <div className="capability-applied-links">
-                        {item.appliedInProjectSlugs.map((slug) => (
-                          <Link
-                            key={slug}
-                            href={`/projects/${slug}`}
-                            className="capability-project-link font-mono"
-                          >
-                            {slug} &rarr;
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-                </li>
-              ))}
-            </ul>
           </div>
-        ))}
+
+          {/* Grid of Skill Cards */}
+          <div className="tray-cards-grid">
+            {activeTray.items.map((item) => (
+              <div key={item.name} className="tray-skill-card">
+                <div className="tray-skill-card-head">
+                  <h4 className="tray-skill-name font-sans">{item.name}</h4>
+                  <span className="tray-skill-index-code font-mono text-mono-label">
+                    {activeTray.code}
+                  </span>
+                </div>
+                <div className="tray-skill-context-box">
+                  <span className="tray-skill-context-label font-mono">CONTEXT / REGISTER</span>
+                  <p className="tray-skill-context font-mono">
+                    {item.context}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Tray Display Footer Strip */}
+          <div className="tray-display-footer">
+            <span className="tray-footer-meta font-mono text-mono-label">
+              VERIFIED WORKSPACE // MORATUWA SWE LEDGER
+            </span>
+            <span className="tray-footer-signal font-mono text-mono-label">
+              STATUS: PRODUCTION READY
+            </span>
+          </div>
+        </div>
       </div>
     </section>
   );

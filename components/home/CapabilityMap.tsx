@@ -1,9 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
-import Link from 'next/link';
 import { CapabilityCategory } from '@/content/types';
-import { stackTrays, projectRegister, StackTray } from '@/content/stack-trays.data';
+import { stackTrays, StackTray } from '@/content/stack-trays.data';
 
 export interface CapabilityMapProps {
   categories?: CapabilityCategory[];
@@ -37,53 +36,6 @@ export function CapabilityMap({ initialTrayId = 'languages' }: CapabilityMapProp
         <p className="section-lead text-body">
           Technologies, frameworks, and engineering tools verified on real-world builds.
         </p>
-      </div>
-
-      {/* ── PROJECT REGISTER & PHILOSOPHY BANNER ──────────────────── */}
-      <div className="tray-register-banner arcade-box">
-        {/* Hardware Corner Screws */}
-        <span className="corner-screw corner-screw--tl" aria-hidden="true" />
-        <span className="corner-screw corner-screw--tr" aria-hidden="true" />
-        <span className="corner-screw corner-screw--bl" aria-hidden="true" />
-        <span className="corner-screw corner-screw--br" aria-hidden="true" />
-
-        <div className="tray-register-content">
-          <p className="tray-register-statement font-sans">
-            <strong className="tray-register-strong">
-              No percentages and no progress bars.
-            </strong>{' '}
-            Each tag is something used on a real build or hardware milestone. Index numbers correspond to projects in the register below:
-          </p>
-
-          <div className="tray-register-chips" role="list" aria-label="Project Register">
-            {projectRegister.map((proj) => (
-              proj.slug ? (
-                <Link
-                  key={proj.number}
-                  href={`/projects/${proj.slug}`}
-                  className="tray-register-chip font-mono"
-                  title={`${proj.number} ${proj.name} — ${proj.tagline}`}
-                  role="listitem"
-                >
-                  <span className="chip-num">{proj.number}</span>
-                  <span className="chip-name">{proj.name}</span>
-                  <span className="chip-arrow" aria-hidden="true">↗</span>
-                </Link>
-              ) : (
-                <span
-                  key={proj.number}
-                  className="tray-register-chip tray-register-chip--static font-mono"
-                  title={`${proj.number} ${proj.name} — ${proj.tagline}`}
-                  role="listitem"
-                >
-                  <span className="chip-num">{proj.number}</span>
-                  <span className="chip-name">{proj.name}</span>
-                  <span className="chip-tag">HARDWARE</span>
-                </span>
-              )
-            ))}
-          </div>
-        </div>
       </div>
 
       {/* ── MAIN TRAY SELECTOR INTERFACE ──────────────────────────── */}

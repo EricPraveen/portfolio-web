@@ -179,16 +179,16 @@
   /* --------------------------------------------------------------------------
    * 4. GRID & CONTAINER WIDTHS
    * -------------------------------------------------------------------------- */
-  --container-max-width:     1480px;
+  --container-max-width:     1680px;
   --container-reading-width: 860px;
-  --container-wide-width:    1640px;
+  --container-wide-width:    1720px;
 
   --grid-columns-desktop: 12;
   --grid-columns-tablet:  6;
   --grid-columns-mobile:  4;
 
-  --grid-gutter: 1.5rem;
-  --grid-margin: 1.5rem;
+  --grid-gutter: 1.25rem;
+  --grid-margin: 1rem;
 
   /* --------------------------------------------------------------------------
    * 5. BORDERS & PIXEL FRAMES — Warm brownish-yellow

@@ -104,7 +104,7 @@ export function ProfileHeader({
               <span>Download Resume ↗</span>
             </a>
 
-            <Link href="/contact" className="profile-btn profile-btn-secondary arcade-btn font-mono">
+            <Link href="/#contact" className="profile-btn profile-btn-secondary arcade-btn font-mono">
               <span>Contact Me →</span>
             </Link>
           </div>

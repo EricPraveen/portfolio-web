@@ -20,9 +20,8 @@ export const RAIL_ITEMS: RailItem[] = [
   { id: 'about', num: '02', label: 'ABOUT', href: '/#about', targetId: 'about' },
   { id: 'projects', num: '03', label: 'WORK', href: '/#projects', targetId: 'projects' },
   { id: 'skills', num: '04', label: 'STACK', href: '/#skills', targetId: 'skills' },
-  { id: 'education', num: '05', label: 'LOG', href: '/#education', targetId: 'education' },
-  { id: 'certificates', num: '06', label: 'FIELD', href: '/#certificates', targetId: 'certificates' },
-  { id: 'contact', num: '07', label: 'CONTACT', href: '/#contact', targetId: 'contact' },
+  { id: 'blog', num: '05', label: 'BLOG', href: '/#blog', targetId: 'blog' },
+  { id: 'contact', num: '06', label: 'CONTACT', href: '/#contact', targetId: 'contact' },
 ];
 
 export function LeftRailNav() {
@@ -55,7 +54,7 @@ export function LeftRailNav() {
           {RAIL_ITEMS.slice(1).map((item) => {
             const isActive = activeSection === item.id;
             const isTealDivider = item.id === 'projects'; // teal divider after WORK (Plate 03)
-            const isOrangeDivider = item.id === 'education'; // orange divider after LOG (Plate 06)
+            const isOrangeDivider = item.id === 'skills'; // orange divider after STACK (Plate 04)
 
             return (
               <React.Fragment key={`${item.num}-${item.id}`}>

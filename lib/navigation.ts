@@ -12,35 +12,30 @@ export const NAV_ITEMS: NavItem[] = [
     label: 'About',
     href: '/#about',
     targetId: 'about',
-    matchPattern: (pathname: string) => pathname === '/about' || pathname === '/#about',
   },
   {
     index: '02',
-    label: 'Skills',
-    href: '/#skills',
-    targetId: 'skills',
-    matchPattern: (pathname: string) => pathname.startsWith('/skills') || pathname === '/#skills',
+    label: 'Work',
+    href: '/#projects',
+    targetId: 'projects',
   },
   {
     index: '03',
-    label: 'Projects',
-    href: '/#projects',
-    targetId: 'projects',
-    matchPattern: (pathname: string) => pathname.startsWith('/projects') || pathname === '/#projects',
+    label: 'Stack',
+    href: '/#skills',
+    targetId: 'skills',
   },
   {
     index: '04',
-    label: 'Education',
-    href: '/#education',
-    targetId: 'education',
-    matchPattern: (pathname: string) => pathname.startsWith('/education') || pathname === '/#education',
+    label: 'Field',
+    href: '/#certificates',
+    targetId: 'certificates',
   },
   {
     index: '05',
     label: 'Contact',
     href: '/#contact',
     targetId: 'contact',
-    matchPattern: (pathname: string) => pathname.startsWith('/contact') || pathname === '/#contact',
   },
 ];
 
@@ -56,9 +51,8 @@ const SECTION_BADGE_MAP: Record<string, { index: string; label: string; href: st
   about: { index: '02', label: 'About', href: '/#about' },
   projects: { index: '03', label: 'Work', href: '/#projects' },
   skills: { index: '04', label: 'Stack', href: '/#skills' },
-  education: { index: '05', label: 'Log', href: '/#education' },
-  certificates: { index: '06', label: 'Field', href: '/#certificates' },
-  contact: { index: '07', label: 'Contact', href: '/#contact' },
+  certificates: { index: '05', label: 'Field', href: '/#certificates' },
+  contact: { index: '06', label: 'Contact', href: '/#contact' },
 };
 
 export function getCurrentSection(pathname: string, activeSectionId?: string): CurrentSectionInfo {

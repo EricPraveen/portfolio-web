@@ -48,7 +48,7 @@ export function ResumeAction({ profile }: ResumeActionProps) {
             <span aria-hidden="true"> ↗</span>
           </a>
 
-          <Link href="/contact" className="profile-resume-btn-contact font-mono">
+          <Link href="/#contact" className="profile-resume-btn-contact font-mono">
             <span>Contact Me</span>
             <span aria-hidden="true">&rarr;</span>
           </Link>

@@ -2,10 +2,14 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { Profile } from '@/content/types';
+import { Profile, Education, Experience } from '@/content/types';
+import { educationData as defaultEducation } from '@/content/education.data';
+import { experienceData as defaultExperience } from '@/content/experience.data';
 
 export interface AboutOverviewProps {
   profile: Profile;
+  education?: Education[];
+  experience?: Experience[];
   headingLevel?: 'h1' | 'h2';
   indexLabel?: string;
 }
@@ -99,40 +103,10 @@ const FOCUS_ITEMS = [
   },
 ];
 
-const EDUCATION_ITEMS = [
-  {
-    institution: 'University of Moratuwa',
-    subtitle: 'IT Undergraduate • Entered: 2024',
-    degree: 'BSc (Hons.) in Information Technology',
-    status: 'In Progress (Expected 2027) • 3.7 / 4.0 GPA • Dean\'s List',
-    tags: [
-      'Data Structures & Algorithms',
-      'Object-Oriented Programming (OOP)',
-      'Computer Networks (A+)',
-      'Operating Systems (A)',
-      'Database Management Systems',
-      'OO Analysis & Design (OOAD)',
-      'Software Development Project (A)',
-      'Enterprise Application Development',
-    ],
-  },
-  {
-    institution: "St. Patrick's College, Jaffna",
-    subtitle: 'Entered: 2009 • Completed: 2023',
-    degree: 'Primary, Secondary & Collegiate Education',
-    status: 'GCE Advanced Level (A 2B) & GCE Ordinary Level (8A C)',
-    tags: [
-      'GCE A/L: A 2B',
-      'GCE O/L: 8A C',
-      'Physical Science Stream',
-      'Combined Mathematics',
-      'Physics',
-    ],
-  },
-];
-
 export function AboutOverview({
   profile,
+  education = defaultEducation,
+  experience = defaultExperience,
   headingLevel = 'h2',
   indexLabel = '02 / ABOUT',
 }: AboutOverviewProps) {
@@ -171,7 +145,7 @@ export function AboutOverview({
           </HeadingTag>
 
           <p className="about-hero-roles font-mono">
-            <span className="about-role-pill">IT undergrad</span>
+            <span className="about-role-pill">IT undergraduate</span>
             <span className="about-role-sep">/</span>
             <span className="about-role-pill">Full-stack builder</span>
             <span className="about-role-sep">/</span>
@@ -191,7 +165,6 @@ export function AboutOverview({
             >
               <span>Download Resume ↗</span>
             </a>
-
             <a
               href="#contact"
               className="about-btn about-btn--dark arcade-btn font-mono"
@@ -264,40 +237,120 @@ export function AboutOverview({
         </div>
       </div>
 
-      {/* ── 4. EDUCATION // ACADEMIC BACKGROUND ──────────────────────── */}
-      <div className="about-section-group">
+      {/* ── 4. ACADEMIC FOUNDATION & PRACTICAL EXPERIENCE ───────────── */}
+      <div className="about-section-group" id="academics">
+        <span id="education" className="section-anchor" aria-hidden="true" />
+        <span id="experience" className="section-anchor" aria-hidden="true" />
+        <span id="log" className="section-anchor" aria-hidden="true" />
+
         <div className="about-section-header">
-          <span className="about-sub-eyebrow font-mono">EDUCATION</span>
-          <h3 className="about-sub-title font-heading-2xl">Academic Background</h3>
+          <span className="about-sub-eyebrow font-mono">ACADEMIC &amp; LEADERSHIP TRACK</span>
+          <h3 className="about-sub-title font-heading-2xl">Education &amp; Experience</h3>
         </div>
 
-        <div className="about-education-grid">
-          {EDUCATION_ITEMS.map((edu) => (
-            <div key={edu.institution} className="about-education-card arcade-box">
-              <div className="about-education-top">
-                <div className="about-education-info">
-                  <h4 className="about-education-inst font-sans">{edu.institution}</h4>
-                  <p className="about-education-subtitle font-mono">{edu.subtitle}</p>
-                  <p className="about-education-degree font-sans">{edu.degree}</p>
-                  <p className="about-education-status font-mono text-mono-label">{edu.status}</p>
-                </div>
-                <div className="about-education-icon" aria-hidden="true">
-                  <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
-                    <path d="M6 12v5c3 3 9 3 12 0v-5" />
-                  </svg>
-                </div>
-              </div>
-
-              <div className="about-education-tags">
-                {edu.tags.map((tag) => (
-                  <span key={tag} className="about-education-tag font-mono">
-                    {tag}
-                  </span>
-                ))}
-              </div>
+        <div className="about-track-grid">
+          {/* Practical Experience Column */}
+          <div className="about-track-col">
+            <div className="about-track-subhead">
+              <span className="about-track-subhead-title font-mono">
+                <span className="about-track-subhead-dot" aria-hidden="true" />
+                PRACTICAL EXPERIENCE &amp; LEADERSHIP
+              </span>
+              <span className="about-track-subhead-count font-mono">{experience.length} ROLES</span>
             </div>
-          ))}
+
+            <div className="about-track-list">
+              {experience.map((exp) => (
+                <div key={exp.id} className="about-track-card about-track-card--experience arcade-box">
+                  <div className="about-track-header">
+                    <h4 className="about-track-role font-sans">
+                      {exp.role.replace(/\[|\]/g, '')}
+                    </h4>
+                    <span className={`about-track-badge font-mono ${exp.dates.isCurrent ? 'is-current' : ''}`}>
+                      {exp.dates.start} &ndash; {exp.dates.end || 'PRESENT'}
+                    </span>
+                  </div>
+
+                  <div className="about-track-org font-mono">
+                    <span className="about-track-org-name">{exp.organization.replace(/\[|\]/g, '')}</span>
+                    <span className="about-track-org-sep">/</span>
+                    <span className="about-track-org-meta">{exp.location.replace(/\[|\]/g, '')}</span>
+                  </div>
+
+                  <p className="about-track-desc font-sans">
+                    {exp.context.replace(/\[|\]/g, '')}
+                  </p>
+
+                  {exp.verifiedOutcomes && exp.verifiedOutcomes.length > 0 && (
+                    <div className="about-track-outcome">
+                      <span className="about-track-outcome-label font-mono">
+                        Key Verified Outcome
+                      </span>
+                      <p className="about-track-outcome-text font-sans">
+                        &bull; {exp.verifiedOutcomes[0].replace(/\[|\]/g, '')}
+                      </p>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Academic Foundation Column */}
+          <div className="about-track-col">
+            <div className="about-track-subhead about-track-subhead--academic">
+              <span className="about-track-subhead-title font-mono">
+                <span className="about-track-subhead-dot" aria-hidden="true" />
+                ACADEMIC FOUNDATION
+              </span>
+              <span className="about-track-subhead-count font-mono">{education.length} INSTITUTIONS</span>
+            </div>
+
+            <div className="about-track-list">
+              {education.map((edu) => (
+                <div key={edu.id} className="about-track-card about-track-card--academic arcade-box">
+                  <div className="about-track-header">
+                    <h4 className="about-track-role font-sans">
+                      {edu.degree}
+                    </h4>
+                    <span className={`about-track-badge font-mono ${edu.dates.isCurrent ? 'is-current' : ''}`}>
+                      {edu.dates.start} &ndash; {edu.dates.end}
+                    </span>
+                  </div>
+
+                  <div className="about-track-org font-mono">
+                    <span className="about-track-org-name">{edu.institution.replace(/\[|\]/g, '')}</span>
+                    <span className="about-track-org-sep">/</span>
+                    <span className="about-track-org-meta">
+                      {edu.major ? `${edu.major} • ` : ''}{edu.status}
+                    </span>
+                  </div>
+
+                  <div className="about-track-coursework">
+                    <span className="about-track-coursework-label font-mono">
+                      Core Relevant Coursework
+                    </span>
+                    <div className="about-track-tags">
+                      {edu.relevantCoursework.slice(0, 6).map((course) => (
+                        <span key={course} className="about-track-tag font-mono">
+                          {course}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {edu.capstone && (
+                    <div className="about-track-capstone">
+                      <span className="about-track-capstone-label font-mono">Capstone Focus:</span>
+                      <span className="about-track-capstone-title font-mono">
+                        {edu.capstone.title}
+                      </span>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </div>

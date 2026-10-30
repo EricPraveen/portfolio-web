@@ -5,3 +5,4 @@ export * from './CapabilityMap';
 export * from './ProfileSnapshot';
 export * from './SelectedCredentials';
 export * from './ContactClose';
+export * from '../blog';

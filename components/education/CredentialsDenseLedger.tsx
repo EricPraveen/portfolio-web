@@ -88,7 +88,7 @@ export function CredentialsDenseLedger({ items }: CredentialsDenseLedgerProps) {
                   <td className="cred-td-project font-mono text-xs">
                     {item.relatedProjectSlug ? (
                       <Link
-                        href={`/projects/${item.relatedProjectSlug}`}
+                        href="/#projects"
                         className="cred-ledger-proj-link"
                       >
                         {item.relatedProjectSlug} &rarr;

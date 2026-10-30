@@ -1,5 +1,4 @@
 import React from 'react';
-import Link from 'next/link';
 import type { Metadata } from 'next';
 import {
   getProfile,
@@ -7,19 +6,16 @@ import {
   getSkills,
   getEducation,
   getExperience,
-  getFeaturedCredentials,
-  getFeaturedAwards,
-  getAllHackathons,
   assertContentValid,
 } from '@/lib/content';
 import {
   ThesisPanel,
   ProjectPlate,
   CapabilityMap,
-  ProfileSnapshot,
-  SelectedCredentials,
   ContactClose,
+  BlogSection,
 } from '@/components/home';
+import { getMediumArticles } from '@/lib/content/medium.service';
 import { AboutOverview } from '@/components/about';
 
 // Enforce content validity at build time
@@ -43,15 +39,13 @@ export const metadata: Metadata = {
   },
 };
 
-export default function HomePage() {
+export default async function HomePage() {
   const profile = getProfile();
   const featuredProjects = getFeaturedProjects();
   const skillCategories = getSkills();
   const education = getEducation();
   const experience = getExperience();
-  const featuredCredentials = getFeaturedCredentials();
-  const featuredAwards = getFeaturedAwards();
-  const hackathons = getAllHackathons();
+  const { articles: initialArticles } = await getMediumArticles(4);
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -99,6 +93,8 @@ export default function HomePage() {
         <span id="bio" className="section-anchor" aria-hidden="true" />
         <AboutOverview
           profile={profile}
+          education={education}
+          experience={experience}
           headingLevel="h2"
           indexLabel="02 / ABOUT"
         />
@@ -115,10 +111,6 @@ export default function HomePage() {
               Projects I&apos;ve Built
             </h2>
           </div>
-
-          <Link href="/projects" className="section-link-more font-mono">
-            View All Projects ({featuredProjects.length}+) &rarr;
-          </Link>
         </div>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-xl)' }}>
@@ -136,17 +128,10 @@ export default function HomePage() {
       {/* 04 / CAPABILITY ARCHITECTURE MAP */}
       <CapabilityMap categories={skillCategories} />
 
-      {/* 05 / PROFILE SNAPSHOT */}
-      <ProfileSnapshot education={education} experience={experience} />
+      {/* 05 / DYNAMIC MEDIUM BLOG */}
+      <BlogSection initialArticles={initialArticles} />
 
-      {/* 06 / SELECTED CREDENTIALS & HONORS */}
-      <SelectedCredentials
-        credentials={featuredCredentials}
-        awards={featuredAwards}
-        hackathons={hackathons}
-      />
-
-      {/* 07 / CONTACT CLOSE */}
+      {/* 06 / CONTACT CLOSE */}
       <ContactClose profile={profile} />
     </div>
   );

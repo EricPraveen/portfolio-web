@@ -74,10 +74,10 @@ export function EducationTimeline({ education }: EducationTimelineProps) {
                     </span>
                     {edu.capstone.slug && (
                       <Link
-                        href={`/projects/${edu.capstone.slug}`}
+                        href="/#projects"
                         className="timeline-capstone-link font-mono text-xs"
                       >
-                        Read Case Study &rarr;
+                        View in Projects &rarr;
                       </Link>
                     )}
                   </div>

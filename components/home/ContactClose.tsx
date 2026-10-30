@@ -1,6 +1,6 @@
 import React from 'react';
-import Link from 'next/link';
 import { Profile } from '@/content/types';
+import { ContactForm } from '@/components/contact';
 
 export interface ContactCloseProps {
   profile: Profile;
@@ -70,11 +70,6 @@ export function ContactClose({ profile }: ContactCloseProps) {
         </div>
 
         <div className="contact-close-footer">
-          <Link href="/contact" className="contact-close-btn-primary">
-            <span>Open Structured Contact Form</span>
-            <span aria-hidden="true">&rarr;</span>
-          </Link>
-
           <a
             href={profile.resume.path}
             target="_blank"
@@ -85,6 +80,20 @@ export function ContactClose({ profile }: ContactCloseProps) {
             <span aria-hidden="true"> ↗</span>
           </a>
         </div>
+      </div>
+
+      {/* Structured In-Page Contact Form */}
+      <div className="contact-form-section" style={{ marginTop: 'var(--space-2xl)' }}>
+        <header className="contact-form-section__header">
+          <h3 id="form-heading" className="contact-form-section__title font-heading-xl font-sans">
+            Send a Message
+          </h3>
+          <p className="contact-form-section__subtitle text-body">
+            Fill in the form below. I aim to reply within two business days.
+          </p>
+        </header>
+
+        <ContactForm contactEmail={profile.contactEmail} />
       </div>
     </section>
   );

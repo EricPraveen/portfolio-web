@@ -166,7 +166,7 @@ export function SkillsGrid({ categories }: SkillsGridProps) {
                           {skill.appliedInProjectSlugs.map((slug) => (
                             <Link
                               key={slug}
-                              href={`/projects/${slug}`}
+                              href="/#projects"
                               className="skills-card-project-link font-mono"
                             >
                               {slug} →
@@ -188,7 +188,7 @@ export function SkillsGrid({ categories }: SkillsGridProps) {
         <p className="skills-cta-text text-body">
           See these skills applied in real-world engineering projects.
         </p>
-        <Link href="/projects" className="skills-cta-link font-mono">
+        <Link href="/#projects" className="skills-cta-link font-mono">
           View All Projects →
         </Link>
       </div>

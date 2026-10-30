@@ -1,5 +1,4 @@
 import React from 'react';
-import Link from 'next/link';
 import { CapabilityCategory } from '@/content/types';
 
 export interface CapabilityMatrixProps {
@@ -62,9 +61,9 @@ export function CapabilityMatrix({ categories }: CapabilityMatrixProps) {
                       {item.appliedInProjectSlugs.map((slug, sIdx) => (
                         <span key={slug}>
                           {sIdx > 0 && ' • '}
-                          <Link href={`/projects/${slug}`} className="capability-matrix-project-link">
-                            {slug} &rarr;
-                          </Link>
+                          <span className="capability-matrix-project-link">
+                            {slug}
+                          </span>
                         </span>
                       ))}
                     </div>

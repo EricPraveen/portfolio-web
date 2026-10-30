@@ -30,7 +30,7 @@ export function ProjectPager({ previous, next }: ProjectPagerProps) {
             </div>
           </Link>
         ) : (
-          <Link href="/projects" className="cs-pager-card cs-pager-card-return" aria-label="Return to Work Catalog">
+          <Link href="/#projects" className="cs-pager-card cs-pager-card-return" aria-label="Return to Work Catalog">
             <div className="cs-pager-direction">
               <span className="cs-pager-arrow" aria-hidden="true">&larr;</span>
               <span className="cs-pager-dir-label text-mono-label">WORK CATALOG</span>
@@ -59,7 +59,7 @@ export function ProjectPager({ previous, next }: ProjectPagerProps) {
             </div>
           </Link>
         ) : (
-          <Link href="/projects" className="cs-pager-card cs-pager-card-return cs-pager-card-next" aria-label="Return to Work Catalog">
+          <Link href="/#projects" className="cs-pager-card cs-pager-card-return cs-pager-card-next" aria-label="Return to Work Catalog">
             <div className="cs-pager-direction">
               <span className="cs-pager-dir-label text-mono-label">WORK CATALOG</span>
               <span className="cs-pager-arrow" aria-hidden="true">&rarr;</span>

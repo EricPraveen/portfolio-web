@@ -91,45 +91,7 @@ export function CommandPalette({ isOpen, onClose }: CommandPaletteProps) {
       keywords: ['contact', 'email', 'message', 'hire'],
     },
 
-    // 2. Case Studies (Direct deep links)
-    {
-      id: 'cs-task-orchestrator',
-      category: 'Case Studies',
-      title: 'Distributed Task Orchestrator',
-      subtitle: 'Fault-tolerant job scheduler with Lua-backed Redis leases & dead-letter queues',
-      badge: '99.999% SLA',
-      url: '/projects/distributed-task-orchestrator',
-      keywords: ['redis', 'distributed', 'orchestrator', 'queue', 'concurrency', 'lua', 'golang'],
-    },
-    {
-      id: 'cs-travel-hub',
-      category: 'Case Studies',
-      title: 'TravelHub Multi-GDS Aggregator',
-      subtitle: 'High-throughput flight & hotel inventory engine with optimistic concurrency',
-      badge: '42K RPS',
-      url: '/projects/travel-hub-platform',
-      keywords: ['travel', 'booking', 'inventory', 'concurrency', 'aggregator', 'postgresql'],
-    },
-    {
-      id: 'cs-memory-allocator',
-      category: 'Case Studies',
-      title: 'Deterministic Memory Allocator',
-      subtitle: 'Zero-fragmentation slab allocator for low-latency financial telemetry',
-      badge: 'C++20',
-      url: '/projects/deterministic-memory-allocator',
-      keywords: ['memory', 'allocator', 'cpp', 'low-latency', 'slab', 'telemetry', 'realtime'],
-    },
-    {
-      id: 'cs-vector-index',
-      category: 'Case Studies',
-      title: 'Embedded Vector Search Engine',
-      subtitle: 'SIMD-accelerated HNSW index with quantized cosine similarity',
-      badge: 'AVX-512',
-      url: '/projects/embedded-vector-index',
-      keywords: ['vector', 'hnsw', 'search', 'simd', 'embeddings', 'ai', 'rust'],
-    },
-
-    // 3. Quick Actions
+    // 2. Quick Actions
     {
       id: 'action-copy-email',
       category: 'Actions',

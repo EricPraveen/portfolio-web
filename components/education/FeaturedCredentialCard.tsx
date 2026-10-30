@@ -132,9 +132,9 @@ export function FeaturedCredentialCard({
         {/* Linked Project Cross-Reference */}
         {item.relatedProjectSlug && (
           <Link
-            href={`/projects/${item.relatedProjectSlug}`}
+            href="/#projects"
             className="cred-related-project-link font-mono text-xs"
-            title={`View case study: ${item.relatedProjectSlug}`}
+            title={`View projects: ${item.relatedProjectSlug}`}
           >
             <span>Applied in: <strong>{item.relatedProjectSlug}</strong> &rarr;</span>
           </Link>

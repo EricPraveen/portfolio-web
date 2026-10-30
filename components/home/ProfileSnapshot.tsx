@@ -1,5 +1,4 @@
 import React from 'react';
-import Link from 'next/link';
 import { Education, Experience } from '@/content/types';
 
 export interface ProfileSnapshotProps {
@@ -20,10 +19,6 @@ export function ProfileSnapshot({ education, experience }: ProfileSnapshotProps)
             Education & Industry Experience
           </h2>
         </div>
-
-        <Link href="/about" className="section-link-more font-mono">
-          Full Profile & Operating Principles &rarr;
-        </Link>
       </div>
 
       <div className="profile-snapshot-grid">
@@ -106,9 +101,9 @@ export function ProfileSnapshot({ education, experience }: ProfileSnapshotProps)
                 {edu.capstone && (
                   <div className="profile-capstone-note text-xs font-sans">
                     <strong>Capstone Focus:</strong>{' '}
-                    <Link href={`/projects/${edu.capstone.slug}`} className="profile-capstone-link">
-                      {edu.capstone.title} &rarr;
-                    </Link>
+                    <span className="profile-capstone-title font-mono">
+                      {edu.capstone.title}
+                    </span>
                   </div>
                 )}
               </div>

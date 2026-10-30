@@ -1,5 +1,4 @@
 import React from 'react';
-import Link from 'next/link';
 import { Award, CredentialItem, HackathonItem } from '@/content/types';
 
 export interface SelectedCredentialsProps {
@@ -19,20 +18,16 @@ export function SelectedCredentials({
       <span id="field" className="section-anchor" aria-hidden="true" />
       <div className="section-header-strip">
         <div>
-          <span className="section-eyebrow text-mono-label font-mono">06 / FIELD CREDENTIALS & HONORS</span>
+          <span className="section-eyebrow text-mono-label font-mono">05 / FIELD CREDENTIALS & HONORS</span>
           <h2 id="credentials-snapshot-heading" className="section-title font-heading-2xl">
-            Selected Credentials & Honors
+            Verified Credentials & Certifications
           </h2>
         </div>
-
-        <Link href="/education" className="section-link-more font-mono">
-          Complete Credentials Archive &rarr;
-        </Link>
       </div>
 
       <div className="credentials-grid">
         {/* Industry Certifications */}
-        {credentials.slice(0, 2).map((cred) => (
+        {credentials.map((cred) => (
           <div key={cred.id} className="credential-card">
             <div className="credential-card-meta">
               <span className="credential-card-cat text-mono-label font-mono">

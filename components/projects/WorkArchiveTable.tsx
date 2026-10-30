@@ -1,5 +1,4 @@
 import React from 'react';
-import Link from 'next/link';
 import { Project } from '@/content/types';
 
 export interface WorkArchiveTableProps {
@@ -35,13 +34,34 @@ export function WorkArchiveTable({ projects }: WorkArchiveTableProps) {
 
               {/* Title & Headline */}
               <td className="work-table-cell-title">
-                <Link
-                  href={`/projects/${project.slug}`}
-                  className="work-table-title-link font-sans font-weight-bold"
-                  aria-label={`${project.title} - ${project.headline}`}
-                >
-                  {project.title}
-                </Link>
+                {project.demoUrl && project.demoUrl !== '#' ? (
+                  <a
+                    href={project.demoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="work-table-title-link font-sans font-weight-bold"
+                    aria-label={`${project.title} - ${project.headline}`}
+                  >
+                    {project.title} ↗
+                  </a>
+                ) : project.repoUrl ? (
+                  <a
+                    href={project.repoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="work-table-title-link font-sans font-weight-bold"
+                    aria-label={`${project.title} - ${project.headline}`}
+                  >
+                    {project.title} ↗
+                  </a>
+                ) : (
+                  <span
+                    className="work-table-title-link font-sans font-weight-bold"
+                    aria-label={`${project.title} - ${project.headline}`}
+                  >
+                    {project.title}
+                  </span>
+                )}
                 <p className="work-table-headline text-xs font-sans">
                   {project.headline}
                 </p>
@@ -87,13 +107,31 @@ export function WorkArchiveTable({ projects }: WorkArchiveTableProps) {
 
               {/* Action */}
               <td className="work-table-cell-action font-mono text-xs" style={{ textAlign: 'right' }}>
-                <Link
-                  href={`/projects/${project.slug}`}
-                  className="work-table-action-link"
-                  aria-label={`Open case study for ${project.title}`}
-                >
-                  Open Case Study &rarr;
-                </Link>
+                {project.demoUrl && project.demoUrl !== '#' ? (
+                  <a
+                    href={project.demoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="work-table-action-link"
+                    aria-label={`Open live demo for ${project.title}`}
+                  >
+                    Live Demo &rarr;
+                  </a>
+                ) : project.repoUrl ? (
+                  <a
+                    href={project.repoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="work-table-action-link"
+                    aria-label={`Open repository for ${project.title}`}
+                  >
+                    GitHub &rarr;
+                  </a>
+                ) : (
+                  <span className="work-table-action-link" style={{ opacity: 0.6 }}>
+                    In Progress
+                  </span>
+                )}
               </td>
             </tr>
           ))}

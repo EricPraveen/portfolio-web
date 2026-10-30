@@ -108,7 +108,7 @@ export function ExperienceTimeline({ experience }: ExperienceTimelineProps) {
                     {exp.linkedProjectSlugs.map((slug) => (
                       <Link
                         key={slug}
-                        href={`/projects/${slug}`}
+                        href="/#projects"
                         className="timeline-project-link font-mono text-xs"
                       >
                         {slug} &rarr;

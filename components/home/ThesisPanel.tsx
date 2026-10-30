@@ -185,15 +185,6 @@ export function ThesisPanel({ profile, onOpenCommand }: ThesisPanelProps) {
               <span className="portrait-corner portrait-corner--bl" aria-hidden="true" />
               <span className="portrait-corner portrait-corner--br" aria-hidden="true" />
 
-              {/* Status Header Badge */}
-              <div className="editorial-hero__portrait-header">
-                <span className="editorial-hero__portrait-badge font-mono">SYS // DEV.ID</span>
-                <span className="editorial-hero__portrait-live font-mono">
-                  <span className="portrait-live-dot" />
-                  LIVE
-                </span>
-              </div>
-
               <div className="editorial-hero__portrait-inner">
                 <Image
                   src="/images/profile.jpeg"

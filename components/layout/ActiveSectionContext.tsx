@@ -20,12 +20,11 @@ export interface SectionMeta {
 
 export const SECTIONS: SectionMeta[] = [
   { id: 'home', num: '01', label: 'HOME', badge: '01 • HOME', aliases: ['hero', 'top', 'reveal'] },
-  { id: 'about', num: '02', label: 'ABOUT', badge: '02 • ABOUT', aliases: ['profile', 'bio', 'about'] },
+  { id: 'about', num: '02', label: 'ABOUT', badge: '02 • ABOUT', aliases: ['profile', 'bio', 'about', 'education', 'log', 'experience', 'academics'] },
   { id: 'projects', num: '03', label: 'WORK', badge: '03 • WORK', aliases: ['selected-work', 'work'] },
   { id: 'skills', num: '04', label: 'STACK', badge: '04 • STACK', aliases: ['stack'] },
-  { id: 'education', num: '05', label: 'LOG', badge: '05 • LOG', aliases: ['log', 'experience', 'profile-snapshot'] },
-  { id: 'certificates', num: '06', label: 'FIELD', badge: '06 • FIELD', aliases: ['credentials', 'field'] },
-  { id: 'contact', num: '07', label: 'CONTACT', badge: '07 • CONTACT', aliases: ['contact-section'] },
+  { id: 'blog', num: '05', label: 'BLOG', badge: '05 • BLOG', aliases: ['articles', 'medium', 'field', 'certificates', 'credentials', 'notes'] },
+  { id: 'contact', num: '06', label: 'CONTACT', badge: '06 • CONTACT', aliases: ['contact-section'] },
 ];
 
 export function resolveSectionId(target: string): string {

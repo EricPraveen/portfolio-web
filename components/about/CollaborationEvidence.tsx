@@ -113,7 +113,7 @@ export function CollaborationEvidence() {
 
               {item.relatedSlug && (
                 <Link
-                  href={`/projects/${item.relatedSlug}`}
+                  href="/#projects"
                   className="collaboration-project-link font-mono text-xs"
                 >
                   View Team Project &rarr;

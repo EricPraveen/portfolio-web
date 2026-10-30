@@ -52,7 +52,7 @@ function auditLinksInHtml(filePath: string, appDir: string, relativeName: string
   const aTagMatches = content.match(/<a\b[^>]*\bhref="([^"]+)"/gi) || [];
   const hrefs = aTagMatches.map((tag) => {
     const match = tag.match(/href="([^"]+)"/i);
-    return match ? match[1] : '';
+    return match ? match[1].replace(/&amp;/g, '&') : '';
   }).filter(Boolean);
 
   for (const href of hrefs) {

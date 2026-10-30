@@ -1,5 +1,4 @@
 import React from 'react';
-import Link from 'next/link';
 import { Project } from '@/content/types';
 import { ProjectVisualDiagram } from '../home/ProjectVisualDiagram';
 
@@ -10,8 +9,6 @@ export interface ProjectCardProps {
 
 export function ProjectCard({ project, index }: ProjectCardProps) {
   const primaryDecision = project.decisions?.[0];
-  const primaryEvidence = project.evidence?.find((e) => e.isPrimary) || project.evidence?.[0];
-  const demoEvidence = project.evidence?.find((e) => e.type === 'demo');
 
   // Explicit status labels (not color-only)
   const statusLabel =
@@ -23,27 +20,14 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
 
   return (
     <article
-      className="work-project-card cartridge-card arcade-box"
+      className="work-project-card arcade-box"
       aria-labelledby={`work-project-title-${project.slug}`}
     >
-      {/* 16-Bit Cartridge Top Ribbed Grip */}
-      <div className="cartridge-grip" aria-hidden="true">
-        <div className="cartridge-grip-ridge" />
-        <div className="cartridge-grip-ridge" />
-        <div className="cartridge-grip-ridge" />
-      </div>
-
-      {/* Simulated Hardware Corner Rivets */}
-      <span className="corner-screw corner-screw--tl" aria-hidden="true" />
-      <span className="corner-screw corner-screw--tr" aria-hidden="true" />
-      <span className="corner-screw corner-screw--bl" aria-hidden="true" />
-      <span className="corner-screw corner-screw--br" aria-hidden="true" />
-
-      {/* Plate Header Strip / Cartridge Sticker */}
-      <div className="work-card-strip cartridge-sticker">
+      {/* Plate Header Strip */}
+      <div className="work-card-strip">
         <div className="work-card-strip-left">
           <span className="work-card-cartridge-badge font-mono text-mono-label">
-            16-BIT ROM // PLATE 0{index + 1}
+            PLATE // 0{index + 1}
           </span>
           <span className="work-card-divider" aria-hidden="true">&bull;</span>
           <span className="work-card-index font-mono text-mono-label">
@@ -61,9 +45,6 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
               ★ FLAGSHIP
             </span>
           )}
-          <span className="work-card-status-badge font-mono text-mono-label">
-            [{statusLabel}]
-          </span>
         </div>
       </div>
 
@@ -72,9 +53,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
         {/* Narrative & Constraints Column */}
         <div className="work-card-narrative">
           <h2 id={`work-project-title-${project.slug}`} className="work-card-title font-sans">
-            <Link href={`/projects/${project.slug}`} className="work-card-title-link">
-              {project.title}
-            </Link>
+            {project.title}
           </h2>
 
           <p className="work-card-headline text-body">
@@ -141,41 +120,30 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
 
           {/* Action CTAs */}
           <div className="work-card-actions">
-            <Link
-              href={`/projects/${project.slug}`}
-              className="work-card-btn-primary arcade-btn font-mono"
-            >
-              <span>PRESS START ▷ Read Case Study</span>
-            </Link>
-
-            {primaryEvidence && primaryEvidence.url && primaryEvidence.url !== '#' && (
+            {project.demoUrl && project.demoUrl !== '#' && (
               <a
-                href={primaryEvidence.url}
+                href={project.demoUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="work-card-btn-secondary arcade-btn font-mono"
+                className="work-card-btn-primary arcade-btn font-mono"
               >
-                <span>{primaryEvidence.label}</span>
-                <span aria-hidden="true"> ↗</span>
+                <span>LIVE DEMO ↗</span>
               </a>
             )}
 
-            {demoEvidence && demoEvidence.url && demoEvidence.url !== '#' && (
+            {project.repoUrl && project.repoUrl !== '#' && (
               <a
-                href={demoEvidence.url}
+                href={project.repoUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="work-card-btn-ghost arcade-btn font-mono"
+                className={
+                  project.demoUrl && project.demoUrl !== '#'
+                    ? 'work-card-btn-secondary arcade-btn font-mono'
+                    : 'work-card-btn-primary arcade-btn font-mono'
+                }
               >
-                <span>Live Demo ↗</span>
+                <span>GITHUB REPO ↗</span>
               </a>
-            )}
-
-            {/* Note for internal/academic projects without public demo */}
-            {!demoEvidence && (
-              <span className="work-card-note font-mono text-xs">
-                [Academic Benchmark Specimen]
-              </span>
             )}
           </div>
         </div>

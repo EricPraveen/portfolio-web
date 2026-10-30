@@ -20,27 +20,14 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
 
   return (
     <article
-      className="work-project-card cartridge-card arcade-box"
+      className="work-project-card arcade-box"
       aria-labelledby={`work-project-title-${project.slug}`}
     >
-      {/* 16-Bit Cartridge Top Ribbed Grip */}
-      <div className="cartridge-grip" aria-hidden="true">
-        <div className="cartridge-grip-ridge" />
-        <div className="cartridge-grip-ridge" />
-        <div className="cartridge-grip-ridge" />
-      </div>
-
-      {/* Simulated Hardware Corner Rivets */}
-      <span className="corner-screw corner-screw--tl" aria-hidden="true" />
-      <span className="corner-screw corner-screw--tr" aria-hidden="true" />
-      <span className="corner-screw corner-screw--bl" aria-hidden="true" />
-      <span className="corner-screw corner-screw--br" aria-hidden="true" />
-
-      {/* Plate Header Strip / Cartridge Sticker */}
-      <div className="work-card-strip cartridge-sticker">
+      {/* Plate Header Strip */}
+      <div className="work-card-strip">
         <div className="work-card-strip-left">
           <span className="work-card-cartridge-badge font-mono text-mono-label">
-            16-BIT ROM // PLATE 0{index + 1}
+            PLATE // 0{index + 1}
           </span>
           <span className="work-card-divider" aria-hidden="true">&bull;</span>
           <span className="work-card-index font-mono text-mono-label">
@@ -58,9 +45,6 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
               ★ FLAGSHIP
             </span>
           )}
-          <span className="work-card-status-badge font-mono text-mono-label">
-            [{statusLabel}]
-          </span>
         </div>
       </div>
 

@@ -93,11 +93,6 @@ export function BlogSection({
         </div>
 
         <div className="blog-profile-actions">
-          <div className="blog-sync-status font-mono" title="Connected to dynamic RSS feed">
-            <span className="blog-sync-dot" aria-hidden="true" />
-            <span className="blog-sync-label">LIVE RSS SYNC</span>
-          </div>
-
           <a
             href={profileUrl}
             target="_blank"

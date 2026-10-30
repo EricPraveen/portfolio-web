@@ -186,22 +186,6 @@ export function ContactForm({ contactEmail }: { contactEmail: string }) {
 
       {formState.status !== 'success' && (
         <div className="arcade-terminal arcade-box">
-          {/* Simulated Hardware Corner Rivets */}
-          <span className="corner-screw corner-screw--tl" aria-hidden="true" />
-          <span className="corner-screw corner-screw--tr" aria-hidden="true" />
-          <span className="corner-screw corner-screw--bl" aria-hidden="true" />
-          <span className="corner-screw corner-screw--br" aria-hidden="true" />
-
-          {/* Arcade Terminal Chassis Status Bar */}
-          <div className="terminal-chassis-bar">
-            <div className="terminal-led-group font-mono text-xs">
-              <span className="terminal-led terminal-led--pwr" aria-hidden="true" /> PWR: ON
-              <span className="terminal-led terminal-led--rdy" aria-hidden="true" /> CH1: READY
-              <span className="terminal-led terminal-led--coin" aria-hidden="true" /> 1P CREDIT 01
-            </div>
-            <div className="terminal-id font-mono text-xs">TERMINAL // CRT-80s</div>
-          </div>
-
           <form
             onSubmit={handleSubmit}
             noValidate

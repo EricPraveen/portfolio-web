@@ -116,12 +116,6 @@ export function AboutOverview({
     <div className="about-overview">
       {/* ── 1. BIO HERO BLOCK ────────────────────────────────────────── */}
       <div className="about-hero-block arcade-box">
-        {/* Hardware Corner Screws */}
-        <span className="corner-screw corner-screw--tl" aria-hidden="true" />
-        <span className="corner-screw corner-screw--tr" aria-hidden="true" />
-        <span className="corner-screw corner-screw--bl" aria-hidden="true" />
-        <span className="corner-screw corner-screw--br" aria-hidden="true" />
-
         <div className="about-hero-strip">
           <div className="about-hero-strip-left">
             <span className="section-eyebrow font-mono text-mono-label">{indexLabel}</span>

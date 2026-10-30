@@ -93,12 +93,6 @@ export function CapabilityMap({ initialTrayId = 'languages' }: CapabilityMapProp
           aria-labelledby={`tab-${activeTray.id}`}
           className="stack-tray-display arcade-box"
         >
-          {/* Hardware Corner Screws */}
-          <span className="corner-screw corner-screw--tl" aria-hidden="true" />
-          <span className="corner-screw corner-screw--tr" aria-hidden="true" />
-          <span className="corner-screw corner-screw--bl" aria-hidden="true" />
-          <span className="corner-screw corner-screw--br" aria-hidden="true" />
-
           {/* Hardware Aesthetic Framing Brackets */}
           <span className="tray-bracket tray-bracket--tl" aria-hidden="true">⌜</span>
           <span className="tray-bracket tray-bracket--tr" aria-hidden="true">⌝</span>

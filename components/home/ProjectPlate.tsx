@@ -18,27 +18,14 @@ export function ProjectPlate({
 
   return (
     <article
-      className={clsx('project-plate', 'cartridge-card', 'arcade-box', `project-plate--${layoutVariant}`)}
+      className={clsx('project-plate', 'arcade-box', `project-plate--${layoutVariant}`)}
       aria-labelledby={`project-title-${project.slug}`}
     >
-      {/* 16-Bit Cartridge Top Ribbed Grip */}
-      <div className="cartridge-grip" aria-hidden="true">
-        <div className="cartridge-grip-ridge" />
-        <div className="cartridge-grip-ridge" />
-        <div className="cartridge-grip-ridge" />
-      </div>
-
-      {/* Simulated Hardware Corner Rivets */}
-      <span className="corner-screw corner-screw--tl" aria-hidden="true" />
-      <span className="corner-screw corner-screw--tr" aria-hidden="true" />
-      <span className="corner-screw corner-screw--bl" aria-hidden="true" />
-      <span className="corner-screw corner-screw--br" aria-hidden="true" />
-
-      {/* Plate Header Strip / Cartridge Sticker */}
-      <div className="project-plate-strip cartridge-sticker">
+      {/* Plate Header Strip */}
+      <div className="project-plate-strip">
         <div className="project-plate-strip-left">
           <span className="work-card-cartridge-badge font-mono text-mono-label">
-            16-BIT CARTRIDGE // 0{index + 1}
+            PROJECT // 0{index + 1}
           </span>
           <span className="project-plate-divider" aria-hidden="true">&bull;</span>
           <span className="project-plate-index font-mono text-mono-label">
@@ -47,12 +34,6 @@ export function ProjectPlate({
           <span className="project-plate-divider" aria-hidden="true">&bull;</span>
           <span className="project-plate-period font-mono text-mono-label">
             {project.period}
-          </span>
-        </div>
-
-        <div className="project-plate-strip-right">
-          <span className="project-plate-status-badge font-mono text-mono-label">
-            [{project.status.toUpperCase()}]
           </span>
         </div>
       </div>

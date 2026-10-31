@@ -1,6 +1,7 @@
 import React from 'react';
 import { Profile } from '@/content/types';
 import { ContactForm } from '@/components/contact';
+import { FadeUp, ScrollReveal, StaggerContainer, StaggerItem } from '@/components/animation';
 
 export interface ContactCloseProps {
   profile: Profile;
@@ -15,7 +16,7 @@ export function ContactClose({ profile }: ContactCloseProps) {
   return (
     <section id="contact" className="contact-close-section" aria-labelledby="contact-close-heading">
       <span id="contact-section" className="section-anchor" aria-hidden="true" />
-      <div className="contact-close-card">
+      <ScrollReveal variant="fade-up" className="contact-close-card">
         <div className="contact-close-header">
           <div className="contact-close-status-tag">
             <span className="contact-close-pulse" aria-hidden="true" />
@@ -33,8 +34,8 @@ export function ContactClose({ profile }: ContactCloseProps) {
           </p>
         </div>
 
-        <div className="contact-close-channels">
-          <div className="contact-channel-item">
+        <StaggerContainer staggerDelay={75} className="contact-close-channels">
+          <StaggerItem index={0} className="contact-channel-item">
             <span className="contact-channel-label text-mono-label font-mono">Direct Electronic Mail:</span>
             <a
               href={`mailto:${email}`}
@@ -42,9 +43,9 @@ export function ContactClose({ profile }: ContactCloseProps) {
             >
               {email} &rarr;
             </a>
-          </div>
+          </StaggerItem>
 
-          <div className="contact-channel-item">
+          <StaggerItem index={1} className="contact-channel-item">
             <span className="contact-channel-label text-mono-label font-mono">Verified Social & Code:</span>
             <div className="contact-social-pills">
               {profile.socialLinks.map((social) => (
@@ -59,15 +60,15 @@ export function ContactClose({ profile }: ContactCloseProps) {
                 </a>
               ))}
             </div>
-          </div>
+          </StaggerItem>
 
-          <div className="contact-channel-item">
+          <StaggerItem index={2} className="contact-channel-item">
             <span className="contact-channel-label text-mono-label font-mono">Availability Terms:</span>
             <p className="text-sm font-sans" style={{ color: 'var(--color-mineral-ink)', margin: 0 }}>
               {availabilityNotes}
             </p>
-          </div>
-        </div>
+          </StaggerItem>
+        </StaggerContainer>
 
         <div className="contact-close-footer">
           <a
@@ -80,10 +81,10 @@ export function ContactClose({ profile }: ContactCloseProps) {
             <span aria-hidden="true"> ↗</span>
           </a>
         </div>
-      </div>
+      </ScrollReveal>
 
       {/* Structured In-Page Contact Form */}
-      <div className="contact-form-section" style={{ marginTop: 'var(--space-2xl)' }}>
+      <ScrollReveal variant="fade-up" delay={120} className="contact-form-section" style={{ marginTop: 'var(--space-2xl)' }}>
         <header className="contact-form-section__header">
           <h3 id="form-heading" className="contact-form-section__title font-heading-xl font-sans">
             Send a Message
@@ -94,7 +95,7 @@ export function ContactClose({ profile }: ContactCloseProps) {
         </header>
 
         <ContactForm contactEmail={profile.contactEmail} />
-      </div>
+      </ScrollReveal>
     </section>
   );
 }

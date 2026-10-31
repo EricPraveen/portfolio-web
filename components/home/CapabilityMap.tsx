@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { CapabilityCategory } from '@/content/types';
 import { stackTrays, StackTray } from '@/content/skills.data';
 import { TechIcon } from '@/components/ui';
+import { FadeUp, ScrollReveal, StaggerContainer, StaggerItem } from '@/components/animation';
 
 export interface CapabilityMapProps {
   categories?: CapabilityCategory[];
@@ -25,7 +26,7 @@ export function CapabilityMap({ initialTrayId = 'languages' }: CapabilityMapProp
       <span id="stack" className="section-anchor" aria-hidden="true" />
 
       {/* ── SECTION HEADER STRIP ──────────────────────────────────── */}
-      <div className="section-header-strip">
+      <FadeUp className="section-header-strip">
         <div>
           <span className="section-eyebrow text-mono-label font-mono">
             04 / TECHNICAL SKILLS & STACK
@@ -37,12 +38,12 @@ export function CapabilityMap({ initialTrayId = 'languages' }: CapabilityMapProp
         <p className="section-lead text-body">
           Technologies, frameworks, and engineering tools verified on real-world builds.
         </p>
-      </div>
+      </FadeUp>
 
       {/* ── MAIN TRAY SELECTOR INTERFACE ──────────────────────────── */}
       <div className="stack-tray-layout">
         {/* Left Column: Select a Tray Menu */}
-        <aside className="stack-tray-sidebar" aria-label="Select Technology Tray">
+        <ScrollReveal as="aside" variant="slide-left" delay={80} className="stack-tray-sidebar" aria-label="Select Technology Tray">
           <div className="stack-tray-sidebar-head">
             <span className="sidebar-eyebrow font-mono text-mono-label">
               SELECT A TRAY
@@ -87,12 +88,14 @@ export function CapabilityMap({ initialTrayId = 'languages' }: CapabilityMapProp
               );
             })}
           </div>
-        </aside>
+        </ScrollReveal>
 
         {/* Right Column: Active Tray Display Card */}
-        <div
+        <ScrollReveal
           id={`panel-${activeTray.id}`}
           role="tabpanel"
+          variant="fade-up"
+          delay={140}
           aria-labelledby={`tab-${activeTray.id}`}
           className="stack-tray-display arcade-box"
         >
@@ -118,9 +121,9 @@ export function CapabilityMap({ initialTrayId = 'languages' }: CapabilityMapProp
           </div>
 
           {/* Grid of Skill Cards */}
-          <div className="tray-cards-grid">
-            {activeTray.items.map((item) => (
-              <div key={item.name} className="tray-skill-card">
+          <StaggerContainer key={activeTray.id} staggerDelay={50} className="tray-cards-grid">
+            {activeTray.items.map((item, idx) => (
+              <StaggerItem key={item.name} index={idx} className="tray-skill-card">
                 <div className="tray-skill-card-head">
                   <div className="tray-skill-info-group">
                     <div className="tray-skill-icon-frame" aria-hidden="true">
@@ -139,9 +142,9 @@ export function CapabilityMap({ initialTrayId = 'languages' }: CapabilityMapProp
                     {item.description || item.context}
                   </p>
                 </div>
-              </div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
 
           {/* Tray Display Footer Strip */}
           <div className="tray-display-footer">
@@ -152,7 +155,7 @@ export function CapabilityMap({ initialTrayId = 'languages' }: CapabilityMapProp
               STATUS: PRODUCTION READY
             </span>
           </div>
-        </div>
+        </ScrollReveal>
       </div>
     </section>
   );

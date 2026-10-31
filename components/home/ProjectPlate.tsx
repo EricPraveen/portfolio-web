@@ -2,6 +2,7 @@ import React from 'react';
 import { clsx } from 'clsx';
 import { Project } from '@/content/types';
 import { ProjectVisualDiagram } from './ProjectVisualDiagram';
+import { ScrollReveal } from '@/components/animation';
 
 export interface ProjectPlateProps {
   project: Project;
@@ -17,7 +18,10 @@ export function ProjectPlate({
   const primaryDecision = project.decisions?.[0];
 
   return (
-    <article
+    <ScrollReveal
+      as="article"
+      variant="fade-up"
+      threshold={0.1}
       className={clsx('project-plate', 'arcade-box', `project-plate--${layoutVariant}`)}
       aria-labelledby={`project-title-${project.slug}`}
     >
@@ -148,6 +152,6 @@ export function ProjectPlate({
           <ProjectVisualDiagram slug={project.slug} />
         </div>
       </div>
-    </article>
+    </ScrollReveal>
   );
 }

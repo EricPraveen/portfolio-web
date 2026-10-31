@@ -1,5 +1,6 @@
 import React from 'react';
 import { Award, CredentialItem, HackathonItem } from '@/content/types';
+import { FadeUp, StaggerContainer, StaggerItem } from '@/components/animation';
 
 export interface SelectedCredentialsProps {
   credentials: CredentialItem[];
@@ -16,19 +17,19 @@ export function SelectedCredentials({
     <section id="certificates" className="credentials-snapshot-section" aria-labelledby="credentials-snapshot-heading">
       <span id="credentials" className="section-anchor" aria-hidden="true" />
       <span id="field" className="section-anchor" aria-hidden="true" />
-      <div className="section-header-strip">
+      <FadeUp className="section-header-strip">
         <div>
           <span className="section-eyebrow text-mono-label font-mono">05 / FIELD CREDENTIALS & HONORS</span>
           <h2 id="credentials-snapshot-heading" className="section-title font-heading-2xl">
             Verified Credentials & Certifications
           </h2>
         </div>
-      </div>
+      </FadeUp>
 
-      <div className="credentials-grid">
+      <StaggerContainer staggerDelay={60} className="credentials-grid">
         {/* Industry Certifications */}
-        {credentials.map((cred) => (
-          <div key={cred.id} className="credential-card">
+        {credentials.map((cred, idx) => (
+          <StaggerItem key={cred.id} index={idx} className="credential-card">
             <div className="credential-card-meta">
               <span className="credential-card-cat text-mono-label font-mono">
                 {cred.category}
@@ -66,7 +67,7 @@ export function SelectedCredentials({
                 </a>
               </div>
             )}
-          </div>
+          </StaggerItem>
         ))}
 
         {/* Academic Honors & Hackathons */}
@@ -119,7 +120,7 @@ export function SelectedCredentials({
             </p>
           </div>
         ))}
-      </div>
+      </StaggerContainer>
     </section>
   );
 }

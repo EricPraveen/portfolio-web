@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { MediumArticle } from '@/content/types/blog.types';
-import { ArticleCard } from './ArticleCard';
+import { BlogCarousel } from './BlogCarousel';
 import { ArticleCardSkeleton } from './ArticleCardSkeleton';
 
 export interface BlogSectionProps {
@@ -11,6 +11,8 @@ export interface BlogSectionProps {
 }
 
 const DEFAULT_PROFILE_URL = 'https://medium.com/@ericpraveen123';
+const CLIENT_CACHE_KEY = 'portfolio_medium_articles_v1';
+const CLIENT_CACHE_EXPIRY_MS = 15 * 60 * 1000; // 15 minutes client cache
 
 export function BlogSection({
   initialArticles = [],
@@ -20,10 +22,13 @@ export function BlogSection({
   const [isLoading, setIsLoading] = useState<boolean>(initialArticles.length === 0);
   const [hasError, setHasError] = useState<boolean>(false);
 
-  const fetchArticles = async () => {
+  const fetchArticles = async (isRetry = false) => {
     try {
-      setIsLoading(true);
+      if (isRetry || articles.length === 0) {
+        setIsLoading(true);
+      }
       setHasError(false);
+
       const res = await fetch('/api/articles');
       if (!res.ok) {
         throw new Error(`Feed response status: ${res.status}`);
@@ -31,10 +36,21 @@ export function BlogSection({
       const data = await res.json();
       if (Array.isArray(data.articles) && data.articles.length > 0) {
         setArticles(data.articles);
+        try {
+          sessionStorage.setItem(
+            CLIENT_CACHE_KEY,
+            JSON.stringify({
+              timestamp: Date.now(),
+              articles: data.articles,
+            })
+          );
+        } catch {
+          // Ignore sessionStorage quota errors
+        }
       }
     } catch (err) {
       console.warn('[BlogSection] Live Medium RSS fetch error:', err);
-      // If we don't already have initialArticles, show error state
+      // Only display error state if we don't have any cached or initial articles
       if (articles.length === 0) {
         setHasError(true);
       }
@@ -44,6 +60,27 @@ export function BlogSection({
   };
 
   useEffect(() => {
+    // 1. Check if client-side session cache is available
+    try {
+      const cachedRaw = sessionStorage.getItem(CLIENT_CACHE_KEY);
+      if (cachedRaw) {
+        const parsed = JSON.parse(cachedRaw);
+        if (
+          parsed &&
+          Array.isArray(parsed.articles) &&
+          parsed.articles.length > 0 &&
+          Date.now() - parsed.timestamp < CLIENT_CACHE_EXPIRY_MS
+        ) {
+          setArticles(parsed.articles);
+          setIsLoading(false);
+          return;
+        }
+      }
+    } catch {
+      // Fallback to network fetch
+    }
+
+    // 2. Fetch fresh articles from API proxy
     fetchArticles();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -93,6 +130,11 @@ export function BlogSection({
         </div>
 
         <div className="blog-profile-actions">
+          <div className="blog-sync-status font-mono" title="Live synchronization status">
+            <span className="blog-sync-dot" aria-hidden="true" />
+            <span>LIVE SYNC</span>
+          </div>
+
           <a
             href={profileUrl}
             target="_blank"
@@ -105,7 +147,7 @@ export function BlogSection({
         </div>
       </div>
 
-      {/* ── ARTICLES GRID ─────────────────────────────────────────── */}
+      {/* ── ARTICLES CAROUSEL / SKELETON / ERROR STATES ──────────── */}
       {isLoading && articles.length === 0 ? (
         <div className="blog-grid" aria-label="Loading latest articles">
           <ArticleCardSkeleton />
@@ -119,7 +161,7 @@ export function BlogSection({
           <div className="blog-state-actions">
             <button
               type="button"
-              onClick={fetchArticles}
+              onClick={() => fetchArticles(true)}
               className="about-btn about-btn--volt arcade-btn font-mono"
             >
               <span>Retry Sync ↻</span>
@@ -149,11 +191,7 @@ export function BlogSection({
           </a>
         </div>
       ) : (
-        <div className="blog-grid" role="feed" aria-label="Latest Medium Articles">
-          {articles.map((article) => (
-            <ArticleCard key={article.id} article={article} />
-          ))}
-        </div>
+        <BlogCarousel articles={articles} />
       )}
 
       {/* ── FOOTER VIEW ALL LINK ──────────────────────────────────── */}

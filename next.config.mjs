@@ -11,7 +11,15 @@ const nextConfig = {
       },
       {
         protocol: 'https',
+        hostname: 'cdn-images-2.medium.com',
+      },
+      {
+        protocol: 'https',
         hostname: 'miro.medium.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'medium.com',
       },
     ],
   },

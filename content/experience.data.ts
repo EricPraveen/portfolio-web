@@ -41,20 +41,46 @@ export const experienceData: ExperienceItem[] = [
     type: 'Student Technical Role',
     dates: {
       start: 'Mar 2025',
-      isCurrent: true,
+      end: 'Mar 2025',
+      isCurrent: false,
     },
     location: 'Moratuwa, Sri Lanka',
     context:
-      'Helping organise the campus career fair and professional development events for students.',
+      'Organised the campus career fair and professional development events for students.',
     responsibilities: [
       'Worked with recruiters and alumni to plan company booths and interview schedules.',
       'Managed event logistics, student registration, and communications.',
-      'Supported Tamil Literary Association events as Batch Coordinator.',
+      'Coordinated volunteer workflows and student participant registration for career sessions.',
     ],
     technologies: ['Event Planning', 'Team Leadership', 'Communication'],
     verifiedOutcomes: [
       'Connected students with software engineering employers through career networking sessions.',
     ],
     linkedProjectSlugs: ['edutrack-campus-portal'],
+  },
+  {
+    id: 'exp-tla-batch-coordinator',
+    organization: 'Tamil Literary Association (TLA) — University of Moratuwa',
+    role: 'TLA Batch 23 Coordinator',
+    type: 'Student Technical Role',
+    dates: {
+      start: '2026',
+      end: 'Present',
+      isCurrent: true,
+    
+    },
+    location: 'Moratuwa, Sri Lanka',
+    context:
+      'Serving as Batch Coordinator for the Tamil Literary Association, coordinating cultural initiatives, student engagement, and event logistics across the IT batch.',
+    responsibilities: [
+      'Coordinate batch student participation in annual cultural programs, literary competitions, and university events.',
+      'Facilitate communication between the TLA executive committee and batch members.',
+      'Organize event logistics, volunteer teams, and student community outreach initiatives.',
+    ],
+    technologies: ['Event Coordination', 'Student Engagement', 'Communication'],
+    verifiedOutcomes: [
+      'Coordinated student participation and batch engagement across campus cultural and literary initiatives.',
+    ],
+    linkedProjectSlugs: [],
   },
 ];

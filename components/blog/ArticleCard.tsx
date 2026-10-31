@@ -2,17 +2,31 @@
 
 import React from 'react';
 import Image from 'next/image';
+import clsx from 'clsx';
 import { MediumArticle } from '@/content/types/blog.types';
 
 export interface ArticleCardProps {
   article: MediumArticle;
+  instanceId?: string;
+  isClone?: boolean;
+  className?: string;
 }
 
-export function ArticleCard({ article }: ArticleCardProps) {
+export function ArticleCard({
+  article,
+  instanceId,
+  isClone = false,
+  className,
+}: ArticleCardProps) {
   const [imgError, setImgError] = React.useState(false);
+  const titleId = `article-title-${instanceId ? `${instanceId}-` : ''}${article.id}`;
 
   return (
-    <article className="blog-card arcade-box" aria-labelledby={`article-title-${article.id}`}>
+    <article
+      className={clsx('blog-card arcade-box', className)}
+      aria-labelledby={titleId}
+      aria-hidden={isClone ? 'true' : undefined}
+    >
       {/* Article Thumbnail */}
       <div className="blog-card-media">
         {article.thumbnail && !imgError ? (
@@ -62,12 +76,13 @@ export function ArticleCard({ article }: ArticleCardProps) {
         </div>
 
         {/* Title */}
-        <h3 id={`article-title-${article.id}`} className="blog-card-title font-sans">
+        <h3 id={titleId} className="blog-card-title font-sans">
           <a
             href={article.link}
             target="_blank"
             rel="noopener noreferrer"
             className="blog-card-title-link"
+            tabIndex={isClone ? -1 : undefined}
           >
             {article.title}
           </a>
@@ -97,6 +112,7 @@ export function ArticleCard({ article }: ArticleCardProps) {
             rel="noopener noreferrer"
             className="blog-card-btn arcade-btn font-mono"
             aria-label={`Read "${article.title}" on Medium (opens in new tab)`}
+            tabIndex={isClone ? -1 : undefined}
           >
             <span>Read Article</span>
             <span className="blog-card-btn-arrow" aria-hidden="true">↗</span>

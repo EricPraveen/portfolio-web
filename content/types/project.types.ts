@@ -107,6 +107,7 @@ export interface Project {
   coverImage: ProjectImage;
   gallery?: ProjectImage[];
   /** Direct link shortcuts */
+  linkedInUrl?: string;
   repoUrl?: string;
   demoUrl?: string;
   docsUrl?: string;

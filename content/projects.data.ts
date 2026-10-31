@@ -20,12 +20,13 @@ export const projectsData: Project[] = [
     isAcademic: true,
     context:
       'Developed as an academic software engineering capstone project at the University of Moratuwa to solve fragmented tour discovery and booking management for tourists exploring Sri Lanka.',
-    technologies: ['React.js', 'Spring Boot', 'Tailwind CSS', 'PostgreSQL', 'REST APIs', 'Figma'],
-    stack: ['React.js', 'Spring Boot', 'Tailwind CSS', 'PostgreSQL', 'REST APIs', 'Figma'],
-    repoUrl: 'https://github.com/pirathee587/travelhub',
+    technologies: ['React.js', 'Spring Boot', 'Tailwind CSS', 'PostgreSQL', 'Supabase', 'REST APIs', 'Figma'],
+    stack: ['React.js', 'Spring Boot', 'Tailwind CSS', 'PostgreSQL', 'Supabase', 'REST APIs', 'Figma'],
+    linkedInUrl: 'https://www.linkedin.com/feed/update/urn:li:activity:7518732678418886656/',
+    repoUrl: 'https://github.com/EricPraveen/travelhub',
     demoUrl: 'https://travelhublanka.netlify.app/',
     coverImage: {
-      src: '/images/projects/travel-hub-cover.svg',
+      src: '/images/projects/travelhub-linkedin.jpg',
       alt: 'Travel Hub — Sri Lanka Tourist Package Search & Booking Platform Interface',
       width: 1200,
       height: 675,
@@ -139,61 +140,6 @@ export const projectsData: Project[] = [
         type: 'code',
         description: 'React custom hook managing multi-criteria destination and query filtering.',
         language: 'typescript',
-        codeSnippet: `// React Package Filter Component
-import React, { useState, useMemo } from 'react';
-
-interface Package {
-  id: string;
-  title: string;
-  destination: string;
-  price: number;
-  durationDays: number;
-  rating: number;
-}
-
-export function usePackageFilter(packages: Package[], activeCategory: string, searchQuery: string) {
-  return useMemo(() => {
-    return packages.filter((pkg) => {
-      const matchesCategory = activeCategory === 'all' || pkg.destination.toLowerCase() === activeCategory.toLowerCase();
-      const matchesSearch = pkg.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                            pkg.destination.toLowerCase().includes(searchQuery.toLowerCase());
-      return matchesCategory && matchesSearch;
-    });
-  }, [packages, activeCategory, searchQuery]);
-}`,
-      },
-      {
-        id: 'art-travel-booking-controller',
-        title: 'Spring Boot Booking Request Controller',
-        type: 'code',
-        description: 'REST controller handling incoming tourist reservation requests with DTO validation.',
-        language: 'java',
-        codeSnippet: `// Spring Boot Booking REST Controller
-package com.travelhub.controller;
-
-import com.travelhub.dto.BookingRequestDto;
-import com.travelhub.model.Booking;
-import com.travelhub.service.BookingService;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
-@RestController
-@RequestMapping("/api/v1/bookings")
-@CrossOrigin(origins = "*")
-public class BookingController {
-
-    private final BookingService bookingService;
-
-    public BookingController(BookingService bookingService) {
-        this.bookingService = bookingService;
-    }
-
-    @PostMapping
-    public ResponseEntity<Booking> createBooking(@RequestBody BookingRequestDto request) {
-        Booking created = bookingService.processBooking(request);
-        return ResponseEntity.ok(created);
-    }
-}`,
       },
     ],
     quality: {
@@ -217,6 +163,13 @@ public class BookingController {
     ],
     evidence: [
       {
+        label: 'LinkedIn Project Showcase',
+        url: 'https://www.linkedin.com/feed/update/urn:li:activity:7518732678418886656/',
+        type: 'external',
+        isExternal: true,
+        note: 'Complete video presentation and architectural overview on LinkedIn',
+      },
+      {
         label: 'Live Netlify Deployment',
         url: 'https://travelhublanka.netlify.app/',
         type: 'demo',
@@ -225,7 +178,7 @@ public class BookingController {
       },
       {
         label: 'GitHub Repository',
-        url: 'https://github.com/pirathee587/travelhub',
+        url: 'https://github.com/EricPraveen/travelhub',
         type: 'github',
         isExternal: true,
         note: 'Complete source code repository',
@@ -240,14 +193,292 @@ public class BookingController {
     ],
   },
   {
-    slug: 'ideapad-blog-platform',
-    title: 'IdeaPad — Full-Stack Publishing & Community Blog Platform',
+    slug: 'chicken-shooting-game',
+    title: 'Chicken Invaders — 2D Retro Arcade Space Shooter',
     headline:
-      'A full-stack editorial blogging platform featuring JWT authentication, role-based authorization, post CRUD, genre filtering, bookmarks, and Cloudinary media uploads.',
+      'A retro arcade space shooting game featuring custom computer graphics algorithms, enemy waves, boss battles, collision physics, and WebAssembly compilation for seamless browser gameplay.',
+    conciseOutcome:
+      'Implemented foundational computer graphics algorithms in C++, designed particle physics and collision detection, and compiled to WebAssembly via Emscripten.',
+    featured: true,
+    order: 2,
+    status: 'shipped',
+    category: 'Computer Graphics & WebAssembly',
+    period: '2024 – 2025',
+    year: '2025',
+    duration: '3 Months',
+    role: 'Graphics & Engine Programmer',
+    teamSize: 3,
+    isAcademic: true,
+    context:
+      'Developed as an academic computer graphics engineering project at the University of Moratuwa to implement low-level 2D rasterization algorithms from scratch and compile native C++ OpenGL to modern WebAssembly.',
+    technologies: ['C++', 'OpenGL', 'GLUT', 'WebAssembly', 'HTML5 Canvas'],
+    stack: ['C++', 'OpenGL', 'GLUT', 'WebAssembly', 'HTML5 Canvas'],
+    linkedInUrl: 'https://www.linkedin.com/feed/update/urn:li:activity:7501263644329058304/',
+    repoUrl: 'https://github.com/EricPraveen/Chicken-Shooting',
+    demoUrl: 'https://chicken-shooting.vercel.app',
+    coverImage: {
+      src: '/images/projects/chicken-shooting-linkedin.jpg',
+      alt: 'Chicken Invaders — 2D Retro Arcade Space Shooter in C++ and OpenGL',
+      width: 1200,
+      height: 675,
+      caption: 'Chicken Invaders WebAssembly Gameplay and Boss Battle Interface',
+    },
+    problem:
+      'Implementing classic arcade game mechanics from pure mathematical principles requires custom rasterization algorithms, 60fps frame loop management, and cross-platform compilation without heavy game engines.',
+    constraints: [
+      'Must implement Bresenham line algorithm, Midpoint circle algorithm, and Scan-Line polygon fill from mathematical scratch.',
+      'Must handle real-time AABB collision detection and particle explosion effects.',
+      'Must compile native C++ code to WebAssembly (Wasm) using Emscripten for zero-install web browser execution.',
+    ],
+    personalRole:
+      'Programmed core rasterization algorithms, engineered particle physics and projectile trajectories, built collision detection systems, and configured the Emscripten WebAssembly compilation pipeline.',
+    contributions: [
+      'Implemented Bresenham line and Midpoint circle drawing algorithms to render vector game assets on raw pixel buffers.',
+      'Developed Cohen-Sutherland line clipping and 2D matrix transformation pipelines for dynamic sprite scaling and rotation.',
+      'Engineered multi-phase boss battle AI state machines, escalating attack waves, and player life counters.',
+      'Configured Emscripten toolchain to cross-compile C++/OpenGL code into WebAssembly with HTML5 canvas bindings.',
+    ],
+    architecture: {
+      summary:
+        'A high-performance C++ game engine utilizing OpenGL and GLUT compiled via Emscripten into WebAssembly, running directly inside an HTML5 canvas element at 60fps.',
+      keyComponents: [
+        {
+          name: 'Core Graphics Math Pipeline',
+          role: 'Rasterization & Transformations',
+          description:
+            'Implements mathematical drawing algorithms (Bresenham, Midpoint, Scan-Line) and 2D matrix transformations.',
+        },
+        {
+          name: 'Game Loop & Physics Engine',
+          role: 'Collision & Wave Management',
+          description:
+            'Executes 60fps game loop, AABB collision detection, bullet trajectories, and particle systems.',
+        },
+        {
+          name: 'Emscripten WebAssembly Bridge',
+          role: 'Browser Compilation & Canvas I/O',
+          description:
+            'Bridges native OpenGL/GLUT calls to WebGL and HTML5 canvas APIs for zero-dependency browser execution.',
+        },
+      ],
+    },
+    decisions: [
+      {
+        title: 'Custom Math Rasterization vs. Prebuilt Game Engines (Unity/Godot)',
+        decision:
+          'Built the entire graphics rendering pipeline in C++ and OpenGL without third-party game engines.',
+        why: 'Required deep academic mastery of low-level graphics algorithms, computational geometry, and pixel-level frame manipulation.',
+        tradeoff:
+          'Required manual implementation of collision physics, matrix math, and window event listeners.',
+        alternativesConsidered: [
+          'Unity / Unreal Engine (Heavy runtime overhead, hides fundamental computer graphics algorithms)',
+        ],
+      },
+    ],
+    buildLog: [
+      {
+        milestone: 'Algorithm Implementation & Window Setup',
+        date: 'Month 1',
+        details: 'Implemented Bresenham, Midpoint Circle, and Cohen-Sutherland clipping in OpenGL.',
+      },
+      {
+        milestone: 'Game Mechanics & Boss Battles',
+        date: 'Month 2',
+        details: 'Engineered wave spawning, collision detection, and particle explosion systems.',
+      },
+      {
+        milestone: 'Emscripten WebAssembly Compilation & Vercel Deploy',
+        date: 'Month 3',
+        details: 'Compiled C++ codebase to Wasm and deployed live interactive build to Vercel.',
+      },
+    ],
+    quality: {
+      testing: 'Rigorous 60fps benchmark testing across Chrome, Firefox, and Safari with WebAssembly.',
+      security: 'Sandboxed WebAssembly execution environment inside modern browser security contexts.',
+      accessibility: 'Keyboard accessible controls (Arrow keys + Spacebar) with on-screen visual hints.',
+      performance: 'Near-native C++ performance running at consistent 60 frames per second in browser.',
+    },
+    outcomes: [
+      'Successfully compiled and deployed playable WebAssembly build live on Vercel at chicken-shooting.vercel.app.',
+      'Achieved stable 60fps retro arcade experience with boss battles, particle effects, and scoring.',
+    ],
+    lessonsLearned: [
+      'WebAssembly bridges the gap between low-level systems programming and universal web accessibility.',
+      'Understanding fundamental rasterization algorithms provides intuition for modern GPU shaders and WebGL pipelines.',
+    ],
+    v2Improvements: [
+      'Add local leaderboard persistence using IndexedDB.',
+      'Support multi-player co-op mode over WebSockets.',
+    ],
+    evidence: [
+      {
+        label: 'LinkedIn Project Showcase',
+        url: 'https://www.linkedin.com/feed/update/urn:li:activity:7501263644329058304/',
+        type: 'external',
+        isExternal: true,
+        note: 'Complete video demo and graphics explanation on LinkedIn',
+      },
+      {
+        label: 'Live WebAssembly Playable Game',
+        url: 'https://chicken-shooting.vercel.app',
+        type: 'demo',
+        isExternal: true,
+        note: 'Playable WebAssembly build in web browser',
+      },
+      {
+        label: 'GitHub Repository',
+        url: 'https://github.com/EricPraveen/Chicken-Shooting',
+        type: 'github',
+        isExternal: true,
+        note: 'Complete C++ and OpenGL source code repository',
+      },
+    ],
+  },
+  {
+    slug: 'cricketscore-mobile-app',
+    title: 'CricketScore — Offline Cricket Scoring & Analytics Mobile App',
+    headline:
+      'An offline-first mobile cricket scoring application supporting match setup, interactive toss, scoring engine with strike rotation, undo delivery mechanism, and SQLite ball-by-ball analytics.',
+    conciseOutcome:
+      'Engineered custom scoring state machine, strike rotation logic, extras handling, undo mechanism, and offline SQLite relational persistence.',
+    featured: true,
+    order: 3,
+    status: 'shipped',
+    category: 'Mobile Application',
+    period: '2025',
+    year: '2025',
+    duration: '3 Months',
+    role: 'Sole Mobile App Developer',
+    teamSize: 1,
+    isAcademic: false,
+    context:
+      'Developed as an independent software engineering project to solve the lack of dependable, offline-capable scoring applications for local cricket matches and club tournaments.',
+    technologies: ['React Native', 'TypeScript', 'Expo', 'SQLite', 'Expo Router', 'Reanimated'],
+    stack: ['React Native', 'TypeScript', 'Expo', 'SQLite', 'Expo Router', 'Reanimated'],
+    linkedInUrl: 'https://www.linkedin.com/in/ericpraveen-alricprashanth/details/projects/',
+    repoUrl: 'https://github.com/EricPraveen/CricketScore',
+    coverImage: {
+      src: '/images/projects/cricketscore-cover.svg',
+      alt: 'CricketScore Offline Cricket Scoring and Analytics Mobile App Interface',
+      width: 1200,
+      height: 675,
+      caption: 'CricketScore Live Match Scoring and Ball-by-Ball Analytics Dashboard',
+    },
+    problem:
+      'Community cricket grounds often lack reliable mobile internet access, causing web-based scoring tools to freeze, lose delivery records, or fail during critical match moments.',
+    constraints: [
+      'Must operate completely offline without internet connectivity, storing all matches locally.',
+      'Must enforce complex cricket scoring rules: strike rotation, wide/no-ball extras, bye/leg-bye, free hits, and overs change.',
+      'Must provide an instant undo delivery mechanism that rolls back database state cleanly without data corruption.',
+      'Must maintain 60fps smooth UI animations using React Native Reanimated.',
+    ],
+    personalRole:
+      'Architected and implemented the entire mobile application: designed SQLite relational schema, wrote the cricket rule engine state machine, built responsive touch keypad interfaces, and implemented animated milestone overlays.',
+    contributions: [
+      'Engineered an offline-first SQLite database schema modeling matches, innings, player rosters, and ball-by-ball delivery events with transactional consistency.',
+      'Developed an immutable cricket scoring engine managing strike rotation, boundary counts, bowler spell quotas, and extras calculations.',
+      'Built a robust delivery undo mechanism that reconstructs previous innings state atomically.',
+      'Designed a high-visibility scoring UI with large tactile buttons optimized for direct sunlight outdoor mobile use.',
+      'Integrated React Native Reanimated for milestone celebration animations (fifties, centuries, hat-tricks) and live worm graphs.',
+    ],
+    architecture: {
+      summary:
+        'A local-first React Native mobile application built on Expo and TypeScript, executing scoring state machine calculations locally and persisting normalized relational data in SQLite.',
+      keyComponents: [
+        {
+          name: 'Tactile Scoring Interface (React Native / Expo)',
+          role: 'Touchpad & Scorecard UI',
+          description:
+            'Delivers responsive ball input keypad, live scorecard summaries, partnership charts, and milestone visual celebrations.',
+        },
+        {
+          name: 'Cricket Rules State Machine Engine',
+          role: 'Match Logic & Rule Validation',
+          description:
+            'Enforces strike rotation, bowler over change, extras calculations, free-hit flags, and player statistics.',
+        },
+        {
+          name: 'Local SQLite Relational Ledger',
+          role: 'Offline-First Persistence',
+          description:
+            'Stores structured tables for teams, matches, innings, deliveries, and fall of wickets with transactional ACID guarantees.',
+        },
+      ],
+    },
+    decisions: [
+      {
+        title: 'Local-First SQLite vs. Cloud-Only Firebase Database',
+        decision:
+          'Adopted an offline-first SQLite relational database embedded directly inside the mobile app bundle.',
+        why: 'Cricket matches played on community grounds often have zero or spotty cellular connectivity. Local SQLite guarantees instant response times and zero data loss.',
+        tradeoff:
+          'Requires explicit export/import routines to share scorecards between devices rather than automatic real-time cloud sync.',
+        alternativesConsidered: [
+          'Firebase Realtime Database (Requires constant internet connection; drops scoring inputs when signal is lost in open fields)',
+        ],
+      },
+    ],
+    buildLog: [
+      {
+        milestone: 'Cricket Rules Engine & State Machine',
+        date: 'Month 1',
+        details: 'Architected state transitions for strike rotation, extras, wickets, and undo delivery stack.',
+      },
+      {
+        milestone: 'SQLite Schema & Transactional Operations',
+        date: 'Month 2',
+        details: 'Implemented SQLite migrations and CRUD operations for match creation and ball recording.',
+      },
+      {
+        milestone: 'Tactile UI & Reanimated Milestone Celebrations',
+        date: 'Month 3',
+        details: 'Crafted outdoor-optimized UI with large touch targets and celebratory animations.',
+      },
+    ],
+    quality: {
+      testing: 'Unit tests covering all edge-case scoring rules (e.g. no-ball run-out, overthrow boundaries, tie-breakers).',
+      security: 'Fully sandboxed local storage on device with zero telemetry tracking.',
+      accessibility: 'High contrast text and large touch target hit-boxes suitable for outdoor daylight usage.',
+      performance: 'Instantaneous touch feedback with sub-5ms local SQLite delivery insert times.',
+    },
+    outcomes: [
+      'Created and published complete open-source mobile application on GitHub at github.com/EricPraveen/CricketScore.',
+      'Successfully scored live university practice matches with zero network dependency.',
+    ],
+    lessonsLearned: [
+      'Offline-first architectures provide superior reliability and user trust for critical real-time recording tasks.',
+      'State machines with reversible event logs simplify complex undo and redo functionality.',
+    ],
+    v2Improvements: [
+      'Add PDF match summary report generation and export.',
+      'Implement Bluetooth / WiFi-Direct match sync between scorekeepers.',
+    ],
+    evidence: [
+      {
+        label: 'LinkedIn Project Details',
+        url: 'https://www.linkedin.com/in/ericpraveen-alricprashanth/details/projects/',
+        type: 'external',
+        isExternal: true,
+        note: 'Project listing and documentation on LinkedIn',
+      },
+      {
+        label: 'GitHub Repository',
+        url: 'https://github.com/EricPraveen/CricketScore',
+        type: 'github',
+        isExternal: true,
+        note: 'Complete React Native source code repository',
+      },
+    ],
+  },
+  {
+    slug: 'ideapad-blog-platform',
+    title: 'IdeaPad — Full-Stack Editorial Publishing Platform',
+    headline:
+      'A full-stack editorial blogging platform featuring stateless JWT authentication, role-based authorization, post CRUD, genre filtering, bookmarks, and Cloudinary media upload pipelines.',
     conciseOutcome:
       'Engineered end-to-end full-stack application with React.js, Spring Boot, PostgreSQL schema, and Cloudinary image pipelines.',
     featured: true,
-    order: 2,
+    order: 4,
     status: 'shipped',
     category: 'Full-Stack Web Application',
     period: '2024 – 2025',
@@ -260,9 +491,10 @@ public class BookingController {
       'Developed as an independent full-stack engineering project to master secure user authentication, role-based content moderation, relational data modeling, and cloud asset pipeline integration.',
     technologies: ['React.js', 'Spring Boot', 'PostgreSQL', 'Cloudinary', 'JWT', 'REST APIs'],
     stack: ['React.js', 'Spring Boot', 'PostgreSQL', 'Cloudinary', 'JWT', 'REST APIs'],
+    linkedInUrl: 'https://www.linkedin.com/feed/update/urn:li:activity:7468553897041838081/',
     repoUrl: 'https://github.com/EricPraveen/IdeaPad',
     coverImage: {
-      src: '/images/projects/ideapad-cover.svg',
+      src: '/images/projects/ideapad-linkedin.jpg',
       alt: 'IdeaPad Full-Stack Publishing and Blog Platform Interface',
       width: 1200,
       height: 675,
@@ -288,8 +520,6 @@ public class BookingController {
     architecture: {
       summary:
         'A React.js SPA utilizing JWT authentication headers to interact with Spring Boot REST services, reading/writing relational blog entities in PostgreSQL and delegating image assets to Cloudinary CDN.',
-      textAlternative:
-        'Architecture diagram depicting React.js Client sending JWT-authenticated HTTP requests to Spring Boot Backend with Spring Security filters, reading/writing PostgreSQL database tables, and uploading media assets directly to Cloudinary.',
       keyComponents: [
         {
           name: 'React.js Client Interface',
@@ -329,17 +559,6 @@ public class BookingController {
           'HTTP Session Cookies (Requires sticky load balancing and session replication across backend instances)',
         ],
       },
-      {
-        title: 'Cloudinary CDN vs. Local Server File Storage',
-        decision:
-          'Integrated Cloudinary REST API for uploading and serving all post banner images.',
-        why: 'Offloads bandwidth, storage management, and automatic image compression from the application server to a specialized global CDN.',
-        tradeoff:
-          'Introduces dependency on third-party cloud API credentials and network latency during image upload.',
-        alternativesConsidered: [
-          'Local disk storage (Risks filling application server disk and complicates containerized multi-instance deployment)',
-        ],
-      },
     ],
     buildLog: [
       {
@@ -359,41 +578,6 @@ public class BookingController {
         date: 'Month 3',
         details:
           'Constructed React.js single-page application with responsive discovery feeds, like/bookmark toggles, and author dashboard views.',
-      },
-    ],
-    artifacts: [
-      {
-        id: 'art-jwt-filter',
-        title: 'JWT Token Validation Filter',
-        type: 'code',
-        description: 'Spring Security OncePerRequestFilter parsing bearer tokens and populating security context.',
-        language: 'java',
-        codeSnippet: `// Spring Security JWT Filter
-package com.ideapad.security;
-
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.filter.OncePerRequestFilter;
-import javax.servlet.FilterChain;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-public class JwtAuthenticationFilter extends OncePerRequestFilter {
-    private final JwtTokenProvider tokenProvider;
-
-    public JwtAuthenticationFilter(JwtTokenProvider tokenProvider) {
-        this.tokenProvider = tokenProvider;
-    }
-
-    @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) {
-        String token = extractJwt(request);
-        if (token != null && tokenProvider.validateToken(token)) {
-            var auth = tokenProvider.getAuthentication(token);
-            SecurityContextHolder.getContext().setAuthentication(auth);
-        }
-        chain.doFilter(request, response);
-    }
-}`,
       },
     ],
     quality: {
@@ -416,6 +600,13 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     ],
     evidence: [
       {
+        label: 'LinkedIn Project Showcase',
+        url: 'https://www.linkedin.com/feed/update/urn:li:activity:7468553897041838081/',
+        type: 'external',
+        isExternal: true,
+        note: 'Complete video walkthrough and architectural post on LinkedIn',
+      },
+      {
         label: 'GitHub Repository',
         url: 'https://github.com/EricPraveen/IdeaPad',
         type: 'github',
@@ -426,13 +617,13 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
   },
   {
     slug: 'eshop-ecommerce-platform',
-    title: 'EShop — MERN Dynamic E-Commerce & Inventory Management Platform',
+    title: 'EShop — Dynamic MERN E-Commerce Platform',
     headline:
-      'A full-stack MERN e-commerce application with dynamic product catalog browsing, real-time inventory tracking, order processing, and stock deduction control.',
+      'A full-stack MERN e-commerce web application with dynamic product catalog browsing, real-time inventory tracking, order processing, and stock deduction control.',
     conciseOutcome:
       'Constructed MERN web application with RESTful APIs, dynamic MongoDB product filtering, order workflow, and automated inventory reconciliation.',
     featured: true,
-    order: 3,
+    order: 5,
     status: 'shipped',
     category: 'MERN E-Commerce Application',
     period: '2024',
@@ -445,9 +636,10 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
       'Engineered as an independent practical full-stack project to master the MERN stack (MongoDB, Express.js, React.js, Node.js), asynchronous REST APIs, and automated inventory management.',
     technologies: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'Bootstrap', 'REST APIs'],
     stack: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'Bootstrap', 'REST APIs'],
+    linkedInUrl: 'https://www.linkedin.com/feed/update/urn:li:activity:7439368259797307392/',
     repoUrl: 'https://github.com/EricPraveen/EShop',
     coverImage: {
-      src: '/images/projects/eshop-cover.svg',
+      src: '/images/projects/eshop-linkedin.jpg',
       alt: 'EShop Dynamic MERN E-Commerce Platform Storefront and Inventory Dashboard',
       width: 1200,
       height: 675,
@@ -472,8 +664,6 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     architecture: {
       summary:
         'A MERN stack web application where React.js interacts with an Express.js/Node.js REST API layer, reading and writing product and order documents in MongoDB.',
-      textAlternative:
-        'Architecture diagram depicting React.js Client making asynchronous Axios REST API calls to Node.js/Express.js Backend, interacting with MongoDB database for product catalog and order document persistence.',
       keyComponents: [
         {
           name: 'React.js Client App',
@@ -528,39 +718,6 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
           'Built responsive product grid, search filters, cart drawers, and order summary views.',
       },
     ],
-    artifacts: [
-      {
-        id: 'art-eshop-order-controller',
-        title: 'Order Processing & Stock Deduction Controller',
-        type: 'code',
-        description: 'Express.js controller executing conditional inventory deduction during checkout.',
-        language: 'javascript',
-        codeSnippet: `// Express.js Order Controller with Stock Validation
-const Product = require('../models/Product');
-const Order = require('../models/Order');
-
-exports.createOrder = async (req, res) => {
-  try {
-    const { orderItems, shippingAddress, totalPrice } = req.body;
-
-    for (const item of orderItems) {
-      const product = await Product.findById(item.product);
-      if (!product || product.countInStock < item.qty) {
-        return res.status(400).json({ message: \`Insufficient stock for \${product?.name || 'product'}\` });
-      }
-      product.countInStock -= item.qty;
-      await product.save();
-    }
-
-    const order = new Order({ orderItems, user: req.user._id, shippingAddress, totalPrice });
-    const createdOrder = await order.save();
-    res.status(201).json(createdOrder);
-  } catch (error) {
-    res.status(500).json({ message: 'Order processing failed', error: error.message });
-  }
-};`,
-      },
-    ],
     quality: {
       testing: 'Manual API testing with Postman for all CRUD operations, stock checks, and order workflows.',
       security: 'Input validation on order quantities and structured error handling preventing unexpected crashes.',
@@ -581,6 +738,13 @@ exports.createOrder = async (req, res) => {
     ],
     evidence: [
       {
+        label: 'LinkedIn Project Showcase',
+        url: 'https://www.linkedin.com/feed/update/urn:li:activity:7439368259797307392/',
+        type: 'external',
+        isExternal: true,
+        note: 'Complete video presentation and architecture breakdown on LinkedIn',
+      },
+      {
         label: 'GitHub Repository',
         url: 'https://github.com/EricPraveen/EShop',
         type: 'github',
@@ -591,13 +755,13 @@ exports.createOrder = async (req, res) => {
   },
   {
     slug: 'edutrack-campus-portal',
-    title: 'EduTrack — Campus Information & Student Life Web Portal',
+    title: 'EduTrack — Campus Information & Student Life Portal',
     headline:
       'A responsive campus information web application providing university students and visitors with structured access to campus facilities, academic courses, student life, events, and clubs.',
     conciseOutcome:
       'Built responsive multi-section campus portal with dynamic content rendering, interactive navigation, and mobile-first layouts.',
     featured: true,
-    order: 4,
+    order: 6,
     status: 'shipped',
     category: 'Campus Information Web Application',
     period: '2023 – 2024',
@@ -610,6 +774,7 @@ exports.createOrder = async (req, res) => {
       'Developed as an academic web development project to build an accessible, structured, and responsive informational web portal for university campus life and academic offerings.',
     technologies: ['HTML5', 'CSS3', 'JavaScript', 'Responsive Web Design'],
     stack: ['HTML5', 'CSS3', 'JavaScript', 'Responsive Web Design'],
+    linkedInUrl: 'https://www.linkedin.com/in/ericpraveen-alricprashanth/details/projects/',
     repoUrl: 'https://github.com/EricPraveen/EduTrack',
     coverImage: {
       src: '/images/projects/edutrack-cover.svg',
@@ -636,8 +801,6 @@ exports.createOrder = async (req, res) => {
     architecture: {
       summary:
         'A lightweight, responsive web portal built with semantic HTML5, modular CSS3 styling, and vanilla JavaScript DOM interactions delivering fast client performance.',
-      textAlternative:
-        'Architecture diagram showing User interacting with Responsive HTML5/CSS3 Interface, dynamic JavaScript DOM controller rendering campus sections for Facilities, Courses, Clubs, and Events.',
       keyComponents: [
         {
           name: 'Semantic HTML5 Layout',
@@ -686,32 +849,6 @@ exports.createOrder = async (req, res) => {
           'Authored responsive styling, mobile navigation menus, and dynamic content tab switching scripts.',
       },
     ],
-    artifacts: [
-      {
-        id: 'art-edutrack-tab-controller',
-        title: 'Dynamic Tab Navigation Controller',
-        type: 'code',
-        description: 'Vanilla JavaScript module managing active section states and DOM tab toggling.',
-        language: 'javascript',
-        codeSnippet: `// Dynamic Campus Section Tab Controller
-document.addEventListener('DOMContentLoaded', () => {
-  const tabButtons = document.querySelectorAll('.tab-btn');
-  const contentSections = document.querySelectorAll('.campus-section');
-
-  tabButtons.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const targetSectionId = btn.getAttribute('data-target');
-
-      tabButtons.forEach((b) => b.classList.remove('active'));
-      contentSections.forEach((s) => s.classList.remove('active'));
-
-      btn.classList.add('active');
-      document.getElementById(targetSectionId)?.classList.add('active');
-    });
-  });
-});`,
-      },
-    ],
     quality: {
       testing: 'Cross-browser testing across Chrome, Firefox, and Safari on mobile and desktop viewports.',
       security: 'Static client-side assets with no external vulnerability vectors.',
@@ -730,6 +867,13 @@ document.addEventListener('DOMContentLoaded', () => {
       'Integrate dynamic student event calendar feed.',
     ],
     evidence: [
+      {
+        label: 'LinkedIn Project Details',
+        url: 'https://www.linkedin.com/in/ericpraveen-alricprashanth/details/projects/',
+        type: 'external',
+        isExternal: true,
+        note: 'Project listing and documentation on LinkedIn',
+      },
       {
         label: 'GitHub Repository',
         url: 'https://github.com/EricPraveen/EduTrack',

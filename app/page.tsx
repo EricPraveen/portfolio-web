@@ -114,13 +114,12 @@ export default async function HomePage() {
           </div>
         </FadeUp>
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-xl)' }}>
+        <div className="project-showcase-grid">
           {featuredProjects.map((project, idx) => (
             <ProjectPlate
               key={project.slug}
               project={project}
               index={idx}
-              layoutVariant={idx % 2 === 0 ? 'split-right' : 'split-left'}
             />
           ))}
         </div>

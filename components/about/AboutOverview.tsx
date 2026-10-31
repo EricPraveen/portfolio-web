@@ -173,7 +173,7 @@ export function AboutOverview({
       <div className="about-section-group">
         <div className="about-section-header">
           <span className="about-sub-eyebrow font-mono">THE JOURNEY</span>
-          <h3 className="about-sub-title font-heading-2xl">Life timeline</h3>
+          <h3 className="about-sub-title font-heading-2xl">Life Timeline</h3>
         </div>
 
         <div className="life-timeline-container" role="feed" aria-label="Life Timeline">
@@ -261,7 +261,11 @@ export function AboutOverview({
                       {exp.role.replace(/\[|\]/g, '')}
                     </h4>
                     <span className={`about-track-badge font-mono ${exp.dates.isCurrent ? 'is-current' : ''}`}>
-                      {exp.dates.start} &ndash; {exp.dates.end || 'PRESENT'}
+                      {exp.dates.isCurrent
+                        ? `${exp.dates.start} \u2013 ${exp.dates.end || 'PRESENT'}`
+                        : exp.dates.end && exp.dates.end !== exp.dates.start
+                        ? `${exp.dates.start} \u2013 ${exp.dates.end}`
+                        : exp.dates.start}
                     </span>
                   </div>
 

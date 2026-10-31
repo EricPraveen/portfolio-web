@@ -45,7 +45,7 @@ export default async function HomePage() {
   const skillCategories = getSkills();
   const education = getEducation();
   const experience = getExperience();
-  const { articles: initialArticles } = await getMediumArticles(4);
+  const { articles: initialArticles } = await getMediumArticles();
 
   const jsonLd = {
     '@context': 'https://schema.org',

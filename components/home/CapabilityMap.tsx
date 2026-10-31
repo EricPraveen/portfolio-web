@@ -2,7 +2,8 @@
 
 import React, { useState } from 'react';
 import { CapabilityCategory } from '@/content/types';
-import { stackTrays, StackTray } from '@/content/stack-trays.data';
+import { stackTrays, StackTray } from '@/content/skills.data';
+import { TechIcon } from '@/components/ui';
 
 export interface CapabilityMapProps {
   categories?: CapabilityCategory[];
@@ -47,7 +48,7 @@ export function CapabilityMap({ initialTrayId = 'languages' }: CapabilityMapProp
               SELECT A TRAY
             </span>
             <span className="sidebar-badge font-mono text-mono-label">
-              08 TRAYS
+              {String(stackTrays.length).padStart(2, '0')} TRAYS
             </span>
           </div>
 
@@ -75,7 +76,9 @@ export function CapabilityMap({ initialTrayId = 'languages' }: CapabilityMapProp
                     <span className="tab-btn-title font-sans">{tray.title}</span>
                   </div>
                   <div className="tab-btn-right font-mono">
-                    <span className="tab-btn-count">0{tray.count}</span>
+                    <span className="tab-btn-count">
+                      {String(tray.items.length).padStart(2, '0')}
+                    </span>
                     {isActive && (
                       <span className="tab-btn-beacon" aria-hidden="true" />
                     )}
@@ -119,15 +122,21 @@ export function CapabilityMap({ initialTrayId = 'languages' }: CapabilityMapProp
             {activeTray.items.map((item) => (
               <div key={item.name} className="tray-skill-card">
                 <div className="tray-skill-card-head">
-                  <h4 className="tray-skill-name font-sans">{item.name}</h4>
+                  <div className="tray-skill-info-group">
+                    <div className="tray-skill-icon-frame" aria-hidden="true">
+                      <TechIcon name={item.icon || item.name} size={28} />
+                    </div>
+                    <div>
+                      <h4 className="tray-skill-name font-sans">{item.name}</h4>
+                    </div>
+                  </div>
                   <span className="tray-skill-index-code font-mono text-mono-label">
                     {activeTray.code}
                   </span>
                 </div>
-                <div className="tray-skill-context-box">
-                  <span className="tray-skill-context-label font-mono">CONTEXT / REGISTER</span>
-                  <p className="tray-skill-context font-mono">
-                    {item.context}
+                <div className="tray-skill-detail-box">
+                  <p className="tray-skill-desc font-sans">
+                    {item.description || item.context}
                   </p>
                 </div>
               </div>

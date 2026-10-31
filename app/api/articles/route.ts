@@ -5,7 +5,7 @@ export const revalidate = 3600; // 1 hour ISR
 
 export async function GET() {
   try {
-    const data = await getMediumArticles(4);
+    const data = await getMediumArticles();
     return NextResponse.json(data, {
       status: 200,
       headers: {

@@ -1,13 +1,31 @@
+import { profileData } from '@/content/profile.data';
 import { MediumArticle, MediumArticlesResponse } from '@/content/types/blog.types';
 
-export const MEDIUM_PROFILE_URL = 'https://medium.com/@ericpraveen123';
-export const MEDIUM_FEED_URL = 'https://medium.com/feed/@ericpraveen123';
+// Extract Medium profile information dynamically from profile configuration
+const mediumSocial = profileData.socialLinks.find((s) => s.platform === 'medium');
+export const MEDIUM_PROFILE_URL = mediumSocial?.url || 'https://medium.com/@ericpraveen123';
+const mediumHandle = mediumSocial?.handle || '@ericpraveen123';
+const username = mediumHandle.replace(/^@/, '').trim();
+export const MEDIUM_FEED_URL = `https://medium.com/feed/@${username}`;
 
 /**
- * Fallback articles in case of network unavailability during builds or tests.
- * Reflects real articles published on Eric Praveen's Medium profile.
+ * Fallback articles in case of upstream network unavailability during builds or tests.
+ * Reflects published articles on Eric Praveen's Medium profile.
  */
 export const FALLBACK_ARTICLES: MediumArticle[] = [
+  {
+    id: '6c984ad62e67',
+    title: 'SOLID Principles in Object-Oriented Programming',
+    link: 'https://medium.com/@ericpraveen123/solid-principles-in-object-oriented-programming-6c984ad62e67',
+    pubDate: 'Oct 31, 2026',
+    isoDate: '2026-10-31T15:29:11.000Z',
+    thumbnail: 'https://cdn-images-1.medium.com/max/1024/1*5NxwxPUt-zeqdHksjL-mEw.jpeg',
+    categories: ['programming', 'solid-principles', 'java', 'software-engineering', 'oop'],
+    excerpt:
+      'Understanding the five fundamental design principles that help developers build clean, maintainable, flexible, and scalable software with practical Java examples.',
+    readingTime: '5 min read',
+    creator: 'Ericpraveen',
+  },
   {
     id: '69ed8ea4a283',
     title: "Java 25 Made main() Simpler. Here's What Actually Changed.",
@@ -37,33 +55,71 @@ export const FALLBACK_ARTICLES: MediumArticle[] = [
 ];
 
 /**
+ * Server-side in-memory cache to prevent redundant fetches within short intervals.
+ */
+interface CacheEntry {
+  timestamp: number;
+  data: MediumArticlesResponse;
+}
+
+let memoryCache: CacheEntry | null = null;
+const CACHE_TTL_MS = 60 * 1000; // 60 seconds in-memory TTL
+
+/**
  * Helper to unescape HTML entities and strip XML/HTML tags safely.
  */
 function decodeHtmlEntities(str: string): string {
   return str
     .replace(/&amp;/g, '&')
-    .replace(/&#39;/g, "'")
-    .replace(/&quot;/g, '"')
     .replace(/&lt;/g, '<')
     .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&#039;/g, "'")
+    .replace(/&#39;/g, "'")
+    .replace(/&apos;/g, "'")
     .replace(/&nbsp;/g, ' ')
+    .replace(/&rsquo;/g, "'")
+    .replace(/&lsquo;/g, "'")
     .replace(/&#8217;/g, "'")
+    .replace(/&#8216;/g, "'")
+    .replace(/&rdquo;/g, '”')
+    .replace(/&ldquo;/g, '“')
     .replace(/&#8220;/g, '“')
     .replace(/&#8221;/g, '”')
+    .replace(/&mdash;/g, '—')
     .replace(/&#8212;/g, '—')
-    .replace(/&#8211;/g, '–');
+    .replace(/&ndash;/g, '–')
+    .replace(/&#8211;/g, '–')
+    .replace(/&hellip;/g, '…')
+    .replace(/&#8230;/g, '…')
+    .replace(/&#(\d+);/g, (_, dec) => {
+      try {
+        return String.fromCharCode(parseInt(dec, 10));
+      } catch {
+        return '';
+      }
+    })
+    .replace(/&#x([0-9a-fA-F]+);/g, (_, hex) => {
+      try {
+        return String.fromCharCode(parseInt(hex, 16));
+      } catch {
+        return '';
+      }
+    });
 }
 
 /**
  * Parses raw Medium RSS XML into an array of typed MediumArticle objects.
+ * If limit is omitted or <= 0, all published items are extracted.
  */
-export function parseMediumRssXml(xml: string, limit: number = 4): MediumArticle[] {
+export function parseMediumRssXml(xml: string, limit?: number): MediumArticle[] {
   const items = xml.split('<item>').slice(1);
   if (!items || items.length === 0) return [];
 
+  const candidateItems = limit && limit > 0 ? items.slice(0, limit) : items;
   const articles: MediumArticle[] = [];
 
-  for (const item of items.slice(0, limit)) {
+  for (const item of candidateItems) {
     // 1. Title
     const titleMatch =
       item.match(/<title><!\[CDATA\[([\s\S]*?)\]\]><\/title>/) ||
@@ -164,7 +220,7 @@ export function parseMediumRssXml(xml: string, limit: number = 4): MediumArticle
       isoDate,
       thumbnail,
       excerpt,
-      categories: categories.slice(0, 4),
+      categories: categories.slice(0, 5),
       readingTime,
       creator,
     });
@@ -174,14 +230,29 @@ export function parseMediumRssXml(xml: string, limit: number = 4): MediumArticle
 }
 
 /**
- * Server-side function to fetch and cache Medium articles.
+ * Server-side function to fetch and cache all published Medium articles.
+ * When limit is omitted, returns all published articles from the user's Medium profile.
  */
-export async function getMediumArticles(limit: number = 4): Promise<MediumArticlesResponse> {
+export async function getMediumArticles(limit?: number): Promise<MediumArticlesResponse> {
   const now = new Date().toISOString();
+  const currentTime = Date.now();
+
+  // Return in-memory cached response if fresh
+  if (memoryCache && currentTime - memoryCache.timestamp < CACHE_TTL_MS) {
+    const cachedArticles = limit && limit > 0
+      ? memoryCache.data.articles.slice(0, limit)
+      : memoryCache.data.articles;
+    return {
+      ...memoryCache.data,
+      articles: cachedArticles,
+      total: cachedArticles.length,
+      cached: true,
+    };
+  }
 
   try {
     const res = await fetch(MEDIUM_FEED_URL, {
-      next: { revalidate: 3600 }, // 1 hour Next.js server cache
+      next: { revalidate: 3600 }, // 1 hour Next.js cache
       headers: {
         Accept: 'application/rss+xml, application/xml, text/xml;q=0.9, */*;q=0.8',
         'User-Agent': 'Mozilla/5.0 (Portfolio-Web/1.0; RSS-Reader)',
@@ -190,43 +261,60 @@ export async function getMediumArticles(limit: number = 4): Promise<MediumArticl
 
     if (!res.ok) {
       console.warn(`[Medium Service] Feed request returned status ${res.status}. Using fallback.`);
+      const fallbackList = limit && limit > 0 ? FALLBACK_ARTICLES.slice(0, limit) : FALLBACK_ARTICLES;
       return {
-        articles: FALLBACK_ARTICLES.slice(0, limit),
+        articles: fallbackList,
         profileUrl: MEDIUM_PROFILE_URL,
         fetchedAt: now,
         cached: true,
-        total: FALLBACK_ARTICLES.length,
+        total: fallbackList.length,
       };
     }
 
     const xml = await res.text();
-    const articles = parseMediumRssXml(xml, limit);
+    const allArticles = parseMediumRssXml(xml);
 
-    if (!articles || articles.length === 0) {
+    if (!allArticles || allArticles.length === 0) {
+      const fallbackList = limit && limit > 0 ? FALLBACK_ARTICLES.slice(0, limit) : FALLBACK_ARTICLES;
       return {
-        articles: FALLBACK_ARTICLES.slice(0, limit),
+        articles: fallbackList,
         profileUrl: MEDIUM_PROFILE_URL,
         fetchedAt: now,
         cached: true,
-        total: FALLBACK_ARTICLES.length,
+        total: fallbackList.length,
       };
     }
 
-    return {
-      articles,
+    const fullResponse: MediumArticlesResponse = {
+      articles: allArticles,
       profileUrl: MEDIUM_PROFILE_URL,
       fetchedAt: now,
       cached: false,
-      total: articles.length,
+      total: allArticles.length,
+    };
+
+    // Update in-memory cache with all articles
+    memoryCache = {
+      timestamp: currentTime,
+      data: fullResponse,
+    };
+
+    const returnedArticles = limit && limit > 0 ? allArticles.slice(0, limit) : allArticles;
+
+    return {
+      ...fullResponse,
+      articles: returnedArticles,
+      total: returnedArticles.length,
     };
   } catch (error) {
     console.error('[Medium Service] Error fetching RSS feed:', error);
+    const fallbackList = limit && limit > 0 ? FALLBACK_ARTICLES.slice(0, limit) : FALLBACK_ARTICLES;
     return {
-      articles: FALLBACK_ARTICLES.slice(0, limit),
+      articles: fallbackList,
       profileUrl: MEDIUM_PROFILE_URL,
       fetchedAt: now,
       cached: true,
-      total: FALLBACK_ARTICLES.length,
+      total: fallbackList.length,
     };
   }
 }

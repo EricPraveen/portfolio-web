@@ -36,7 +36,9 @@ export function ProfileSnapshot({ education, experience }: ProfileSnapshotProps)
                     {exp.role.replace(/\[|\]/g, '')}
                   </span>
                   <span className="profile-timeline-dates font-mono text-mono-label">
-                    {exp.dates.start} &ndash; {exp.dates.end}
+                    {exp.dates.end && exp.dates.end !== exp.dates.start
+                      ? `${exp.dates.start} \u2013 ${exp.dates.end}`
+                      : exp.dates.start}
                   </span>
                 </div>
 

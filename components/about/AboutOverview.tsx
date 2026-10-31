@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { Profile, Education, Experience } from '@/content/types';
 import { educationData as defaultEducation } from '@/content/education.data';
 import { experienceData as defaultExperience } from '@/content/experience.data';
+import { ScrollReveal, FadeUp, StaggerContainer, StaggerItem } from '@/components/animation';
 
 export interface AboutOverviewProps {
   profile: Profile;
@@ -115,7 +116,7 @@ export function AboutOverview({
   return (
     <div className="about-overview">
       {/* ── 1. BIO HERO BLOCK ────────────────────────────────────────── */}
-      <div className="about-hero-block arcade-box">
+      <ScrollReveal variant="fade-up" className="about-hero-block arcade-box">
         <div className="about-hero-strip">
           <div className="about-hero-strip-left">
             <span className="section-eyebrow font-mono text-mono-label">{indexLabel}</span>
@@ -167,14 +168,14 @@ export function AboutOverview({
             </a>
           </div>
         </div>
-      </div>
+      </ScrollReveal>
 
       {/* ── 2. THE JOURNEY // LIFE TIMELINE ──────────────────────────── */}
       <div className="about-section-group">
-        <div className="about-section-header">
+        <FadeUp className="about-section-header">
           <span className="about-sub-eyebrow font-mono">THE JOURNEY</span>
           <h3 className="about-sub-title font-heading-2xl">Life Timeline</h3>
-        </div>
+        </FadeUp>
 
         <div className="life-timeline-container" role="feed" aria-label="Life Timeline">
           <div className="life-timeline-rail" aria-hidden="true" />
@@ -182,8 +183,11 @@ export function AboutOverview({
           {TIMELINE_MILESTONES.map((item, idx) => {
             const isEven = idx % 2 === 0;
             return (
-              <article
+              <ScrollReveal
                 key={`${item.year}-${item.title}`}
+                as="article"
+                variant={isEven ? 'slide-left' : 'slide-right'}
+                delay={Math.min(idx * 60, 240)}
                 className={`life-timeline-item ${isEven ? 'life-timeline-item--left' : 'life-timeline-item--right'} ${
                   item.isCurrent ? 'is-current' : ''
                 }`}
@@ -204,7 +208,7 @@ export function AboutOverview({
                   <h4 className="life-timeline-milestone font-sans">{item.title}</h4>
                   <p className="life-timeline-desc font-sans">{item.description}</p>
                 </div>
-              </article>
+              </ScrollReveal>
             );
           })}
         </div>
@@ -212,23 +216,23 @@ export function AboutOverview({
 
       {/* ── 3. CURRENTLY // WHAT I'M FOCUSED ON ──────────────────────── */}
       <div className="about-section-group">
-        <div className="about-section-header">
+        <FadeUp className="about-section-header">
           <span className="about-sub-eyebrow font-mono">CURRENTLY</span>
           <h3 className="about-sub-title font-heading-2xl">What I&apos;m focused on</h3>
-        </div>
+        </FadeUp>
 
-        <div className="currently-grid">
-          {FOCUS_ITEMS.map((item) => (
-            <div key={item.category} className="currently-card arcade-box">
+        <StaggerContainer staggerDelay={95} className="currently-grid">
+          {FOCUS_ITEMS.map((item, idx) => (
+            <StaggerItem key={item.category} index={idx} className="currently-card arcade-box">
               <div className="currently-card-icon" aria-hidden="true">
                 {item.icon}
               </div>
               <span className="currently-card-cat font-mono">{item.category}</span>
               <h4 className="currently-card-title font-sans">{item.title}</h4>
               <p className="currently-card-desc font-sans">{item.description}</p>
-            </div>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
       </div>
 
       {/* ── 4. ACADEMIC FOUNDATION & PRACTICAL EXPERIENCE ───────────── */}
@@ -237,14 +241,14 @@ export function AboutOverview({
         <span id="experience" className="section-anchor" aria-hidden="true" />
         <span id="log" className="section-anchor" aria-hidden="true" />
 
-        <div className="about-section-header">
+        <FadeUp className="about-section-header">
           <span className="about-sub-eyebrow font-mono">ACADEMIC &amp; LEADERSHIP TRACK</span>
           <h3 className="about-sub-title font-heading-2xl">Education &amp; Experience</h3>
-        </div>
+        </FadeUp>
 
         <div className="about-track-grid">
           {/* Practical Experience Column */}
-          <div className="about-track-col">
+          <ScrollReveal variant="slide-left" delay={80} className="about-track-col">
             <div className="about-track-subhead">
               <span className="about-track-subhead-title font-mono">
                 <span className="about-track-subhead-dot" aria-hidden="true" />
@@ -292,10 +296,10 @@ export function AboutOverview({
                 </div>
               ))}
             </div>
-          </div>
+          </ScrollReveal>
 
           {/* Academic Foundation Column */}
-          <div className="about-track-col">
+          <ScrollReveal variant="slide-right" delay={140} className="about-track-col">
             <div className="about-track-subhead about-track-subhead--academic">
               <span className="about-track-subhead-title font-mono">
                 <span className="about-track-subhead-dot" aria-hidden="true" />
@@ -348,7 +352,7 @@ export function AboutOverview({
                 </div>
               ))}
             </div>
-          </div>
+          </ScrollReveal>
         </div>
       </div>
     </div>

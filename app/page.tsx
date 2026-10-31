@@ -17,6 +17,7 @@ import {
 } from '@/components/home';
 import { getMediumArticles } from '@/lib/content/medium.service';
 import { AboutOverview } from '@/components/about';
+import { FadeUp } from '@/components/animation';
 
 // Enforce content validity at build time
 assertContentValid();
@@ -104,14 +105,14 @@ export default async function HomePage() {
       <section id="projects" className="selected-work-section" aria-labelledby="selected-work-heading">
         <span id="selected-work" className="section-anchor" aria-hidden="true" />
         <span id="work" className="section-anchor" aria-hidden="true" />
-        <div className="section-header-strip">
+        <FadeUp className="section-header-strip">
           <div>
             <span className="section-eyebrow text-mono-label font-mono">03 / SELECTED WORK</span>
             <h2 id="selected-work-heading" className="section-title font-heading-2xl">
               Projects I&apos;ve Built
             </h2>
           </div>
-        </div>
+        </FadeUp>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-xl)' }}>
           {featuredProjects.map((project, idx) => (

@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { MediumArticle } from '@/content/types/blog.types';
 import { BlogCarousel } from './BlogCarousel';
 import { ArticleCardSkeleton } from './ArticleCardSkeleton';
+import { FadeUp, ScrollReveal } from '@/components/animation';
 
 export interface BlogSectionProps {
   initialArticles?: MediumArticle[];
@@ -99,7 +100,7 @@ export function BlogSection({
       <span id="credentials" className="section-anchor" aria-hidden="true" />
 
       {/* ── SECTION HEADER STRIP ──────────────────────────────────── */}
-      <div className="section-header-strip">
+      <FadeUp className="section-header-strip">
         <div>
           <span className="section-eyebrow text-mono-label font-mono">
             05 / FROM THE BLOG &amp; WRITING
@@ -111,10 +112,10 @@ export function BlogSection({
         <p className="section-lead text-body">
           Engineering deep dives, architecture notes, and open-source explorations published on Medium.
         </p>
-      </div>
+      </FadeUp>
 
       {/* ── PROFILE & RSS FEED STATUS BAR ─────────────────────────── */}
-      <div className="blog-profile-banner arcade-box">
+      <ScrollReveal variant="fade-up" delay={80} className="blog-profile-banner arcade-box">
         <div className="blog-profile-info">
           <span className="blog-profile-icon font-mono" aria-hidden="true">
             M
@@ -145,57 +146,59 @@ export function BlogSection({
             <span aria-hidden="true">↗</span>
           </a>
         </div>
-      </div>
+      </ScrollReveal>
 
       {/* ── ARTICLES CAROUSEL / SKELETON / ERROR STATES ──────────── */}
-      {isLoading && articles.length === 0 ? (
-        <div className="blog-grid" aria-label="Loading latest articles">
-          <ArticleCardSkeleton />
-          <ArticleCardSkeleton />
-        </div>
-      ) : hasError && articles.length === 0 ? (
-        <div className="blog-state-box arcade-box">
-          <p className="blog-state-msg font-sans">
-            Unable to reach Medium RSS feed at the moment.
-          </p>
-          <div className="blog-state-actions">
-            <button
-              type="button"
-              onClick={() => fetchArticles(true)}
-              className="about-btn about-btn--volt arcade-btn font-mono"
-            >
-              <span>Retry Sync ↻</span>
-            </button>
+      <ScrollReveal variant="fade-up" delay={150}>
+        {isLoading && articles.length === 0 ? (
+          <div className="blog-grid" aria-label="Loading latest articles">
+            <ArticleCardSkeleton />
+            <ArticleCardSkeleton />
+          </div>
+        ) : hasError && articles.length === 0 ? (
+          <div className="blog-state-box arcade-box">
+            <p className="blog-state-msg font-sans">
+              Unable to reach Medium RSS feed at the moment.
+            </p>
+            <div className="blog-state-actions">
+              <button
+                type="button"
+                onClick={() => fetchArticles(true)}
+                className="about-btn about-btn--volt arcade-btn font-mono"
+              >
+                <span>Retry Sync ↻</span>
+              </button>
+              <a
+                href={profileUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="about-btn about-btn--dark arcade-btn font-mono"
+              >
+                <span>Read on Medium ↗</span>
+              </a>
+            </div>
+          </div>
+        ) : articles.length === 0 ? (
+          <div className="blog-state-box arcade-box">
+            <p className="blog-state-msg font-sans">
+              No published articles available yet. Check back soon!
+            </p>
             <a
               href={profileUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="about-btn about-btn--dark arcade-btn font-mono"
+              className="about-btn about-btn--volt arcade-btn font-mono"
             >
-              <span>Read on Medium ↗</span>
+              <span>Visit Medium Profile ↗</span>
             </a>
           </div>
-        </div>
-      ) : articles.length === 0 ? (
-        <div className="blog-state-box arcade-box">
-          <p className="blog-state-msg font-sans">
-            No published articles available yet. Check back soon!
-          </p>
-          <a
-            href={profileUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="about-btn about-btn--volt arcade-btn font-mono"
-          >
-            <span>Visit Medium Profile ↗</span>
-          </a>
-        </div>
-      ) : (
-        <BlogCarousel articles={articles} />
-      )}
+        ) : (
+          <BlogCarousel articles={articles} />
+        )}
+      </ScrollReveal>
 
       {/* ── FOOTER VIEW ALL LINK ──────────────────────────────────── */}
-      <div className="blog-footer-strip">
+      <FadeUp delay={100} className="blog-footer-strip">
         <a
           href={profileUrl}
           target="_blank"
@@ -205,7 +208,7 @@ export function BlogSection({
           <span>View All Articles on Medium</span>
           <span className="blog-view-all-arrow" aria-hidden="true">↗</span>
         </a>
-      </div>
+      </FadeUp>
     </section>
   );
 }

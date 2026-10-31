@@ -83,7 +83,7 @@ export function ThesisPanel({ profile, onOpenCommand }: ThesisPanelProps) {
 
       <div className="editorial-hero__stage">
         {/* 1. TOP META BAR */}
-        <div className="editorial-hero__topbar">
+        <div className="editorial-hero__topbar hero-animate-fade-up" style={{ animationDelay: '80ms' }}>
           <span
             className="editorial-hero__role font-mono"
             aria-label={`Specialization: ${ROLES[roleIndex]}`}
@@ -98,7 +98,7 @@ export function ThesisPanel({ profile, onOpenCommand }: ThesisPanelProps) {
 
         {/* 2. MASSIVE TYPOGRAPHIC CENTERPIECE + PORTRAIT CARD */}
         <div className="editorial-hero__centerpiece">
-          <div className="editorial-hero__identity-column">
+          <div className="editorial-hero__identity-column hero-animate-slide-left" style={{ animationDelay: '180ms' }}>
             <h1 className="editorial-hero__name-block" aria-label="Eric Praveen">
               {/* First Name: ERIC (Solid Filled Bold Typography - No Hover) */}
               <div className="editorial-hero__name-row editorial-hero__name-row--solid">
@@ -134,7 +134,7 @@ export function ThesisPanel({ profile, onOpenCommand }: ThesisPanelProps) {
             </h1>
 
             {/* Social Links Row directly under the name */}
-            <div className="editorial-hero__social-strip" aria-label="Social and Professional Profiles">
+            <div className="editorial-hero__social-strip hero-animate-fade-up" style={{ animationDelay: '300ms' }} aria-label="Social and Professional Profiles">
               <a
                 href="https://github.com/EricPraveen"
                 target="_blank"
@@ -177,7 +177,7 @@ export function ThesisPanel({ profile, onOpenCommand }: ThesisPanelProps) {
           </div>
 
           {/* Right-Side Architectural Tech Portrait Card */}
-          <div className="editorial-hero__portrait" aria-label="Profile Photo">
+          <div className="editorial-hero__portrait hero-animate-scale-in" style={{ animationDelay: '250ms' }} aria-label="Profile Photo">
             <div className="editorial-hero__portrait-frame arcade-box">
               {/* Futuristic Corner L-Brackets */}
               <span className="portrait-corner portrait-corner--tl" aria-hidden="true" />
@@ -209,10 +209,10 @@ export function ThesisPanel({ profile, onOpenCommand }: ThesisPanelProps) {
         </div>
 
         {/* 3. HAIRLINE SEPARATOR */}
-        <div className="editorial-hero__divider" aria-hidden="true" />
+        <div className="editorial-hero__divider hero-animate-fade-up" style={{ animationDelay: '380ms' }} aria-hidden="true" />
 
         {/* 4. STATEMENT / PITCH ROW */}
-        <div className="editorial-hero__pitch-row">
+        <div className="editorial-hero__pitch-row hero-animate-fade-up" style={{ animationDelay: '460ms' }}>
           <p className="editorial-hero__pitch-text font-sans">
             Third-year IT undergraduate at University of Moratuwa — building full-stack web applications and robust distributed backends with clean code and verifiable reliability.
           </p>
@@ -223,7 +223,7 @@ export function ThesisPanel({ profile, onOpenCommand }: ThesisPanelProps) {
         </div>
 
         {/* 5. BOTTOM ACTION CONTROLS */}
-        <div className="editorial-hero__bottom-bar">
+        <div className="editorial-hero__bottom-bar hero-animate-fade-up" style={{ animationDelay: '560ms' }}>
           <div className="editorial-hero__actions">
             <a href="#projects" className="hero-btn hero-btn--dark">
               <span>SEE THE WORK</span>

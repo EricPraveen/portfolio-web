@@ -788,7 +788,219 @@ export const projectsData: Project[] = [
     ],
   },
 
-  // ── 3. FIGMA UI/UX DESIGN PROJECTS ─────────────────────────────────────────
+  // ── 3. FIGMA UI/UX DESIGN PROJECTS (ORDER: DONUT, DR. PEPPER, WAYPOINT, FIXNOW, TRAVELHUB) ──
+  {
+    slug: 'donut-animated-product-landing-page',
+    title: 'Donut — Animated Product Landing Page Concept',
+    headline:
+      'Playful animated product landing page concept in Figma exploring visual composition, asset styling, interactive animation prototyping, and component state transitions.',
+    track: 'figma',
+    conciseOutcome:
+      'Engineered playful dessert landing page in Figma with pastel color palettes, smart-animate flavor carousels, and engaging micro-interactions.',
+    featured: true,
+    order: 8,
+    status: 'shipped',
+    category: 'Animated Landing Page UI',
+    period: '2025',
+    year: '2025',
+    duration: 'Personal Practice Project',
+    role: 'UI/UX Designer',
+    teamSize: 1,
+    isAcademic: false,
+    context:
+      'Personal UI Design Experiment & Practice Project in Figma exploring playful UI compositions, vibrant dessert color harmonies, asset styling, and animated interactive prototyping.',
+    technologies: ['Figma', 'Interactive Prototyping', 'Component Variants', 'Visual Design', 'Animation'],
+    stack: ['Figma', 'Interactive Prototyping', 'Component Variants', 'Visual Design', 'Animation'],
+    linkedInUrl: 'https://www.linkedin.com/feed/update/urn:li:activity:7373795791355842560/',
+    coverImage: {
+      src: '/images/projects/donut-figma.jpg',
+      alt: 'Donut Animated Product Landing Page in Figma',
+      width: 1024,
+      height: 582,
+      caption: 'Playful Animated Donut Landing Page Concept, Sprinkles Animation, and Interactive Flavor Boxes in Figma',
+    },
+    problem:
+      'Bakery and dessert websites often lack the joyful, appetizing tactile feeling that entices food lovers in physical patisseries.',
+    constraints: [
+      'Must create an appetizing, cheerful atmosphere with soft pastel pinks, creamy yellows, and rich chocolate tones.',
+      'Must incorporate playful micro-animations like sprinkles dropping and floating pastry effects.',
+      'Must provide an intuitive interactive flavor selection and order builder flow.',
+    ],
+    personalRole:
+      'Sole concept designer: designed custom vector donut illustrations, composed playful typography pairings, established interactive component variants, and animated stateful transitions using Figma Smart Animate.',
+    contributions: [
+      'Illustrated vector pastry assets with modular frosting, sprinkles, and filling layers.',
+      'Designed interactive "Build Your Box" flavor carousel featuring Strawberry Glaze, Dark Chocolate Crumb, Pistachio Dream, and Caramel Crunch.',
+      'Connected Figma prototype with realistic hover bounces, rotation easing, and modal pop-ups.',
+      'Created responsive desktop navigation with cart counter pill and store locator drawer.',
+    ],
+    architecture: {
+      summary:
+        'A playful web UI concept in Figma leveraging vector illustration layers, modular frosting/topping variants, and fluid Smart Animate transitions to create an appetizing interactive experience.',
+      keyComponents: [
+        {
+          name: 'Hero Bakery Showcase',
+          role: 'Emotion & Appetite Appeal',
+          description: 'Playful headline, floating donut hero render with animated sprinkles and quick CTA.',
+        },
+        {
+          name: 'Interactive Flavor Box Builder',
+          role: 'Customization & Ordering',
+          description: 'Interactive selector allowing customers to mix-and-match pastry flavors into custom boxes.',
+        },
+      ],
+    },
+    decisions: [
+      {
+        title: 'Vector Layered Donut Assets vs. Stock Photos',
+        decision:
+          'Created custom layered vector illustrations in Figma rather than static food photography.',
+        why: 'Enables individual animation of toppings, sprinkles, and frosting layers across interactive states.',
+        tradeoff: 'Requires custom illustration work for every new flavor introduced.',
+      },
+    ],
+    buildLog: [
+      {
+        milestone: 'Illustration & Style Guide',
+        date: 'Week 1',
+        details: 'Illustrated pastry assets, defined pastel color tokens, and styled cheerful typography.',
+      },
+      {
+        milestone: 'Interactive Motion Prototyping',
+        date: 'Week 2',
+        details: 'Built interactive flavor customizer with smart-animate transitions in Figma.',
+      },
+    ],
+    quality: {
+      testing: 'Verified prototype frame rate and smooth Smart Animate easing curves.',
+      security: 'Static design concept with zero external vulnerabilities.',
+      accessibility: 'High contrast text on cards and clear visual button states.',
+      performance: 'Organized Figma component layers with clean naming and Auto Layout.',
+    },
+    outcomes: [
+      'Showcased creative visual design and interactive prototyping on LinkedIn.',
+      'Demonstrated versatility across both playful consumer UI and complex enterprise systems.',
+    ],
+    lessonsLearned: [
+      'Delightful micro-animations and cheerful color palettes create emotional connection and increase user dwell time.',
+    ],
+    v2Improvements: ['Design mobile ordering drawer and order tracking animation.'],
+    evidence: [
+      {
+        label: 'LinkedIn UI/UX Design Showcase',
+        url: 'https://www.linkedin.com/feed/update/urn:li:activity:7373795791355842560/',
+        type: 'external',
+        isExternal: true,
+        note: 'Figma interactive dessert prototype and animation breakdown',
+      },
+    ],
+  },
+  {
+    slug: 'dr-pepper-interactive-landing-page',
+    title: 'Dr. Pepper — Interactive Product Landing Page Concept',
+    headline:
+      'Bold beverage product landing page concept designed in Figma exploring visual hierarchy, dynamic typography, component variants, and interactive micro-animations.',
+    track: 'figma',
+    conciseOutcome:
+      'Designed high-impact beverage showcase concept in Figma featuring custom typography, 23-flavor interactive wheel, and product variant micro-animations.',
+    featured: true,
+    order: 9,
+    status: 'shipped',
+    category: 'Product Landing Page UI',
+    period: '2025',
+    year: '2025',
+    duration: 'Personal Practice Project',
+    role: 'UI/UX Designer',
+    teamSize: 1,
+    isAcademic: false,
+    context:
+      'Personal UI Design Experiment & Practice Project exploring modern creative web design, bold typography layouts, beverage product presentation, and smart-animate interactive prototyping in Figma.',
+    technologies: ['Figma', 'Typography', 'Visual Hierarchy', 'Component Variants', 'Landing Pages'],
+    stack: ['Figma', 'Typography', 'Visual Hierarchy', 'Component Variants', 'Landing Pages'],
+    linkedInUrl: 'https://www.linkedin.com/feed/update/urn:li:activity:7373795791355842560/',
+    coverImage: {
+      src: '/images/projects/drpepper-figma.jpg',
+      alt: 'Dr. Pepper Strawberry & Cream Interactive Product Showcase in Figma',
+      width: 1024,
+      height: 646,
+      caption: 'Dr. Pepper Bold Beverage Presentation, 23 Flavor Exploration, and Interactive Variant Prototyping',
+    },
+    problem:
+      'Traditional beverage websites often rely on static product images with generic layouts that fail to evoke taste excitement, brand heritage, or engaging interaction.',
+    constraints: [
+      'Must celebrate the iconic 23-flavor heritage with bold visual typography and rich maroon/crimson color palettes.',
+      'Must provide an interactive flavor switcher that changes hero backgrounds and product can renders seamlessly.',
+      'Must maintain clean layout hierarchy across 1440px desktop displays.',
+    ],
+    personalRole:
+      'Sole concept designer: researched brand identity, developed custom typography hierarchies, composed high-resolution can renders with condensation effects, and created Figma component variants with interactive hover states.',
+    contributions: [
+      'Designed expressive hero typography pairing impactful sans-serif headlines with vintage brand motifs.',
+      'Built interactive flavor carousel component (Original, Cherry, Strawberries & Cream, Zero Sugar) with smooth variant switching.',
+      'Engineered smart-animate transitions simulating can rotation and background color morphing on user selection.',
+      'Created accompanying nutrition facts drawer and retail store locator modal concept.',
+    ],
+    architecture: {
+      summary:
+        'A desktop landing page design in Figma centered around high-contrast visual storytelling, layered asset masking, interactive component variants, and fluid prototype transitions.',
+      keyComponents: [
+        {
+          name: 'Hero Showcase Stage',
+          role: 'Visual Hook & Brand Identity',
+          description: 'Giant display typography, floating product render with custom drop shadows and splash art.',
+        },
+        {
+          name: 'Interactive Flavor Selector',
+          role: 'Product Engagement',
+          description: 'Clickable variant tabs that dynamically switch can artwork, flavor notes, and color themes.',
+        },
+      ],
+    },
+    decisions: [
+      {
+        title: 'Dark Crimson Background vs. Traditional White Web Layout',
+        decision:
+          'Utilized a deep maroon-to-black vignette gradient as the foundational canvas.',
+        why: 'Enhances product contrast, communicates premium taste, and makes the metallic can highlights pop vibrantly.',
+        tradeoff: 'Requires strict contrast checking for body text readability.',
+      },
+    ],
+    buildLog: [
+      {
+        milestone: 'Brand Exploration & Asset Preparation',
+        date: 'Week 1',
+        details: 'Curated typography references, refined can mockups, and composed flavor color palettes.',
+      },
+      {
+        milestone: 'Layout Design & Smart-Animate Prototyping',
+        date: 'Week 2',
+        details: 'Designed desktop layout and connected interactive prototype with variant transitions in Figma.',
+      },
+    ],
+    quality: {
+      testing: 'Verified text readability against deep crimson backgrounds ensuring WCAG 2.2 AA compliant contrast.',
+      security: 'Static design concept with zero external data risks.',
+      accessibility: 'High contrast text labels and clear interactive hover indicator states.',
+      performance: 'Clean frame hierarchy with optimized vector paths.',
+    },
+    outcomes: [
+      'Created viral design concept published and discussed on LinkedIn.',
+      'Demonstrated advanced mastery of Figma Auto Layout, component variants, and interactive motion design.',
+    ],
+    lessonsLearned: [
+      'Bold typographic contrast transforms an ordinary product page into an unforgettable digital brand experience.',
+    ],
+    v2Improvements: ['Design matching responsive mobile layouts and sound effect cues.'],
+    evidence: [
+      {
+        label: 'LinkedIn UI/UX Design Showcase',
+        url: 'https://www.linkedin.com/feed/update/urn:li:activity:7373795791355842560/',
+        type: 'external',
+        isExternal: true,
+        note: 'Figma interactive product presentation and design walkthrough',
+      },
+    ],
+  },
   {
     slug: 'waypoint-delivery-planning-system',
     title: 'WayPoint — Enterprise Delivery Planning System',
@@ -798,7 +1010,7 @@ export const projectsData: Project[] = [
     conciseOutcome:
       'Designed end-to-end logistics dispatch platform in Figma with interactive prototypes, comprehensive design system tokens, and route optimization workflows.',
     featured: true,
-    order: 8,
+    order: 10,
     status: 'shipped',
     category: 'UI/UX Design',
     period: '2026',
@@ -813,10 +1025,10 @@ export const projectsData: Project[] = [
     stack: ['Figma', 'FigJam', 'Auto Layout', 'Design Systems', 'Interactive Prototyping'],
     linkedInUrl: 'https://www.linkedin.com/feed/update/urn:li:activity:7373795791355842560/',
     coverImage: {
-      src: '/images/projects/waypoint-cover.svg',
-      alt: 'WayPoint Enterprise Delivery Planning System Figma Design and Component Specs',
-      width: 1200,
-      height: 675,
+      src: '/images/projects/waypoint-figma.jpg',
+      alt: 'WayPoint Enterprise Delivery Planning System Portal Design in Figma',
+      width: 1024,
+      height: 710,
       caption: 'WayPoint Logistics Dispatch Control Tower, Route Optimization Maps, and Component Variants in Figma',
     },
     problem:
@@ -918,7 +1130,7 @@ export const projectsData: Project[] = [
     conciseOutcome:
       'Created mobile app UI/UX design with seamless service booking flows, upfront pricing transparency, verified provider profiles, and interactive Figma prototyping.',
     featured: true,
-    order: 9,
+    order: 11,
     status: 'shipped',
     category: 'Mobile UI/UX Design',
     period: '2025',
@@ -933,8 +1145,8 @@ export const projectsData: Project[] = [
     stack: ['Figma', 'Mobile UI', 'Auto Layout', 'User Flows', 'Interactive Prototyping'],
     linkedInUrl: 'https://www.linkedin.com/feed/update/urn:li:activity:7373795791355842560/',
     coverImage: {
-      src: '/images/projects/fixnow-cover.svg',
-      alt: 'FixNow On-Demand Home Service Mobile App UI/UX Figma Prototype',
+      src: '/images/projects/fixnow-card.jpg',
+      alt: 'FixNow Home Service and Repair Mobile App UI/UX Design in Figma',
       width: 1200,
       height: 675,
       caption: 'FixNow Mobile App Screens: Service Discovery, Technician Profiles, and Instant Booking Flow',
@@ -1016,214 +1228,110 @@ export const projectsData: Project[] = [
     ],
   },
   {
-    slug: 'dr-pepper-interactive-landing-page',
-    title: 'Dr. Pepper — Interactive Product Landing Page Concept',
+    slug: 'travel-hub-uiux-design',
+    title: 'Travel Hub — Sri Lanka Tourism UI/UX Design System',
     headline:
-      'Bold beverage product landing page concept designed in Figma exploring visual hierarchy, dynamic typography, component variants, and interactive micro-animations.',
+      'Comprehensive UI/UX design system and high-fidelity interactive prototype created in Figma for Sri Lanka tour package discovery, destination filtering, and booking management.',
     track: 'figma',
     conciseOutcome:
-      'Designed high-impact beverage showcase concept in Figma featuring custom typography, 23-flavor interactive wheel, and product variant micro-animations.',
+      'Engineered high-fidelity tourist dashboard screens, responsive package card grids, destination exploration workflows, and clickable Figma prototype.',
     featured: true,
-    order: 10,
+    order: 12,
     status: 'shipped',
-    category: 'Product Landing Page UI',
-    period: '2025',
+    category: 'UI/UX Design & Prototyping',
+    period: '2024 – 2025',
     year: '2025',
-    duration: 'Personal Practice Project',
-    role: 'UI/UX Designer',
-    teamSize: 1,
-    isAcademic: false,
+    duration: '4 Months',
+    role: 'UI/UX Designer & Prototyper',
+    teamSize: 4,
+    isAcademic: true,
     context:
-      'Personal UI Design Experiment & Practice Project exploring modern creative web design, bold typography layouts, beverage product presentation, and smart-animate interactive prototyping in Figma.',
-    technologies: ['Figma', 'Typography', 'Visual Hierarchy', 'Component Variants', 'Landing Pages'],
-    stack: ['Figma', 'Typography', 'Visual Hierarchy', 'Component Variants', 'Landing Pages'],
+      '2nd Year Software Project – University of Moratuwa: Led the complete UI/UX design phase in Figma before full-stack engineering, crafting accessible tourist dashboards and design tokens.',
+    technologies: ['Figma', 'FigJam', 'Auto Layout', 'Design Systems', 'User Flows'],
+    stack: ['Figma', 'FigJam', 'Auto Layout', 'Design Systems', 'User Flows'],
     linkedInUrl: 'https://www.linkedin.com/feed/update/urn:li:activity:7373795791355842560/',
+    demoUrl: 'https://www.figma.com/proto/WAY9zYrASNhdr0Fjej69zb/Travel-Hub?node-id=0-1&t=jnBrkBLbAn8TDWtC-1',
     coverImage: {
-      src: '/images/projects/drpepper-cover.svg',
-      alt: 'Dr. Pepper Interactive Product Landing Page Concept in Figma',
-      width: 1200,
-      height: 675,
-      caption: 'Dr. Pepper Bold Beverage Presentation, 23 Flavor Exploration, and Interactive Variant Prototyping',
+      src: '/images/projects/travelhub-figma.jpg',
+      alt: 'Travel Hub Sri Lanka Tourism Package Exploration Interface in Figma',
+      width: 1024,
+      height: 587,
+      caption: 'Travel Hub Figma UI/UX Design: Destination Cards, Multi-Criteria Filter Badges, and Package Booking Dashboard',
     },
     problem:
-      'Traditional beverage websites often rely on static product images with generic layouts that fail to evoke taste excitement, brand heritage, or engaging interaction.',
+      'Tourist package platforms often have cluttered layouts and confusing navigation, making destination exploration frustrating on mobile and desktop devices.',
     constraints: [
-      'Must celebrate the iconic 23-flavor heritage with bold visual typography and rich maroon/crimson color palettes.',
-      'Must provide an interactive flavor switcher that changes hero backgrounds and product can renders seamlessly.',
-      'Must maintain clean layout hierarchy across 1440px desktop displays.',
+      'Must provide clean card-based package browsing with rating badges, pricing, and duration tags.',
+      'Must design responsive layouts adhering to modern visual hierarchy and color harmony.',
+      'Must build an interactive Figma prototype with working filters and reservation modal flows.',
     ],
     personalRole:
-      'Sole concept designer: researched brand identity, developed custom typography hierarchies, composed high-resolution can renders with condensation effects, and created Figma component variants with interactive hover states.',
+      'Created the comprehensive design system, component variants, wireframes, and interactive prototype in Figma aligning the team execution.',
     contributions: [
-      'Designed expressive hero typography pairing impactful sans-serif headlines with vintage brand motifs.',
-      'Built interactive flavor carousel component (Original, Cherry, Strawberries & Cream, Zero Sugar) with smooth variant switching.',
-      'Engineered smart-animate transitions simulating can rotation and background color morphing on user selection.',
-      'Created accompanying nutrition facts drawer and retail store locator modal concept.',
+      'Designed explore destinations dashboard with responsive card grids, category filters (Beach, Mountain, City, Tropical), and search inputs.',
+      'Built consistent design tokens for typography, elevation, and accent blues.',
+      'Delivered interactive prototype tested with university peers and presented to evaluators.',
     ],
     architecture: {
       summary:
-        'A desktop landing page design in Figma centered around high-contrast visual storytelling, layered asset masking, interactive component variants, and fluid prototype transitions.',
+        'A component-driven Figma design system organized into foundation tokens, responsive package cards, tourist booking modals, and clickable prototype user flows.',
       keyComponents: [
         {
-          name: 'Hero Showcase Stage',
-          role: 'Visual Hook & Brand Identity',
-          description: 'Giant display typography, floating product render with custom drop shadows and splash art.',
+          name: 'Destination Discovery Feed',
+          role: 'Browsing & Category Filtering',
+          description: 'Top picks carousel, multi-criteria category filter chips, and destination cards.',
         },
         {
-          name: 'Interactive Flavor Selector',
-          role: 'Product Engagement',
-          description: 'Clickable variant tabs that dynamically switch can artwork, flavor notes, and color themes.',
+          name: 'Package Booking & Review Modals',
+          role: 'Checkout & Social Proof',
+          description: 'Reservation date selector, price breakdown, and verified traveler review components.',
         },
       ],
     },
     decisions: [
       {
-        title: 'Dark Crimson Background vs. Traditional White Web Layout',
+        title: 'Card-Based Destination Feed vs. Dense Table View',
         decision:
-          'Utilized a deep maroon-to-black vignette gradient as the foundational canvas.',
-        why: 'Enhances product contrast, communicates premium taste, and makes the metallic can highlights pop vibrantly.',
-        tradeoff: 'Requires strict contrast checking for body text readability.',
+          'Adopted rich photographic card grids with prominent rating badges and pricing per person.',
+        why: 'Travel discovery is an emotionally driven visual experience; card layouts maximize engagement.',
+        tradeoff: 'Requires high-resolution photography assets for each tour package.',
       },
     ],
     buildLog: [
       {
-        milestone: 'Brand Exploration & Asset Preparation',
-        date: 'Week 1',
-        details: 'Curated typography references, refined can mockups, and composed flavor color palettes.',
-      },
-      {
-        milestone: 'Layout Design & Smart-Animate Prototyping',
-        date: 'Week 2',
-        details: 'Designed desktop layout and connected interactive prototype with variant transitions in Figma.',
+        milestone: 'Figma Design System & Exploration Views',
+        date: 'Month 1',
+        details: 'Crafted tourist dashboard, package cards, and interactive filters in Figma.',
       },
     ],
     quality: {
-      testing: 'Verified text readability against deep crimson backgrounds ensuring WCAG 2.2 AA compliant contrast.',
-      security: 'Static design concept with zero external data risks.',
-      accessibility: 'High contrast text labels and clear interactive hover indicator states.',
-      performance: 'Clean frame hierarchy with optimized vector paths.',
-    },
-    outcomes: [
-      'Created viral design concept published and discussed on LinkedIn.',
-      'Demonstrated advanced mastery of Figma Auto Layout, component variants, and interactive motion design.',
-    ],
-    lessonsLearned: [
-      'Bold typographic contrast transforms an ordinary product page into an unforgettable digital brand experience.',
-    ],
-    v2Improvements: ['Design matching responsive mobile layouts and sound effect cues.'],
-    evidence: [
-      {
-        label: 'LinkedIn UI/UX Design Showcase',
-        url: 'https://www.linkedin.com/feed/update/urn:li:activity:7373795791355842560/',
-        type: 'external',
-        isExternal: true,
-        note: 'Figma interactive product presentation and design walkthrough',
-      },
-    ],
-  },
-  {
-    slug: 'donut-animated-product-landing-page',
-    title: 'Donut — Animated Product Landing Page Concept',
-    headline:
-      'Playful animated product landing page concept in Figma exploring visual composition, asset styling, interactive animation prototyping, and component state transitions.',
-    track: 'figma',
-    conciseOutcome:
-      'Engineered playful dessert landing page in Figma with pastel color palettes, smart-animate flavor carousels, and engaging micro-interactions.',
-    featured: true,
-    order: 11,
-    status: 'shipped',
-    category: 'Animated Landing Page UI',
-    period: '2025',
-    year: '2025',
-    duration: 'Personal Practice Project',
-    role: 'UI/UX Designer',
-    teamSize: 1,
-    isAcademic: false,
-    context:
-      'Personal UI Design Experiment & Practice Project in Figma exploring playful UI compositions, vibrant dessert color harmonies, asset styling, and animated interactive prototyping.',
-    technologies: ['Figma', 'Interactive Prototyping', 'Component Variants', 'Visual Design', 'Animation'],
-    stack: ['Figma', 'Interactive Prototyping', 'Component Variants', 'Visual Design', 'Animation'],
-    linkedInUrl: 'https://www.linkedin.com/feed/update/urn:li:activity:7373795791355842560/',
-    coverImage: {
-      src: '/images/projects/donut-cover.svg',
-      alt: 'Donut Animated Product Landing Page Concept in Figma',
-      width: 1200,
-      height: 675,
-      caption: 'Playful Animated Donut Landing Page Concept, Sprinkles Animation, and Interactive Flavor Boxes in Figma',
-    },
-    problem:
-      'Bakery and dessert websites often lack the joyful, appetizing tactile feeling that entices food lovers in physical patisseries.',
-    constraints: [
-      'Must create an appetizing, cheerful atmosphere with soft pastel pinks, creamy yellows, and rich chocolate tones.',
-      'Must incorporate playful micro-animations like sprinkles dropping and floating pastry effects.',
-      'Must provide an intuitive interactive flavor selection and order builder flow.',
-    ],
-    personalRole:
-      'Sole concept designer: designed custom vector donut illustrations, composed playful typography pairings, established interactive component variants, and animated stateful transitions using Figma Smart Animate.',
-    contributions: [
-      'Illustrated vector pastry assets with modular frosting, sprinkles, and filling layers.',
-      'Designed interactive "Build Your Box" flavor carousel featuring Strawberry Glaze, Dark Chocolate Crumb, Pistachio Dream, and Caramel Crunch.',
-      'Connected Figma prototype with realistic hover bounces, rotation easing, and modal pop-ups.',
-      'Created responsive desktop navigation with cart counter pill and store locator drawer.',
-    ],
-    architecture: {
-      summary:
-        'A playful web UI concept in Figma leveraging vector illustration layers, modular frosting/topping variants, and fluid Smart Animate transitions to create an appetizing interactive experience.',
-      keyComponents: [
-        {
-          name: 'Hero Bakery Showcase',
-          role: 'Emotion & Appetite Appeal',
-          description: 'Playful headline, floating donut hero render with animated sprinkles and quick CTA.',
-        },
-        {
-          name: 'Interactive Flavor Box Builder',
-          role: 'Customization & Ordering',
-          description: 'Interactive selector allowing customers to mix-and-match pastry flavors into custom boxes.',
-        },
-      ],
-    },
-    decisions: [
-      {
-        title: 'Vector Layered Donut Assets vs. Stock Photos',
-        decision:
-          'Created custom layered vector illustrations in Figma rather than static food photography.',
-        why: 'Enables individual animation of toppings, sprinkles, and frosting layers across interactive states.',
-        tradeoff: 'Requires custom illustration work for every new flavor introduced.',
-      },
-    ],
-    buildLog: [
-      {
-        milestone: 'Illustration & Style Guide',
-        date: 'Week 1',
-        details: 'Illustrated pastry assets, defined pastel color tokens, and styled cheerful typography.',
-      },
-      {
-        milestone: 'Interactive Motion Prototyping',
-        date: 'Week 2',
-        details: 'Built interactive flavor customizer with smart-animate transitions in Figma.',
-      },
-    ],
-    quality: {
-      testing: 'Verified prototype frame rate and smooth Smart Animate easing curves.',
+      testing: 'Validated WCAG 2.2 AA contrast on text badges and buttons.',
       security: 'Static design concept with zero external vulnerabilities.',
-      accessibility: 'High contrast text on cards and clear visual button states.',
-      performance: 'Organized Figma component layers with clean naming and Auto Layout.',
+      accessibility: 'High contrast text and clear touch targets across all device previews.',
+      performance: 'Clean frame hierarchy with organized Auto Layout instances.',
     },
     outcomes: [
-      'Showcased creative visual design and interactive prototyping on LinkedIn.',
-      'Demonstrated versatility across both playful consumer UI and complex enterprise systems.',
+      'Created comprehensive Figma design file and interactive prototype.',
+      'Served as the design blueprint for the live production deployment.',
     ],
     lessonsLearned: [
-      'Delightful micro-animations and cheerful color palettes create emotional connection and increase user dwell time.',
+      'Prototyping responsive components in Figma first drastically simplifies frontend React development.',
     ],
-    v2Improvements: ['Design mobile ordering drawer and order tracking animation.'],
+    v2Improvements: ['Add animated interactive map view pins in prototype.'],
     evidence: [
       {
-        label: 'LinkedIn UI/UX Design Showcase',
+        label: 'Figma Interactive Prototype',
+        url: 'https://www.figma.com/proto/WAY9zYrASNhdr0Fjej69zb/Travel-Hub?node-id=0-1&t=jnBrkBLbAn8TDWtC-1',
+        type: 'figma',
+        isExternal: true,
+        note: 'High-fidelity UI/UX design prototype in Figma',
+      },
+      {
+        label: 'LinkedIn Design Showcase',
         url: 'https://www.linkedin.com/feed/update/urn:li:activity:7373795791355842560/',
         type: 'external',
         isExternal: true,
-        note: 'Figma interactive dessert prototype and animation breakdown',
+        note: 'Figma design showcase on LinkedIn',
       },
     ],
   },

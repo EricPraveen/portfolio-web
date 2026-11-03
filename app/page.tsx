@@ -10,7 +10,7 @@ import {
 } from '@/lib/content';
 import {
   ThesisPanel,
-  ProjectPlate,
+  WorksShowcase,
   CapabilityMap,
   ContactClose,
   BlogSection,
@@ -114,16 +114,7 @@ export default async function HomePage() {
           </div>
         </FadeUp>
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-xl)' }}>
-          {featuredProjects.map((project, idx) => (
-            <ProjectPlate
-              key={project.slug}
-              project={project}
-              index={idx}
-              layoutVariant={idx % 2 === 0 ? 'split-right' : 'split-left'}
-            />
-          ))}
-        </div>
+        <WorksShowcase projects={featuredProjects} />
       </section>
 
       {/* 04 / CAPABILITY ARCHITECTURE MAP */}

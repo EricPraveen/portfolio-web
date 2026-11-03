@@ -1,5 +1,6 @@
 export * from './ThesisPanel';
 export * from './ProjectPlate';
+export * from './WorksShowcase';
 export * from './ProjectVisualDiagram';
 export * from './CapabilityMap';
 export * from './ProfileSnapshot';

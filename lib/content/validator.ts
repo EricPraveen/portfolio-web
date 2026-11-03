@@ -64,6 +64,7 @@ export function validateAllContent(): ValidationReport {
     if (!project.title?.trim()) errors.push(`Project "${id}" is missing a title.`);
     if (!project.headline?.trim()) errors.push(`Project "${id}" is missing a headline.`);
     if (!project.category?.trim()) errors.push(`Project "${id}" is missing a category.`);
+    if (!project.linkedInUrl?.trim()) errors.push(`Project "${id}" is missing a linkedInUrl.`);
     if (!project.period?.trim()) errors.push(`Project "${id}" is missing a period.`);
     if (!project.role?.trim()) errors.push(`Project "${id}" is missing a role.`);
     if (!project.personalRole?.trim()) errors.push(`Project "${id}" is missing personalRole.`);

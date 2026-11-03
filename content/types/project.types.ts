@@ -70,10 +70,14 @@ export interface ProjectArtifact {
   link?: string;
 }
 
+export type ProjectTrack = 'software' | 'hardware' | 'figma';
+
 export interface Project {
   slug: string;
   title: string;
   headline: string;
+  /** High-level track for portfolio showcase */
+  track?: ProjectTrack;
   /** Concise, high-impact outcome summary statement */
   conciseOutcome?: string;
   featured: boolean;
@@ -107,6 +111,7 @@ export interface Project {
   coverImage: ProjectImage;
   gallery?: ProjectImage[];
   /** Direct link shortcuts */
+  linkedInUrl?: string;
   repoUrl?: string;
   demoUrl?: string;
   docsUrl?: string;

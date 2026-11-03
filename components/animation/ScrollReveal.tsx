@@ -10,7 +10,9 @@ export type ScrollRevealVariant =
   | 'slide-right'
   | 'scale-in';
 
-export interface ScrollRevealProps extends UseScrollRevealOptions {
+export interface ScrollRevealProps
+  extends UseScrollRevealOptions,
+    React.HTMLAttributes<HTMLElement> {
   as?: React.ElementType;
   variant?: ScrollRevealVariant;
   duration?: number;

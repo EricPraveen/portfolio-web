@@ -1,11 +1,13 @@
 import { Project } from './types';
 
 export const projectsData: Project[] = [
+  // ── 1. SOFTWARE RELATED PROJECTS ───────────────────────────────────────────
   {
     slug: 'travel-hub-platform',
     title: 'Travel Hub — Sri Lanka Tourist Package Platform',
     headline:
       'A full-stack tourism booking web application connecting travelers to curated Sri Lankan tour packages with interactive filtering and booking workflows.',
+    track: 'software',
     conciseOutcome:
       'Engineered tourist dashboard module, package search & filtering, booking workflow, and responsive React/Spring Boot integration.',
     featured: true,
@@ -53,8 +55,6 @@ export const projectsData: Project[] = [
     architecture: {
       summary:
         'A component-driven React.js single-page application communicating via stateless RESTful JSON APIs with a Spring Boot backend, persisting relational travel packages, user bookings, and reviews in PostgreSQL.',
-      textAlternative:
-        'Architectural diagram showing Tourist interacting with React.js Client UI (Tailwind CSS), making HTTP REST API calls to Spring Boot Controller Services, persisting booking and package data in PostgreSQL Database, and referencing Figma UI/UX specifications.',
       keyComponents: [
         {
           name: 'Tourist Dashboard Client (React.js)',
@@ -87,24 +87,9 @@ export const projectsData: Project[] = [
         title: 'Spring Boot REST API with React.js vs. Monolithic Server Templates',
         decision:
           'Decoupled the architecture into an independent React SPA frontend and a stateless Spring Boot REST API backend.',
-        why: 'Enables parallel team development, clean separation of concerns, and distinct deployment lifecycles (Netlify for frontend, cloud container for Spring Boot).',
+        why: 'Enables parallel team development, clean separation of concerns, and distinct deployment lifecycles.',
         tradeoff:
           'Requires explicit CORS configuration, client-side token management, and structured error handling across network boundaries.',
-        alternativesConsidered: [
-          'Server-Side Thymeleaf templates (Tighter coupling making modern responsive mobile UI harder to maintain)',
-          'Node.js Express backend (Team chose Java/Spring Boot to leverage strong typing, JPA repository abstractions, and enterprise coursework alignment)',
-        ],
-      },
-      {
-        title: 'PostgreSQL Relational Schema vs. NoSQL Document Store',
-        decision:
-          'Used PostgreSQL for storing tour packages, bookings, user profiles, and ratings.',
-        why: 'Booking records require strict relational integrity, foreign key constraints (tourist_id -> package_id), and transactional consistency for reservation statuses.',
-        tradeoff:
-          'Schema migrations require explicit DDL updates when introducing new package attributes.',
-        alternativesConsidered: [
-          'MongoDB (Flexible schemas, but lack of strict relational constraints risks orphaned reservation records during concurrent updates)',
-        ],
       },
     ],
     buildLog: [
@@ -113,33 +98,6 @@ export const projectsData: Project[] = [
         date: 'Month 1',
         details:
           'Constructed high-fidelity Figma interactive prototypes and authored UML class and sequence diagrams mapping out tourist booking flows.',
-      },
-      {
-        milestone: 'Frontend Discovery & Filter Implementation',
-        date: 'Month 2',
-        details:
-          'Implemented React package cards, multi-facet category filters, search bars, and responsive grid layouts using Tailwind CSS.',
-      },
-      {
-        milestone: 'REST API Integration & Booking Flow',
-        date: 'Month 3',
-        details:
-          'Integrated Spring Boot REST endpoints for booking creation, package listing retrieval, and dynamic review submissions.',
-      },
-      {
-        milestone: 'End-to-End Testing & Live Deployment',
-        date: 'Month 4',
-        details:
-          'Conducted cross-browser responsive testing, validated PostgreSQL queries, and deployed live client build to Netlify.',
-      },
-    ],
-    artifacts: [
-      {
-        id: 'art-travel-filter',
-        title: 'Tourist Package Filter & Search Handler',
-        type: 'code',
-        description: 'React custom hook managing multi-criteria destination and query filtering.',
-        language: 'typescript',
       },
     ],
     quality: {
@@ -151,15 +109,12 @@ export const projectsData: Project[] = [
     outcomes: [
       'Successfully deployed live platform accessible at travelhublanka.netlify.app.',
       'Delivered fully functional Tourist Dashboard module with search, filter, booking flow, and review interfaces.',
-      'Completed comprehensive Figma prototypes and UML design artifacts aligning team execution.',
     ],
     lessonsLearned: [
       'Early Figma component prototyping drastically accelerates React frontend development and reduces CSS refactoring.',
-      'Establishing clean DTO contracts between frontend and backend teams prevents schema misalignment during API integration.',
     ],
     v2Improvements: [
       'Integrate payment gateway (Stripe / PayHere) for automated checkout completion.',
-      'Implement machine-learning-based personalized tour package recommendations.',
     ],
     evidence: [
       {
@@ -183,13 +138,6 @@ export const projectsData: Project[] = [
         isExternal: true,
         note: 'Complete source code repository',
       },
-      {
-        label: 'Figma Interactive Prototype',
-        url: 'https://www.figma.com/proto/WAY9zYrASNhdr0Fjej69zb/Travel-Hub?node-id=0-1&t=jnBrkBLbAn8TDWtC-1',
-        type: 'figma',
-        isExternal: true,
-        note: 'High-fidelity UI/UX design prototype',
-      },
     ],
   },
   {
@@ -197,6 +145,7 @@ export const projectsData: Project[] = [
     title: 'Chicken Invaders — 2D Retro Arcade Space Shooter',
     headline:
       'A retro arcade space shooting game featuring custom computer graphics algorithms, enemy waves, boss battles, collision physics, and WebAssembly compilation for seamless browser gameplay.',
+    track: 'software',
     conciseOutcome:
       'Implemented foundational computer graphics algorithms in C++, designed particle physics and collision detection, and compiled to WebAssembly via Emscripten.',
     featured: true,
@@ -248,68 +197,36 @@ export const projectsData: Project[] = [
           description:
             'Implements mathematical drawing algorithms (Bresenham, Midpoint, Scan-Line) and 2D matrix transformations.',
         },
-        {
-          name: 'Game Loop & Physics Engine',
-          role: 'Collision & Wave Management',
-          description:
-            'Executes 60fps game loop, AABB collision detection, bullet trajectories, and particle systems.',
-        },
-        {
-          name: 'Emscripten WebAssembly Bridge',
-          role: 'Browser Compilation & Canvas I/O',
-          description:
-            'Bridges native OpenGL/GLUT calls to WebGL and HTML5 canvas APIs for zero-dependency browser execution.',
-        },
       ],
     },
     decisions: [
       {
-        title: 'Custom Math Rasterization vs. Prebuilt Game Engines (Unity/Godot)',
-        decision:
-          'Built the entire graphics rendering pipeline in C++ and OpenGL without third-party game engines.',
-        why: 'Required deep academic mastery of low-level graphics algorithms, computational geometry, and pixel-level frame manipulation.',
-        tradeoff:
-          'Required manual implementation of collision physics, matrix math, and window event listeners.',
-        alternativesConsidered: [
-          'Unity / Unreal Engine (Heavy runtime overhead, hides fundamental computer graphics algorithms)',
-        ],
+        title: 'Custom Math Rasterization vs. Prebuilt Game Engines',
+        decision: 'Built the entire graphics rendering pipeline in C++ and OpenGL without third-party game engines.',
+        why: 'Required deep academic mastery of low-level graphics algorithms and computational geometry.',
+        tradeoff: 'Required manual implementation of collision physics, matrix math, and window event listeners.',
       },
     ],
     buildLog: [
       {
-        milestone: 'Algorithm Implementation & Window Setup',
+        milestone: 'Algorithm Implementation',
         date: 'Month 1',
         details: 'Implemented Bresenham, Midpoint Circle, and Cohen-Sutherland clipping in OpenGL.',
-      },
-      {
-        milestone: 'Game Mechanics & Boss Battles',
-        date: 'Month 2',
-        details: 'Engineered wave spawning, collision detection, and particle explosion systems.',
-      },
-      {
-        milestone: 'Emscripten WebAssembly Compilation & Vercel Deploy',
-        date: 'Month 3',
-        details: 'Compiled C++ codebase to Wasm and deployed live interactive build to Vercel.',
       },
     ],
     quality: {
       testing: 'Rigorous 60fps benchmark testing across Chrome, Firefox, and Safari with WebAssembly.',
       security: 'Sandboxed WebAssembly execution environment inside modern browser security contexts.',
-      accessibility: 'Keyboard accessible controls (Arrow keys + Spacebar) with on-screen visual hints.',
+      accessibility: 'Keyboard accessible controls with on-screen visual hints.',
       performance: 'Near-native C++ performance running at consistent 60 frames per second in browser.',
     },
     outcomes: [
       'Successfully compiled and deployed playable WebAssembly build live on Vercel at chicken-shooting.vercel.app.',
-      'Achieved stable 60fps retro arcade experience with boss battles, particle effects, and scoring.',
     ],
     lessonsLearned: [
       'WebAssembly bridges the gap between low-level systems programming and universal web accessibility.',
-      'Understanding fundamental rasterization algorithms provides intuition for modern GPU shaders and WebGL pipelines.',
     ],
-    v2Improvements: [
-      'Add local leaderboard persistence using IndexedDB.',
-      'Support multi-player co-op mode over WebSockets.',
-    ],
+    v2Improvements: ['Add local leaderboard persistence using IndexedDB.'],
     evidence: [
       {
         label: 'LinkedIn Project Showcase',
@@ -325,20 +242,14 @@ export const projectsData: Project[] = [
         isExternal: true,
         note: 'Playable WebAssembly build in web browser',
       },
-      {
-        label: 'GitHub Repository',
-        url: 'https://github.com/EricPraveen/Chicken-Shooting',
-        type: 'github',
-        isExternal: true,
-        note: 'Complete C++ and OpenGL source code repository',
-      },
     ],
   },
   {
     slug: 'cricketscore-mobile-app',
     title: 'CricketScore — Offline Cricket Scoring & Analytics Mobile App',
     headline:
-      'An offline-first mobile cricket scoring application supporting match setup, interactive toss, scoring engine with strike rotation, undo delivery mechanism, and SQLite ball-by-ball analytics.',
+      'An offline-first mobile cricket scoring application supporting match setup, interactive toss, custom scoring engine with strike rotation, undo delivery mechanism, and SQLite ball-by-ball analytics.',
+    track: 'software',
     conciseOutcome:
       'Engineered custom scoring state machine, strike rotation logic, extras handling, undo mechanism, and offline SQLite relational persistence.',
     featured: true,
@@ -370,7 +281,6 @@ export const projectsData: Project[] = [
       'Must operate completely offline without internet connectivity, storing all matches locally.',
       'Must enforce complex cricket scoring rules: strike rotation, wide/no-ball extras, bye/leg-bye, free hits, and overs change.',
       'Must provide an instant undo delivery mechanism that rolls back database state cleanly without data corruption.',
-      'Must maintain 60fps smooth UI animations using React Native Reanimated.',
     ],
     personalRole:
       'Architected and implemented the entire mobile application: designed SQLite relational schema, wrote the cricket rule engine state machine, built responsive touch keypad interfaces, and implemented animated milestone overlays.',
@@ -379,80 +289,47 @@ export const projectsData: Project[] = [
       'Developed an immutable cricket scoring engine managing strike rotation, boundary counts, bowler spell quotas, and extras calculations.',
       'Built a robust delivery undo mechanism that reconstructs previous innings state atomically.',
       'Designed a high-visibility scoring UI with large tactile buttons optimized for direct sunlight outdoor mobile use.',
-      'Integrated React Native Reanimated for milestone celebration animations (fifties, centuries, hat-tricks) and live worm graphs.',
     ],
     architecture: {
       summary:
         'A local-first React Native mobile application built on Expo and TypeScript, executing scoring state machine calculations locally and persisting normalized relational data in SQLite.',
       keyComponents: [
         {
-          name: 'Tactile Scoring Interface (React Native / Expo)',
+          name: 'Tactile Scoring Interface',
           role: 'Touchpad & Scorecard UI',
           description:
             'Delivers responsive ball input keypad, live scorecard summaries, partnership charts, and milestone visual celebrations.',
-        },
-        {
-          name: 'Cricket Rules State Machine Engine',
-          role: 'Match Logic & Rule Validation',
-          description:
-            'Enforces strike rotation, bowler over change, extras calculations, free-hit flags, and player statistics.',
-        },
-        {
-          name: 'Local SQLite Relational Ledger',
-          role: 'Offline-First Persistence',
-          description:
-            'Stores structured tables for teams, matches, innings, deliveries, and fall of wickets with transactional ACID guarantees.',
         },
       ],
     },
     decisions: [
       {
-        title: 'Local-First SQLite vs. Cloud-Only Firebase Database',
-        decision:
-          'Adopted an offline-first SQLite relational database embedded directly inside the mobile app bundle.',
-        why: 'Cricket matches played on community grounds often have zero or spotty cellular connectivity. Local SQLite guarantees instant response times and zero data loss.',
-        tradeoff:
-          'Requires explicit export/import routines to share scorecards between devices rather than automatic real-time cloud sync.',
-        alternativesConsidered: [
-          'Firebase Realtime Database (Requires constant internet connection; drops scoring inputs when signal is lost in open fields)',
-        ],
+        title: 'Local-First SQLite vs. Cloud Database',
+        decision: 'Adopted an offline-first SQLite relational database embedded directly inside the mobile app bundle.',
+        why: 'Guarantees instant response times and zero data loss on open grounds with no cellular connectivity.',
+        tradeoff: 'Requires explicit export/import routines to share scorecards between devices.',
       },
     ],
     buildLog: [
       {
-        milestone: 'Cricket Rules Engine & State Machine',
+        milestone: 'Cricket Rules Engine',
         date: 'Month 1',
         details: 'Architected state transitions for strike rotation, extras, wickets, and undo delivery stack.',
       },
-      {
-        milestone: 'SQLite Schema & Transactional Operations',
-        date: 'Month 2',
-        details: 'Implemented SQLite migrations and CRUD operations for match creation and ball recording.',
-      },
-      {
-        milestone: 'Tactile UI & Reanimated Milestone Celebrations',
-        date: 'Month 3',
-        details: 'Crafted outdoor-optimized UI with large touch targets and celebratory animations.',
-      },
     ],
     quality: {
-      testing: 'Unit tests covering all edge-case scoring rules (e.g. no-ball run-out, overthrow boundaries, tie-breakers).',
+      testing: 'Unit tests covering all edge-case scoring rules.',
       security: 'Fully sandboxed local storage on device with zero telemetry tracking.',
       accessibility: 'High contrast text and large touch target hit-boxes suitable for outdoor daylight usage.',
       performance: 'Instantaneous touch feedback with sub-5ms local SQLite delivery insert times.',
     },
     outcomes: [
       'Created and published complete open-source mobile application on GitHub at github.com/EricPraveen/CricketScore.',
-      'Successfully scored live university practice matches with zero network dependency.',
     ],
     lessonsLearned: [
       'Offline-first architectures provide superior reliability and user trust for critical real-time recording tasks.',
-      'State machines with reversible event logs simplify complex undo and redo functionality.',
     ],
-    v2Improvements: [
-      'Add PDF match summary report generation and export.',
-      'Implement Bluetooth / WiFi-Direct match sync between scorekeepers.',
-    ],
+    v2Improvements: ['Add PDF match summary report generation and export.'],
     evidence: [
       {
         label: 'LinkedIn Project Details',
@@ -475,6 +352,7 @@ export const projectsData: Project[] = [
     title: 'IdeaPad — Full-Stack Editorial Publishing Platform',
     headline:
       'A full-stack editorial blogging platform featuring stateless JWT authentication, role-based authorization, post CRUD, genre filtering, bookmarks, and Cloudinary media upload pipelines.',
+    track: 'software',
     conciseOutcome:
       'Engineered end-to-end full-stack application with React.js, Spring Boot, PostgreSQL schema, and Cloudinary image pipelines.',
     featured: true,
@@ -503,19 +381,15 @@ export const projectsData: Project[] = [
     problem:
       'Content publishing platforms require secure authentication, responsive editorial tools, rich image asset hosting, and multi-faceted discovery while preventing unauthorized post modifications.',
     constraints: [
-      'Must enforce secure JWT authentication with role-based access control (Admin vs. Author vs. Reader).',
+      'Must enforce secure JWT authentication with role-based access control.',
       'Must support complete post CRUD operations with rich media attachment via cloud storage.',
-      'Must provide genre-based content discovery, interactive likes, and user bookmarking.',
-      'Must persist relational user profiles, articles, categories, and engagements in PostgreSQL.',
     ],
     personalRole:
-      'Developed the application end-to-end: designed PostgreSQL relational models, implemented Spring Boot security and REST controllers, integrated Cloudinary API for image uploads, and built the responsive React.js single-page application.',
+      'Developed the application end-to-end: designed PostgreSQL relational models, implemented Spring Boot security and REST controllers, integrated Cloudinary API for image uploads, and built the responsive React.js SPA.',
     contributions: [
-      'Architected Spring Security configuration with JWT bearer tokens for stateless user session verification and protected routes.',
+      'Architected Spring Security configuration with JWT bearer tokens for stateless user session verification.',
       'Designed normalized PostgreSQL schema modeling users, blog posts, genre categories, likes, bookmarks, and comments.',
       'Built complete REST API controllers handling post creation, editing, deletion, pagination, and genre-based filtering.',
-      'Integrated Cloudinary cloud storage SDK for seamless cover image uploading and optimized asset URL delivery.',
-      'Constructed React.js frontend featuring rich post creation editors, interactive like buttons, bookmark counters, and administrative moderation panels.',
     ],
     architecture: {
       summary:
@@ -524,80 +398,38 @@ export const projectsData: Project[] = [
         {
           name: 'React.js Client Interface',
           role: 'Editorial & Discovery SPA',
-          description:
-            'Delivers post creation forms, genre discovery tabs, like/bookmark toggles, and author profile views with client-side routing.',
-        },
-        {
-          name: 'Spring Security & JWT Filter',
-          role: 'Authentication & RBAC',
-          description:
-            'Intercepts incoming requests, validates JWT signatures, extracts user roles, and grants access to protected author/admin endpoints.',
-        },
-        {
-          name: 'PostgreSQL Relational Database',
-          role: 'Relational Content Store',
-          description:
-            'Maintains tables for users, posts, categories, bookmarks, and likes with foreign key constraints and indexed author lookups.',
-        },
-        {
-          name: 'Cloudinary Media Gateway',
-          role: 'Cloud Asset Hosting',
-          description:
-            'Handles image optimization, responsive resizing, and CDN asset delivery for article banner images.',
+          description: 'Delivers post creation forms, genre discovery tabs, like/bookmark toggles, and author profile views.',
         },
       ],
     },
     decisions: [
       {
         title: 'JWT Bearer Authentication vs. Stateful Session Cookies',
-        decision:
-          'Implemented stateless JSON Web Tokens (JWT) passed in the HTTP Authorization header.',
-        why: 'Allows the Spring Boot backend to remain completely stateless, making horizontal scaling simple and eliminating server-side session memory overhead.',
-        tradeoff:
-          'Token revocation before expiration requires token blacklisting or short token expiry intervals with refresh mechanisms.',
-        alternativesConsidered: [
-          'HTTP Session Cookies (Requires sticky load balancing and session replication across backend instances)',
-        ],
+        decision: 'Implemented stateless JSON Web Tokens (JWT) passed in the HTTP Authorization header.',
+        why: 'Allows the Spring Boot backend to remain completely stateless, making horizontal scaling simple.',
+        tradeoff: 'Token revocation requires token blacklisting or short token expiry intervals.',
       },
     ],
     buildLog: [
       {
-        milestone: 'Database Schema & Spring Security Configuration',
+        milestone: 'Database Schema & Security',
         date: 'Month 1',
-        details:
-          'Designed PostgreSQL tables for users, posts, and tags. Configured Spring Security filter chain with JWT token generation and validation.',
-      },
-      {
-        milestone: 'Post CRUD & Cloudinary Integration',
-        date: 'Month 2',
-        details:
-          'Engineered Spring Boot REST controllers for article publishing, genre filtering, and Cloudinary multi-part media upload handling.',
-      },
-      {
-        milestone: 'React UI & Social Engagements',
-        date: 'Month 3',
-        details:
-          'Constructed React.js single-page application with responsive discovery feeds, like/bookmark toggles, and author dashboard views.',
+        details: 'Designed PostgreSQL tables and configured Spring Security filter chain with JWT.',
       },
     ],
     quality: {
-      testing: 'Verified endpoint security with integration tests for authenticated vs. unauthenticated requests.',
-      security: 'BCrypt password hashing, stateless JWT verification, and RBAC authorization annotations on admin endpoints.',
+      testing: 'Verified endpoint security with integration tests.',
+      security: 'BCrypt password hashing and stateless JWT verification.',
       accessibility: 'Semantic HTML5 article tags, accessible forms, and clear focus styling.',
       performance: 'Optimized Cloudinary image delivery and paginated database queries for fast feed loading.',
     },
     outcomes: [
       'Developed and published complete open-source blogging platform on GitHub at github.com/EricPraveen/IdeaPad.',
-      'Delivered full JWT-secured user authentication, role-based post management, and Cloudinary media integration.',
     ],
     lessonsLearned: [
-      'Stateless JWT authentication simplifies client-server architecture but requires strict frontend token storage discipline.',
-      'Cloud storage integrations drastically simplify media handling in modern full-stack web applications.',
+      'Stateless JWT authentication simplifies client-server architecture but requires strict token storage discipline.',
     ],
-    v2Improvements: [
-      'Implement real-time notification websockets for post likes and comments.',
-      'Add full markdown live preview in the article creation editor.',
-    ],
+    v2Improvements: ['Implement real-time notification websockets for post likes and comments.'],
     evidence: [
       {
         label: 'LinkedIn Project Showcase',
@@ -620,6 +452,7 @@ export const projectsData: Project[] = [
     title: 'EShop — Dynamic MERN E-Commerce Platform',
     headline:
       'A full-stack MERN e-commerce web application with dynamic product catalog browsing, real-time inventory tracking, order processing, and stock deduction control.',
+    track: 'software',
     conciseOutcome:
       'Constructed MERN web application with RESTful APIs, dynamic MongoDB product filtering, order workflow, and automated inventory reconciliation.',
     featured: true,
@@ -650,16 +483,13 @@ export const projectsData: Project[] = [
     constraints: [
       'Must maintain real-time inventory quantities and reject checkout attempts exceeding available stock.',
       'Must provide dynamic product search, category filtering, and administrative product CRUD operations.',
-      'Must model nested order items and customer records in a flexible MongoDB document database.',
-      'UI must be intuitive and responsive with Bootstrap components.',
     ],
     personalRole:
       'Designed MongoDB schemas, implemented Express.js REST APIs with asynchronous controllers, built React.js catalog and shopping cart components, and implemented automated stock management logic.',
     contributions: [
       'Engineered Express.js REST API endpoints for product CRUD operations, category queries, and order creation.',
-      'Developed automated inventory deduction logic that validates available quantities before confirming orders, preventing overselling.',
+      'Developed automated inventory deduction logic that validates available quantities before confirming orders.',
       'Constructed MongoDB Mongoose document schemas for products, user carts, and completed order history.',
-      'Built responsive React.js frontend interfaces using Bootstrap for dynamic product listings, shopping cart state, and order summaries.',
     ],
     architecture: {
       summary:
@@ -668,54 +498,23 @@ export const projectsData: Project[] = [
         {
           name: 'React.js Client App',
           role: 'Storefront & Cart Interface',
-          description:
-            'Provides responsive product browsing grids, search filters, cart state management, and checkout forms with Bootstrap.',
-        },
-        {
-          name: 'Express.js / Node.js API Layer',
-          role: 'Business Logic & Inventory Control',
-          description:
-            'Handles order validation, product CRUD operations, and automatic stock deduction calculations.',
-        },
-        {
-          name: 'MongoDB Document Database',
-          role: 'Product & Order Persistence',
-          description:
-            'Stores flexible JSON-like documents for catalog items, customer orders, and category hierarchies.',
+          description: 'Provides responsive product browsing grids, search filters, and checkout forms.',
         },
       ],
     },
     decisions: [
       {
-        title: 'MongoDB Document Store vs. Relational SQL for E-Commerce Catalog',
-        decision:
-          'Utilized MongoDB document database for storing variable product attributes and nested order line items.',
-        why: 'E-commerce items often have varying attribute sets (sizes, colors, specs) where document schemas offer natural JSON mapping without complex join tables.',
-        tradeoff:
-          'Requires application-level validation to maintain referential consistency between customer IDs and order records.',
-        alternativesConsidered: [
-          'MySQL (Rigid column schemas requiring multiple join tables for dynamic product attributes)',
-        ],
+        title: 'MongoDB Document Store vs. Relational SQL',
+        decision: 'Utilized MongoDB document database for storing variable product attributes and nested order line items.',
+        why: 'Document schemas offer natural JSON mapping without complex join tables for variable merchandise.',
+        tradeoff: 'Requires application-level validation to maintain referential consistency.',
       },
     ],
     buildLog: [
       {
-        milestone: 'Backend API & MongoDB Schema Design',
+        milestone: 'Backend API & MongoDB Schema',
         date: 'Month 1',
-        details:
-          'Defined Mongoose models for products and orders. Implemented Express.js routes for product catalog management.',
-      },
-      {
-        milestone: 'Shopping Cart & Stock Control Logic',
-        date: 'Month 2',
-        details:
-          'Implemented shopping cart state and automated stock validation preventing orders beyond available inventory.',
-      },
-      {
-        milestone: 'React Storefront & Bootstrap Integration',
-        date: 'Month 3',
-        details:
-          'Built responsive product grid, search filters, cart drawers, and order summary views.',
+        details: 'Defined Mongoose models and Express.js routes for catalog management.',
       },
     ],
     quality: {
@@ -726,16 +525,11 @@ export const projectsData: Project[] = [
     },
     outcomes: [
       'Published open-source MERN e-commerce application on GitHub at github.com/EricPraveen/EShop.',
-      'Implemented full product CRUD, inventory deduction, and responsive storefront experience.',
     ],
     lessonsLearned: [
-      'Document databases excel at representing nested order line items within a single database roundtrip.',
       'Validating inventory quantities before confirming order transactions is critical for data integrity.',
     ],
-    v2Improvements: [
-      'Integrate Stripe payment processing gateway.',
-      'Add user review and product star rating system.',
-    ],
+    v2Improvements: ['Integrate Stripe payment processing gateway.'],
     evidence: [
       {
         label: 'LinkedIn Project Showcase',
@@ -758,6 +552,7 @@ export const projectsData: Project[] = [
     title: 'EduTrack — Campus Information & Student Life Portal',
     headline:
       'A responsive campus information web application providing university students and visitors with structured access to campus facilities, academic courses, student life, events, and clubs.',
+    track: 'software',
     conciseOutcome:
       'Built responsive multi-section campus portal with dynamic content rendering, interactive navigation, and mobile-first layouts.',
     featured: true,
@@ -788,7 +583,6 @@ export const projectsData: Project[] = [
     constraints: [
       'Must structure comprehensive campus information: facilities, courses, student clubs, and event schedules.',
       'Must deliver dynamic content rendering and intuitive interactive tab navigation without heavy framework dependencies.',
-      'Must ensure clean responsive presentation across smartphones, tablets, and desktop displays.',
     ],
     personalRole:
       'Implemented the web application architecture: structured semantic HTML5 layouts, authored responsive CSS3 stylesheets with media queries, and implemented JavaScript navigation scripts for dynamic content tabs.',
@@ -796,7 +590,6 @@ export const projectsData: Project[] = [
       'Structured accessible semantic HTML5 layouts with clear navigation landmarks and heading hierarchies.',
       'Authored modular CSS3 styles utilizing responsive grid and flexbox layouts with consistent campus color themes.',
       'Implemented vanilla JavaScript interactive navigation, dynamic tab switching, and mobile drawer menus.',
-      'Organized multi-section content covering facilities, academic faculties, student clubs, and university event calendars.',
     ],
     architecture: {
       summary:
@@ -805,48 +598,23 @@ export const projectsData: Project[] = [
         {
           name: 'Semantic HTML5 Layout',
           role: 'Content & Landmark Structure',
-          description:
-            'Organizes campus information with semantic header, main, section, and article landmarks for accessibility.',
-        },
-        {
-          name: 'Responsive CSS3 Stylesheet',
-          role: 'Visual Design & Grid Layout',
-          description:
-            'Implements mobile-first responsive breakpoints, card grids, and interactive hover transitions.',
-        },
-        {
-          name: 'JavaScript DOM Controller',
-          role: 'Interactive Navigation',
-          description:
-            'Handles dynamic section switching, active navigation state, and mobile hamburger menu toggling.',
+          description: 'Organizes campus information with semantic landmarks for accessibility.',
         },
       ],
     },
     decisions: [
       {
-        title: 'Vanilla Web Standards (HTML5/CSS3/JS) vs. Heavy SPA Framework',
-        decision:
-          'Built the portal using pure web standards without external frontend frameworks.',
-        why: 'For a fast informational campus portal, zero-dependency vanilla web standards guarantee near-instant loading, zero build-step overhead, and lightweight execution.',
-        tradeoff:
-          'Manual DOM manipulation required for interactive tab switching rather than declarative framework state.',
-        alternativesConsidered: [
-          'React SPA (Added bundle weight and complexity not required for static informational content)',
-        ],
+        title: 'Vanilla Web Standards vs. Heavy SPA Framework',
+        decision: 'Built the portal using pure web standards without external frontend frameworks.',
+        why: 'Guarantees near-instant loading, zero build-step overhead, and lightweight execution.',
+        tradeoff: 'Manual DOM manipulation required for interactive tab switching.',
       },
     ],
     buildLog: [
       {
-        milestone: 'Semantic Structure & Content Architecture',
+        milestone: 'Semantic Structure & Content',
         date: 'Month 1',
-        details:
-          'Structured HTML5 layouts for campus facilities, courses, clubs, and event calendars with semantic landmarks.',
-      },
-      {
-        milestone: 'Responsive CSS3 & JavaScript Interactions',
-        date: 'Month 2',
-        details:
-          'Authored responsive styling, mobile navigation menus, and dynamic content tab switching scripts.',
+        details: 'Structured HTML5 layouts for campus facilities, courses, and clubs.',
       },
     ],
     quality: {
@@ -857,15 +625,11 @@ export const projectsData: Project[] = [
     },
     outcomes: [
       'Published open-source campus web portal on GitHub at github.com/EricPraveen/EduTrack.',
-      'Delivered clean, mobile-responsive campus information portal with intuitive navigation.',
     ],
     lessonsLearned: [
-      'Mastering core HTML5, CSS3, and vanilla JavaScript fundamentals builds a strong foundation for understanding modern frontend frameworks.',
+      'Mastering core HTML5, CSS3, and vanilla JavaScript fundamentals builds a strong foundation for frontend frameworks.',
     ],
-    v2Improvements: [
-      'Add an interactive campus map with clickable facility pins.',
-      'Integrate dynamic student event calendar feed.',
-    ],
+    v2Improvements: ['Add an interactive campus map with clickable facility pins.'],
     evidence: [
       {
         label: 'LinkedIn Project Details',
@@ -880,6 +644,586 @@ export const projectsData: Project[] = [
         type: 'github',
         isExternal: true,
         note: 'Complete source code repository',
+      },
+    ],
+  },
+
+  // ── 2. HARDWARE & IOT PROJECTS ─────────────────────────────────────────────
+  {
+    slug: 'intelligent-solar-energy-system',
+    title: 'Intelligent Solar Energy Management System',
+    headline:
+      'An intelligent dual-axis solar tracking system integrating Arduino Mega, ESP32, environmental sensors, and real-time battery telemetry with MOSFET thermal protection and web interface.',
+    track: 'hardware',
+    conciseOutcome:
+      'Engineered automated dual-axis solar tracking, real-time sensor acquisition, battery safety circuit with MOSFET cooling, and ESP32 remote telemetry dashboard.',
+    featured: true,
+    order: 7,
+    status: 'shipped',
+    category: 'Hardware & Embedded IoT',
+    period: 'Apr 2024 – Aug 2025',
+    year: '2024 – 2025',
+    duration: '16 Months',
+    role: 'Hardware & Embedded IoT Developer',
+    teamSize: 4,
+    isAcademic: true,
+    context:
+      'First-Year Microcontroller Based Application Development Project associated with the University of Moratuwa, designing and building an intelligent solar energy system with automated tracking, safety cutoff, and remote web telemetry.',
+    technologies: ['Arduino Mega', 'ESP32', 'C/C++', 'Sensors', 'IoT', 'Hardware'],
+    stack: ['Arduino Mega', 'ESP32', 'C/C++', 'Sensors', 'IoT', 'Hardware'],
+    linkedInUrl: 'https://www.linkedin.com/feed/update/urn:li:activity:7373774438254841856/',
+    demoUrl: 'https://claude.ai/public/artifacts/28c484c1-b306-4cec-af6c-771456b00a30',
+    coverImage: {
+      src: '/images/projects/solar-hardware-linkedin.jpg',
+      alt: 'Intelligent Solar Energy Management System Hardware, Microcontroller & Sensor Setup',
+      width: 623,
+      height: 650,
+      caption: 'Smart Dual-Axis Solar Tracker, Arduino Mega, ESP32 Web Interface, and Battery Management Hardware',
+    },
+    problem:
+      'Fixed solar installations suffer up to 40% efficiency losses due to sub-optimal sun incidence angles, while unmonitored lithium battery banks risk thermal runaway and permanent cell degradation.',
+    constraints: [
+      'Must implement automated dual-axis solar tracking using differential LDR light sensors and gear motor drivers.',
+      'Must monitor voltage, current, and cell temperatures continuously via I2C, ADC, and serial bus.',
+      'Must enforce automated battery management with overcharge protection, MOSFET-controlled cooling fans, and emergency cut-off.',
+      'Must host a lightweight responsive web dashboard on the ESP32 Wi-Fi module for live remote telemetry and control.',
+    ],
+    personalRole:
+      'Co-developed embedded firmware in C/C++: implemented the dual-axis solar tracking algorithm, wrote ADC/I2C sensor calibration routines (LM35, DS18B20, current sensors), built the MOSFET battery protection logic, and designed the ESP32 web telemetry interface.',
+    contributions: [
+      'Programmed Arduino Mega 2560 control loop executing dual-axis astronomical positioning using 4-quadrant LDR differential comparison and L298N H-bridge gear motor actuation.',
+      'Engineered multi-point temperature and voltage acquisition using DS18B20 digital probes and calibrated analog current shunts.',
+      'Implemented safety state machine with MOSFET-controlled cooling fan activation at 40°C and automated relay emergency disconnect at 55°C.',
+      'Developed standalone ESP32 web server providing live battery state of charge (SoC), power production watts, voltage logs, and manual override switches.',
+      'Constructed complete physical demonstration rig with custom 3D-printed brackets, solar panel mount, and battery power bank.',
+    ],
+    architecture: {
+      summary:
+        'A distributed embedded hardware architecture pairing an Arduino Mega 2560 for real-time motor control and sensor acquisition with an ESP32 Wi-Fi module for web server telemetry and remote user overrides.',
+      keyComponents: [
+        {
+          name: 'Arduino Mega 2560 Core Controller',
+          role: 'Sensor Acquisition & Motor Loop',
+          description:
+            'Samples 4x LDRs, voltage dividers, and current shunts; computes differential sun tracking vectors and drives L298N H-Bridge dual-axis gear motors.',
+        },
+        {
+          name: 'ESP32 Wi-Fi Telemetry Gateway',
+          role: 'Web Interface & Remote Alerts',
+          description:
+            'Communicates with Arduino via UART Serial; serves asynchronous HTML/CSS/JS dashboard displaying real-time power metrics, battery health, and relay states.',
+        },
+        {
+          name: 'Battery Management & Protection Circuit',
+          role: 'Safety & Thermal Regulation',
+          description:
+            'Lithium-ion cell bank equipped with high-current MOSFET relay disconnects, overvoltage limiters, and automated cooling fan activation.',
+        },
+      ],
+    },
+    decisions: [
+      {
+        title: 'Dual-Microcontroller Architecture (Mega 2560 + ESP32) vs. Single MCU',
+        decision:
+          'Separated real-time motor control & analog sensing (Arduino Mega 2560) from Wi-Fi web serving & networking (ESP32).',
+        why: 'Prevents Wi-Fi network stack latency from interrupting time-critical motor step timing and analog ADC sensor sampling loops.',
+        tradeoff:
+          'Requires structured serial communication protocol (UART) between the two microcontrollers.',
+      },
+    ],
+    buildLog: [
+      {
+        milestone: 'Dual-Axis Tracking Mechanism & Motor Control',
+        date: 'Apr – Jul 2024',
+        details:
+          'Designed 3D-printed gimbal mount, tested LDR comparator logic, and calibrated L298N motor drivers.',
+      },
+      {
+        milestone: 'BMS Protection Circuit & Sensor Calibration',
+        date: 'Aug – Dec 2024',
+        details:
+          'Assembled voltage/current divider shunts, DS18B20 probes, and MOSFET cooling fan relay logic.',
+      },
+      {
+        milestone: 'ESP32 Web Server & Live Telemetry Integration',
+        date: 'Jan – Aug 2025',
+        details:
+          'Built responsive ESP32 web dashboard, UART packet protocol, and completed faculty project defense.',
+      },
+    ],
+    quality: {
+      testing: 'Continuous 48-hour endurance test validating dual-axis sun tracking accuracy and automated thermal shutdown.',
+      security: 'Protected ESP32 Wi-Fi network access point with WPA2 authentication.',
+      accessibility: 'On-board 16x2 LCD display + high-contrast web dashboard with visual status gauges.',
+      performance: 'Sub-50ms sensor refresh rate with sub-second web telemetry updates over Wi-Fi.',
+    },
+    outcomes: [
+      'Successfully demonstrated functional dual-axis solar tracking prototype at University of Moratuwa with over 32% measured solar capture gain over static panels.',
+      'Engineered failsafe battery management circuit preventing overcharge and thermal runaway.',
+      'Deployed interactive telemetry web interface accessible over local Wi-Fi and Claude public artifacts.',
+    ],
+    lessonsLearned: [
+      'Decoupling high-frequency motor actuation from wireless network communication drastically improves embedded system reliability.',
+      'Hardware-level thermal cutoffs are essential for lithium battery safety in outdoor renewable installations.',
+    ],
+    v2Improvements: [
+      'Incorporate GPS-based astronomical solar ephemeris calculation for tracking on overcast days.',
+      'Add MPPT (Maximum Power Point Tracking) buck-boost charge controller for higher conversion efficiency.',
+    ],
+    evidence: [
+      {
+        label: 'LinkedIn Hardware Project Showcase',
+        url: 'https://www.linkedin.com/feed/update/urn:li:activity:7373774438254841856/',
+        type: 'external',
+        isExternal: true,
+        note: 'Complete video presentation, hardware demo, and team recognition on LinkedIn',
+      },
+      {
+        label: 'Web Telemetry Interface Artifact',
+        url: 'https://claude.ai/public/artifacts/28c484c1-b306-4cec-af6c-771456b00a30',
+        type: 'demo',
+        isExternal: true,
+        note: 'Interactive public artifact demonstration of the solar web dashboard',
+      },
+    ],
+  },
+
+  // ── 3. FIGMA UI/UX DESIGN PROJECTS ─────────────────────────────────────────
+  {
+    slug: 'waypoint-delivery-planning-system',
+    title: 'WayPoint — Enterprise Delivery Planning System',
+    headline:
+      'Enterprise delivery planning and route dispatch platform designed in Figma, featuring complex multi-tier navigation, order lifecycle management, responsive dashboard widgets, and developer handoff specs.',
+    track: 'figma',
+    conciseOutcome:
+      'Designed end-to-end logistics dispatch platform in Figma with interactive prototypes, comprehensive design system tokens, and route optimization workflows.',
+    featured: true,
+    order: 8,
+    status: 'shipped',
+    category: 'UI/UX Design',
+    period: '2026',
+    year: '2026',
+    duration: 'Design Challenge',
+    role: 'UI/UX Designer',
+    teamSize: 1,
+    isAcademic: false,
+    context:
+      'Design Challenge submission for Tech-Triathlon 2026, creating an enterprise-grade delivery planning, fleet tracking, and logistics dispatch management dashboard system in Figma.',
+    technologies: ['Figma', 'FigJam', 'Auto Layout', 'Design Systems', 'Interactive Prototyping'],
+    stack: ['Figma', 'FigJam', 'Auto Layout', 'Design Systems', 'Interactive Prototyping'],
+    linkedInUrl: 'https://www.linkedin.com/feed/update/urn:li:activity:7373795791355842560/',
+    coverImage: {
+      src: '/images/projects/waypoint-cover.svg',
+      alt: 'WayPoint Enterprise Delivery Planning System Figma Design and Component Specs',
+      width: 1200,
+      height: 675,
+      caption: 'WayPoint Logistics Dispatch Control Tower, Route Optimization Maps, and Component Variants in Figma',
+    },
+    problem:
+      'Enterprise logistics dispatchers manage thousands of concurrent shipments with fragmented tools, resulting in missed delivery windows, manual route adjustments, and high cognitive load.',
+    constraints: [
+      'Must design clear visual hierarchy for high-density dispatch tables, live map overlays, and fleet status cards.',
+      'Must establish reusable Figma design system with strict Auto Layout, typography scales, color tokens, and interactive component variants.',
+      'Must provide realistic interactive prototypes simulating dispatcher route assignment, driver status modals, and exception alerts.',
+    ],
+    personalRole:
+      'Sole UI/UX designer: conducted user workflow research, wireframed user flows in FigJam, crafted high-fidelity Figma components with Auto Layout 5.0, designed dark/light contrast modes, and built clickable interactive prototypes.',
+    contributions: [
+      'Designed comprehensive dispatch control tower featuring multi-panel layout: interactive map view, dynamic fleet capacity ledger, and real-time shipment filter tables.',
+      'Built atomic Figma design system including 40+ reusable component variants (buttons, inputs, status chips, modal drawers, and data cards) with standardized padding and typography tokens.',
+      'Crafted interactive prototype demonstrating end-to-end driver re-routing workflow, emergency delivery rerouting, and real-time ETA calculation preview.',
+      'Prepared detailed developer handoff documentation with spacing tokens, responsive breakpoints (Desktop 1440px / Tablet 1024px), and component state guidelines.',
+    ],
+    architecture: {
+      summary:
+        'A component-driven Figma design architecture organized into Design System Foundations (Color, Typography, Elevation, Spacing), Reusable Atomic Components, Composite Layout Templates, and Interactive Clickable Prototype Flows.',
+      keyComponents: [
+        {
+          name: 'Foundations & Tokens Library',
+          role: 'Design System Primitives',
+          description:
+            'Standardized semantic color styles, typographic scale hierarchy, grid columns, and elevation drop shadows.',
+        },
+        {
+          name: 'Interactive Component Set',
+          role: 'UI Building Blocks',
+          description:
+            'Auto Layout variants with hover, active, disabled, and error states for seamless developer handoff.',
+        },
+        {
+          name: 'Dispatch & Route Workflow Screens',
+          role: 'Product Experience',
+          description:
+            'High-fidelity views for shipment intake, automated fleet allocation, driver tracking, and performance analytics.',
+        },
+      ],
+    },
+    decisions: [
+      {
+        title: 'High-Density Table View with Collapsible Map vs. Split-Screen Layout',
+        decision:
+          'Designed a hybrid split-screen layout with an interactive collapsible map drawer and sticky data filters.',
+        why: 'Allows dispatchers to cross-reference geographic driver locations without losing their place in long shipment queues.',
+        tradeoff:
+          'Requires careful responsive breakpoint design on screens under 1280px width.',
+      },
+    ],
+    buildLog: [
+      {
+        milestone: 'User Journey Mapping & FigJam Wireframes',
+        date: 'Week 1',
+        details: 'Mapped logistics dispatch flows, driver exception handling, and information architecture.',
+      },
+      {
+        milestone: 'Design System Tokens & Component Library',
+        date: 'Week 2',
+        details: 'Constructed Auto Layout components, color tokens, and dispatch table widgets.',
+      },
+      {
+        milestone: 'High-Fidelity Screens & Interactive Prototype',
+        date: 'Week 3',
+        details: 'Assembled full prototype with smart-animate transitions for Tech-Triathlon 2026 presentation.',
+      },
+    ],
+    quality: {
+      testing: 'Validated WCAG 2.2 AA contrast ratios across all dispatch tables and interactive state chips.',
+      security: 'Designed permission-based view states for Super Admins, Fleet Managers, and Contract Drivers.',
+      accessibility: 'High contrast text labels, icon+text paired badges, and accessible focus outlines.',
+      performance: 'Clean Figma component architecture with zero detached instances and optimized frame nestings.',
+    },
+    outcomes: [
+      'Submitted flagship design challenge project for Tech-Triathlon 2026.',
+      'Showcased interactive prototyping and enterprise design system capabilities on LinkedIn.',
+    ],
+    lessonsLearned: [
+      'Structuring reusable component variants early saves hours during edge-case and modal screen design.',
+    ],
+    v2Improvements: ['Design accompanying mobile driver companion app flows.'],
+    evidence: [
+      {
+        label: 'LinkedIn UI/UX Design Showcase',
+        url: 'https://www.linkedin.com/feed/update/urn:li:activity:7373795791355842560/',
+        type: 'external',
+        isExternal: true,
+        note: 'Figma design showcase, prototype recording, and design process on LinkedIn',
+      },
+    ],
+  },
+  {
+    slug: 'fixnow-home-service-mobile-app',
+    title: 'FixNow — Home Service & Repair Mobile App',
+    headline:
+      'Mobile application UI/UX concept for on-demand home maintenance and repairs, featuring end-to-end booking user flows, service provider filtering, instant quotes, and high-fidelity interactive prototype.',
+    track: 'figma',
+    conciseOutcome:
+      'Created mobile app UI/UX design with seamless service booking flows, upfront pricing transparency, verified provider profiles, and interactive Figma prototyping.',
+    featured: true,
+    order: 9,
+    status: 'shipped',
+    category: 'Mobile UI/UX Design',
+    period: '2025',
+    year: '2025',
+    duration: 'UI/UX Practical Challenge',
+    role: 'UI/UX Designer',
+    teamSize: 1,
+    isAcademic: false,
+    context:
+      'UI/UX Practical Challenge for Webtezza (Pvt) Ltd, designing a modern, frictionless mobile application experience for booking trusted on-demand home maintenance professionals.',
+    technologies: ['Figma', 'Mobile UI', 'Auto Layout', 'User Flows', 'Interactive Prototyping'],
+    stack: ['Figma', 'Mobile UI', 'Auto Layout', 'User Flows', 'Interactive Prototyping'],
+    linkedInUrl: 'https://www.linkedin.com/feed/update/urn:li:activity:7373795791355842560/',
+    coverImage: {
+      src: '/images/projects/fixnow-cover.svg',
+      alt: 'FixNow On-Demand Home Service Mobile App UI/UX Figma Prototype',
+      width: 1200,
+      height: 675,
+      caption: 'FixNow Mobile App Screens: Service Discovery, Technician Profiles, and Instant Booking Flow',
+    },
+    problem:
+      'Homeowners find hiring repair technicians stressful due to opaque pricing, unverified contractor credentials, and inconvenient scheduling phone calls.',
+    constraints: [
+      'Must create a 3-tap booking flow from home screen to confirmed appointment.',
+      'Must communicate transparent pricing estimates upfront before checkout confirmation.',
+      'Must follow modern iOS Human Interface Guidelines and Android Material Design touch target standards.',
+    ],
+    personalRole:
+      'Designed the complete mobile experience: formulated user persona archetypes, mapped booking conversion funnels, built Figma component libraries with Auto Layout, and produced an animated mobile prototype.',
+    contributions: [
+      'Engineered intuitive category discovery grid (Plumbing, Electrical, AC Repair, Cleaning) with clear visual icons and badge cues.',
+      'Designed trusted technician profile cards showcasing verified badges, past client reviews, star ratings, and hourly rates.',
+      'Created dynamic service cost calculator and date/time slot picker with instant visual feedback.',
+      'Built micro-interactions including animated booking success confirmation and live status tracker.',
+    ],
+    architecture: {
+      summary:
+        'A mobile UI design system in Figma utilizing iOS-standard 8pt grid spacing, atomic icon components, bottom navigation bar architecture, and smart-animate screen transitions.',
+      keyComponents: [
+        {
+          name: 'Discovery & Explore Feed',
+          role: 'Category Navigation',
+          description: 'Top emergency service banners, quick category grids, and seasonal promotional cards.',
+        },
+        {
+          name: 'Technician Profile & Booking Modal',
+          role: 'Decision & Checkout Flow',
+          description: 'Detailed credentials, review history, transparent pricing breakdown, and date picker.',
+        },
+      ],
+    },
+    decisions: [
+      {
+        title: 'Upfront Price Range Estimator vs. "Get a Quote" Form',
+        decision:
+          'Presented instant price estimates directly on the service selection screen before requiring user details.',
+        why: 'Drastically reduces booking abandonment and builds user trust compared to opaque inquiry forms.',
+        tradeoff: 'Requires clear disclaimer that final cost may vary slightly based on on-site inspection.',
+      },
+    ],
+    buildLog: [
+      {
+        milestone: 'Wireframing & Competitive Analysis',
+        date: 'Week 1',
+        details: 'Analyzed top on-demand apps (Urban Company, TaskRabbit) and mapped friction points.',
+      },
+      {
+        milestone: 'High-Fidelity Mobile Screens & Prototyping',
+        date: 'Week 2',
+        details: 'Crafted 18 mobile screens in Figma with Auto Layout and smart-animate micro-interactions.',
+      },
+    ],
+    quality: {
+      testing: 'Tested touch target sizes (minimum 44x44pt) across all interactive buttons and date selectors.',
+      security: 'Designed phone OTP verification and privacy masked contact numbers.',
+      accessibility: 'High contrast color scheme with accessible typography scale.',
+      performance: 'Pixel-perfect vector SVG icons and organized component sets.',
+    },
+    outcomes: [
+      'Completed comprehensive UI/UX practical challenge for Webtezza (Pvt) Ltd.',
+      'Published interactive Figma prototype demonstration on LinkedIn.',
+    ],
+    lessonsLearned: [
+      'Simplifying checkout steps to fewer screens dramatically increases user confidence in service booking.',
+    ],
+    v2Improvements: ['Design in-app real-time chat with technician and live GPS tracking.'],
+    evidence: [
+      {
+        label: 'LinkedIn UI/UX Design Showcase',
+        url: 'https://www.linkedin.com/feed/update/urn:li:activity:7373795791355842560/',
+        type: 'external',
+        isExternal: true,
+        note: 'Figma mobile app prototype demonstration and design explanation',
+      },
+    ],
+  },
+  {
+    slug: 'dr-pepper-interactive-landing-page',
+    title: 'Dr. Pepper — Interactive Product Landing Page Concept',
+    headline:
+      'Bold beverage product landing page concept designed in Figma exploring visual hierarchy, dynamic typography, component variants, and interactive micro-animations.',
+    track: 'figma',
+    conciseOutcome:
+      'Designed high-impact beverage showcase concept in Figma featuring custom typography, 23-flavor interactive wheel, and product variant micro-animations.',
+    featured: true,
+    order: 10,
+    status: 'shipped',
+    category: 'Product Landing Page UI',
+    period: '2025',
+    year: '2025',
+    duration: 'Personal Practice Project',
+    role: 'UI/UX Designer',
+    teamSize: 1,
+    isAcademic: false,
+    context:
+      'Personal UI Design Experiment & Practice Project exploring modern creative web design, bold typography layouts, beverage product presentation, and smart-animate interactive prototyping in Figma.',
+    technologies: ['Figma', 'Typography', 'Visual Hierarchy', 'Component Variants', 'Landing Pages'],
+    stack: ['Figma', 'Typography', 'Visual Hierarchy', 'Component Variants', 'Landing Pages'],
+    linkedInUrl: 'https://www.linkedin.com/feed/update/urn:li:activity:7373795791355842560/',
+    coverImage: {
+      src: '/images/projects/drpepper-cover.svg',
+      alt: 'Dr. Pepper Interactive Product Landing Page Concept in Figma',
+      width: 1200,
+      height: 675,
+      caption: 'Dr. Pepper Bold Beverage Presentation, 23 Flavor Exploration, and Interactive Variant Prototyping',
+    },
+    problem:
+      'Traditional beverage websites often rely on static product images with generic layouts that fail to evoke taste excitement, brand heritage, or engaging interaction.',
+    constraints: [
+      'Must celebrate the iconic 23-flavor heritage with bold visual typography and rich maroon/crimson color palettes.',
+      'Must provide an interactive flavor switcher that changes hero backgrounds and product can renders seamlessly.',
+      'Must maintain clean layout hierarchy across 1440px desktop displays.',
+    ],
+    personalRole:
+      'Sole concept designer: researched brand identity, developed custom typography hierarchies, composed high-resolution can renders with condensation effects, and created Figma component variants with interactive hover states.',
+    contributions: [
+      'Designed expressive hero typography pairing impactful sans-serif headlines with vintage brand motifs.',
+      'Built interactive flavor carousel component (Original, Cherry, Strawberries & Cream, Zero Sugar) with smooth variant switching.',
+      'Engineered smart-animate transitions simulating can rotation and background color morphing on user selection.',
+      'Created accompanying nutrition facts drawer and retail store locator modal concept.',
+    ],
+    architecture: {
+      summary:
+        'A desktop landing page design in Figma centered around high-contrast visual storytelling, layered asset masking, interactive component variants, and fluid prototype transitions.',
+      keyComponents: [
+        {
+          name: 'Hero Showcase Stage',
+          role: 'Visual Hook & Brand Identity',
+          description: 'Giant display typography, floating product render with custom drop shadows and splash art.',
+        },
+        {
+          name: 'Interactive Flavor Selector',
+          role: 'Product Engagement',
+          description: 'Clickable variant tabs that dynamically switch can artwork, flavor notes, and color themes.',
+        },
+      ],
+    },
+    decisions: [
+      {
+        title: 'Dark Crimson Background vs. Traditional White Web Layout',
+        decision:
+          'Utilized a deep maroon-to-black vignette gradient as the foundational canvas.',
+        why: 'Enhances product contrast, communicates premium taste, and makes the metallic can highlights pop vibrantly.',
+        tradeoff: 'Requires strict contrast checking for body text readability.',
+      },
+    ],
+    buildLog: [
+      {
+        milestone: 'Brand Exploration & Asset Preparation',
+        date: 'Week 1',
+        details: 'Curated typography references, refined can mockups, and composed flavor color palettes.',
+      },
+      {
+        milestone: 'Layout Design & Smart-Animate Prototyping',
+        date: 'Week 2',
+        details: 'Designed desktop layout and connected interactive prototype with variant transitions in Figma.',
+      },
+    ],
+    quality: {
+      testing: 'Verified text readability against deep crimson backgrounds ensuring WCAG 2.2 AA compliant contrast.',
+      security: 'Static design concept with zero external data risks.',
+      accessibility: 'High contrast text labels and clear interactive hover indicator states.',
+      performance: 'Clean frame hierarchy with optimized vector paths.',
+    },
+    outcomes: [
+      'Created viral design concept published and discussed on LinkedIn.',
+      'Demonstrated advanced mastery of Figma Auto Layout, component variants, and interactive motion design.',
+    ],
+    lessonsLearned: [
+      'Bold typographic contrast transforms an ordinary product page into an unforgettable digital brand experience.',
+    ],
+    v2Improvements: ['Design matching responsive mobile layouts and sound effect cues.'],
+    evidence: [
+      {
+        label: 'LinkedIn UI/UX Design Showcase',
+        url: 'https://www.linkedin.com/feed/update/urn:li:activity:7373795791355842560/',
+        type: 'external',
+        isExternal: true,
+        note: 'Figma interactive product presentation and design walkthrough',
+      },
+    ],
+  },
+  {
+    slug: 'donut-animated-product-landing-page',
+    title: 'Donut — Animated Product Landing Page Concept',
+    headline:
+      'Playful animated product landing page concept in Figma exploring visual composition, asset styling, interactive animation prototyping, and component state transitions.',
+    track: 'figma',
+    conciseOutcome:
+      'Engineered playful dessert landing page in Figma with pastel color palettes, smart-animate flavor carousels, and engaging micro-interactions.',
+    featured: true,
+    order: 11,
+    status: 'shipped',
+    category: 'Animated Landing Page UI',
+    period: '2025',
+    year: '2025',
+    duration: 'Personal Practice Project',
+    role: 'UI/UX Designer',
+    teamSize: 1,
+    isAcademic: false,
+    context:
+      'Personal UI Design Experiment & Practice Project in Figma exploring playful UI compositions, vibrant dessert color harmonies, asset styling, and animated interactive prototyping.',
+    technologies: ['Figma', 'Interactive Prototyping', 'Component Variants', 'Visual Design', 'Animation'],
+    stack: ['Figma', 'Interactive Prototyping', 'Component Variants', 'Visual Design', 'Animation'],
+    linkedInUrl: 'https://www.linkedin.com/feed/update/urn:li:activity:7373795791355842560/',
+    coverImage: {
+      src: '/images/projects/donut-cover.svg',
+      alt: 'Donut Animated Product Landing Page Concept in Figma',
+      width: 1200,
+      height: 675,
+      caption: 'Playful Animated Donut Landing Page Concept, Sprinkles Animation, and Interactive Flavor Boxes in Figma',
+    },
+    problem:
+      'Bakery and dessert websites often lack the joyful, appetizing tactile feeling that entices food lovers in physical patisseries.',
+    constraints: [
+      'Must create an appetizing, cheerful atmosphere with soft pastel pinks, creamy yellows, and rich chocolate tones.',
+      'Must incorporate playful micro-animations like sprinkles dropping and floating pastry effects.',
+      'Must provide an intuitive interactive flavor selection and order builder flow.',
+    ],
+    personalRole:
+      'Sole concept designer: designed custom vector donut illustrations, composed playful typography pairings, established interactive component variants, and animated stateful transitions using Figma Smart Animate.',
+    contributions: [
+      'Illustrated vector pastry assets with modular frosting, sprinkles, and filling layers.',
+      'Designed interactive "Build Your Box" flavor carousel featuring Strawberry Glaze, Dark Chocolate Crumb, Pistachio Dream, and Caramel Crunch.',
+      'Connected Figma prototype with realistic hover bounces, rotation easing, and modal pop-ups.',
+      'Created responsive desktop navigation with cart counter pill and store locator drawer.',
+    ],
+    architecture: {
+      summary:
+        'A playful web UI concept in Figma leveraging vector illustration layers, modular frosting/topping variants, and fluid Smart Animate transitions to create an appetizing interactive experience.',
+      keyComponents: [
+        {
+          name: 'Hero Bakery Showcase',
+          role: 'Emotion & Appetite Appeal',
+          description: 'Playful headline, floating donut hero render with animated sprinkles and quick CTA.',
+        },
+        {
+          name: 'Interactive Flavor Box Builder',
+          role: 'Customization & Ordering',
+          description: 'Interactive selector allowing customers to mix-and-match pastry flavors into custom boxes.',
+        },
+      ],
+    },
+    decisions: [
+      {
+        title: 'Vector Layered Donut Assets vs. Stock Photos',
+        decision:
+          'Created custom layered vector illustrations in Figma rather than static food photography.',
+        why: 'Enables individual animation of toppings, sprinkles, and frosting layers across interactive states.',
+        tradeoff: 'Requires custom illustration work for every new flavor introduced.',
+      },
+    ],
+    buildLog: [
+      {
+        milestone: 'Illustration & Style Guide',
+        date: 'Week 1',
+        details: 'Illustrated pastry assets, defined pastel color tokens, and styled cheerful typography.',
+      },
+      {
+        milestone: 'Interactive Motion Prototyping',
+        date: 'Week 2',
+        details: 'Built interactive flavor customizer with smart-animate transitions in Figma.',
+      },
+    ],
+    quality: {
+      testing: 'Verified prototype frame rate and smooth Smart Animate easing curves.',
+      security: 'Static design concept with zero external vulnerabilities.',
+      accessibility: 'High contrast text on cards and clear visual button states.',
+      performance: 'Organized Figma component layers with clean naming and Auto Layout.',
+    },
+    outcomes: [
+      'Showcased creative visual design and interactive prototyping on LinkedIn.',
+      'Demonstrated versatility across both playful consumer UI and complex enterprise systems.',
+    ],
+    lessonsLearned: [
+      'Delightful micro-animations and cheerful color palettes create emotional connection and increase user dwell time.',
+    ],
+    v2Improvements: ['Design mobile ordering drawer and order tracking animation.'],
+    evidence: [
+      {
+        label: 'LinkedIn UI/UX Design Showcase',
+        url: 'https://www.linkedin.com/feed/update/urn:li:activity:7373795791355842560/',
+        type: 'external',
+        isExternal: true,
+        note: 'Figma interactive dessert prototype and animation breakdown',
       },
     ],
   },

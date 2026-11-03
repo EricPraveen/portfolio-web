@@ -10,7 +10,7 @@ import {
 } from '@/lib/content';
 import {
   ThesisPanel,
-  ProjectPlate,
+  WorksShowcase,
   CapabilityMap,
   ContactClose,
   BlogSection,
@@ -114,15 +114,7 @@ export default async function HomePage() {
           </div>
         </FadeUp>
 
-        <div className="project-showcase-grid">
-          {featuredProjects.map((project, idx) => (
-            <ProjectPlate
-              key={project.slug}
-              project={project}
-              index={idx}
-            />
-          ))}
-        </div>
+        <WorksShowcase projects={featuredProjects} />
       </section>
 
       {/* 04 / CAPABILITY ARCHITECTURE MAP */}

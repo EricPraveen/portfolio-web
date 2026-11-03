@@ -2447,6 +2447,81 @@ section[id],
 }
 
 /* ── MODERN PROJECT SHOWCASE GRID & DIRECT LINKEDIN CARDS ─────────────── */
+.works-showcase-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.works-track-tabs {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: var(--space-xl);
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.works-track-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.works-track-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1.1rem;
+  border-radius: 8px;
+  background-color: rgba(22, 22, 31, 0.7);
+  border: 1.5px solid rgba(255, 255, 255, 0.1);
+  color: #94A3B8;
+  font-family: var(--font-family-mono);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+  user-select: none;
+}
+
+.works-track-tab:hover {
+  background-color: rgba(30, 30, 42, 0.9);
+  border-color: rgba(255, 255, 255, 0.25);
+  color: #FFFFFF;
+  transform: translateY(-1px);
+}
+
+.works-track-tab--active {
+  background-color: rgba(212, 255, 0, 0.12) !important;
+  border-color: #D4FF00 !important;
+  color: #D4FF00 !important;
+  box-shadow: 0 0 16px rgba(212, 255, 0, 0.22);
+}
+
+.works-track-tab-icon {
+  font-size: 0.95rem;
+  line-height: 1;
+}
+
+.works-track-tab-count {
+  font-size: 0.7rem;
+  padding: 0.1rem 0.45rem;
+  border-radius: 999px;
+  background-color: rgba(255, 255, 255, 0.08);
+  color: inherit;
+  font-weight: 700;
+  transition: all 0.2s ease;
+}
+
+.works-track-tab--active .works-track-tab-count {
+  background-color: #D4FF00;
+  color: #131319;
+}
+
 .project-showcase-grid {
   display: grid;
   grid-template-columns: 1fr;

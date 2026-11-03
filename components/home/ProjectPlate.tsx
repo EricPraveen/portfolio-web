@@ -20,6 +20,20 @@ export function ProjectPlate({
   const targetUrl = project.linkedInUrl || project.demoUrl || project.repoUrl || '#';
   const hasLinkedIn = Boolean(project.linkedInUrl);
 
+  const demoLabel =
+    project.track === 'hardware'
+      ? 'Telemetry ↗'
+      : project.track === 'figma'
+      ? 'Prototype ↗'
+      : 'Live Demo ↗';
+
+  const categoryBadgeStyle =
+    project.track === 'hardware'
+      ? { borderColor: 'rgba(245, 158, 11, 0.4)', color: '#FCD34D', backgroundColor: 'rgba(245, 158, 11, 0.12)' }
+      : project.track === 'figma'
+      ? { borderColor: 'rgba(236, 72, 153, 0.4)', color: '#F472B6', backgroundColor: 'rgba(236, 72, 153, 0.12)' }
+      : undefined;
+
   const handleCardClick = () => {
     if (targetUrl && targetUrl !== '#') {
       window.open(targetUrl, '_blank', 'noopener,noreferrer');
@@ -83,7 +97,7 @@ export function ProjectPlate({
 
         {/* Top Badges */}
         <div className="project-showcase-badges">
-          <span className="project-showcase-category-badge font-mono">
+          <span className="project-showcase-category-badge font-mono" style={categoryBadgeStyle}>
             {project.category}
           </span>
           <span className="project-showcase-linkedin-badge font-mono" title="LinkedIn Project Showcase">
@@ -157,7 +171,7 @@ export function ProjectPlate({
                 aria-label={`View live demo for ${project.title} (opens in new tab)`}
               >
                 <span className="project-demo-dot" aria-hidden="true" />
-                <span>Live Demo ↗</span>
+                <span>{demoLabel}</span>
               </a>
             )}
           </div>

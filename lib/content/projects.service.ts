@@ -1,5 +1,5 @@
 import { projectsData } from '@/content/projects.data';
-import { Project, ProjectStatus } from '@/content/types';
+import { Project, ProjectStatus, ProjectTrack } from '@/content/types';
 
 /**
  * Accessor service for project data with sorting, filtering, and integrity validation
@@ -11,6 +11,13 @@ export function getAllProjects(): Project[] {
 
 export function getFeaturedProjects(): Project[] {
   return getAllProjects().filter((p) => p.featured);
+}
+
+export function getProjectsByTrack(track?: ProjectTrack | 'all'): Project[] {
+  if (!track || track === 'all') {
+    return getAllProjects();
+  }
+  return getAllProjects().filter((p) => p.track === track);
 }
 
 export function getFlagshipProjects(): Project[] {

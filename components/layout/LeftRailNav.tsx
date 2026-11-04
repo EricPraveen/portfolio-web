@@ -18,10 +18,11 @@ export const RAIL_ITEMS: RailItem[] = [
   { id: 'home', num: 'EP', label: 'INDEX', href: '/#home', targetId: 'home' },
   { id: 'home', num: '01', label: 'HOME', href: '/#home', targetId: 'home' },
   { id: 'about', num: '02', label: 'ABOUT', href: '/#about', targetId: 'about' },
-  { id: 'projects', num: '03', label: 'WORK', href: '/#projects', targetId: 'projects' },
-  { id: 'skills', num: '04', label: 'STACK', href: '/#skills', targetId: 'skills' },
-  { id: 'blog', num: '05', label: 'BLOG', href: '/#blog', targetId: 'blog' },
-  { id: 'contact', num: '06', label: 'CONTACT', href: '/#contact', targetId: 'contact' },
+  { id: 'education', num: '03', label: 'EDUCATION', href: '/#education', targetId: 'education' },
+  { id: 'projects', num: '04', label: 'WORK', href: '/#projects', targetId: 'projects' },
+  { id: 'skills', num: '05', label: 'STACK', href: '/#skills', targetId: 'skills' },
+  { id: 'blog', num: '06', label: 'BLOG', href: '/#blog', targetId: 'blog' },
+  { id: 'contact', num: '07', label: 'CONTACT', href: '/#contact', targetId: 'contact' },
 ];
 
 export function LeftRailNav() {
@@ -53,8 +54,8 @@ export function LeftRailNav() {
         <nav className="left-rail__nav" role="list">
           {RAIL_ITEMS.slice(1).map((item) => {
             const isActive = activeSection === item.id;
-            const isTealDivider = item.id === 'projects'; // teal divider after WORK (Plate 03)
-            const isOrangeDivider = item.id === 'skills'; // orange divider after STACK (Plate 04)
+            const isTealDivider = item.id === 'education'; // teal divider after EDUCATION (Plate 03)
+            const isOrangeDivider = item.id === 'skills'; // orange divider after STACK (Plate 05)
 
             return (
               <React.Fragment key={`${item.num}-${item.id}`}>

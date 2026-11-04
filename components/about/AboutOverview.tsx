@@ -1,16 +1,11 @@
 'use client';
 
 import React from 'react';
-import Link from 'next/link';
-import { Profile, Education, Experience } from '@/content/types';
-import { educationData as defaultEducation } from '@/content/education.data';
-import { experienceData as defaultExperience } from '@/content/experience.data';
+import { Profile } from '@/content/types';
 import { ScrollReveal, FadeUp, StaggerContainer, StaggerItem } from '@/components/animation';
 
 export interface AboutOverviewProps {
   profile: Profile;
-  education?: Education[];
-  experience?: Experience[];
   headingLevel?: 'h1' | 'h2';
   indexLabel?: string;
 }
@@ -106,8 +101,6 @@ const FOCUS_ITEMS = [
 
 export function AboutOverview({
   profile,
-  education = defaultEducation,
-  experience = defaultExperience,
   headingLevel = 'h2',
   indexLabel = '02 / ABOUT',
 }: AboutOverviewProps) {
@@ -233,127 +226,6 @@ export function AboutOverview({
             </StaggerItem>
           ))}
         </StaggerContainer>
-      </div>
-
-      {/* ── 4. ACADEMIC FOUNDATION & PRACTICAL EXPERIENCE ───────────── */}
-      <div className="about-section-group" id="academics">
-        <span id="education" className="section-anchor" aria-hidden="true" />
-        <span id="experience" className="section-anchor" aria-hidden="true" />
-        <span id="log" className="section-anchor" aria-hidden="true" />
-
-        <FadeUp className="about-section-header">
-          <span className="about-sub-eyebrow font-mono">ACADEMIC &amp; LEADERSHIP TRACK</span>
-          <h3 className="about-sub-title font-heading-2xl">Education &amp; Experience</h3>
-        </FadeUp>
-
-        <div className="about-track-grid">
-          {/* Practical Experience Column */}
-          <ScrollReveal variant="slide-left" delay={80} className="about-track-col">
-            <div className="about-track-subhead">
-              <span className="about-track-subhead-title font-mono">
-                <span className="about-track-subhead-dot" aria-hidden="true" />
-                PRACTICAL EXPERIENCE &amp; LEADERSHIP
-              </span>
-              <span className="about-track-subhead-count font-mono">{experience.length} ROLES</span>
-            </div>
-
-            <div className="about-track-list">
-              {experience.map((exp) => (
-                <div key={exp.id} className="about-track-card about-track-card--experience arcade-box">
-                  <div className="about-track-header">
-                    <h4 className="about-track-role font-sans">
-                      {exp.role.replace(/\[|\]/g, '')}
-                    </h4>
-                    <span className={`about-track-badge font-mono ${exp.dates.isCurrent ? 'is-current' : ''}`}>
-                      {exp.dates.isCurrent
-                        ? `${exp.dates.start} \u2013 ${exp.dates.end || 'PRESENT'}`
-                        : exp.dates.end && exp.dates.end !== exp.dates.start
-                        ? `${exp.dates.start} \u2013 ${exp.dates.end}`
-                        : exp.dates.start}
-                    </span>
-                  </div>
-
-                  <div className="about-track-org font-mono">
-                    <span className="about-track-org-name">{exp.organization.replace(/\[|\]/g, '')}</span>
-                    <span className="about-track-org-sep">/</span>
-                    <span className="about-track-org-meta">{exp.location.replace(/\[|\]/g, '')}</span>
-                  </div>
-
-                  <p className="about-track-desc font-sans">
-                    {exp.context.replace(/\[|\]/g, '')}
-                  </p>
-
-                  {exp.verifiedOutcomes && exp.verifiedOutcomes.length > 0 && (
-                    <div className="about-track-outcome">
-                      <span className="about-track-outcome-label font-mono">
-                        Key Verified Outcome
-                      </span>
-                      <p className="about-track-outcome-text font-sans">
-                        &bull; {exp.verifiedOutcomes[0].replace(/\[|\]/g, '')}
-                      </p>
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-          </ScrollReveal>
-
-          {/* Academic Foundation Column */}
-          <ScrollReveal variant="slide-right" delay={140} className="about-track-col">
-            <div className="about-track-subhead about-track-subhead--academic">
-              <span className="about-track-subhead-title font-mono">
-                <span className="about-track-subhead-dot" aria-hidden="true" />
-                ACADEMIC FOUNDATION
-              </span>
-              <span className="about-track-subhead-count font-mono">{education.length} INSTITUTIONS</span>
-            </div>
-
-            <div className="about-track-list">
-              {education.map((edu) => (
-                <div key={edu.id} className="about-track-card about-track-card--academic arcade-box">
-                  <div className="about-track-header">
-                    <h4 className="about-track-role font-sans">
-                      {edu.degree}
-                    </h4>
-                    <span className={`about-track-badge font-mono ${edu.dates.isCurrent ? 'is-current' : ''}`}>
-                      {edu.dates.start} &ndash; {edu.dates.end}
-                    </span>
-                  </div>
-
-                  <div className="about-track-org font-mono">
-                    <span className="about-track-org-name">{edu.institution.replace(/\[|\]/g, '')}</span>
-                    <span className="about-track-org-sep">/</span>
-                    <span className="about-track-org-meta">
-                      {edu.major ? `${edu.major} • ` : ''}{edu.status}
-                    </span>
-                  </div>
-
-                  <div className="about-track-coursework">
-                    <span className="about-track-coursework-label font-mono">
-                      Core Relevant Coursework
-                    </span>
-                    <div className="about-track-tags">
-                      {edu.relevantCoursework.slice(0, 6).map((course) => (
-                        <span key={course} className="about-track-tag font-mono">
-                          {course}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  {edu.capstone && (
-                    <div className="about-track-capstone">
-                      <span className="about-track-capstone-label font-mono">Capstone Focus:</span>
-                      <span className="about-track-capstone-title font-mono">
-                        {edu.capstone.title}
-                      </span>
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-          </ScrollReveal>
-        </div>
       </div>
     </div>
   );

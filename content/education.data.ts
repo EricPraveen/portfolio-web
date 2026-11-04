@@ -60,7 +60,7 @@ export const educationData: EducationItem[] = [
     relevantCoursework: [
       'Combined Mathematics (Calculus, Trigonometry, Statistics & Mechanics)',
       'Physics (Electronics, Mechanics, Wave Optics & Thermodynamics)',
-      'Chemistry (Physical, Organic & Inorganic)',
+      'ICT (Network, OS, CO, CA, Python, Database)',
     ],
     activities: [
       'Active participant in Science Union and College Academic Clubs',

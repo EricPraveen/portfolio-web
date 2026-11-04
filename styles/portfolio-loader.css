@@ -1,0 +1,754 @@
+/**
+ * ==========================================================================
+ * PORTFOLIO BOOT-UP LOADING SCREEN STYLES
+ * Aesthetic: Warm Retro Arcade & Dev Station Laptop Boot Sequence
+ * ==========================================================================
+ */
+
+/* --------------------------------------------------------------------------
+ * 1. BODY LOCK & HERO ANIMATION SYNCHRONIZATION
+ * -------------------------------------------------------------------------- */
+body.is-booting {
+  overflow: hidden !important;
+}
+
+/* Pause the entrance animations of hero section so they fire after loader */
+body.is-booting .hero-animate-fade-up,
+body.is-booting .hero-animate-slide-left,
+body.is-booting .hero-animate-scale-in {
+  animation-play-state: paused !important;
+}
+
+/* --------------------------------------------------------------------------
+ * 2. MAIN VIEWPORT OVERLAY
+ * -------------------------------------------------------------------------- */
+.portfolio-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #08080A;
+  color: #F8FAFC;
+  overflow: hidden;
+  user-select: none;
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.portfolio-loader.is-exiting {
+  opacity: 0;
+  transform: scale(1.04);
+  pointer-events: none;
+}
+
+/* Subtle Retro Atmosphere */
+.portfolio-loader__backdrop {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 65% 50% at 50% 48%, rgba(255, 85, 0, 0.05) 0%, transparent 65%),
+    radial-gradient(circle at 50% 40%, rgba(212, 255, 0, 0.035) 0%, transparent 60%);
+}
+
+.portfolio-loader__grid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 32px 32px;
+  mask-image: radial-gradient(circle at 50% 50%, black 30%, transparent 80%);
+  -webkit-mask-image: radial-gradient(circle at 50% 50%, black 30%, transparent 80%);
+}
+
+/* --------------------------------------------------------------------------
+ * 3. VIEWPORT HUD (TOP & BOTTOM METADATA)
+ * -------------------------------------------------------------------------- */
+.portfolio-loader__hud-top {
+  position: absolute;
+  top: clamp(1rem, 3vh, 2rem);
+  left: clamp(1.25rem, 4vw, 3rem);
+  right: clamp(1.25rem, 4vw, 3rem);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-family-mono, monospace);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  color: var(--color-text-faint, #64748B);
+  pointer-events: none;
+  z-index: 5;
+}
+
+.portfolio-loader__hud-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.portfolio-loader__hud-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--color-chartreuse, #D4FF00);
+  box-shadow: 0 0 8px var(--color-chartreuse, #D4FF00);
+  animation: hudPulse 1.6s ease-in-out infinite alternate;
+}
+
+@keyframes hudPulse {
+  0% { opacity: 0.4; transform: scale(0.9); }
+  100% { opacity: 1; transform: scale(1.1); }
+}
+
+.portfolio-loader__hud-bottom {
+  position: absolute;
+  bottom: clamp(1rem, 3vh, 2rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--font-family-mono, monospace);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  color: var(--color-text-muted, #94A3B8);
+  z-index: 5;
+  text-align: center;
+}
+
+.portfolio-loader__skip-hint {
+  font-size: 0.65rem;
+  color: var(--color-text-faint, #64748B);
+  opacity: 0.8;
+  transition: opacity 0.2s ease, color 0.2s ease;
+}
+
+.portfolio-loader__skip-hint:hover {
+  opacity: 1;
+  color: var(--color-chartreuse, #D4FF00);
+}
+
+/* --------------------------------------------------------------------------
+ * 4. 3D LAPTOP STAGE & ASSEMBLY
+ * -------------------------------------------------------------------------- */
+.portfolio-loader__stage {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  perspective: 1200px;
+  perspective-origin: 50% 45%;
+  width: 100%;
+  max-width: 530px;
+  padding: 0 1rem;
+  z-index: 2;
+  transform: translateY(-10px);
+}
+
+.laptop-assembly {
+  position: relative;
+  width: min(470px, 92vw);
+  height: 380px;
+  transform-style: preserve-3d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* --------------------------------------------------------------------------
+ * 5. LAPTOP CLAMSHELL LID (SCREEN & DISPLAY)
+ * Opens from closed flat on base (-120deg) up to upright (-8deg)
+ * -------------------------------------------------------------------------- */
+.laptop-lid {
+  position: absolute;
+  top: 20px;
+  left: 1.5%;
+  width: 97%;
+  height: 235px;
+  transform-origin: bottom center;
+  transform-style: preserve-3d;
+  transition: transform 1.05s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+  z-index: 5;
+}
+
+/* Closed state: lid is folded forward & down over the base */
+.laptop-lid.is-closed {
+  transform: rotateX(-120deg);
+}
+
+/* Open state: lid lifts up and back into upright viewing angle */
+.laptop-lid.is-open {
+  transform: rotateX(-8deg);
+}
+
+/* Faces of the lid */
+.laptop-lid__outer,
+.laptop-lid__inner {
+  position: absolute;
+  inset: 0;
+  border-radius: 12px 12px 2px 2px;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Outer Shell (visible on top when laptop is closed) */
+.laptop-lid__outer {
+  background: linear-gradient(145deg, #22222A 0%, #17171E 55%, #0F0F14 100%);
+  border: 1.5px solid rgba(255, 255, 255, 0.16);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 14px 40px rgba(0, 0, 0, 0.85);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transform: rotateY(180deg) rotateZ(180deg);
+  opacity: 1;
+  transition: opacity 0.4s ease 0.15s;
+  gap: 8px;
+  z-index: 2;
+}
+
+.laptop-lid.is-open .laptop-lid__outer {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.laptop-lid__outer-monogram {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 11px;
+  background-color: #08080A;
+  border: 2px solid var(--color-chartreuse, #D4FF00);
+  box-shadow: 0 0 16px rgba(212, 255, 0, 0.35);
+  position: relative;
+}
+
+.laptop-lid__outer-text {
+  font-family: var(--font-family-mono, monospace);
+  font-weight: 900;
+  font-size: 20px;
+  color: var(--color-chartreuse, #D4FF00);
+  letter-spacing: -0.5px;
+}
+
+.laptop-lid__outer-dot {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--color-ghost-pink, #FF2A85);
+  box-shadow: 0 0 6px var(--color-ghost-pink, #FF2A85);
+}
+
+.laptop-lid__outer-label {
+  font-family: var(--font-family-mono, monospace);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  color: var(--color-text-muted, #94A3B8);
+}
+
+/* Inner Shell (Screen Bezel & Minimal Display Panel) */
+.laptop-lid__inner {
+  background: #0D0D12;
+  border: 1.5px solid rgba(255, 255, 255, 0.14);
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.9), 0 0 25px rgba(0, 0, 0, 0.8);
+  display: flex;
+  flex-direction: column;
+  padding: 7px 8px 8px 8px;
+  z-index: 1;
+}
+
+/* Top Bezel Bar with Camera */
+.laptop-bezel__top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  height: 8px;
+  margin-bottom: 4px;
+}
+
+.laptop-camera__lens {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #1A1A22;
+  border: 1px solid #333340;
+  box-shadow: inset 0 0 2px #000;
+}
+
+.laptop-camera__led {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background-color: #2A2A35;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.laptop-camera__led.is-active {
+  background-color: var(--color-chartreuse, #D4FF00);
+  box-shadow: 0 0 6px var(--color-chartreuse, #D4FF00);
+}
+
+/* --------------------------------------------------------------------------
+ * 6. LAPTOP DISPLAY PANEL & MINIMAL BOOT INTERFACE
+ * -------------------------------------------------------------------------- */
+.laptop-screen__panel {
+  flex: 1;
+  position: relative;
+  background-color: #060608;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.95), 0 0 15px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transition: opacity 0.3s ease-out;
+}
+
+.laptop-screen__panel.is-powered {
+  opacity: 1;
+}
+
+/* Screen Power-On Flash Effect */
+.laptop-screen__flash {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(212, 255, 0, 0.25) 48%,
+    rgba(255, 255, 255, 0.95) 50%,
+    rgba(255, 85, 0, 0.25) 52%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 10;
+  opacity: 0;
+}
+
+.laptop-screen__flash.animate-flash {
+  animation: crtPowerFlash 0.4s ease-out forwards;
+}
+
+@keyframes crtPowerFlash {
+  0% { opacity: 0; transform: scaleY(0.01); }
+  35% { opacity: 1; transform: scaleY(0.05); }
+  70% { opacity: 0.8; transform: scaleY(1); }
+  100% { opacity: 0; transform: scaleY(1); }
+}
+
+/* CRT Scanlines Overlay */
+.laptop-screen__scanlines {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.16) 0px,
+    rgba(0, 0, 0, 0.16) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  z-index: 4;
+}
+
+/* Glass Reflection */
+.laptop-screen__glare {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    125deg,
+    rgba(255, 255, 255, 0.05) 0%,
+    rgba(255, 255, 255, 0.01) 40%,
+    transparent 70%
+  );
+  z-index: 5;
+}
+
+/* Minimal Screen Body */
+.laptop-screen__minimal-body {
+  position: relative;
+  z-index: 3;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 1.25rem;
+  gap: 0.65rem;
+  text-align: center;
+}
+
+/* EP Monogram on Screen */
+.laptop-screen__monogram {
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9px;
+  background-color: #08080A;
+  border: 2px solid var(--color-chartreuse, #D4FF00);
+  box-shadow: 0 0 14px rgba(212, 255, 0, 0.4);
+  position: relative;
+  margin-bottom: 2px;
+}
+
+.laptop-screen__monogram-text {
+  font-family: var(--font-family-mono, monospace);
+  font-weight: 900;
+  font-size: 16px;
+  color: var(--color-chartreuse, #D4FF00);
+  letter-spacing: -0.5px;
+}
+
+.laptop-screen__monogram-dot {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: var(--color-ghost-pink, #FF2A85);
+  box-shadow: 0 0 5px var(--color-ghost-pink, #FF2A85);
+}
+
+/* Minimal Boot Titles */
+.laptop-screen__minimal-title {
+  font-family: var(--font-family-mono, monospace);
+  font-size: clamp(0.72rem, 1.8vw, 0.8rem);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #F8FAFC;
+  text-transform: uppercase;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.laptop-screen__minimal-title.is-ready {
+  color: var(--color-chartreuse, #D4FF00);
+  text-shadow: 0 0 10px rgba(212, 255, 0, 0.5);
+}
+
+/* Minimal Progress Bar & Percentage */
+.laptop-screen__minimal-meter-track {
+  width: 80%;
+  max-width: 270px;
+  height: 7px;
+  background: #040406;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 2px;
+  padding: 1px;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.9);
+  position: relative;
+  overflow: hidden;
+  margin-top: 2px;
+}
+
+.laptop-screen__minimal-meter-fill {
+  height: 100%;
+  border-radius: 1px;
+  background: linear-gradient(
+    90deg,
+    var(--color-neon-orange, #FF5500) 0%,
+    var(--color-pac-yellow-bright, #FF6B1A) 55%,
+    var(--color-chartreuse, #D4FF00) 100%
+  );
+  box-shadow: 0 0 8px rgba(212, 255, 0, 0.5);
+  transition: width 0.05s linear;
+  position: relative;
+  will-change: width;
+}
+
+.laptop-screen__meter-glow {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 6px;
+  background: #FFFFFF;
+  box-shadow: 0 0 8px #D4FF00, 0 0 14px #FF5500;
+  border-radius: 1px;
+}
+
+.laptop-screen__minimal-percent {
+  font-family: var(--font-family-mono, monospace);
+  font-size: clamp(0.88rem, 2vw, 1rem);
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  color: var(--color-chartreuse, #D4FF00);
+  text-shadow: 0 0 8px rgba(212, 255, 0, 0.4);
+}
+
+/* --------------------------------------------------------------------------
+ * 7. LAPTOP HINGE CYLINDER
+ * -------------------------------------------------------------------------- */
+.laptop-hinge {
+  position: absolute;
+  top: 252px;
+  left: 6%;
+  width: 88%;
+  height: 6px;
+  background: linear-gradient(180deg, #181820 0%, #101015 50%, #0B0B0E 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 2px 4px rgba(0, 0, 0, 0.8);
+  z-index: 6;
+}
+
+/* --------------------------------------------------------------------------
+ * 8. LAPTOP BASE DECK (KEYBOARD & TRACKPAD)
+ * -------------------------------------------------------------------------- */
+.laptop-base {
+  position: absolute;
+  top: 255px;
+  left: 0;
+  width: 100%;
+  height: 200px;
+  transform-origin: top center;
+  transform: rotateX(60deg);
+  background: linear-gradient(180deg, #1A1A22 0%, #131319 60%, #0D0D11 100%);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 2px 2px 14px 14px;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    0 25px 50px rgba(0, 0, 0, 0.9);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px 14px 10px 14px;
+  z-index: 1;
+}
+
+/* Keyboard Well */
+.laptop-base__keyboard-well {
+  width: 92%;
+  flex: 1;
+  background: #09090C;
+  border-radius: 3px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.95);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 4px 6px;
+  gap: 2px;
+  position: relative;
+}
+
+.laptop-keyboard__row {
+  display: flex;
+  gap: 2px;
+  width: 100%;
+  height: clamp(6px, 1.2vw, 8px);
+}
+
+.laptop-key {
+  flex: 1;
+  background: #191922;
+  border: 0.5px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.8);
+}
+
+.laptop-key--wide {
+  flex: 1.6;
+}
+
+.laptop-key--space {
+  flex: 5.5;
+  background: #1B1B25;
+}
+
+/* Trackpad & Base Indicators */
+.laptop-base__lower {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin-top: 5px;
+}
+
+.laptop-base__trackpad {
+  width: 32%;
+  height: clamp(16px, 3.2vw, 22px);
+  background: #111116;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+/* Hardware Status LEDs on Base */
+.laptop-base__leds {
+  position: absolute;
+  right: 4%;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.laptop-base__led {
+  width: 3.5px;
+  height: 3.5px;
+  border-radius: 50%;
+  background: #252530;
+}
+
+.laptop-base__led--pwr {
+  background-color: var(--color-chartreuse, #D4FF00);
+  box-shadow: 0 0 6px var(--color-chartreuse, #D4FF00);
+}
+
+.laptop-base__led--act {
+  background-color: var(--color-neon-orange, #FF5500);
+  box-shadow: 0 0 5px var(--color-neon-orange, #FF5500);
+}
+
+.laptop-base__led--act.is-active {
+  animation: ledActivity 0.25s infinite alternate;
+}
+
+@keyframes ledActivity {
+  0% { opacity: 0.3; }
+  100% { opacity: 1; }
+}
+
+/* Front Lip Notch */
+.laptop-base__notch {
+  position: absolute;
+  bottom: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 18%;
+  height: 2px;
+  background: #0B0B0E;
+  border-radius: 2px 2px 0 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* --------------------------------------------------------------------------
+ * 9. AMBIENT FLOOR SHADOW & NEON REFLECTION
+ * -------------------------------------------------------------------------- */
+.laptop-ambient-shadow {
+  position: absolute;
+  bottom: -15px;
+  width: 88%;
+  height: 30px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at 50% 50%, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.4) 50%, transparent 75%);
+  filter: blur(8px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.laptop-ambient-glow {
+  position: absolute;
+  bottom: -8px;
+  width: 75%;
+  height: 20px;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse at 50% 50%,
+    rgba(212, 255, 0, 0.14) 0%,
+    rgba(255, 85, 0, 0.08) 45%,
+    transparent 70%
+  );
+  filter: blur(10px);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.laptop-ambient-glow.is-active {
+  opacity: 1;
+}
+
+/* --------------------------------------------------------------------------
+ * 10. ACCESSIBILITY & PREFERS-REDUCED-MOTION
+ * -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-loader {
+    transition: opacity 0.25s ease !important;
+  }
+  .portfolio-loader.is-exiting {
+    transform: none !important;
+  }
+  .laptop-lid,
+  .laptop-lid.is-closed,
+  .laptop-lid.is-open {
+    transform: rotateX(-8deg) !important;
+    transition: none !important;
+  }
+  .laptop-lid__outer {
+    display: none !important;
+  }
+  .laptop-screen__panel {
+    opacity: 1 !important;
+    transition: none !important;
+  }
+  .laptop-screen__flash {
+    display: none !important;
+  }
+  .laptop-base__led--act.is-active,
+  .portfolio-loader__hud-dot {
+    animation: none !important;
+  }
+  .laptop-screen__minimal-meter-fill {
+    transition: none !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+ * 11. RESPONSIVE OPTIMIZATIONS (MOBILE & TABLET)
+ * -------------------------------------------------------------------------- */
+@media (max-width: 480px) {
+  .portfolio-loader__stage {
+    padding: 0 0.5rem;
+    transform: translateY(-16px);
+  }
+  .laptop-assembly {
+    height: 330px;
+  }
+  .laptop-lid {
+    height: 205px;
+  }
+  .laptop-hinge {
+    top: 222px;
+  }
+  .laptop-base {
+    top: 225px;
+    height: 175px;
+  }
+  .laptop-screen__minimal-body {
+    padding: 0.6rem 0.75rem;
+    gap: 0.5rem;
+  }
+  .laptop-screen__monogram {
+    width: 32px;
+    height: 32px;
+    margin-bottom: 0px;
+  }
+  .laptop-screen__monogram-text {
+    font-size: 14px;
+  }
+  .portfolio-loader__hud-top {
+    font-size: 0.65rem;
+  }
+}

@@ -1,6 +1,31 @@
 import { CredentialItem, AwardItem, HackathonItem } from './types';
 
 export const credentialsData: CredentialItem[] = [
+  // 00. AWS Training & Certification — AWS Technical Essentials
+  {
+    id: 'cert-aws-technical-essentials',
+    title: 'AWS Technical Essentials',
+    issuer: 'AWS Training & Certification',
+    issueDate: 'Sep 2026',
+    group: 'certification',
+    category: 'Cloud & DevOps',
+    verificationUrl: '/documents/certificates/AWS Technical Essentials.pdf',
+    credentialId: 'AWS-TECH-ESSENTIALS-VERIFIED',
+    isCredentialIdSafe: true,
+    thumbnail: '/images/certificates/aws-technical-essentials.jpg',
+    previewDoc: {
+      src: '/documents/certificates/AWS Technical Essentials.pdf',
+      type: 'pdf',
+      alt: 'AWS Technical Essentials Certificate Awarded to EricPraveen Alric Prashanth',
+      caption: 'Verified AWS Training & Certification — Completed September 23, 2026',
+      thumbnailSrc: '/images/certificates/aws-technical-essentials.jpg',
+    },
+    summary:
+      'Foundational AWS cloud architecture covering IAM identity governance, EC2 compute scaling, S3 object storage, relational and NoSQL databases, and VPC networking topology.',
+    skillsDemonstrated: ['AWS Cloud', 'IAM Security', 'Amazon EC2', 'Amazon S3', 'Amazon VPC', 'Database Services'],
+    featured: true,
+  },
+
   // 01. Microsoft — SOC Program Foundations Training
   {
     id: 'cert-microsoft-soc',

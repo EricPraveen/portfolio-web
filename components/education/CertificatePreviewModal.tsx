@@ -1,6 +1,7 @@
 'use client';
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { CredentialItem } from '@/content/types';
 
 export interface CertificatePreviewModalProps {
@@ -12,10 +13,15 @@ export function CertificatePreviewModal({
   item,
   onClose,
 }: CertificatePreviewModalProps) {
+  const [mounted, setMounted] = useState(false);
   const modalRef = useRef<HTMLDivElement>(null);
   const closeBtnRef = useRef<HTMLButtonElement>(null);
 
-  // Close on Escape key press, handle focus trap, lock background scroll
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Close on Escape key press, handle focus, lock background scroll
   useEffect(() => {
     if (!item) return;
 
@@ -38,13 +44,13 @@ export function CertificatePreviewModal({
     };
   }, [item, onClose]);
 
-  if (!item || !item.previewDoc) return null;
+  if (!mounted || !item || !item.previewDoc) return null;
 
   const displayTitle = item.title.replace(/\[|\]/g, '');
   const displayIssuer = item.issuer.replace(/\[|\]/g, '');
   const isPdf = item.previewDoc.type === 'pdf' || item.previewDoc.src.endsWith('.pdf');
 
-  return (
+  const modalContent = (
     <div
       className="cert-modal-backdrop"
       onClick={onClose}
@@ -61,7 +67,7 @@ export function CertificatePreviewModal({
         <div className="cert-modal-header">
           <div className="cert-modal-meta">
             <span className="cert-modal-tag font-mono text-mono-label">
-              VERIFIED ARTIFACT &bull; {item.category.toUpperCase()}
+              VERIFIED CREDENTIAL ARTIFACT
             </span>
             <h3 id="cert-modal-title" className="cert-modal-title font-sans">
               {displayTitle}
@@ -149,5 +155,6 @@ export function CertificatePreviewModal({
       </div>
     </div>
   );
-}
 
+  return createPortal(modalContent, document.body);
+}

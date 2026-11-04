@@ -39,3 +39,4 @@ import { credentialsData } from './credentials.data';
 export type CertificateItem = CredentialItem;
 
 export const certificatesData: CertificateItem[] = credentialsData;
+

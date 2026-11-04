@@ -178,3 +178,4 @@ export function CertificatesGallery({ certificates }: CertificatesGalleryProps) 
     </div>
   );
 }
+

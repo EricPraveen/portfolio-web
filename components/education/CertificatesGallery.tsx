@@ -156,6 +156,19 @@ export function CertificatesGallery({ certificates }: CertificatesGalleryProps) 
         })}
       </div>
 
+      {/* ── SECTION FOOTER: VIEW MORE ON LINKEDIN ──────────────────── */}
+      <FadeUp className="cert-gallery-footer">
+        <a
+          href="https://www.linkedin.com/in/ericpraveen-alricprashanth/details/certifications/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="cert-gallery-more-btn font-mono"
+          aria-label="View complete certifications and credentials history on LinkedIn (opens in new tab)"
+        >
+          <span>View More on LinkedIn &nearr;</span>
+        </a>
+      </FadeUp>
+
       {/* ── PREVIEW MODAL (CENTERED VIA PORTAL) ─────────────────────── */}
       <CertificatePreviewModal
         item={previewItem}

@@ -138,8 +138,9 @@ export function CertificatePreviewModal({
                 target="_blank"
                 rel="noopener noreferrer"
                 className="cert-btn-modal-verify font-mono text-xs"
+                title="Verify license & credential record on official LinkedIn profile"
               >
-                <span>Verify Authority Record ↗</span>
+                <span>Verify on LinkedIn ↗</span>
               </a>
             )}
           </div>

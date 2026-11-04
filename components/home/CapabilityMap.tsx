@@ -29,7 +29,7 @@ export function CapabilityMap({ initialTrayId = 'languages' }: CapabilityMapProp
       <FadeUp className="section-header-strip">
         <div>
           <span className="section-eyebrow text-mono-label font-mono">
-            04 / TECHNICAL SKILLS & STACK
+            05 / TECHNICAL SKILLS & STACK
           </span>
           <h2 id="capability-map-heading" className="section-title font-heading-2xl">
             Technical Stack Trays

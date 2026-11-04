@@ -6,6 +6,7 @@ import {
   getSkills,
   getEducation,
   getExperience,
+  getAllCredentials,
   assertContentValid,
 } from '@/lib/content';
 import {
@@ -17,6 +18,7 @@ import {
 } from '@/components/home';
 import { getMediumArticles } from '@/lib/content/medium.service';
 import { AboutOverview } from '@/components/about';
+import { EducationSection } from '@/components/education';
 import { FadeUp } from '@/components/animation';
 
 // Enforce content validity at build time
@@ -46,6 +48,7 @@ export default async function HomePage() {
   const skillCategories = getSkills();
   const education = getEducation();
   const experience = getExperience();
+  const credentials = getAllCredentials();
   const { articles: initialArticles } = await getMediumArticles();
 
   const jsonLd = {
@@ -94,20 +97,34 @@ export default async function HomePage() {
         <span id="bio" className="section-anchor" aria-hidden="true" />
         <AboutOverview
           profile={profile}
-          education={education}
-          experience={experience}
           headingLevel="h2"
           indexLabel="02 / ABOUT"
         />
       </section>
 
-      {/* 03 / SELECTED FLAGSHIP WORK */}
+      {/* 03 / EDUCATION & CREDENTIALS */}
+      <section id="education" className="education-section" aria-labelledby="education-heading">
+        <span id="academics" className="section-anchor" aria-hidden="true" />
+        <span id="academic" className="section-anchor" aria-hidden="true" />
+        <span id="experience" className="section-anchor" aria-hidden="true" />
+        <span id="leadership" className="section-anchor" aria-hidden="true" />
+        <span id="certificates" className="section-anchor" aria-hidden="true" />
+        <span id="credentials" className="section-anchor" aria-hidden="true" />
+        <EducationSection
+          education={education}
+          experience={experience}
+          credentials={credentials}
+          indexLabel="03 / EDUCATION & LEADERSHIP"
+        />
+      </section>
+
+      {/* 04 / SELECTED FLAGSHIP WORK */}
       <section id="projects" className="selected-work-section" aria-labelledby="selected-work-heading">
         <span id="selected-work" className="section-anchor" aria-hidden="true" />
         <span id="work" className="section-anchor" aria-hidden="true" />
         <FadeUp className="section-header-strip">
           <div>
-            <span className="section-eyebrow text-mono-label font-mono">03 / SELECTED WORK</span>
+            <span className="section-eyebrow text-mono-label font-mono">04 / SELECTED WORK</span>
             <h2 id="selected-work-heading" className="section-title font-heading-2xl">
               Projects I&apos;ve Built
             </h2>
@@ -117,13 +134,13 @@ export default async function HomePage() {
         <WorksShowcase projects={featuredProjects} />
       </section>
 
-      {/* 04 / CAPABILITY ARCHITECTURE MAP */}
+      {/* 05 / CAPABILITY ARCHITECTURE MAP */}
       <CapabilityMap categories={skillCategories} />
 
-      {/* 05 / DYNAMIC MEDIUM BLOG */}
+      {/* 06 / DYNAMIC MEDIUM BLOG */}
       <BlogSection initialArticles={initialArticles} />
 
-      {/* 06 / CONTACT CLOSE */}
+      {/* 07 / CONTACT CLOSE */}
       <ContactClose profile={profile} />
     </div>
   );

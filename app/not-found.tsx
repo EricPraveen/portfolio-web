@@ -95,23 +95,23 @@ export default function NotFound() {
               </Link>
             </li>
             <li>
+              <Link href="/#education" className="font-mono" style={{ color: 'var(--color-signal-cobalt)' }}>
+                &rarr; 03 / Education &amp; Credentials
+              </Link>
+            </li>
+            <li>
               <Link href="/#projects" className="font-mono" style={{ color: 'var(--color-signal-cobalt)' }}>
-                &rarr; 03 / Selected Work
+                &rarr; 04 / Selected Work
               </Link>
             </li>
             <li>
               <Link href="/#skills" className="font-mono" style={{ color: 'var(--color-signal-cobalt)' }}>
-                &rarr; 04 / Technical Stack
+                &rarr; 05 / Technical Stack
               </Link>
             </li>
             <li>
-              <Link href="/#education" className="font-mono" style={{ color: 'var(--color-signal-cobalt)' }}>
-                &rarr; 05 / Education &amp; Experience
-              </Link>
-            </li>
-            <li>
-              <Link href="/#certificates" className="font-mono" style={{ color: 'var(--color-signal-cobalt)' }}>
-                &rarr; 06 / Credentials
+              <Link href="/#blog" className="font-mono" style={{ color: 'var(--color-signal-cobalt)' }}>
+                &rarr; 06 / Blog &amp; Writing
               </Link>
             </li>
             <li>

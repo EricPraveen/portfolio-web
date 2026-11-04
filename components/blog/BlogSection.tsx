@@ -103,7 +103,7 @@ export function BlogSection({
       <FadeUp className="section-header-strip">
         <div>
           <span className="section-eyebrow text-mono-label font-mono">
-            05 / FROM THE BLOG &amp; WRITING
+            06 / FROM THE BLOG &amp; WRITING
           </span>
           <h2 id="blog-heading" className="section-title font-heading-2xl">
             Latest Articles

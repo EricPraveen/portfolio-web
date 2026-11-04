@@ -10,6 +10,7 @@ import {
   Footer,
   PageTransition,
   ActiveSectionProvider,
+  PortfolioLoader,
 } from '@/components/layout';
 import CursorRingField from '@/components/ui/CursorRingField';
 
@@ -109,6 +110,9 @@ export default function RootLayout({
       className={inter.variable}
     >
       <body>
+        {/* Custom Laptop Boot-Up Loading Intro Screen */}
+        <PortfolioLoader />
+
         {/* Full-Screen Interactive WebGL Background — Jet Black, Hot Pink & Chartreuse */}
         <div className="global-cursor-field-bg" aria-hidden="true">
           <CursorRingField

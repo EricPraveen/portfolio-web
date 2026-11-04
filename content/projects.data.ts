@@ -28,10 +28,10 @@ export const projectsData: Project[] = [
     repoUrl: 'https://github.com/EricPraveen/travelhub',
     demoUrl: 'https://travelhublanka.netlify.app/',
     coverImage: {
-      src: '/images/projects/travelhub-linkedin.jpg',
+      src: '/images/projects/travelhub-app.jpg',
       alt: 'Travel Hub — Sri Lanka Tourist Package Search & Booking Platform Interface',
-      width: 1200,
-      height: 675,
+      width: 1024,
+      height: 618,
       caption: 'Travel Hub Tourist Dashboard and Package Exploration Interface',
     },
     problem:
@@ -166,10 +166,10 @@ export const projectsData: Project[] = [
     repoUrl: 'https://github.com/EricPraveen/Chicken-Shooting',
     demoUrl: 'https://chicken-shooting.vercel.app',
     coverImage: {
-      src: '/images/projects/chicken-shooting-linkedin.jpg',
+      src: '/images/projects/chicken-shooting-app.jpg',
       alt: 'Chicken Invaders — 2D Retro Arcade Space Shooter in C++ and OpenGL',
-      width: 1200,
-      height: 675,
+      width: 1024,
+      height: 616,
       caption: 'Chicken Invaders WebAssembly Gameplay and Boss Battle Interface',
     },
     problem:
@@ -372,10 +372,10 @@ export const projectsData: Project[] = [
     linkedInUrl: 'https://www.linkedin.com/feed/update/urn:li:activity:7468553897041838081/',
     repoUrl: 'https://github.com/EricPraveen/IdeaPad',
     coverImage: {
-      src: '/images/projects/ideapad-linkedin.jpg',
+      src: '/images/projects/ideapad-app.png',
       alt: 'IdeaPad Full-Stack Publishing and Blog Platform Interface',
-      width: 1200,
-      height: 675,
+      width: 1024,
+      height: 613,
       caption: 'IdeaPad Editorial Publishing and Genre Discovery Interface',
     },
     problem:
@@ -472,10 +472,10 @@ export const projectsData: Project[] = [
     linkedInUrl: 'https://www.linkedin.com/feed/update/urn:li:activity:7439368259797307392/',
     repoUrl: 'https://github.com/EricPraveen/EShop',
     coverImage: {
-      src: '/images/projects/eshop-linkedin.jpg',
+      src: '/images/projects/eshop-app.jpg',
       alt: 'EShop Dynamic MERN E-Commerce Platform Storefront and Inventory Dashboard',
-      width: 1200,
-      height: 675,
+      width: 1024,
+      height: 576,
       caption: 'EShop Dynamic Product Catalog and Cart Workflow',
     },
     problem:
@@ -572,10 +572,10 @@ export const projectsData: Project[] = [
     linkedInUrl: 'https://www.linkedin.com/in/ericpraveen-alricprashanth/details/projects/',
     repoUrl: 'https://github.com/EricPraveen/EduTrack',
     coverImage: {
-      src: '/images/projects/edutrack-cover.svg',
+      src: '/images/projects/edutrack-app.jpg',
       alt: 'EduTrack Campus Information and Student Life Web Portal Interface',
-      width: 1200,
-      height: 675,
+      width: 1024,
+      height: 514,
       caption: 'EduTrack Responsive Campus Facilities and Courses Directory',
     },
     problem:

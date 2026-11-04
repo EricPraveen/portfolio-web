@@ -9,84 +9,68 @@ export interface CertificatesGalleryProps {
   certificates: CredentialItem[];
 }
 
+function getIssuerShortName(issuer: string): string {
+  if (issuer.includes('AWS')) return 'AWS';
+  if (issuer.includes('Microsoft')) return 'Microsoft';
+  if (issuer.includes('IBM')) return 'IBM';
+  if (issuer.includes('Moratuwa')) return 'UOM (CODL)';
+  if (issuer.includes('SoloLearn')) return 'SoloLearn';
+  return issuer;
+}
+
 export function CertificatesGallery({ certificates }: CertificatesGalleryProps) {
-  const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [previewItem, setPreviewItem] = useState<CredentialItem | null>(null);
 
-  // Dynamic category tabs derived from actual certificates
-  const categories = useMemo(() => {
-    const counts: Record<string, number> = {};
-    certificates.forEach((c) => {
-      counts[c.category] = (counts[c.category] || 0) + 1;
+  // Automatically sort certificates year-wise descending: 2026 -> 2024 -> 2023
+  const sortedCertificates = useMemo(() => {
+    return [...certificates].sort((a, b) => {
+      const yearA = parseInt(a.issueDate.match(/\b(20\d{2})\b/)?.[1] || '0', 10);
+      const yearB = parseInt(b.issueDate.match(/\b(20\d{2})\b/)?.[1] || '0', 10);
+
+      if (yearB !== yearA) {
+        return yearB - yearA;
+      }
+
+      if (a.featured && !b.featured) return -1;
+      if (!a.featured && b.featured) return 1;
+
+      return 0;
     });
-
-    const list = Object.keys(counts).map((cat) => ({
-      id: cat,
-      label: cat,
-      count: counts[cat],
-    }));
-
-    return [{ id: 'all', label: 'All Certificates', count: certificates.length }, ...list];
   }, [certificates]);
-
-  // Filtered certificates list
-  const filteredCertificates = useMemo(() => {
-    if (selectedCategory === 'all') return certificates;
-    return certificates.filter((c) => c.category === selectedCategory);
-  }, [certificates, selectedCategory]);
 
   return (
     <div className="cert-gallery-container">
-      {/* ── SUBSECTION HEADER ────────────────────────────────────────── */}
+      {/* ── SUBSECTION HEADER (NO UNWANTED CATEGORY TABS) ───────────── */}
       <FadeUp className="cert-gallery-header">
         <div className="cert-gallery-header-left">
           <span className="cert-sub-eyebrow font-mono text-mono-label">
             <span className="cert-eyebrow-dot" aria-hidden="true" />
-            PROFESSIONAL CREDENTIALS
+            PROFESSIONAL CREDENTIALS &bull; {sortedCertificates.length} VERIFIED
           </span>
           <h4 className="cert-sub-title font-heading-2xl">
             Certificates &amp; Coursework
           </h4>
         </div>
         <p className="cert-gallery-lead font-sans">
-          Verified digital certifications in software engineering, security operations, artificial intelligence, and systems architectures.
+          Verified digital certifications in cloud infrastructure, security operations, software engineering, and artificial intelligence.
         </p>
       </FadeUp>
 
-      {/* ── CATEGORY FILTER TABS ─────────────────────────────────────── */}
-      <div className="cert-filter-tabs font-mono" role="tablist" aria-label="Certificate categories">
-        {categories.map((tab) => {
-          const isActive = selectedCategory === tab.id;
-          return (
-            <button
-              key={tab.id}
-              role="tab"
-              aria-selected={isActive}
-              type="button"
-              onClick={() => setSelectedCategory(tab.id)}
-              className={`cert-filter-tab ${isActive ? 'cert-filter-tab--active' : ''}`}
-            >
-              <span>{tab.label}</span>
-              <span className="cert-filter-count">{tab.count}</span>
-            </button>
-          );
-        })}
-      </div>
-
-      {/* ── CERTIFICATE CARDS GRID ───────────────────────────────────── */}
+      {/* ── CERTIFICATE CARDS GRID WITH VISIBLE THUMBNAILS (SORTED 2026 TO 2023) ── */}
       <div className="cert-cards-grid">
-        {filteredCertificates.map((cert, idx) => {
+        {sortedCertificates.map((cert, idx) => {
           const displayTitle = cert.title.replace(/\[|\]/g, '');
           const displayIssuer = cert.issuer.replace(/\[|\]/g, '');
           const displaySummary = cert.summary ? cert.summary.replace(/\[|\]/g, '') : null;
-          const isPdf = cert.previewDoc?.type === 'pdf' || cert.previewDoc?.src.endsWith('.pdf');
+          const issuerShort = getIssuerShortName(cert.issuer);
+          const thumbSrc = cert.thumbnail || cert.previewDoc?.thumbnailSrc;
 
           return (
             <ScrollReveal
               key={cert.id}
               as="article"
               variant="fade-up"
-              delay={Math.min((idx % 6) * 50, 250)}
+              delay={Math.min((idx % 6) * 45, 220)}
               className="cert-card arcade-box"
               onClick={() => {
                 if (cert.previewDoc) setPreviewItem(cert);
@@ -101,17 +85,40 @@ export function CertificatesGallery({ certificates }: CertificatesGalleryProps) 
                 }
               }}
             >
-              {/* Card Meta Header */}
-              <div className="cert-card-top">
-                <span className="cert-card-badge font-mono text-mono-label">
-                  {cert.category}
-                </span>
-                <span className="cert-card-date font-mono text-xs">
-                  {cert.issueDate}
-                </span>
+              {/* 1. Visible Small Certificate Preview Thumbnail */}
+              <div className="cert-card-media">
+                {thumbSrc ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={thumbSrc}
+                    alt={`Certificate preview for ${displayTitle}`}
+                    className="cert-card-thumb"
+                    loading="lazy"
+                  />
+                ) : (
+                  <div className="cert-card-thumb-placeholder font-mono text-xs">
+                    CERTIFICATE ARTIFACT
+                  </div>
+                )}
+                
+                {/* Floating Meta Badges */}
+                <div className="cert-card-media-pills">
+                  <span className="cert-card-issuer-pill font-mono text-mono-label">
+                    {issuerShort}
+                  </span>
+                  <span className="cert-card-date-pill font-mono text-mono-label">
+                    {cert.issueDate}
+                  </span>
+                </div>
+
+                <div className="cert-card-media-overlay" aria-hidden="true">
+                  <span className="cert-card-media-cta font-mono text-xs">
+                    View Certificate ↗
+                  </span>
+                </div>
               </div>
 
-              {/* Title & Issuer */}
+              {/* 2. Certificate Information */}
               <div className="cert-card-info">
                 <h5 className="cert-card-title font-sans">
                   {displayTitle}
@@ -119,16 +126,14 @@ export function CertificatesGallery({ certificates }: CertificatesGalleryProps) 
                 <p className="cert-card-issuer font-mono text-xs">
                   Issued by <span className="cert-card-issuer-name">{displayIssuer}</span>
                 </p>
+                {displaySummary && (
+                  <p className="cert-card-desc font-sans text-xs">
+                    {displaySummary}
+                  </p>
+                )}
               </div>
 
-              {/* Summary Description (if available) */}
-              {displaySummary && (
-                <p className="cert-card-desc font-sans text-xs">
-                  {displaySummary}
-                </p>
-              )}
-
-              {/* Skills Strip */}
+              {/* 3. Skills Strip */}
               {cert.skillsDemonstrated && cert.skillsDemonstrated.length > 0 && (
                 <div className="cert-card-skills">
                   {cert.skillsDemonstrated.slice(0, 3).map((skill) => (
@@ -144,13 +149,11 @@ export function CertificatesGallery({ certificates }: CertificatesGalleryProps) 
                 </div>
               )}
 
-              {/* Card Action Bar */}
+              {/* 4. Action Footer */}
               <div className="cert-card-actions">
-                {cert.previewDoc && (
-                  <span className="cert-action-view font-mono text-xs">
-                    <span>{isPdf ? 'Inspect PDF ↗' : 'Inspect Image ↗'}</span>
-                  </span>
-                )}
+                <span className="cert-action-view font-mono text-xs">
+                  <span>View Certificate ↗</span>
+                </span>
 
                 {cert.verificationUrl && (
                   <a
@@ -170,7 +173,20 @@ export function CertificatesGallery({ certificates }: CertificatesGalleryProps) 
         })}
       </div>
 
-      {/* ── PREVIEW MODAL ────────────────────────────────────────────── */}
+      {/* ── SECTION FOOTER: VIEW MORE ON LINKEDIN ──────────────────── */}
+      <FadeUp className="cert-gallery-footer">
+        <a
+          href="https://www.linkedin.com/in/ericpraveen-alricprashanth/details/certifications/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="cert-gallery-more-btn font-mono"
+          aria-label="View complete certifications and credentials history on LinkedIn (opens in new tab)"
+        >
+          <span>View More on LinkedIn &nearr;</span>
+        </a>
+      </FadeUp>
+
+      {/* ── PREVIEW MODAL (CENTERED VIA PORTAL) ─────────────────────── */}
       <CertificatePreviewModal
         item={previewItem}
         onClose={() => setPreviewItem(null)}
@@ -178,4 +194,3 @@ export function CertificatesGallery({ certificates }: CertificatesGalleryProps) 
     </div>
   );
 }
-

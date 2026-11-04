@@ -21,6 +21,7 @@ export interface CredentialPreviewDoc {
   type: 'image' | 'pdf';
   alt: string;
   caption?: string;
+  thumbnailSrc?: string;
 }
 
 export interface CredentialItem {
@@ -37,6 +38,7 @@ export interface CredentialItem {
   skillsDemonstrated: string[];
   relatedProjectSlug?: string;
   summary?: string;
+  thumbnail?: string;
   previewDoc?: CredentialPreviewDoc;
   featured: boolean;
   rankOrOutcome?: string;

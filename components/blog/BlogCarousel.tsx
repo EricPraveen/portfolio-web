@@ -23,7 +23,7 @@ interface CarouselDisplayItem {
 
 export function BlogCarousel({
   articles,
-  autoSlideInterval = 3500,
+  autoSlideInterval = 1500,
 }: BlogCarouselProps) {
   const total = articles.length;
 

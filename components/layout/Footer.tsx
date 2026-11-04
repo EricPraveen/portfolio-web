@@ -32,13 +32,13 @@ export function Footer({ profile }: FooterProps) {
                   .map((w) => w[0])
                   .join('')
                   .slice(0, 2)
-                  .toUpperCase() || 'SL'}
+                  .toUpperCase() || 'EP'}
               </span>
               <div>
                 <h2 className="app-footer-title font-sans">
                   {profile.fullName.replace(/\[|\]/g, '')}
                 </h2>
-                <p className="app-footer-subtitle text-mono-label">
+                <p className="app-footer-subtitle text-mono-label font-mono">
                   {profile.title.replace(/\[|\]/g, '')}
                 </p>
               </div>
@@ -47,7 +47,7 @@ export function Footer({ profile }: FooterProps) {
             <div className="app-footer-availability-card">
               <div className="app-footer-availability-header">
                 <span className="app-footer-status-dot" aria-hidden="true" />
-                <span className="text-mono-label" style={{ color: 'var(--color-mineral-ink)', fontWeight: 600 }}>
+                <span className="app-footer-availability-status font-mono">
                   {profile.availability.status}
                 </span>
               </div>
@@ -55,7 +55,7 @@ export function Footer({ profile }: FooterProps) {
                 {profile.availability.stage.replace(/\[|\]/g, '')}
                 {profile.availability.notes ? ` • ${profile.availability.notes.replace(/\[|\]/g, '')}` : ''}
               </p>
-              <p className="app-footer-location text-mono-label">
+              <p className="app-footer-location text-mono-label font-mono">
                 {profile.location.city.replace(/\[|\]/g, '')}, {profile.location.country.replace(/\[|\]/g, '')} ({profile.location.timezone.replace(/\[|\]/g, '')})
               </p>
             </div>
@@ -63,7 +63,7 @@ export function Footer({ profile }: FooterProps) {
 
           {/* Column 2: Key Navigation / Sitemap */}
           <div className="app-footer-col">
-            <h3 className="app-footer-heading text-mono-label">Sitemap & Index</h3>
+            <h3 className="app-footer-heading font-mono text-mono-label">Sitemap &amp; Index</h3>
             <ul className="app-footer-nav-list" role="list">
               {NAV_ITEMS.map((item) => (
                 <li key={item.href} className="app-footer-nav-item">
@@ -80,10 +80,10 @@ export function Footer({ profile }: FooterProps) {
                     <span className="app-footer-nav-index font-mono" aria-hidden="true">
                       {item.index}
                     </span>
-                    <span className="app-footer-nav-slash" aria-hidden="true">
+                    <span className="app-footer-nav-slash font-mono" aria-hidden="true">
                       /
                     </span>
-                    <span className="app-footer-nav-label">{item.label}</span>
+                    <span className="app-footer-nav-label font-sans">{item.label}</span>
                   </Link>
                 </li>
               ))}
@@ -92,10 +92,10 @@ export function Footer({ profile }: FooterProps) {
 
           {/* Column 3: Contact & Outbound Signals */}
           <div className="app-footer-col">
-            <h3 className="app-footer-heading text-mono-label">Signals & Inquiry</h3>
+            <h3 className="app-footer-heading font-mono text-mono-label">Signals &amp; Inquiry</h3>
             <ul className="app-footer-contact-list" role="list">
               <li className="app-footer-contact-item">
-                <span className="app-footer-contact-role text-mono-label">Direct Mail:</span>
+                <span className="app-footer-contact-role font-mono text-mono-label">Direct Mail:</span>
                 <a
                   href={`mailto:${profile.contactEmail.replace(/\[|\]/g, '')}`}
                   className="app-footer-contact-link font-mono"
@@ -105,7 +105,7 @@ export function Footer({ profile }: FooterProps) {
               </li>
               {profile.socialLinks.map((social) => (
                 <li key={social.platform} className="app-footer-contact-item">
-                  <span className="app-footer-contact-role text-mono-label">{social.label}:</span>
+                  <span className="app-footer-contact-role font-mono text-mono-label">{social.label}:</span>
                   <a
                     href={social.url}
                     target="_blank"
@@ -118,7 +118,7 @@ export function Footer({ profile }: FooterProps) {
                 </li>
               ))}
               <li className="app-footer-contact-item">
-                <span className="app-footer-contact-role text-mono-label">Curriculum Vitae:</span>
+                <span className="app-footer-contact-role font-mono text-mono-label">Curriculum Vitae:</span>
                 <a
                   href={profile.resume.path}
                   target="_blank"
@@ -134,10 +134,10 @@ export function Footer({ profile }: FooterProps) {
 
           {/* Column 4: Technical Colophon */}
           <div className="app-footer-col app-footer-col-colophon">
-            <h3 className="app-footer-heading text-mono-label">Technical Colophon</h3>
-            <div className="app-footer-colophon-body text-xs">
+            <h3 className="app-footer-heading font-mono text-mono-label">Technical Colophon</h3>
+            <div className="app-footer-colophon-body font-sans text-xs">
               <p>
-                <strong>Typography:</strong> Inter (Modern Universal Sans UI & Technical Typography).
+                <strong>Typography:</strong> Inter (Modern Universal Sans UI &amp; Technical Typography).
               </p>
               <p>
                 <strong>Architecture:</strong> Next.js 14 App Router, TypeScript strict, CSS Custom Properties Design System.
@@ -149,10 +149,10 @@ export function Footer({ profile }: FooterProps) {
             <div className="app-footer-back-to-top">
               <a
                 href="#main-content"
-                className="app-footer-top-link text-mono-label"
+                className="app-footer-top-link font-mono text-mono-label"
                 aria-label="Back to top of page"
               >
-                ↑ Back to top
+                &uarr; Back to top
               </a>
             </div>
           </div>
@@ -160,14 +160,14 @@ export function Footer({ profile }: FooterProps) {
 
         {/* Bottom Bar: Copyright & System Ledger Signature */}
         <div className="app-footer-bottom">
-          <div className="app-footer-bottom-meta text-mono-label">
+          <div className="app-footer-bottom-meta font-mono text-mono-label">
             <span>
               &copy; {currentYear} {profile.fullName.replace(/\[|\]/g, '')} &bull; All Rights Reserved
             </span>
             <span className="app-footer-bottom-divider">&bull;</span>
             <span>Signal Ledger &bull; Phase 3 Architecture</span>
           </div>
-          <div className="app-footer-bottom-status text-mono-label">
+          <div className="app-footer-bottom-status font-mono text-mono-label">
             <span>Static Ledger Build &bull; Production</span>
           </div>
         </div>

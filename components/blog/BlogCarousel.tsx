@@ -100,10 +100,13 @@ export function BlogCarousel({
   // Viewport measurement with ResizeObserver + fallback
   const updateMetrics = useCallback(() => {
     if (!viewportRef.current) return;
-    const width =
-      viewportRef.current.clientWidth ||
-      viewportRef.current.getBoundingClientRect().width ||
-      (typeof window !== 'undefined' ? window.innerWidth : 1200);
+    const clientW = viewportRef.current.clientWidth;
+    const rectW = viewportRef.current.getBoundingClientRect().width;
+    let width = clientW > 0 ? clientW : rectW > 0 ? rectW : 0;
+
+    if (width <= 0 && typeof window !== 'undefined') {
+      width = Math.min(window.innerWidth - 48, 1200);
+    }
 
     if (width <= 0) return;
 
@@ -119,20 +122,41 @@ export function BlogCarousel({
     updateMetrics();
 
     const el = viewportRef.current;
-    if (!el) return;
+    let ro: ResizeObserver | null = null;
+    if (el && typeof ResizeObserver !== 'undefined') {
+      ro = new ResizeObserver(() => {
+        updateMetrics();
+      });
+      ro.observe(el);
+    }
 
-    const ro = new ResizeObserver(() => {
-      updateMetrics();
-    });
-    ro.observe(el);
+    const handleFocusOrVisible = () => {
+      if (typeof document !== 'undefined' && !document.hidden) {
+        updateMetrics();
+        // Re-clamp any out-of-bounds index upon tab reactivation
+        setCurrentIndex((curr) => {
+          if (curr >= M + 2 || curr < 2) {
+            setIsTransitioning(false);
+            const realOffset = (((curr - 2) % M) + M) % M;
+            return 2 + realOffset;
+          }
+          return curr;
+        });
+        isAnimatingRef.current = false;
+      }
+    };
 
     window.addEventListener('resize', updateMetrics);
+    window.addEventListener('focus', handleFocusOrVisible);
+    document.addEventListener('visibilitychange', handleFocusOrVisible);
 
     return () => {
-      ro.disconnect();
+      if (ro) ro.disconnect();
       window.removeEventListener('resize', updateMetrics);
+      window.removeEventListener('focus', handleFocusOrVisible);
+      document.removeEventListener('visibilitychange', handleFocusOrVisible);
     };
-  }, [updateMetrics]);
+  }, [updateMetrics, M]);
 
   // Navigate to Next card
   const handleNext = useCallback(() => {
@@ -145,8 +169,17 @@ export function BlogCarousel({
     if (safetyTimeoutRef.current) clearTimeout(safetyTimeoutRef.current);
     safetyTimeoutRef.current = setTimeout(() => {
       isAnimatingRef.current = false;
+      // Safety wrap if transitionend event was dropped
+      setCurrentIndex((curr) => {
+        if (curr >= M + 2) {
+          setIsTransitioning(false);
+          const realOffset = (((curr - 2) % M) + M) % M;
+          return 2 + realOffset;
+        }
+        return curr;
+      });
     }, 700);
-  }, [total]);
+  }, [total, M]);
 
   // Navigate to Previous card
   const handlePrev = useCallback(() => {
@@ -159,8 +192,17 @@ export function BlogCarousel({
     if (safetyTimeoutRef.current) clearTimeout(safetyTimeoutRef.current);
     safetyTimeoutRef.current = setTimeout(() => {
       isAnimatingRef.current = false;
+      // Safety wrap if transitionend event was dropped
+      setCurrentIndex((curr) => {
+        if (curr < 2) {
+          setIsTransitioning(false);
+          const realOffset = (((curr - 2) % M) + M) % M;
+          return 2 + realOffset;
+        }
+        return curr;
+      });
     }, 700);
-  }, [total]);
+  }, [total, M]);
 
   // Navigate directly to a specific article index via dot indicator
   const handleDotClick = useCallback(
@@ -187,14 +229,37 @@ export function BlogCarousel({
     if (currentIndex >= M + 2) {
       // Reached post-clones: instant invisible warp to matching start position
       setIsTransitioning(false);
-      setCurrentIndex(currentIndex - M);
+      const realOffset = (((currentIndex - 2) % M) + M) % M;
+      setCurrentIndex(2 + realOffset);
     } else if (currentIndex < 2) {
       // Reached pre-clones: instant invisible warp to matching end position
       setIsTransitioning(false);
-      setCurrentIndex(currentIndex + M);
+      const realOffset = (((currentIndex - 2) % M) + M) % M;
+      setCurrentIndex(2 + realOffset);
     }
     isAnimatingRef.current = false;
   };
+
+  // Watchdog boundary guard: guarantees index wraps even if browser drops transitionend
+  useEffect(() => {
+    if (total <= 1) return;
+
+    if (currentIndex >= M + 2 || currentIndex < 2) {
+      const watchdog = setTimeout(() => {
+        setIsTransitioning(false);
+        setCurrentIndex((curr) => {
+          if (curr >= M + 2 || curr < 2) {
+            const realOffset = (((curr - 2) % M) + M) % M;
+            return 2 + realOffset;
+          }
+          return curr;
+        });
+        isAnimatingRef.current = false;
+      }, 680);
+
+      return () => clearTimeout(watchdog);
+    }
+  }, [currentIndex, M, total]);
 
   // Re-enable smooth transition in next animation frame after instant position reset
   useEffect(() => {
@@ -225,8 +290,12 @@ export function BlogCarousel({
     if (total <= 1) return;
 
     const timerId = setInterval(() => {
-      // Pause only if actively hovered or user clicked pause
-      if (isHoveredRef.current || !isUserPlayingRef.current) {
+      // Pause if actively hovered, user clicked pause, or browser tab is hidden/backgrounded
+      if (
+        isHoveredRef.current ||
+        !isUserPlayingRef.current ||
+        (typeof document !== 'undefined' && document.hidden)
+      ) {
         return;
       }
       handleNext();
@@ -283,8 +352,10 @@ export function BlogCarousel({
 
   const isActuallySliding = isUserPlaying && !isHovered;
 
-  // Exact pixel transform
-  const translateX = -1 * currentIndex * metrics.step;
+  // Exact pixel transform with hard bounding to prevent runaway off-screen
+  const maxIndex = Math.max(0, displayItems.length - 1);
+  const safeIndex = Math.max(0, Math.min(currentIndex, maxIndex));
+  const translateX = -1 * safeIndex * metrics.step;
   const trackStyle: React.CSSProperties = {
     gap: `${metrics.gap}px`,
     transform: `translateX(${translateX}px)`,
@@ -396,6 +467,8 @@ export function BlogCarousel({
               className="blog-carousel-slide"
               style={{
                 width: `${metrics.cardWidth}px`,
+                minWidth: `${metrics.cardWidth}px`,
+                maxWidth: `${metrics.cardWidth}px`,
                 flex: `0 0 ${metrics.cardWidth}px`,
               }}
               role="group"

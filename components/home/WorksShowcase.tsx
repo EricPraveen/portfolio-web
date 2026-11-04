@@ -71,6 +71,9 @@ export function WorksShowcase({ projects }: WorksShowcaseProps) {
                 <span className="works-track-tab-count font-mono">
                   {count}
                 </span>
+                {isActive && (
+                  <span className="works-track-tab-beacon" aria-hidden="true" />
+                )}
               </button>
             );
           })}

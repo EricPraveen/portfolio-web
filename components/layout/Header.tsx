@@ -173,6 +173,36 @@ export function Header({ profile }: HeaderProps) {
         </div>
       </header>
 
+      {/* Global Fixed Floating Command Menu Trigger (Always in Fixed Viewport Position on Scroll) */}
+      <button
+        ref={cmdTriggerRef}
+        type="button"
+        className="floating-cmd-trigger"
+        onClick={() => setIsCommandOpen(true)}
+        aria-label="Open Command Menu (Press Command K or click to open)"
+        title="Command Menu & Quick Navigation (⌘K)"
+      >
+        <span className="floating-cmd-hint font-mono">COMMAND MENU</span>
+        <span className="floating-cmd-badge font-mono">
+          <svg
+            className="floating-cmd-icon"
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden="true"
+          >
+            <circle cx="11" cy="11" r="8" />
+            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+          </svg>
+          <kbd className="floating-cmd-key">⌘K</kbd>
+        </span>
+      </button>
+
       {/* Global Command Palette Dialog */}
       <CommandPalette
         isOpen={isCommandOpen}

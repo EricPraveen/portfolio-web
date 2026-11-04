@@ -109,11 +109,11 @@ export function CommandPalette({ isOpen, onClose }: CommandPaletteProps) {
       badge: 'CLIPBOARD',
       action: async () => {
         try {
-          await navigator.clipboard.writeText('contact@signal-ledger.dev');
-          setToastMessage('Copied: contact@signal-ledger.dev');
+          await navigator.clipboard.writeText('ericpraveen123@gmail.com');
+          setToastMessage('Copied: ericpraveen123@gmail.com');
           setTimeout(() => setToastMessage(null), 2500);
         } catch {
-          setToastMessage('Failed to copy. Email: contact@signal-ledger.dev');
+          setToastMessage('Failed to copy. Email: ericpraveen123@gmail.com');
         }
       },
       keywords: ['email', 'copy', 'clipboard', 'contact', 'address'],
@@ -125,9 +125,42 @@ export function CommandPalette({ isOpen, onClose }: CommandPaletteProps) {
       subtitle: 'Inspect open-source reference implementations and test suites',
       badge: 'EXTERNAL',
       action: () => {
-        window.open('https://github.com', '_blank', 'noopener,noreferrer');
+        window.open('https://github.com/EricPraveen', '_blank', 'noopener,noreferrer');
       },
       keywords: ['github', 'source', 'repo', 'code', 'git'],
+    },
+    {
+      id: 'action-linkedin',
+      category: 'Actions',
+      title: 'Open LinkedIn Profile',
+      subtitle: 'Connect on LinkedIn, view professional experience and verified network',
+      badge: 'EXTERNAL',
+      action: () => {
+        window.open('https://www.linkedin.com/in/ericpraveen-alricprashanth/', '_blank', 'noopener,noreferrer');
+      },
+      keywords: ['linkedin', 'social', 'network', 'connect', 'profile', 'experience', 'career'],
+    },
+    {
+      id: 'action-medium',
+      category: 'Actions',
+      title: 'Read Medium Technical Articles',
+      subtitle: 'Read publications on system architecture and software engineering',
+      badge: 'EXTERNAL',
+      action: () => {
+        window.open('https://medium.com/@ericpraveen123', '_blank', 'noopener,noreferrer');
+      },
+      keywords: ['medium', 'blog', 'articles', 'writing', 'publications', 'notes'],
+    },
+    {
+      id: 'action-resume',
+      category: 'Actions',
+      title: 'Download Curriculum Vitae (PDF)',
+      subtitle: 'View and download verified software engineering resume',
+      badge: 'PDF',
+      action: () => {
+        window.open('/documents/eric-praveen-resume.pdf', '_blank', 'noopener,noreferrer');
+      },
+      keywords: ['resume', 'cv', 'pdf', 'download', 'curriculum', 'vitae'],
     },
   ], []);
 

@@ -15,24 +15,30 @@ export const NAV_ITEMS: NavItem[] = [
   },
   {
     index: '02',
+    label: 'Education',
+    href: '/#education',
+    targetId: 'education',
+  },
+  {
+    index: '03',
     label: 'Work',
     href: '/#projects',
     targetId: 'projects',
   },
   {
-    index: '03',
+    index: '04',
     label: 'Stack',
     href: '/#skills',
     targetId: 'skills',
   },
   {
-    index: '04',
-    label: 'Field',
-    href: '/#certificates',
-    targetId: 'certificates',
+    index: '05',
+    label: 'Blog',
+    href: '/#blog',
+    targetId: 'blog',
   },
   {
-    index: '05',
+    index: '06',
     label: 'Contact',
     href: '/#contact',
     targetId: 'contact',
@@ -49,10 +55,11 @@ export interface CurrentSectionInfo {
 const SECTION_BADGE_MAP: Record<string, { index: string; label: string; href: string }> = {
   home: { index: '01', label: 'Home', href: '/#home' },
   about: { index: '02', label: 'About', href: '/#about' },
-  projects: { index: '03', label: 'Work', href: '/#projects' },
-  skills: { index: '04', label: 'Stack', href: '/#skills' },
-  certificates: { index: '05', label: 'Field', href: '/#certificates' },
-  contact: { index: '06', label: 'Contact', href: '/#contact' },
+  education: { index: '03', label: 'Education', href: '/#education' },
+  projects: { index: '04', label: 'Work', href: '/#projects' },
+  skills: { index: '05', label: 'Stack', href: '/#skills' },
+  blog: { index: '06', label: 'Blog', href: '/#blog' },
+  contact: { index: '07', label: 'Contact', href: '/#contact' },
 };
 
 export function getCurrentSection(pathname: string, activeSectionId?: string): CurrentSectionInfo {

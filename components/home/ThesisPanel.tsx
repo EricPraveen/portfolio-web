@@ -63,18 +63,6 @@ export function ThesisPanel({ profile, onOpenCommand }: ThesisPanelProps) {
 
   const praveenLetters = ['P', 'R', 'A', 'V', 'E', 'E', 'N'];
 
-  const handleCmdClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-    if (onOpenCommand) {
-      onOpenCommand();
-    } else {
-      // Trigger global Cmd+K event
-      window.dispatchEvent(
-        new KeyboardEvent('keydown', { key: 'k', metaKey: true, bubbles: true })
-      );
-    }
-  };
-
   return (
     <section id="home" className="editorial-hero" aria-label="Hero Section">
       <span id="hero" className="section-anchor" aria-hidden="true" />
@@ -234,20 +222,6 @@ export function ThesisPanel({ profile, onOpenCommand }: ThesisPanelProps) {
               <span>GET IN TOUCH</span>
               <span className="hero-btn__arrow" aria-hidden="true">&#x2197;</span>
             </a>
-          </div>
-
-          <div className="editorial-hero__scroll-cmd">
-            <span className="editorial-hero__scroll-hint font-mono">SCROLL TO OPEN</span>
-            <button
-              type="button"
-              className="hero-cmd-badge font-mono"
-              onClick={handleCmdClick}
-              aria-label="Open command palette (Press Command K)"
-              title="Quick Search & Navigation (⌘K)"
-            >
-              <kbd className="hero-cmd-key">⌘</kbd>
-              <kbd className="hero-cmd-key">K</kbd>
-            </button>
           </div>
         </div>
       </div>

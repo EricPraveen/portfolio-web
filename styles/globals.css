@@ -13263,6 +13263,7 @@ section[id],
 
 .blog-carousel-track {
   display: flex;
+  width: max-content;
   gap: var(--carousel-gap);
   align-items: stretch;
   will-change: transform;
@@ -13272,6 +13273,7 @@ section[id],
   flex: 0 0 calc((100% - (var(--cards-per-view) - 1) * var(--carousel-gap)) / var(--cards-per-view));
   width: calc((100% - (var(--cards-per-view) - 1) * var(--carousel-gap)) / var(--cards-per-view));
   max-width: calc((100% - (var(--cards-per-view) - 1) * var(--carousel-gap)) / var(--cards-per-view));
+  min-width: 0;
   box-sizing: border-box;
   display: flex;
 }

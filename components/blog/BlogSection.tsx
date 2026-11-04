@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { MediumArticle } from '@/content/types/blog.types';
+import { FALLBACK_ARTICLES } from '@/lib/content/medium.service';
 import { BlogCarousel } from './BlogCarousel';
 import { ArticleCardSkeleton } from './ArticleCardSkeleton';
 import { FadeUp, ScrollReveal } from '@/components/animation';
@@ -19,13 +20,15 @@ export function BlogSection({
   initialArticles = [],
   profileUrl = DEFAULT_PROFILE_URL,
 }: BlogSectionProps) {
-  const [articles, setArticles] = useState<MediumArticle[]>(initialArticles);
-  const [isLoading, setIsLoading] = useState<boolean>(initialArticles.length === 0);
+  // Always guarantee valid articles: use initialArticles if available, or reliable fallback
+  const effectiveInitial = initialArticles.length > 0 ? initialArticles : FALLBACK_ARTICLES;
+  const [articles, setArticles] = useState<MediumArticle[]>(effectiveInitial);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [hasError, setHasError] = useState<boolean>(false);
 
   const fetchArticles = async (isRetry = false) => {
     try {
-      if (isRetry || articles.length === 0) {
+      if (isRetry && articles.length === 0) {
         setIsLoading(true);
       }
       setHasError(false);
@@ -51,9 +54,9 @@ export function BlogSection({
       }
     } catch (err) {
       console.warn('[BlogSection] Live Medium RSS fetch error:', err);
-      // Only display error state if we don't have any cached or initial articles
+      // Guarantee fallback articles are always visible
       if (articles.length === 0) {
-        setHasError(true);
+        setArticles(FALLBACK_ARTICLES);
       }
     } finally {
       setIsLoading(false);

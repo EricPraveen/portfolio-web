@@ -29,10 +29,10 @@ export function ProjectPlate({
 
   const categoryBadgeStyle =
     project.track === 'hardware'
-      ? { borderColor: 'rgba(245, 158, 11, 0.4)', color: '#FCD34D', backgroundColor: 'rgba(245, 158, 11, 0.12)' }
+      ? { borderColor: 'rgba(245, 158, 11, 0.75)', color: '#FCD34D', backgroundColor: 'rgba(12, 12, 18, 0.95)' }
       : project.track === 'figma'
-      ? { borderColor: 'rgba(236, 72, 153, 0.4)', color: '#F472B6', backgroundColor: 'rgba(236, 72, 153, 0.12)' }
-      : undefined;
+      ? { borderColor: 'rgba(236, 72, 153, 0.75)', color: '#FF70BA', backgroundColor: 'rgba(12, 12, 18, 0.95)' }
+      : { borderColor: 'rgba(0, 229, 255, 0.75)', color: '#00E5FF', backgroundColor: 'rgba(12, 12, 18, 0.95)' };
 
   const handleCardClick = () => {
     if (targetUrl && targetUrl !== '#') {

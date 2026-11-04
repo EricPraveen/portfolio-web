@@ -22,8 +22,8 @@ export const projectsData: Project[] = [
     isAcademic: true,
     context:
       'Developed as an academic software engineering capstone project at the University of Moratuwa to solve fragmented tour discovery and booking management for tourists exploring Sri Lanka.',
-    technologies: ['React.js', 'Spring Boot', 'Tailwind CSS', 'PostgreSQL', 'Supabase', 'REST APIs', 'Figma'],
-    stack: ['React.js', 'Spring Boot', 'Tailwind CSS', 'PostgreSQL', 'Supabase', 'REST APIs', 'Figma'],
+    technologies: ['React.js', 'Spring Boot', 'PostgreSQL', 'Tailwind CSS'],
+    stack: ['React.js', 'Spring Boot', 'PostgreSQL', 'Tailwind CSS'],
     linkedInUrl: 'https://www.linkedin.com/feed/update/urn:li:activity:7518732678418886656/',
     repoUrl: 'https://github.com/EricPraveen/travelhub',
     demoUrl: 'https://travelhublanka.netlify.app/',
@@ -160,8 +160,8 @@ export const projectsData: Project[] = [
     isAcademic: true,
     context:
       'Developed as an academic computer graphics engineering project at the University of Moratuwa to implement low-level 2D rasterization algorithms from scratch and compile native C++ OpenGL to modern WebAssembly.',
-    technologies: ['C++', 'OpenGL', 'GLUT', 'WebAssembly', 'HTML5 Canvas'],
-    stack: ['C++', 'OpenGL', 'GLUT', 'WebAssembly', 'HTML5 Canvas'],
+    technologies: ['C++', 'OpenGL', 'WebAssembly'],
+    stack: ['C++', 'OpenGL', 'WebAssembly'],
     linkedInUrl: 'https://www.linkedin.com/feed/update/urn:li:activity:7501263644329058304/',
     repoUrl: 'https://github.com/EricPraveen/Chicken-Shooting',
     demoUrl: 'https://chicken-shooting.vercel.app',
@@ -264,8 +264,8 @@ export const projectsData: Project[] = [
     isAcademic: false,
     context:
       'Developed as an independent software engineering project to solve the lack of dependable, offline-capable scoring applications for local cricket matches and club tournaments.',
-    technologies: ['React Native', 'TypeScript', 'Expo', 'SQLite', 'Expo Router', 'Reanimated'],
-    stack: ['React Native', 'TypeScript', 'Expo', 'SQLite', 'Expo Router', 'Reanimated'],
+    technologies: ['React Native', 'TypeScript', 'SQLite', 'Expo'],
+    stack: ['React Native', 'TypeScript', 'SQLite', 'Expo'],
     linkedInUrl: 'https://www.linkedin.com/in/ericpraveen-alricprashanth/details/projects/',
     repoUrl: 'https://github.com/EricPraveen/CricketScore',
     coverImage: {
@@ -367,8 +367,8 @@ export const projectsData: Project[] = [
     isAcademic: false,
     context:
       'Developed as an independent full-stack engineering project to master secure user authentication, role-based content moderation, relational data modeling, and cloud asset pipeline integration.',
-    technologies: ['React.js', 'Spring Boot', 'PostgreSQL', 'Cloudinary', 'JWT', 'REST APIs'],
-    stack: ['React.js', 'Spring Boot', 'PostgreSQL', 'Cloudinary', 'JWT', 'REST APIs'],
+    technologies: ['React.js', 'Spring Boot', 'PostgreSQL', 'JWT'],
+    stack: ['React.js', 'Spring Boot', 'PostgreSQL', 'JWT'],
     linkedInUrl: 'https://www.linkedin.com/feed/update/urn:li:activity:7468553897041838081/',
     repoUrl: 'https://github.com/EricPraveen/IdeaPad',
     coverImage: {
@@ -467,8 +467,8 @@ export const projectsData: Project[] = [
     isAcademic: false,
     context:
       'Engineered as an independent practical full-stack project to master the MERN stack (MongoDB, Express.js, React.js, Node.js), asynchronous REST APIs, and automated inventory management.',
-    technologies: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'Bootstrap', 'REST APIs'],
-    stack: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'Bootstrap', 'REST APIs'],
+    technologies: ['React.js', 'Node.js', 'Express.js', 'MongoDB'],
+    stack: ['React.js', 'Node.js', 'Express.js', 'MongoDB'],
     linkedInUrl: 'https://www.linkedin.com/feed/update/urn:li:activity:7439368259797307392/',
     repoUrl: 'https://github.com/EricPraveen/EShop',
     coverImage: {
@@ -567,8 +567,8 @@ export const projectsData: Project[] = [
     isAcademic: true,
     context:
       'Developed as an academic web development project to build an accessible, structured, and responsive informational web portal for university campus life and academic offerings.',
-    technologies: ['HTML5', 'CSS3', 'JavaScript', 'Responsive Web Design'],
-    stack: ['HTML5', 'CSS3', 'JavaScript', 'Responsive Web Design'],
+    technologies: ['HTML5', 'CSS3', 'JavaScript'],
+    stack: ['HTML5', 'CSS3', 'JavaScript'],
     linkedInUrl: 'https://www.linkedin.com/in/ericpraveen-alricprashanth/details/projects/',
     repoUrl: 'https://github.com/EricPraveen/EduTrack',
     coverImage: {
@@ -669,8 +669,8 @@ export const projectsData: Project[] = [
     isAcademic: true,
     context:
       'First-Year Microcontroller Based Application Development Project associated with the University of Moratuwa, designing and building an intelligent solar energy system with automated tracking, safety cutoff, and remote web telemetry.',
-    technologies: ['Arduino Mega', 'ESP32', 'C/C++', 'Sensors', 'IoT', 'Hardware'],
-    stack: ['Arduino Mega', 'ESP32', 'C/C++', 'Sensors', 'IoT', 'Hardware'],
+    technologies: ['Arduino Mega', 'ESP32', 'C/C++', 'IoT'],
+    stack: ['Arduino Mega', 'ESP32', 'C/C++', 'IoT'],
     linkedInUrl: 'https://www.linkedin.com/feed/update/urn:li:activity:7373774438254841856/',
     demoUrl: 'https://claude.ai/public/artifacts/28c484c1-b306-4cec-af6c-771456b00a30',
     coverImage: {
@@ -809,8 +809,8 @@ export const projectsData: Project[] = [
     isAcademic: false,
     context:
       'Personal UI Design Experiment & Practice Project in Figma exploring playful UI compositions, vibrant dessert color harmonies, asset styling, and animated interactive prototyping.',
-    technologies: ['Figma', 'Interactive Prototyping', 'Component Variants', 'Visual Design', 'Animation'],
-    stack: ['Figma', 'Interactive Prototyping', 'Component Variants', 'Visual Design', 'Animation'],
+    technologies: ['Figma', 'UI/UX Design', 'Prototyping'],
+    stack: ['Figma', 'UI/UX Design', 'Prototyping'],
     linkedInUrl: 'https://www.linkedin.com/feed/update/urn:li:activity:7373795791355842560/',
     coverImage: {
       src: '/images/projects/donut-figma.jpg',
@@ -915,8 +915,8 @@ export const projectsData: Project[] = [
     isAcademic: false,
     context:
       'Personal UI Design Experiment & Practice Project exploring modern creative web design, bold typography layouts, beverage product presentation, and smart-animate interactive prototyping in Figma.',
-    technologies: ['Figma', 'Typography', 'Visual Hierarchy', 'Component Variants', 'Landing Pages'],
-    stack: ['Figma', 'Typography', 'Visual Hierarchy', 'Component Variants', 'Landing Pages'],
+    technologies: ['Figma', 'Web Design', 'Prototype'],
+    stack: ['Figma', 'Web Design', 'Prototype'],
     linkedInUrl: 'https://www.linkedin.com/feed/update/urn:li:activity:7373795791355842560/',
     coverImage: {
       src: '/images/projects/drpepper-figma.jpg',
@@ -1021,8 +1021,8 @@ export const projectsData: Project[] = [
     isAcademic: false,
     context:
       'Design Challenge submission for Tech-Triathlon 2026, creating an enterprise-grade delivery planning, fleet tracking, and logistics dispatch management dashboard system in Figma.',
-    technologies: ['Figma', 'FigJam', 'Auto Layout', 'Design Systems', 'Interactive Prototyping'],
-    stack: ['Figma', 'FigJam', 'Auto Layout', 'Design Systems', 'Interactive Prototyping'],
+    technologies: ['Figma', 'Design Systems', 'Dashboard UI'],
+    stack: ['Figma', 'Design Systems', 'Dashboard UI'],
     linkedInUrl: 'https://www.linkedin.com/feed/update/urn:li:activity:7373795791355842560/',
     coverImage: {
       src: '/images/projects/waypoint-figma.jpg',
@@ -1141,8 +1141,8 @@ export const projectsData: Project[] = [
     isAcademic: false,
     context:
       'UI/UX Practical Challenge for Webtezza (Pvt) Ltd, designing a modern, frictionless mobile application experience for booking trusted on-demand home maintenance professionals.',
-    technologies: ['Figma', 'Mobile UI', 'Auto Layout', 'User Flows', 'Interactive Prototyping'],
-    stack: ['Figma', 'Mobile UI', 'Auto Layout', 'User Flows', 'Interactive Prototyping'],
+    technologies: ['Figma', 'Mobile UI/UX', 'User Flows'],
+    stack: ['Figma', 'Mobile UI/UX', 'User Flows'],
     linkedInUrl: 'https://www.linkedin.com/feed/update/urn:li:activity:7373795791355842560/',
     coverImage: {
       src: '/images/projects/fixnow-card.jpg',
@@ -1247,8 +1247,8 @@ export const projectsData: Project[] = [
     isAcademic: true,
     context:
       '2nd Year Software Project – University of Moratuwa: Led the complete UI/UX design phase in Figma before full-stack engineering, crafting accessible tourist dashboards and design tokens.',
-    technologies: ['Figma', 'FigJam', 'Auto Layout', 'Design Systems', 'User Flows'],
-    stack: ['Figma', 'FigJam', 'Auto Layout', 'Design Systems', 'User Flows'],
+    technologies: ['Figma', 'Design Systems', 'Prototyping'],
+    stack: ['Figma', 'Design Systems', 'Prototyping'],
     linkedInUrl: 'https://www.linkedin.com/feed/update/urn:li:activity:7373795791355842560/',
     demoUrl: 'https://www.figma.com/proto/WAY9zYrASNhdr0Fjej69zb/Travel-Hub?node-id=0-1&t=jnBrkBLbAn8TDWtC-1',
     coverImage: {

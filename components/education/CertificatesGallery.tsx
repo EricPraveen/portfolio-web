@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { CredentialItem } from '@/content/types';
 import { CertificatePreviewModal } from './CertificatePreviewModal';
 import { ScrollReveal, FadeUp } from '@/components/animation';
@@ -21,6 +21,23 @@ function getIssuerShortName(issuer: string): string {
 export function CertificatesGallery({ certificates }: CertificatesGalleryProps) {
   const [previewItem, setPreviewItem] = useState<CredentialItem | null>(null);
 
+  // Automatically sort certificates year-wise descending: 2026 -> 2024 -> 2023
+  const sortedCertificates = useMemo(() => {
+    return [...certificates].sort((a, b) => {
+      const yearA = parseInt(a.issueDate.match(/\b(20\d{2})\b/)?.[1] || '0', 10);
+      const yearB = parseInt(b.issueDate.match(/\b(20\d{2})\b/)?.[1] || '0', 10);
+
+      if (yearB !== yearA) {
+        return yearB - yearA;
+      }
+
+      if (a.featured && !b.featured) return -1;
+      if (!a.featured && b.featured) return 1;
+
+      return 0;
+    });
+  }, [certificates]);
+
   return (
     <div className="cert-gallery-container">
       {/* ── SUBSECTION HEADER (NO UNWANTED CATEGORY TABS) ───────────── */}
@@ -28,7 +45,7 @@ export function CertificatesGallery({ certificates }: CertificatesGalleryProps) 
         <div className="cert-gallery-header-left">
           <span className="cert-sub-eyebrow font-mono text-mono-label">
             <span className="cert-eyebrow-dot" aria-hidden="true" />
-            PROFESSIONAL CREDENTIALS &bull; {certificates.length} VERIFIED
+            PROFESSIONAL CREDENTIALS &bull; {sortedCertificates.length} VERIFIED
           </span>
           <h4 className="cert-sub-title font-heading-2xl">
             Certificates &amp; Coursework
@@ -39,9 +56,9 @@ export function CertificatesGallery({ certificates }: CertificatesGalleryProps) 
         </p>
       </FadeUp>
 
-      {/* ── CERTIFICATE CARDS GRID WITH VISIBLE THUMBNAILS ──────────── */}
+      {/* ── CERTIFICATE CARDS GRID WITH VISIBLE THUMBNAILS (SORTED 2026 TO 2023) ── */}
       <div className="cert-cards-grid">
-        {certificates.map((cert, idx) => {
+        {sortedCertificates.map((cert, idx) => {
           const displayTitle = cert.title.replace(/\[|\]/g, '');
           const displayIssuer = cert.issuer.replace(/\[|\]/g, '');
           const displaySummary = cert.summary ? cert.summary.replace(/\[|\]/g, '') : null;

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useRef, useEffect } from 'react';
 import { CredentialItem } from '@/content/types';
 import { CertificatePreviewModal } from './CertificatePreviewModal';
 import { ScrollReveal, FadeUp } from '@/components/animation';
@@ -20,6 +20,12 @@ function getIssuerShortName(issuer: string): string {
 
 export function CertificatesGallery({ certificates }: CertificatesGalleryProps) {
   const [previewItem, setPreviewItem] = useState<CredentialItem | null>(null);
+  const [isExpanded, setIsExpanded] = useState<boolean>(false);
+  const [columns, setColumns] = useState<number>(3);
+  const [isMounted, setIsMounted] = useState<boolean>(false);
+
+  const galleryRef = useRef<HTMLDivElement | null>(null);
+  const gridRef = useRef<HTMLDivElement | null>(null);
 
   // Automatically sort certificates year-wise descending: 2026 -> 2024 -> 2023
   const sortedCertificates = useMemo(() => {
@@ -38,15 +44,91 @@ export function CertificatesGallery({ certificates }: CertificatesGalleryProps) 
     });
   }, [certificates]);
 
+  // Dynamically calculate grid columns based on rendered CSS grid
+  useEffect(() => {
+    setIsMounted(true);
+
+    const updateColumns = () => {
+      if (!gridRef.current) return;
+      const computed = window.getComputedStyle(gridRef.current);
+      const cols = computed.getPropertyValue('grid-template-columns').split(' ').filter(Boolean).length;
+      if (cols > 0) {
+        setColumns(cols);
+      }
+    };
+
+    updateColumns();
+
+    let ro: ResizeObserver | null = null;
+    if (typeof ResizeObserver !== 'undefined' && gridRef.current) {
+      ro = new ResizeObserver(() => {
+        updateColumns();
+      });
+      ro.observe(gridRef.current);
+    }
+
+    window.addEventListener('resize', updateColumns);
+    return () => {
+      window.removeEventListener('resize', updateColumns);
+      if (ro) ro.disconnect();
+    };
+  }, []);
+
+  // Display exactly 2 rows of certificates initially:
+  // Desktop (3 columns) -> 6 cards
+  // Tablet (2 columns)  -> 4 cards
+  // Mobile (1 column)   -> 2 cards
+  const initialCount = isMounted ? Math.max(2, columns * 2) : 6;
+  const canToggle = sortedCertificates.length > initialCount;
+  const visibleCertificates = isExpanded ? sortedCertificates : sortedCertificates.slice(0, initialCount);
+  const remainingCount = Math.max(0, sortedCertificates.length - initialCount);
+
+  const handleToggleExpand = () => {
+    if (isExpanded) {
+      setIsExpanded(false);
+      // Smoothly scroll back to the gallery subsection header to prevent disorientation
+      if (galleryRef.current) {
+        const topOffset = galleryRef.current.getBoundingClientRect().top + window.scrollY - 90;
+        window.scrollTo({
+          top: topOffset,
+          behavior: 'smooth',
+        });
+      }
+    } else {
+      setIsExpanded(true);
+    }
+  };
+
   return (
-    <div className="cert-gallery-container">
-      {/* ── SUBSECTION HEADER (NO UNWANTED CATEGORY TABS) ───────────── */}
+    <div ref={galleryRef} className="cert-gallery-container">
+      {/* ── SUBSECTION HEADER ────────────────────────────────────────── */}
       <FadeUp className="cert-gallery-header">
         <div className="cert-gallery-header-left">
-          <span className="cert-sub-eyebrow font-mono text-mono-label">
-            <span className="cert-eyebrow-dot" aria-hidden="true" />
-            PROFESSIONAL CREDENTIALS &bull; {sortedCertificates.length} VERIFIED
-          </span>
+          <div className="cert-sub-eyebrow-row">
+            <span className="cert-sub-eyebrow font-mono text-mono-label">
+              <span className="cert-eyebrow-dot" aria-hidden="true" />
+              PROFESSIONAL CREDENTIALS &bull; {sortedCertificates.length} VERIFIED
+            </span>
+            {canToggle && (
+              <div className="cert-gallery-count-badge font-mono text-xs">
+                <span>
+                  {isExpanded
+                    ? `Showing all ${sortedCertificates.length}`
+                    : `Showing 2 rows (${visibleCertificates.length} of ${sortedCertificates.length})`}
+                </span>
+                {isExpanded && (
+                  <button
+                    type="button"
+                    onClick={handleToggleExpand}
+                    className="cert-header-quick-toggle font-mono"
+                    aria-label="Minimize certificates back to 2 rows"
+                  >
+                    Minimize ▲
+                  </button>
+                )}
+              </div>
+            )}
+          </div>
           <h4 className="cert-sub-title font-heading-2xl">
             Certificates &amp; Coursework
           </h4>
@@ -57,8 +139,8 @@ export function CertificatesGallery({ certificates }: CertificatesGalleryProps) 
       </FadeUp>
 
       {/* ── CERTIFICATE CARDS GRID WITH VISIBLE THUMBNAILS (SORTED 2026 TO 2023) ── */}
-      <div className="cert-cards-grid">
-        {sortedCertificates.map((cert, idx) => {
+      <div id="cert-cards-grid" ref={gridRef} className="cert-cards-grid">
+        {visibleCertificates.map((cert, idx) => {
           const displayTitle = cert.title.replace(/\[|\]/g, '');
           const displayIssuer = cert.issuer.replace(/\[|\]/g, '');
           const displaySummary = cert.summary ? cert.summary.replace(/\[|\]/g, '') : null;
@@ -173,8 +255,28 @@ export function CertificatesGallery({ certificates }: CertificatesGalleryProps) 
         })}
       </div>
 
-      {/* ── SECTION FOOTER: VIEW MORE ON LINKEDIN ──────────────────── */}
+      {/* ── SECTION FOOTER: READ MORE / MINIMIZE & VIEW MORE ON LINKEDIN ── */}
       <FadeUp className="cert-gallery-footer">
+        {canToggle && (
+          <button
+            type="button"
+            onClick={handleToggleExpand}
+            className={`cert-gallery-toggle-btn ${isExpanded ? 'is-expanded' : ''} font-mono`}
+            aria-expanded={isExpanded}
+            aria-controls="cert-cards-grid"
+          >
+            <span className="cert-toggle-icon" aria-hidden="true">
+              {isExpanded ? '▲' : '▼'}
+            </span>
+            <span>
+              {isExpanded ? 'Minimize Certificates' : 'Read More Certificates'}
+            </span>
+            <span className="cert-toggle-badge font-mono">
+              {isExpanded ? 'Show 2 Rows' : `+${remainingCount}`}
+            </span>
+          </button>
+        )}
+
         <a
           href="https://www.linkedin.com/in/ericpraveen-alricprashanth/details/certifications/"
           target="_blank"
